@@ -7,6 +7,8 @@ export interface District {
   name: string;
   x: number;
   y: number;
+  lat: number;
+  lng: number;
   count: number;
 }
 
@@ -30,6 +32,8 @@ export interface Listing {
   district: string;
   mapX: number;
   mapY: number;
+  lat: number;
+  lng: number;
   address: string;
   deposit: number;
   rent: number;

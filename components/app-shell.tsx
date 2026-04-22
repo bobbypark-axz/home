@@ -5,7 +5,7 @@ import type { Density, Filters, HousingTypeId, SortKey, ViewMode } from "@/lib/t
 import { DISTRICTS, LISTINGS } from "@/lib/mock-data";
 import { FilterBar } from "./filter-bar";
 import { ListingPanel } from "./listing-panel";
-import { MapView } from "./map-view";
+import { KakaoMapView } from "./kakao-map";
 import { DetailPanel } from "./detail-panel";
 import { EligibilityModal } from "./eligibility-modal";
 import { TweaksPanel } from "./tweaks-panel";
@@ -133,7 +133,7 @@ export function AppShell() {
         />
 
         {mode === "split" && (
-          <MapView
+          <KakaoMapView
             districtCounts={districtCounts}
             activeDistrict={activeDistrict}
             onDistrictClick={(id) => setActiveDistrict(id)}
