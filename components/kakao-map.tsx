@@ -151,9 +151,11 @@ export function NaverMapView({
   const districtMarkersRef = useRef<NaverMarker[]>([]);
   const pinMarkersRef = useRef<Map<string, { marker: NaverMarker; el: HTMLElement }>>(new Map());
   const clusterMarkersRef = useRef<NaverMarker[]>([]);
+  const myLocationMarkerRef = useRef<NaverMarker | null>(null);
   const [ready, setReady] = useState(false);
   const [zoom, setZoom] = useState(DEFAULT_ZOOM);
   const [loadError, setLoadError] = useState<string | null>(null);
+  const [locating, setLocating] = useState(false);
 
   useEffect(() => {
     if (!CLIENT_ID) {
@@ -282,6 +284,60 @@ export function NaverMapView({
     }
   }, [ready, activeDistrict]);
 
+  // Focus map on selected listing (e.g. when user clicks a card)
+  useEffect(() => {
+    if (!ready || !mapRef.current || !window.naver || !selectedId) return;
+    const pin = pins.find((p) => p.id === selectedId);
+    if (!pin) return;
+    const { naver } = window;
+    const targetZoom = Math.max(mapRef.current.getZoom(), 15);
+    mapRef.current.morph(new naver.maps.LatLng(pin.lat, pin.lng), targetZoom);
+  }, [ready, selectedId, pins]);
+
+  const handleLocate = () => {
+    if (!navigator.geolocation || !mapRef.current || !window.naver) {
+      alert("이 브라우저는 위치 확인을 지원하지 않아요");
+      return;
+    }
+    setLocating(true);
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const { latitude, longitude } = pos.coords;
+        const map = mapRef.current;
+        if (!map || !window.naver) {
+          setLocating(false);
+          return;
+        }
+        const { naver } = window;
+        const latlng = new naver.maps.LatLng(latitude, longitude);
+        map.morph(latlng, 14);
+        if (myLocationMarkerRef.current) {
+          myLocationMarkerRef.current.setPosition(latlng);
+        } else {
+          const el = document.createElement("div");
+          el.className = "map-me";
+          el.innerHTML = '<div class="map-me-dot"></div><div class="map-me-ring"></div>';
+          myLocationMarkerRef.current = new naver.maps.Marker({
+            position: latlng,
+            map,
+            icon: { content: el, anchor: { x: 0, y: 0 } },
+            zIndex: 5,
+          });
+        }
+        setLocating(false);
+      },
+      (err) => {
+        setLocating(false);
+        const msg =
+          err.code === 1
+            ? "위치 권한이 차단됐어요. 브라우저 주소창의 자물쇠 → 위치 허용으로 바꿔주세요."
+            : "위치를 가져오지 못했어요";
+        alert(msg);
+      },
+      { enableHighAccuracy: true, timeout: 8000 },
+    );
+  };
+
   const activeDistObj = activeDistrict ? DISTRICTS.find((d) => d.id === activeDistrict) : null;
 
   return (
@@ -339,8 +395,8 @@ export function NaverMapView({
         </div>
       )}
 
-      <button className="map-recenter">
-        <LocateIcon size={13} /> 내 위치
+      <button className="map-recenter" onClick={handleLocate} disabled={locating}>
+        <LocateIcon size={13} /> {locating ? "위치 찾는 중…" : "내 위치"}
       </button>
     </div>
   );

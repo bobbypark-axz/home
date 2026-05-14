@@ -182,7 +182,11 @@ export function AppShell() {
         onApplyFilter={(types: HousingTypeId[]) => setFilters({ ...filters, type: types })}
       />
 
-      <FloatingChat open={chatOpen} onOpenChange={setChatOpen} />
+      <FloatingChat
+        open={chatOpen}
+        onOpenChange={setChatOpen}
+        shifted={detailOpen && Boolean(selectedItem)}
+      />
 
       <TweaksPanel
         open={tweaksOpen}

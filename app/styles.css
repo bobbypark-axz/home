@@ -123,6 +123,11 @@ input, select { font-family: inherit; }
   transition: transform .12s, box-shadow .12s;
 }
 .chat-fab:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(255, 70, 51, 0.4); }
+.chat-fab.shifted { right: calc(24px + 460px); }
+.chat-panel.shifted { right: calc(24px + 460px); }
+@media (max-width: 1199px) {
+  .chat-fab.shifted, .chat-panel.shifted { right: 24px; }
+}
 .chat-fab-icon { font-size: 16px; }
 
 .chat-panel {
@@ -797,6 +802,36 @@ input, select { font-family: inherit; }
 .map-pin.jeonse::after { border-top-color: #0a8db8; }
 .map-pin.fifty { background: #4b5563; }
 .map-pin.fifty::after { border-top-color: #4b5563; }
+
+/* 내 위치 마커 */
+.map-me {
+  position: relative;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 22px;
+}
+.map-me-dot {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #1a73e8;
+  border: 2px solid white;
+  box-shadow: 0 0 0 1px rgba(26, 115, 232, 0.4);
+}
+.map-me-ring {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: rgba(26, 115, 232, 0.25);
+  animation: me-pulse 2s ease-out infinite;
+}
+@keyframes me-pulse {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
 
 /* Cluster bubble (zoomed-in viewport aggregation) */
 .map-cluster-wrap {

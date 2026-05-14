@@ -21,9 +21,11 @@ function MessageBubble({ message }: { message: UIMessage }) {
 export function FloatingChat({
   open,
   onOpenChange,
+  shifted = false,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  shifted?: boolean;
 }) {
   const [input, setInput] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -50,7 +52,7 @@ export function FloatingChat({
     <>
       {!open && (
         <button
-          className="chat-fab"
+          className={`chat-fab ${shifted ? "shifted" : ""}`}
           onClick={() => onOpenChange(true)}
           aria-label="AI 챗봇 열기"
         >
@@ -59,7 +61,7 @@ export function FloatingChat({
         </button>
       )}
       {open && (
-        <div className="chat-panel">
+        <div className={`chat-panel ${shifted ? "shifted" : ""}`}>
           <header className="chat-header">
             <div className="chat-header-title">
               <span className="chat-header-spark" aria-hidden>✨</span>
