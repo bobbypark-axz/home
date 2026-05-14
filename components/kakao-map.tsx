@@ -10,7 +10,7 @@ import { CloseIcon, LocateIcon, PinIcon } from "./icons";
 
 const SEOUL_CENTER = { lat: 37.5665, lng: 126.978 };
 const DEFAULT_ZOOM = 11;
-const DISTRICT_ZOOM = 13;
+const DISTRICT_ZOOM = 12;
 const CLIENT_ID = process.env.NEXT_PUBLIC_NAVER_MAPS_CLIENT_ID;
 
 function sizeClass(count: number): string {
@@ -229,7 +229,8 @@ export function NaverMapView({
 
     if (!activeDistrict) return;
 
-    const groups = clusterPins(pins, zoom);
+    // 시도 선택 모드에선 클러스터 없이 항상 개별 핀 표시
+    const groups = clusterPins(pins, activeDistrict ? 99 : zoom);
     for (const g of groups) {
       if (g.kind === "single") {
         const p = g.pin;
