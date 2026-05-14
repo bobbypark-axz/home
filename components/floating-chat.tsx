@@ -56,9 +56,15 @@ export function FloatingChat({
   const [input, setInput] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const { messages, sendMessage, status } = useChat({
+  const { messages, sendMessage, status, setMessages } = useChat({
     transport: new DefaultChatTransport({ api: "/api/chat" }),
   });
+
+  const handleClose = () => {
+    onOpenChange(false);
+    setMessages([]);
+    setInput("");
+  };
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -93,7 +99,7 @@ export function FloatingChat({
               <span className="chat-header-name">AI 자격상담사</span>
               <span className="chat-header-beta">beta</span>
             </div>
-            <button className="chat-close" onClick={() => onOpenChange(false)} aria-label="닫기">
+            <button className="chat-close" onClick={handleClose} aria-label="닫기">
               <CloseIcon size={16} />
             </button>
           </header>
