@@ -30,7 +30,7 @@ export function AppShell() {
   const [chatOpen, setChatOpen] = useState(false);
   const [mode, setMode] = useState<ViewMode>("split");
   const [density, setDensity] = useState<Density>("comfort");
-  const [showLegend, setShowLegend] = useState(true);
+  const [showLegend, setShowLegend] = useState(false);
 
   useEffect(() => {
     void density;
