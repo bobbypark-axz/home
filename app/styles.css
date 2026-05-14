@@ -142,6 +142,39 @@ input, select { font-family: inherit; }
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  transform-origin: bottom right;
+  animation: chat-panel-in 0.32s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes chat-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.chat-welcome { animation: chat-welcome-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s both; }
+.chat-welcome-logo { animation: welcome-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s both; }
+.chat-welcome-lines > div { animation: welcome-line 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.chat-welcome-lines > div:nth-child(1) { animation-delay: 0.18s; }
+.chat-welcome-lines > div:nth-child(2) { animation-delay: 0.26s; }
+.chat-welcome-lines > div:nth-child(3) { animation-delay: 0.34s; }
+.chat-welcome-lines > div:nth-child(4) { animation-delay: 0.42s; }
+.chat-questions { animation: welcome-line 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s both; }
+
+@keyframes chat-welcome-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes welcome-pop {
+  from { opacity: 0; transform: scale(0.4); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes welcome-line {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 .chat-header {
   position: relative;
@@ -192,13 +225,10 @@ input, select { font-family: inherit; }
 }
 .chat-welcome { padding: 6px 4px 20px; display: flex; flex-direction: column; gap: 18px; }
 .chat-welcome-logo {
-  width: 32px; height: 32px;
+  width: 40px; height: 40px;
   display: inline-flex; align-items: center; justify-content: center;
-  border-radius: 50%;
-  font-size: 18px;
-  background: linear-gradient(135deg, #4042FF 0%, #57A3FF 100%);
-  color: white;
 }
+.chat-welcome-logo img { width: 100%; height: 100%; display: block; }
 .chat-welcome-lines {
   font-size: 17px;
   line-height: 1.55;
@@ -238,13 +268,10 @@ input, select { font-family: inherit; }
 }
 .chat-question-icon {
   flex-shrink: 0;
-  width: 18px; height: 18px;
+  width: 20px; height: 20px;
   display: inline-flex; align-items: center; justify-content: center;
-  border-radius: 50%;
-  background: var(--seed-scale-color-gray-200, #e8e9eb);
-  font-size: 10px;
-  color: var(--seed-scale-color-gray-700, #4f5359);
 }
+.chat-question-icon img { width: 100%; height: 100%; display: block; }
 
 .chat-msg { display: flex; }
 .chat-msg.user { justify-content: flex-end; }

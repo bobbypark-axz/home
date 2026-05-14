@@ -100,7 +100,10 @@ export function FloatingChat({
           <div className="chat-body" ref={scrollRef}>
             {messages.length === 0 && (
               <div className="chat-welcome">
-                <div className="chat-welcome-logo" aria-hidden>✨</div>
+                <div className="chat-welcome-logo" aria-hidden>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/ai-icon.svg" alt="" />
+                </div>
                 <div className="chat-welcome-lines">
                   <div>안녕하세요!</div>
                   <div>
@@ -121,7 +124,10 @@ export function FloatingChat({
                       className="chat-question"
                       onClick={() => sendMessage({ text: q })}
                     >
-                      <span className="chat-question-icon" aria-hidden>✨</span>
+                      <span className="chat-question-icon" aria-hidden>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="/ai-icon.svg" alt="" />
+                      </span>
                       <span>{q}</span>
                     </button>
                   ))}
