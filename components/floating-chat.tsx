@@ -58,9 +58,14 @@ export function FloatingChat({
 
   const { messages, sendMessage, status, setMessages } = useChat({
     transport: new DefaultChatTransport({ api: "/api/chat" }),
-    // 토큰을 즉시 매번 그리지 않고 100ms 간격으로 일괄 반영 — 글자 떨림 방지
-    experimental_throttle: 100,
   });
+
+  // 응답이 완전히 끝나기 전엔 마지막 AI 메시지를 숨기고 타이핑 인디케이터만 보여서
+  // 토큰 단위로 깜빡이는 것 방지
+  const isWaiting = status === "submitted" || status === "streaming";
+  const lastIsAssistant = messages[messages.length - 1]?.role === "assistant";
+  const visibleMessages =
+    isWaiting && lastIsAssistant ? messages.slice(0, -1) : messages;
 
   const handleClose = () => {
     onOpenChange(false);
@@ -142,10 +147,10 @@ export function FloatingChat({
                 </div>
               </div>
             )}
-            {messages.map((m) => (
+            {visibleMessages.map((m) => (
               <MessageBubble key={m.id} message={m} />
             ))}
-            {status === "submitted" && (
+            {isWaiting && (
               <div className="chat-msg ai">
                 <div className="chat-bubble chat-typing">
                   <span /><span /><span />
