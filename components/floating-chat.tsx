@@ -82,8 +82,8 @@ export function FloatingChat({
           onClick={() => onOpenChange(true)}
           aria-label="AI 챗봇 열기"
         >
-          <span className="chat-fab-icon" aria-hidden>💬</span>
-          <span>AI 자격 상담</span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/ai-icon.svg" alt="" className="chat-fab-icon" />
         </button>
       )}
       {open && (
