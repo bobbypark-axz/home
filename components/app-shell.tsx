@@ -5,7 +5,7 @@ import type { Density, Filters, HousingTypeId, SortKey, ViewMode } from "@/lib/t
 import { DISTRICTS, LISTINGS } from "@/lib/mock-data";
 import { FilterBar } from "./filter-bar";
 import { ListingPanel } from "./listing-panel";
-import { KakaoMapView } from "./kakao-map";
+import { NaverMapView } from "./kakao-map";
 import { DetailPanel } from "./detail-panel";
 import { EligibilityModal } from "./eligibility-modal";
 import { TweaksPanel } from "./tweaks-panel";
@@ -14,9 +14,6 @@ import { ChevronIcon, ListIcon, MapIcon, PinIcon } from "./icons";
 const INITIAL_FILTERS: Filters = {
   type: [],
   status: [],
-  transit: [],
-  eligibility: [],
-  timing: [],
 };
 
 export function AppShell() {
@@ -38,17 +35,12 @@ export function AppShell() {
   }, [density]);
 
   const filtered = useMemo(() => {
+    // 마감된 공고는 기본적으로 숨김 — 마감 필터를 명시적으로 켰을 때만 노출
+    const showClosed = filters.status.includes("closed");
     let list = LISTINGS.slice();
+    if (!showClosed) list = list.filter((x) => x.status !== "closed");
     if (filters.type.length) list = list.filter((x) => filters.type.includes(x.type));
     if (filters.status.length) list = list.filter((x) => filters.status.includes(x.status));
-    if (filters.transit.length) {
-      list = list.filter((x) =>
-        filters.transit.some((t) => x.features.includes(t) || x.transit.includes(t === "역세권" ? "도보" : "버스")),
-      );
-    }
-    if (filters.eligibility.length) {
-      list = list.filter((x) => x.eligible.some((e) => filters.eligibility.includes(e)));
-    }
     if (activeDistrict) list = list.filter((x) => x.districtId === activeDistrict);
 
     if (sort === "deadline") {
@@ -65,19 +57,16 @@ export function AppShell() {
 
   const districtCounts = useMemo<Record<string, number>>(() => {
     const map: Record<string, number> = {};
+    const showClosed = filters.status.includes("closed");
     let list = LISTINGS.slice();
+    if (!showClosed) list = list.filter((x) => x.status !== "closed");
     if (filters.type.length) list = list.filter((x) => filters.type.includes(x.type));
     if (filters.status.length) list = list.filter((x) => filters.status.includes(x.status));
-    if (filters.eligibility.length) list = list.filter((x) => x.eligible.some((e) => filters.eligibility.includes(e)));
     list.forEach((x) => {
-      map[x.districtId] = (map[x.districtId] ?? 0) + (x.districtId === "gangseo" ? 8 : x.districtId === "songpa" ? 10 : 6) + 1;
+      map[x.districtId] = (map[x.districtId] ?? 0) + 1;
     });
     DISTRICTS.forEach((d) => {
       if (!map[d.id]) map[d.id] = 0;
-      if (map[d.id] > 0) map[d.id] = Math.max(map[d.id], Math.round(d.count * 0.5));
-      else if (filters.type.length === 0 && filters.status.length === 0 && filters.eligibility.length === 0) {
-        map[d.id] = d.count;
-      }
     });
     return map;
   }, [filters]);
@@ -95,9 +84,11 @@ export function AppShell() {
     <div className="app">
       <header className="topbar">
         <div className="brand">
-          <div className="brand-mark">보</div>
-          <span className="brand-name">보금</span>
-          <span className="brand-gov">공공임대</span>
+          <span className="brand-name">둥지</span>
+          <button className="brand-ai-cta" onClick={() => setEliOpen(true)}>
+            <span className="ai-spark" aria-hidden>✨</span>
+            AI로 조건 찾기
+          </button>
         </div>
         <button className="region-btn">
           <PinIcon size={13} />
@@ -105,22 +96,14 @@ export function AppShell() {
           <ChevronIcon size={9} />
         </button>
         <div className="topbar-spacer" />
-        <button className="topbar-cta" onClick={() => setEliOpen(true)}>
-          <span className="dot" /> 내 자격 확인
-        </button>
         <div className="topbar-auth">
-          <button className="ghost">내 청약 내역</button>
-          <button className="ghost">관심 목록</button>
-          <button className="primary">로그인 / 회원가입</button>
           <button className="ghost" onClick={() => setTweaksOpen((v) => !v)} aria-label="tweaks">
             ⚙
           </button>
         </div>
       </header>
 
-      <FilterBar filters={filters} setFilters={setFilters} onReset={resetFilters} />
-
-      <div className={`main ${mode === "list" ? "list-mode" : ""}`}>
+      <div className={`main ${mode === "list" ? "list-mode" : ""} ${detailOpen && selectedItem ? "detail-open" : ""}`}>
         <ListingPanel
           items={filtered}
           sort={sort}
@@ -133,7 +116,7 @@ export function AppShell() {
         />
 
         {mode === "split" && (
-          <KakaoMapView
+          <NaverMapView
             districtCounts={districtCounts}
             activeDistrict={activeDistrict}
             onDistrictClick={(id) => setActiveDistrict(id)}
@@ -144,6 +127,9 @@ export function AppShell() {
             onPinHover={setHoveredId}
             onPinClick={handleSelect}
             showLegend={showLegend}
+            overlay={
+              <FilterBar filters={filters} setFilters={setFilters} onReset={resetFilters} />
+            }
           />
         )}
 

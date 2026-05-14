@@ -5,7 +5,38 @@ import type { Listing } from "@/lib/types";
 import { ELIGIBILITY_LABELS, HOUSING_TYPES, STATUS_LABELS } from "@/lib/mock-data";
 import { thumbnailSVG } from "@/lib/svg";
 import { calcDday } from "@/lib/dday";
+import {
+  applyUrlFor,
+  infoUrlFor,
+  pickNoticeFor,
+  ddayOfNotice,
+  fmtNoticeDate,
+  deepLinksFor,
+  complexName,
+} from "@/lib/notice-match";
+import { NaverPanorama } from "./naver-panorama";
 import { CloseIcon, HeartIcon, TrainIcon } from "./icons";
+
+function ListingPhotos({ item }: { item: Listing }) {
+  const cover = item.coverPhotoUrl;
+  if (!cover) return null;
+  return (
+    <section className="detail-section detail-photos">
+      <h3>단지 조감도</h3>
+      <a className="detail-photo-card" href={cover} target="_blank" rel="noreferrer">
+        <div className="detail-photo-frame">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="detail-photo-img"
+            src={cover}
+            alt={`${item.title} 단지 조감도`}
+            referrerPolicy="no-referrer"
+          />
+        </div>
+      </a>
+    </section>
+  );
+}
 
 export function DetailPanel({
   item,
@@ -22,12 +53,12 @@ export function DetailPanel({
   const svg = thumbnailSVG(item.thumbSeed, item.type);
   const status = STATUS_LABELS[item.status];
   const housingType = HOUSING_TYPES.find((t) => t.id === item.type);
-
-  const unitTable = [
-    { type: "전용 24㎡", units: 18, deposit: Math.round(item.deposit * 0.6), rent: Math.round(item.rent * 0.55) },
-    { type: `전용 ${item.area}`, units: 42, deposit: item.deposit, rent: item.rent },
-    { type: "전용 51㎡", units: 24, deposit: Math.round(item.deposit * 1.3), rent: Math.round(item.rent * 1.25) },
-  ];
+  const matchedNotice = pickNoticeFor(item.type, item.eligible);
+  const applyUrl = applyUrlFor(item.type, item.eligible);
+  const infoUrl = infoUrlFor(item.type, item.eligible);
+  const deepLinks = deepLinksFor(item);
+  const complex = complexName(item);
+  const hasNotice = Boolean(item.deadline) || Boolean(matchedNotice);
 
   return (
     <aside className={`detail-panel ${open ? "open" : ""}`}>
@@ -35,7 +66,19 @@ export function DetailPanel({
         <CloseIcon size={16} />
       </button>
 
-      <div className="detail-hero" dangerouslySetInnerHTML={{ __html: svg }} />
+      <div className="detail-hero">
+        <NaverPanorama
+          key={item.id}
+          lat={item.lat}
+          lng={item.lng}
+          fallback={
+            <div
+              style={{ width: "100%", height: "100%" }}
+              dangerouslySetInnerHTML={{ __html: svg }}
+            />
+          }
+        />
+      </div>
 
       <div className="detail-body">
         <div className="detail-eyebrow">
@@ -68,28 +111,82 @@ export function DetailPanel({
           </span>
         </div>
 
-        <div className="detail-deadline">
-          <div>
-            <div className="detail-deadline-label">모집 마감</div>
-            <div className="detail-deadline-date">{item.deadline.replace(/\./g, ". ")} 18:00까지</div>
+        {item.deadline ? (
+          <div className="detail-deadline">
+            <div>
+              <div className="detail-deadline-label">모집 마감</div>
+              <div className="detail-deadline-date">{item.deadline.replace(/\./g, ". ")} 18:00까지</div>
+            </div>
+            <div className="detail-deadline-dday">{calcDday(item.deadline)}</div>
           </div>
-          <div className="detail-deadline-dday">{calcDday(item.deadline)}</div>
-        </div>
+        ) : matchedNotice ? (
+          <div className="detail-deadline">
+            <div>
+              <div className="detail-deadline-label">관련 통합공고 · {matchedNotice.supplyType}</div>
+              <div className="detail-deadline-date">
+                {matchedNotice.title.length > 40 ? matchedNotice.title.slice(0, 40) + "…" : matchedNotice.title}
+                {" · ~ "}{fmtNoticeDate(matchedNotice.endDate)}
+              </div>
+            </div>
+            <div className="detail-deadline-dday">{ddayOfNotice(matchedNotice)}</div>
+          </div>
+        ) : (
+          <div className="detail-empty-notice">
+            <div className="detail-empty-notice-title">현재 단지별 모집 공고 없음</div>
+            <div className="detail-empty-notice-sub">
+              공실 발생 시 LH/마이홈에서 별도 공고됩니다. 아래 버튼으로 직접 확인하세요.
+            </div>
+          </div>
+        )}
 
-        <div className="detail-price">
-          <div className="detail-price-cell">
-            <div className="detail-price-label">보증금</div>
-            <div className="detail-price-value">{item.deposit.toLocaleString()}만원</div>
+        <ListingPhotos item={item} />
+
+        <section className="detail-section detail-vacancy-search">
+          <h3>이 단지 공실·모집 공고 알아보기</h3>
+          <div className="detail-vacancy-grid">
+            <a className="vacancy-link" href={deepLinks.lhNoticeSearch} target="_blank" rel="noreferrer">
+              <span className="vacancy-link-label">LH 청약플러스</span>
+              <span className="vacancy-link-sub">공고문 검색 「{complex}」</span>
+            </a>
+            <a className="vacancy-link" href={deepLinks.lhComplexSearch} target="_blank" rel="noreferrer">
+              <span className="vacancy-link-label">LH 임대주택검색</span>
+              <span className="vacancy-link-sub">{item.district} 단지 정보</span>
+            </a>
+            <a className="vacancy-link" href={deepLinks.myhomeSearch} target="_blank" rel="noreferrer">
+              <span className="vacancy-link-label">마이홈포털</span>
+              <span className="vacancy-link-sub">통합 모집공고 검색</span>
+            </a>
           </div>
-          <div className="detail-price-cell">
-            <div className="detail-price-label">월 임대료</div>
-            <div className="detail-price-value">{item.rent}만원</div>
+          {!hasNotice ? (
+            <div className="detail-vacancy-hint">
+              ※ 단지명·지역으로 사전 필터된 검색 결과로 이동합니다.
+            </div>
+          ) : null}
+        </section>
+
+        {item.type === "sale" ? (
+          <div className="detail-price">
+            <div className="detail-price-cell detail-price-cell--full">
+              <div className="detail-price-label">분양가 (평균)</div>
+              <div className="detail-price-value">
+                {item.salePriceManwon && item.salePriceManwon > 0
+                  ? `${Math.floor(item.salePriceManwon / 10000) > 0 ? `${Math.floor(item.salePriceManwon / 10000)}억 ` : ""}${(item.salePriceManwon % 10000).toLocaleString()}만원`
+                  : "공고문 확인"}
+              </div>
+            </div>
           </div>
-          <div className="detail-price-cell">
-            <div className="detail-price-label">관리비</div>
-            <div className="detail-price-value">별도</div>
+        ) : (
+          <div className="detail-price">
+            <div className="detail-price-cell">
+              <div className="detail-price-label">보증금</div>
+              <div className="detail-price-value">{item.deposit.toLocaleString()}만원</div>
+            </div>
+            <div className="detail-price-cell">
+              <div className="detail-price-label">월 임대료</div>
+              <div className="detail-price-value">{item.rent}만원</div>
+            </div>
           </div>
-        </div>
+        )}
 
         <section className="detail-section">
           <h3>입주 자격</h3>
@@ -108,52 +205,51 @@ export function DetailPanel({
         <section className="detail-section">
           <h3>기본 정보</h3>
           <dl className="detail-specs">
-            <dt>공급 규모</dt>
-            <dd>총 84세대 (전용 24·{item.area}·51㎡)</dd>
-            <dt>구조</dt>
-            <dd>
-              {item.layout} · 전용 {item.area}
-            </dd>
-            <dt>준공</dt>
-            <dd>2024년 11월 (신축)</dd>
-            <dt>세대당 주차</dt>
-            <dd>0.8대</dd>
-            <dt>난방</dt>
-            <dd>개별난방 · 도시가스</dd>
-            <dt>엘리베이터</dt>
-            <dd>있음</dd>
-            <dt>계약 기간</dt>
-            <dd>기본 2년 · 갱신 최대 10년</dd>
-            <dt>입주 예정</dt>
-            <dd>2026년 8월</dd>
+            {item.pblancNm ? (
+              <>
+                <dt>공고명</dt>
+                <dd>{item.pblancNm}</dd>
+              </>
+            ) : null}
+            {item.suplyTyNm ? (
+              <>
+                <dt>공급 유형</dt>
+                <dd>{item.suplyTyNm}</dd>
+              </>
+            ) : null}
+            {item.totalUnits ? (
+              <>
+                <dt>총 세대 수</dt>
+                <dd>{item.totalUnits}세대</dd>
+              </>
+            ) : null}
+            {item.supplyUnits ? (
+              <>
+                <dt>공급 세대 수</dt>
+                <dd>{item.supplyUnits}세대</dd>
+              </>
+            ) : null}
+            {item.heatMethod ? (
+              <>
+                <dt>난방</dt>
+                <dd>{item.heatMethod}</dd>
+              </>
+            ) : null}
+            {item.beginDate ? (
+              <>
+                <dt>접수 시작</dt>
+                <dd>{item.beginDate}</dd>
+              </>
+            ) : null}
+            {item.deadline ? (
+              <>
+                <dt>접수 마감</dt>
+                <dd>{item.deadline}</dd>
+              </>
+            ) : null}
+            <dt>출처</dt>
+            <dd>마이홈포털 공공주택 모집공고 API (HWSPR02)</dd>
           </dl>
-        </section>
-
-        <section className="detail-section">
-          <h3>
-            호실별 임대 조건{" "}
-            <span className="count">총 {unitTable.reduce((a, u) => a + u.units, 0)}세대</span>
-          </h3>
-          <table className="detail-unit-table">
-            <thead>
-              <tr>
-                <th>구조</th>
-                <th>세대수</th>
-                <th>보증금(만원)</th>
-                <th>월세(만원)</th>
-              </tr>
-            </thead>
-            <tbody>
-              {unitTable.map((u, i) => (
-                <tr key={u.type}>
-                  <td>{u.type}</td>
-                  <td>{u.units}</td>
-                  <td>{u.deposit.toLocaleString()}</td>
-                  <td className={i === 1 ? "pop" : ""}>{u.rent}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
         </section>
 
         <section className="detail-section">
@@ -211,8 +307,24 @@ export function DetailPanel({
           >
             <HeartIcon size={20} filled={liked} />
           </button>
-          <button className="secondary">공고문 원문 보기</button>
-          <button className="primary">청약 신청하기 →</button>
+          <a
+            className="secondary"
+            href={infoUrl}
+            target="_blank"
+            rel="noreferrer"
+            style={{ textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center" }}
+          >
+            공고문 원문 보기
+          </a>
+          <a
+            className="primary"
+            href={applyUrl}
+            target="_blank"
+            rel="noreferrer"
+            style={{ textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center" }}
+          >
+            청약 신청하기 →
+          </a>
         </div>
       </div>
     </aside>

@@ -1,0 +1,57 @@
+[
+  {
+    "pblancId": "20130",
+    "title": "2026 전세임대형 든든주택 1, 2순위 입주자 모집 공고",
+    "supplyType": "전세임대",
+    "institution": "LH",
+    "announceDate": "20260421",
+    "beginDate": "20260504",
+    "endDate": "20260508",
+    "applyUrl": "https://www.myhome.go.kr/hws/portal/sch/selectRsdtRcritNtcDetailView.do?pblancId=20130",
+    "infoUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019816&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=17&mi=1026"
+  },
+  {
+    "pblancId": "19834",
+    "title": "2026 다자녀 전세임대 입주자 수시모집 공고",
+    "supplyType": "전세임대",
+    "institution": "LH",
+    "announceDate": "20260324",
+    "beginDate": "20260324",
+    "endDate": "20261231",
+    "applyUrl": "https://www.myhome.go.kr/hws/portal/sch/selectRsdtRcritNtcDetailView.do?pblancId=19834",
+    "infoUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019546&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=17&mi=1026"
+  },
+  {
+    "pblancId": "19833",
+    "title": "2026년 신혼·신생아 전세임대 I 입주자 수시모집 공고",
+    "supplyType": "전세임대",
+    "institution": "LH",
+    "announceDate": "20260324",
+    "beginDate": "20260324",
+    "endDate": "20261231",
+    "applyUrl": "https://www.myhome.go.kr/hws/portal/sch/selectRsdtRcritNtcDetailView.do?pblancId=19833",
+    "infoUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019550&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=17&mi=1026"
+  },
+  {
+    "pblancId": "19832",
+    "title": "2026년 신혼·신생아 전세임대Ⅱ 입주자 수시모집 공고",
+    "supplyType": "전세임대",
+    "institution": "LH",
+    "announceDate": "20260324",
+    "beginDate": "20260324",
+    "endDate": "20261231",
+    "applyUrl": "https://www.myhome.go.kr/hws/portal/sch/selectRsdtRcritNtcDetailView.do?pblancId=19832",
+    "infoUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019551&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=17&mi=1026"
+  },
+  {
+    "pblancId": "19631",
+    "title": "2026년 청년 전세임대 1순위 입주자 수시모집",
+    "supplyType": "전세임대",
+    "institution": "LH",
+    "announceDate": "20260224",
+    "beginDate": "20260224",
+    "endDate": "20261231",
+    "applyUrl": "https://www.myhome.go.kr/hws/portal/sch/selectRsdtRcritNtcDetailView.do?pblancId=19631",
+    "infoUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019376&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=17&mi=1026"
+  }
+]

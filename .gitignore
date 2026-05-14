@@ -43,3 +43,6 @@ next-env.d.ts
 
 # local tooling
 /.claude/
+
+# script progress files
+lib/*.progress.json

@@ -47,6 +47,11 @@ export function thumbnailSVG(seed: number, type: HousingTypeId): string {
     happy: ["#ffd2b9", "#ffbc97", "#ff9e66", "#cc4700"],
     nation: ["#d2edfa", "#87d7ff", "#57c7ff", "#0088cc"],
     integ: ["#c7f2e4", "#96ebc3", "#6adeac", "#077a5e"],
+    perm: ["#e5dafa", "#c4b0f0", "#a384e0", "#5b3aa0"],
+    buy: ["#fae3c7", "#f5c987", "#e8a847", "#a86c0a"],
+    jeonse: ["#cce6ff", "#7fb8ff", "#3d8fff", "#0a4bb8"],
+    fifty: ["#e0e6ed", "#a6b0bd", "#6e7886", "#2c333d"],
+    sale: ["#ffe2e7", "#ffb0bd", "#ff6f87", "#b00029"],
   };
   const p = palettes[type] ?? palettes.happy;
   const [sky, bg, fg, ac] = p;
@@ -96,7 +101,7 @@ export function thumbnailSVG(seed: number, type: HousingTypeId): string {
     `;
   }
   return `
-    <svg viewBox="0 0 100 95" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <svg viewBox="0 0 100 95" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice" style="overflow:hidden;background:${sky}">
       <rect width="100" height="95" fill="${sky}"/>
       <circle cx="78" cy="18" r="6" fill="#fff" opacity=".6"/>
       ${buildings}

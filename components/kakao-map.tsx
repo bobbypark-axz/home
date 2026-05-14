@@ -3,38 +3,114 @@
 import { useEffect, useRef, useState } from "react";
 import type { Listing } from "@/lib/types";
 import { DISTRICTS } from "@/lib/mock-data";
-import { loadKakaoMaps } from "@/lib/kakao-loader";
-import "@/lib/kakao-types";
-import type { KakaoCustomOverlay, KakaoMap } from "@/lib/kakao-types";
+import { loadNaverMaps } from "@/lib/naver-loader";
+import "@/lib/naver-types";
+import type { NaverMarker, NaverMap } from "@/lib/naver-types";
 import { CloseIcon, LocateIcon, PinIcon } from "./icons";
 
 const SEOUL_CENTER = { lat: 37.5665, lng: 126.978 };
-const DEFAULT_LEVEL = 8;
-const APPKEY = process.env.NEXT_PUBLIC_KAKAO_MAPS_APPKEY;
+const DEFAULT_ZOOM = 11;
+const DISTRICT_ZOOM = 13;
+const CLIENT_ID = process.env.NEXT_PUBLIC_NAVER_MAPS_CLIENT_ID;
 
 function sizeClass(count: number): string {
-  if (count >= 50) return "size-lg";
+  if (count >= 100) return "size-lg";
   if (count >= 25) return "size-md";
   return "size-sm";
+}
+
+function districtShortName(name: string): string {
+  return name
+    .replace(/특별자치도$|광역시$|특별자치시$|특별시$/, "")
+    .replace(/도$/, "")
+    .replace(/구$/, "");
 }
 
 function makeDistrictEl(id: string, name: string, count: number): HTMLElement {
   const el = document.createElement("div");
   el.className = "map-marker-wrap";
   el.dataset.districtId = id;
-  el.innerHTML = `<div class="map-marker ${sizeClass(count)}">${count}<span class="label">${name.replace("구", "")}</span></div>`;
+  el.innerHTML = `<div class="map-marker ${sizeClass(count)}"><span class="count">${count}</span><span class="label">${districtShortName(name)}</span></div>`;
   return el;
+}
+
+function pinClass(type: Listing["type"]): string {
+  if (type === "sale") return "map-pin sale";
+  if (type === "happy") return "map-pin happy";
+  if (type === "nation") return "map-pin nation";
+  if (type === "perm") return "map-pin perm";
+  if (type === "buy") return "map-pin buy";
+  if (type === "jeonse") return "map-pin jeonse";
+  if (type === "fifty") return "map-pin fifty";
+  return "map-pin";
+}
+
+function pinLabel(p: Listing): string {
+  if (p.type === "sale") return "공공분양";
+  if (p.deposit > 0 && p.rent > 0) return `보 ${p.deposit.toLocaleString()} / 월 ${p.rent}`;
+  if (p.suplyTyNm) return p.suplyTyNm;
+  return "임대";
 }
 
 function makePinEl(p: Listing): HTMLElement {
   const el = document.createElement("div");
   el.className = "map-pin-wrap";
   el.dataset.listingId = p.id;
-  el.innerHTML = `<div class="map-pin">보 ${p.deposit.toLocaleString()} / 월 ${p.rent}</div>`;
+  el.innerHTML = `<div class="${pinClass(p.type)}">${pinLabel(p)}</div>`;
   return el;
 }
 
-export function KakaoMapView({
+function clusterSizeClass(count: number): string {
+  if (count >= 50) return "size-lg";
+  if (count >= 15) return "size-md";
+  return "size-sm";
+}
+
+function makeClusterEl(count: number): HTMLElement {
+  const el = document.createElement("div");
+  el.className = "map-cluster-wrap";
+  el.innerHTML = `<div class="map-cluster ${clusterSizeClass(count)}">${count}</div>`;
+  return el;
+}
+
+function gridStepForZoom(zoom: number): number {
+  if (zoom <= 9) return 0.4;
+  if (zoom <= 10) return 0.2;
+  if (zoom <= 11) return 0.1;
+  if (zoom <= 12) return 0.05;
+  if (zoom <= 13) return 0.025;
+  return 0; // 14 이상은 개별 핀
+}
+
+function clusterPins(pins: Listing[], zoom: number): Array<
+  | { kind: "single"; pin: Listing }
+  | { kind: "cluster"; lat: number; lng: number; pins: Listing[] }
+> {
+  const step = gridStepForZoom(zoom);
+  if (step === 0) return pins.map((pin) => ({ kind: "single", pin }));
+  const buckets = new Map<string, Listing[]>();
+  for (const p of pins) {
+    const ky = Math.floor(p.lat / step);
+    const kx = Math.floor(p.lng / step);
+    const key = `${ky}|${kx}`;
+    const arr = buckets.get(key);
+    if (arr) arr.push(p);
+    else buckets.set(key, [p]);
+  }
+  const out: ReturnType<typeof clusterPins> = [];
+  for (const group of buckets.values()) {
+    if (group.length <= 2) {
+      for (const pin of group) out.push({ kind: "single", pin });
+      continue;
+    }
+    const lat = group.reduce((s, p) => s + p.lat, 0) / group.length;
+    const lng = group.reduce((s, p) => s + p.lng, 0) / group.length;
+    out.push({ kind: "cluster", lat, lng, pins: group });
+  }
+  return out;
+}
+
+export function NaverMapView({
   districtCounts,
   activeDistrict,
   onDistrictClick,
@@ -45,6 +121,7 @@ export function KakaoMapView({
   onPinHover,
   onPinClick,
   showLegend,
+  overlay,
 }: {
   districtCounts: Record<string, number>;
   activeDistrict: string | null;
@@ -56,29 +133,39 @@ export function KakaoMapView({
   onPinHover: (id: string | null) => void;
   onPinClick: (id: string) => void;
   showLegend: boolean;
+  overlay?: React.ReactNode;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<KakaoMap | null>(null);
-  const districtOverlaysRef = useRef<KakaoCustomOverlay[]>([]);
-  const pinOverlaysRef = useRef<Map<string, { overlay: KakaoCustomOverlay; el: HTMLElement }>>(new Map());
+  const mapRef = useRef<NaverMap | null>(null);
+  const districtMarkersRef = useRef<NaverMarker[]>([]);
+  const pinMarkersRef = useRef<Map<string, { marker: NaverMarker; el: HTMLElement }>>(new Map());
+  const clusterMarkersRef = useRef<NaverMarker[]>([]);
   const [ready, setReady] = useState(false);
+  const [zoom, setZoom] = useState(DEFAULT_ZOOM);
   const [loadError, setLoadError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!APPKEY) {
-      setLoadError("NEXT_PUBLIC_KAKAO_MAPS_APPKEY 가 설정되지 않았습니다");
+    if (!CLIENT_ID) {
+      setLoadError("NEXT_PUBLIC_NAVER_MAPS_CLIENT_ID 가 설정되지 않았습니다");
       return;
     }
     let cancelled = false;
-    loadKakaoMaps(APPKEY)
+    loadNaverMaps(CLIENT_ID)
       .then(() => {
-        if (cancelled || !containerRef.current || !window.kakao) return;
-        const { kakao } = window;
-        const map = new kakao.maps.Map(containerRef.current, {
-          center: new kakao.maps.LatLng(SEOUL_CENTER.lat, SEOUL_CENTER.lng),
-          level: DEFAULT_LEVEL,
+        if (cancelled || !containerRef.current || !window.naver) return;
+        const { naver } = window;
+        const map = new naver.maps.Map(containerRef.current, {
+          center: new naver.maps.LatLng(SEOUL_CENTER.lat, SEOUL_CENTER.lng),
+          zoom: DEFAULT_ZOOM,
+          scaleControl: false,
+          logoControl: true,
+          mapDataControl: false,
+          zoomControl: false,
         });
         mapRef.current = map;
+        naver.maps.Event.addListener(map, "zoom_changed", () => {
+          setZoom(map.getZoom());
+        });
         setReady(true);
       })
       .catch((err: Error) => {
@@ -90,14 +177,14 @@ export function KakaoMapView({
     };
   }, []);
 
-  // District-level aggregate overlays
+  // District-level aggregate markers
   useEffect(() => {
-    if (!ready || !mapRef.current || !window.kakao) return;
-    const { kakao } = window;
+    if (!ready || !mapRef.current || !window.naver) return;
+    const { naver } = window;
     const map = mapRef.current;
 
-    districtOverlaysRef.current.forEach((o) => o.setMap(null));
-    districtOverlaysRef.current = [];
+    districtMarkersRef.current.forEach((m) => m.setMap(null));
+    districtMarkersRef.current = [];
 
     if (activeDistrict) return;
 
@@ -106,67 +193,81 @@ export function KakaoMapView({
       if (count === 0) return;
       const el = makeDistrictEl(d.id, d.name, count);
       el.addEventListener("click", () => onDistrictClick(d.id));
-      const overlay = new kakao.maps.CustomOverlay({
-        position: new kakao.maps.LatLng(d.lat, d.lng),
-        content: el,
-        yAnchor: 0.5,
-        xAnchor: 0.5,
+      const marker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(d.lat, d.lng),
+        map,
+        icon: { content: el, anchor: { x: 0, y: 0 } },
         clickable: true,
       });
-      overlay.setMap(map);
-      districtOverlaysRef.current.push(overlay);
+      districtMarkersRef.current.push(marker);
     });
   }, [ready, activeDistrict, districtCounts, onDistrictClick]);
 
-  // Individual listing pin overlays (when a district is active)
+  // Individual listing pin markers + clustering
   useEffect(() => {
-    if (!ready || !mapRef.current || !window.kakao) return;
-    const { kakao } = window;
+    if (!ready || !mapRef.current || !window.naver) return;
+    const { naver } = window;
     const map = mapRef.current;
 
-    pinOverlaysRef.current.forEach(({ overlay }) => overlay.setMap(null));
-    pinOverlaysRef.current = new Map();
+    pinMarkersRef.current.forEach(({ marker }) => marker.setMap(null));
+    pinMarkersRef.current = new Map();
+    clusterMarkersRef.current.forEach((m) => m.setMap(null));
+    clusterMarkersRef.current = [];
 
     if (!activeDistrict) return;
 
-    pins.forEach((p) => {
-      const el = makePinEl(p);
-      el.addEventListener("mouseenter", () => onPinHover(p.id));
-      el.addEventListener("mouseleave", () => onPinHover(null));
-      el.addEventListener("click", () => onPinClick(p.id));
-      const overlay = new kakao.maps.CustomOverlay({
-        position: new kakao.maps.LatLng(p.lat, p.lng),
-        content: el,
-        yAnchor: 1,
-        xAnchor: 0.5,
-        clickable: true,
-      });
-      overlay.setMap(map);
-      pinOverlaysRef.current.set(p.id, { overlay, el });
-    });
-  }, [ready, activeDistrict, pins, onPinHover, onPinClick]);
+    const groups = clusterPins(pins, zoom);
+    for (const g of groups) {
+      if (g.kind === "single") {
+        const p = g.pin;
+        const el = makePinEl(p);
+        el.addEventListener("mouseenter", () => onPinHover(p.id));
+        el.addEventListener("mouseleave", () => onPinHover(null));
+        el.addEventListener("click", () => onPinClick(p.id));
+        const marker = new naver.maps.Marker({
+          position: new naver.maps.LatLng(p.lat, p.lng),
+          map,
+          icon: { content: el, anchor: { x: 0, y: 0 } },
+          clickable: true,
+          zIndex: 2,
+        });
+        pinMarkersRef.current.set(p.id, { marker, el });
+      } else {
+        const el = makeClusterEl(g.pins.length);
+        const lat = g.lat;
+        const lng = g.lng;
+        el.addEventListener("click", () => {
+          map.morph(new naver.maps.LatLng(lat, lng), Math.min(map.getZoom() + 2, 16));
+        });
+        const marker = new naver.maps.Marker({
+          position: new naver.maps.LatLng(lat, lng),
+          map,
+          icon: { content: el, anchor: { x: 0, y: 0 } },
+          clickable: true,
+          zIndex: 1,
+        });
+        clusterMarkersRef.current.push(marker);
+      }
+    }
+  }, [ready, activeDistrict, pins, zoom, onPinHover, onPinClick]);
 
   // Sync hovered/selected visual state onto existing pin elements
   useEffect(() => {
-    pinOverlaysRef.current.forEach(({ el }, id) => {
+    pinMarkersRef.current.forEach(({ el }, id) => {
       el.classList.toggle("hovered", id === hoveredId);
       el.classList.toggle("selected", id === selectedId);
     });
   }, [hoveredId, selectedId]);
 
-  // Pan to the active district center
+  // Pan/zoom to active district
   useEffect(() => {
-    if (!ready || !mapRef.current || !window.kakao) return;
-    const { kakao } = window;
+    if (!ready || !mapRef.current || !window.naver) return;
+    const { naver } = window;
     if (activeDistrict) {
       const d = DISTRICTS.find((x) => x.id === activeDistrict);
-      if (d) {
-        mapRef.current.panTo(new kakao.maps.LatLng(d.lat, d.lng));
-        mapRef.current.setLevel(5, { animate: true });
-      }
+      if (d) mapRef.current.morph(new naver.maps.LatLng(d.lat, d.lng), DISTRICT_ZOOM);
     } else {
-      mapRef.current.panTo(new kakao.maps.LatLng(SEOUL_CENTER.lat, SEOUL_CENTER.lng));
-      mapRef.current.setLevel(DEFAULT_LEVEL, { animate: true });
+      mapRef.current.morph(new naver.maps.LatLng(SEOUL_CENTER.lat, SEOUL_CENTER.lng), DEFAULT_ZOOM);
     }
   }, [ready, activeDistrict]);
 
@@ -175,6 +276,7 @@ export function KakaoMapView({
   return (
     <div className="map-wrap">
       <div ref={containerRef} style={{ position: "absolute", inset: 0 }} />
+      {overlay && <div className="map-overlay-top">{overlay}</div>}
 
       {loadError && (
         <div

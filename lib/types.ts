@@ -1,4 +1,12 @@
-export type HousingTypeId = "happy" | "nation" | "integ";
+export type HousingTypeId =
+  | "happy"
+  | "nation"
+  | "integ"
+  | "perm"
+  | "buy"
+  | "jeonse"
+  | "fifty"
+  | "sale";
 export type StatusId = "open" | "upcoming" | "closing" | "closed";
 export type Agency = "LH" | "SH" | "GH";
 
@@ -25,30 +33,51 @@ export interface StatusLabel {
 
 export interface Listing {
   id: string;
+  pblancId?: string;
+  houseSn?: number | null;
   title: string;
   type: HousingTypeId;
   agency: Agency;
   districtId: string;
   district: string;
-  mapX: number;
-  mapY: number;
   lat: number;
   lng: number;
   address: string;
+  pnu?: string;
   deposit: number;
   rent: number;
   area: string;
   layout: string;
+  totalUnits?: number | string | null;
+  supplyUnits?: number | string | null;
+  heatMethod?: string;
+  salePriceManwon?: number | null;
   status: StatusId;
   deadline: string;
+  beginDate?: string;
   eligible: string[];
   features: string[];
   transit: string;
   competition: number | null;
   thumbSeed: number;
+  suplyTyNm?: string;
+  pblancNm?: string;
+  sourceUrl?: string;
+  pcUrl?: string;
+  mobileUrl?: string;
+  photos?: ListingPhoto[];
+  coverPhotoUrl?: string;
+  attachments?: ListingPhoto[];
 }
 
-export type FilterKey = "type" | "status" | "transit" | "eligibility" | "timing";
+export interface ListingPhoto {
+  kind: string | null;
+  name: string | null;
+  url: string;
+  source?: string;
+}
+
+export type FilterKey = "type" | "status";
 export type Filters = Record<FilterKey, string[]>;
 export type SortKey = "recent" | "deadline" | "low-rent" | "low-depo";
 export type ViewMode = "split" | "list";
