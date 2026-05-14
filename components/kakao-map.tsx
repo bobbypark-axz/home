@@ -47,14 +47,14 @@ function pinClass(type: Listing["type"]): string {
 
 function pinLabel(p: Listing): string {
   switch (p.type) {
-    case "sale": return "LH 분";
-    case "happy": return "LH 행";
-    case "nation": return "LH 국";
-    case "perm": return "LH 영";
-    case "buy": return "LH 매";
-    case "jeonse": return "LH 전";
-    case "fifty": return "LH 50";
-    default: return "LH";
+    case "sale": return "공공분양";
+    case "happy": return "행복주택";
+    case "nation": return "국민임대";
+    case "perm": return "영구임대";
+    case "buy": return "매입임대";
+    case "jeonse": return "전세임대";
+    case "fifty": return "50년임대";
+    default: return p.suplyTyNm || "LH";
   }
 }
 

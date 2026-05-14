@@ -295,18 +295,11 @@ input, select { font-family: inherit; }
   border-bottom-left-radius: 4px;
 }
 .chat-msg .chat-bubble {
-  animation: chat-bubble-in 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation: chat-bubble-in 0.28s ease-out both;
 }
 @keyframes chat-bubble-in {
-  from { opacity: 0; transform: translateY(6px); }
+  from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
-}
-.chat-msg.ai .chat-bubble > * {
-  animation: chat-text-in 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-}
-@keyframes chat-text-in {
-  from { opacity: 0; transform: translateY(3px); filter: blur(2px); }
-  to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 .chat-bubble .chat-md-p { margin: 0; }
 .chat-bubble .chat-md-p + .chat-md-p,
