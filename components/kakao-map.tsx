@@ -190,7 +190,8 @@ export function NaverMapView({
     };
   }, []);
 
-  // District-level aggregate markers
+  // District-level aggregate markers (visible only when zoomed out and no district selected)
+  const showDistrictMarkers = !activeDistrict && zoom <= 10;
   useEffect(() => {
     if (!ready || !mapRef.current || !window.naver) return;
     const { naver } = window;
@@ -199,7 +200,7 @@ export function NaverMapView({
     districtMarkersRef.current.forEach((m) => m.setMap(null));
     districtMarkersRef.current = [];
 
-    if (activeDistrict) return;
+    if (!showDistrictMarkers) return;
 
     DISTRICTS.forEach((d) => {
       const count = districtCounts[d.id] ?? 0;
@@ -214,7 +215,7 @@ export function NaverMapView({
       });
       districtMarkersRef.current.push(marker);
     });
-  }, [ready, activeDistrict, districtCounts, onDistrictClick]);
+  }, [ready, showDistrictMarkers, districtCounts, onDistrictClick]);
 
   // Individual listing pin markers + clustering
   useEffect(() => {
@@ -227,9 +228,10 @@ export function NaverMapView({
     clusterMarkersRef.current.forEach((m) => m.setMap(null));
     clusterMarkersRef.current = [];
 
-    if (!activeDistrict) return;
+    // zoom <= 10 그리고 시도 미선택 일 때는 district 마커만 — 핀 안 그림
+    if (!activeDistrict && zoom <= 10) return;
 
-    // 시도 선택 모드에선 클러스터 없이 항상 개별 핀 표시
+    // 시도 선택 모드에선 클러스터 없이 모두 개별 핀, 그 외엔 줌 기반 그리드 클러스터
     const groups = clusterPins(pins, activeDistrict ? 99 : zoom);
     for (const g of groups) {
       if (g.kind === "single") {

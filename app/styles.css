@@ -216,6 +216,38 @@ input, select { font-family: inherit; }
   color: var(--seed-semantic-color-ink-text);
   border-bottom-left-radius: 4px;
 }
+.chat-bubble .chat-md-p { margin: 0; }
+.chat-bubble .chat-md-p + .chat-md-p,
+.chat-bubble .chat-md-p + .chat-md-ul,
+.chat-bubble .chat-md-p + .chat-md-ol,
+.chat-bubble .chat-md-ul + .chat-md-p,
+.chat-bubble .chat-md-ol + .chat-md-p { margin-top: 8px; }
+.chat-bubble .chat-md-strong {
+  font-weight: 700;
+  color: inherit;
+}
+.chat-bubble .chat-md-ul,
+.chat-bubble .chat-md-ol {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+.chat-bubble .chat-md-li { margin: 2px 0; }
+.chat-bubble .chat-md-hr {
+  margin: 8px 0;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+.chat-bubble .chat-md-code {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+}
+.chat-bubble .chat-md-a {
+  color: var(--seed-semantic-color-primary);
+  text-decoration: underline;
+}
 .chat-typing {
   display: inline-flex; gap: 4px;
   padding: 12px 14px;

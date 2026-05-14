@@ -3,15 +3,41 @@
 import { useEffect, useRef, useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
+import ReactMarkdown from "react-markdown";
 import { CloseIcon } from "./icons";
 
 function MessageBubble({ message }: { message: UIMessage }) {
   const isUser = message.role === "user";
+  const text = message.parts
+    .map((p) => (p.type === "text" ? p.text : ""))
+    .join("");
   return (
     <div className={`chat-msg ${isUser ? "user" : "ai"}`}>
       <div className="chat-bubble">
-        {message.parts.map((part, i) =>
-          part.type === "text" ? <span key={i}>{part.text}</span> : null,
+        {isUser ? (
+          text
+        ) : (
+          <ReactMarkdown
+            components={{
+              p: ({ children }) => <p className="chat-md-p">{children}</p>,
+              strong: ({ children }) => <strong className="chat-md-strong">{children}</strong>,
+              ul: ({ children }) => <ul className="chat-md-ul">{children}</ul>,
+              ol: ({ children }) => <ol className="chat-md-ol">{children}</ol>,
+              li: ({ children }) => <li className="chat-md-li">{children}</li>,
+              h1: ({ children }) => <strong className="chat-md-strong">{children}</strong>,
+              h2: ({ children }) => <strong className="chat-md-strong">{children}</strong>,
+              h3: ({ children }) => <strong className="chat-md-strong">{children}</strong>,
+              hr: () => <hr className="chat-md-hr" />,
+              code: ({ children }) => <code className="chat-md-code">{children}</code>,
+              a: ({ children, href }) => (
+                <a href={href} target="_blank" rel="noreferrer" className="chat-md-a">
+                  {children}
+                </a>
+              ),
+            }}
+          >
+            {text}
+          </ReactMarkdown>
         )}
       </div>
     </div>
