@@ -58,6 +58,8 @@ export function FloatingChat({
 
   const { messages, sendMessage, status, setMessages } = useChat({
     transport: new DefaultChatTransport({ api: "/api/chat" }),
+    // 토큰을 즉시 매번 그리지 않고 100ms 간격으로 일괄 반영 — 글자 떨림 방지
+    experimental_throttle: 100,
   });
 
   const handleClose = () => {
