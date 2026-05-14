@@ -144,14 +144,24 @@ input, select { font-family: inherit; }
   overflow: hidden;
 }
 .chat-header {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 12px 16px;
   border-bottom: 1px solid var(--seed-semantic-color-divider-2);
   background: white;
 }
-.chat-header-title { display: inline-flex; align-items: center; gap: 6px; }
+.chat-header-title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
 .chat-header-name { font-size: 15px; font-weight: 600; letter-spacing: -0.02em; }
 .chat-header-beta {
   font-size: 9px;
