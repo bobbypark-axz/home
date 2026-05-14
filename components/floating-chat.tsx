@@ -90,9 +90,8 @@ export function FloatingChat({
         <div className={`chat-panel ${shifted ? "shifted" : ""}`}>
           <header className="chat-header">
             <div className="chat-header-title">
-              <span className="chat-header-spark" aria-hidden>✨</span>
-              <strong>둥지 AI</strong>
-              <span className="chat-header-sub">공공임대 자격 안내</span>
+              <span className="chat-header-name">AI 자격상담사</span>
+              <span className="chat-header-beta">beta</span>
             </div>
             <button className="chat-close" onClick={() => onOpenChange(false)} aria-label="닫기">
               <CloseIcon size={16} />
@@ -100,23 +99,30 @@ export function FloatingChat({
           </header>
           <div className="chat-body" ref={scrollRef}>
             {messages.length === 0 && (
-              <div className="chat-empty">
-                <p className="chat-empty-title">안녕하세요 👋</p>
-                <p className="chat-empty-sub">
-                  지금 상황을 알려주시면 어떤 공공임대/분양에 지원 가능한지 안내해드릴게요.
-                </p>
-                <div className="chat-suggestions">
+              <div className="chat-welcome">
+                <div className="chat-welcome-logo" aria-hidden>✨</div>
+                <div className="chat-welcome-lines">
+                  <div>안녕하세요!</div>
+                  <div>
+                    <strong>둥지 AI 상담사</strong>예요 ☺️
+                  </div>
+                  <div>공공임대·분양 자격이 고민이라면</div>
+                  <div>조건에 맞춰 추천해드릴게요.</div>
+                </div>
+                <div className="chat-questions">
+                  <div className="chat-questions-title">많은 분들이 자주 물어보시는 질문이에요.</div>
                   {[
-                    "28살 청년 1인가구인데 어디 지원 가능해?",
-                    "신혼부부 무자녀, 월 소득 400만원이에요",
+                    "28살 청년 1인가구, 월소득 250만원인데 어디 지원 가능해?",
+                    "신혼부부 무자녀, 맞벌이 월 600만원이에요. 행복주택 되나요?",
                     "행복주택과 국민임대 차이가 뭐예요?",
                   ].map((q) => (
                     <button
                       key={q}
-                      className="chat-suggest"
+                      className="chat-question"
                       onClick={() => sendMessage({ text: q })}
                     >
-                      {q}
+                      <span className="chat-question-icon" aria-hidden>✨</span>
+                      <span>{q}</span>
                     </button>
                   ))}
                 </div>
@@ -134,21 +140,34 @@ export function FloatingChat({
             )}
           </div>
           <form className="chat-input-row" onSubmit={handleSubmit}>
-            <input
-              className="chat-input"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="자격 조건을 알려주세요…"
-              disabled={status !== "ready" && status !== "error"}
-            />
-            <button
-              type="submit"
-              className="chat-send"
-              disabled={!input.trim() || status === "submitted" || status === "streaming"}
-              aria-label="전송"
-            >
-              ↑
-            </button>
+            <div className="chat-input-wrap">
+              <textarea
+                className="chat-input"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="원하는 조건을 입력해 보세요."
+                rows={1}
+                maxLength={500}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && !e.shiftKey) {
+                    e.preventDefault();
+                    handleSubmit(e);
+                  }
+                }}
+                disabled={status !== "ready" && status !== "error"}
+              />
+              <button
+                type="submit"
+                className="chat-send"
+                disabled={!input.trim() || status === "submitted" || status === "streaming"}
+                aria-label="전송"
+              >
+                ↑
+              </button>
+            </div>
+            <p className="chat-disclaimer">
+              AI 학습 데이터 기반의 답변으로, 실제와 차이가 있을 수 있습니다.
+            </p>
           </form>
         </div>
       )}
