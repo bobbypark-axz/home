@@ -8,7 +8,7 @@ const bizrouter = createOpenAICompatible({
   baseURL: process.env.BIZROUTER_BASE_URL ?? "https://api.bizrouter.ai/v1",
   apiKey: process.env.BIZROUTER_API_KEY,
 });
-const MODEL_ID = process.env.BIZROUTER_MODEL ?? "bizrouter-4.6";
+const MODEL_ID = process.env.BIZROUTER_MODEL ?? "anthropic/claude-sonnet-4.6";
 
 const SYSTEM_PROMPT = `당신은 한국 LH/마이홈 공공임대주택·공공분양 자격 상담 도우미 "둥지 AI"입니다.
 
