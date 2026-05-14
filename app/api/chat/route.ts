@@ -1,6 +1,14 @@
+import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
 import { convertToModelMessages, streamText, type UIMessage } from "ai";
 
 export const maxDuration = 60;
+
+const bizrouter = createOpenAICompatible({
+  name: "bizrouter",
+  baseURL: process.env.BIZROUTER_BASE_URL ?? "https://api.bizrouter.ai/v1",
+  apiKey: process.env.BIZROUTER_API_KEY,
+});
+const MODEL_ID = process.env.BIZROUTER_MODEL ?? "bizrouter-4.6";
 
 const SYSTEM_PROMPT = `당신은 한국 LH/마이홈 공공임대주택·공공분양 자격 상담 도우미 "둥지 AI"입니다.
 
@@ -21,9 +29,12 @@ export async function POST(req: Request) {
   const { messages }: { messages: UIMessage[] } = await req.json();
 
   const result = streamText({
-    model: "anthropic/claude-sonnet-4.6",
+    model: bizrouter(MODEL_ID),
     system: SYSTEM_PROMPT,
     messages: await convertToModelMessages(messages),
+    onError: ({ error }) => {
+      console.error("[chat] streamText error", error);
+    },
   });
 
   return result.toUIMessageStreamResponse();
