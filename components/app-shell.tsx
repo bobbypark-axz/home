@@ -8,6 +8,7 @@ import { ListingPanel } from "./listing-panel";
 import { NaverMapView } from "./kakao-map";
 import { DetailPanel } from "./detail-panel";
 import { EligibilityModal } from "./eligibility-modal";
+import { FloatingChat } from "./floating-chat";
 import { TweaksPanel } from "./tweaks-panel";
 import { ChevronIcon, ListIcon, MapIcon, PinIcon } from "./icons";
 
@@ -26,6 +27,7 @@ export function AppShell() {
 
   const [tweaksOpen, setTweaksOpen] = useState(false);
   const [eliOpen, setEliOpen] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
   const [mode, setMode] = useState<ViewMode>("split");
   const [density, setDensity] = useState<Density>("comfort");
   const [showLegend, setShowLegend] = useState(true);
@@ -85,7 +87,7 @@ export function AppShell() {
       <header className="topbar">
         <div className="brand">
           <span className="brand-name">둥지</span>
-          <button className="brand-ai-cta" onClick={() => setEliOpen(true)}>
+          <button className="brand-ai-cta" onClick={() => setChatOpen(true)}>
             <span className="ai-spark" aria-hidden>✨</span>
             AI로 조건 찾기
           </button>
@@ -179,6 +181,8 @@ export function AppShell() {
         onClose={() => setEliOpen(false)}
         onApplyFilter={(types: HousingTypeId[]) => setFilters({ ...filters, type: types })}
       />
+
+      <FloatingChat open={chatOpen} onOpenChange={setChatOpen} />
 
       <TweaksPanel
         open={tweaksOpen}

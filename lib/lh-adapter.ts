@@ -200,14 +200,20 @@ function parseSalePriceManwon(details: LhNotice["details"]): number | null {
 }
 
 function isUnboundedProgram(notice: LhNotice): boolean {
-  if (notice.geocoded !== "sido-center") return false;
-  if (notice.category !== "임대") return false;
-  return notice.housingType === "전세임대" || notice.housingType === "매입임대";
+  // 1) 시도 중심에 폴백된 임대 (전세/매입 통합) — 단지 단위가 아님
+  const isSidoFallbackRental =
+    notice.geocoded === "sido-center" &&
+    notice.category === "임대" &&
+    (notice.housingType === "전세임대" || notice.housingType === "매입임대");
+  // 2) 제목이 "수시/상시 모집" — 마감일 개념 없는 전국 프로그램
+  const title = `${notice.title ?? ""}${notice.noticeTitle ?? ""}`;
+  const isContinuous = /수시\s*모집|상시\s*모집/.test(title);
+  return isSidoFallbackRental || isContinuous;
 }
 
 function adapt(notice: LhNotice, idx: number): Listing | null {
   if (!notice.lat || !notice.lng) return null;
-  if (notice.activeStatus === "open" && isUnboundedProgram(notice)) return null;
+  if (isUnboundedProgram(notice)) return null;
   const sido = SIDO_BY_NAME.get(notice.sido);
   if (!sido) return null;
   return {

@@ -45,8 +45,19 @@ function pinClass(type: Listing["type"]): string {
   return "map-pin";
 }
 
+function formatSalePin(manwon: number): string {
+  const eok = Math.floor(manwon / 10000);
+  const man = manwon % 10000;
+  if (eok > 0 && man > 0) return `${eok}억 ${man.toLocaleString()}`;
+  if (eok > 0) return `${eok}억`;
+  return `${manwon.toLocaleString()}만`;
+}
+
 function pinLabel(p: Listing): string {
-  if (p.type === "sale") return "공공분양";
+  if (p.type === "sale") {
+    if (p.salePriceManwon && p.salePriceManwon > 0) return formatSalePin(p.salePriceManwon);
+    return "공공분양";
+  }
   if (p.deposit > 0 && p.rent > 0) return `보 ${p.deposit.toLocaleString()} / 월 ${p.rent}`;
   if (p.suplyTyNm) return p.suplyTyNm;
   return "임대";
