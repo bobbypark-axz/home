@@ -18,7 +18,16 @@ function sizeClass(count: number): string {
   return "size-sm";
 }
 
+// 시도 표준 약칭 (한국 행정 관행). 모두 2자로 통일 → 작은 마커 원에도 잘 들어감.
+const SHORT_SIDO_NAMES: Record<string, string> = {
+  "충청북도": "충북",
+  "충청남도": "충남",
+  "전라남도": "전남",
+  "경상북도": "경북",
+  "경상남도": "경남",
+};
 function districtShortName(name: string): string {
+  if (SHORT_SIDO_NAMES[name]) return SHORT_SIDO_NAMES[name];
   return name
     .replace(/특별자치도$|광역시$|특별자치시$|특별시$/, "")
     .replace(/도$/, "")
