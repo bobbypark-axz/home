@@ -5,6 +5,8 @@ export interface NaverLatLng {
 
 export interface NaverBounds {
   hasLatLng(latlng: NaverLatLng): boolean;
+  getSW(): NaverLatLng;
+  getNE(): NaverLatLng;
 }
 
 export interface NaverMap {

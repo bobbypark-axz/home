@@ -40,6 +40,9 @@ export function AppShell({
   const [filters, setFilters] = useState<Filters>(INITIAL_FILTERS);
   const [sort, setSort] = useState<SortKey>("deadline");
   const [activeDistrict, setActiveDistrict] = useState<string | null>(null);
+  const [searchBounds, setSearchBounds] = useState<{
+    swLat: number; swLng: number; neLat: number; neLng: number;
+  } | null>(null);
   const [regionMenuOpen, setRegionMenuOpen] = useState(false);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -63,7 +66,17 @@ export function AppShell({
     if (!showClosed) list = list.filter((x) => x.status !== "closed");
     if (filters.type.length) list = list.filter((x) => filters.type.includes(x.type));
     if (filters.status.length) list = list.filter((x) => filters.status.includes(x.status));
-    if (activeDistrict) list = list.filter((x) => x.districtId === activeDistrict);
+    // 지역 필터: 지도 영역 모드가 우선, 그 다음 시도 클릭 모드
+    if (searchBounds) {
+      list = list.filter((x) =>
+        x.lat >= searchBounds.swLat &&
+        x.lat <= searchBounds.neLat &&
+        x.lng >= searchBounds.swLng &&
+        x.lng <= searchBounds.neLng,
+      );
+    } else if (activeDistrict) {
+      list = list.filter((x) => x.districtId === activeDistrict);
+    }
 
     if (sort === "deadline") {
       list.sort((a, b) => (a.deadline || "9999").localeCompare(b.deadline || "9999"));
@@ -75,7 +88,7 @@ export function AppShell({
       list.sort((a, b) => a.id.localeCompare(b.id));
     }
     return list;
-  }, [filters, sort, activeDistrict, listings]);
+  }, [filters, sort, activeDistrict, searchBounds, listings]);
 
   const districtCounts = useMemo<Record<string, number>>(() => {
     const map: Record<string, number> = {};
@@ -101,8 +114,21 @@ export function AppShell({
     setSelectedId(id);
     setDetailOpen(true);
   }, []);
-  const handleDistrictClick = useCallback((id: string) => setActiveDistrict(id), []);
-  const handleDistrictClear = useCallback(() => setActiveDistrict(null), []);
+  const handleDistrictClick = useCallback((id: string) => {
+    setActiveDistrict(id);
+    setSearchBounds(null);
+  }, []);
+  const handleDistrictClear = useCallback(() => {
+    setActiveDistrict(null);
+    setSearchBounds(null);
+  }, []);
+  const handleSearchHere = useCallback(
+    (b: { swLat: number; swLng: number; neLat: number; neLng: number }) => {
+      setSearchBounds(b);
+      setActiveDistrict(null);
+    },
+    [],
+  );
   const handleDetailClose = useCallback(() => setDetailOpen(false), []);
 
   return (
@@ -119,9 +145,11 @@ export function AppShell({
         <div className="region-wrap">
           <button className="region-btn" onClick={() => setRegionMenuOpen((v) => !v)}>
             <PinIcon size={13} />
-            {activeDistrict
-              ? shortRegionName(districts.find((d) => d.id === activeDistrict)?.name ?? "전체 지역")
-              : "전체 지역"}
+            {searchBounds
+              ? "지도 영역"
+              : activeDistrict
+                ? shortRegionName(districts.find((d) => d.id === activeDistrict)?.name ?? "전체 지역")
+                : "전체 지역"}
             <ChevronIcon size={9} />
           </button>
           {regionMenuOpen && (
@@ -175,6 +203,7 @@ export function AppShell({
             activeDistrict={activeDistrict}
             onDistrictClick={handleDistrictClick}
             onDistrictClear={handleDistrictClear}
+            onSearchHere={handleSearchHere}
             pins={filtered}
             hoveredId={hoveredId}
             selectedId={selectedId}

@@ -124,12 +124,18 @@ function clusterPins(pins: Listing[], zoom: number): Array<
   return out;
 }
 
+export type SearchBounds = {
+  swLat: number; swLng: number;
+  neLat: number; neLng: number;
+};
+
 export function NaverMapView({
   districts,
   districtCounts,
   activeDistrict,
   onDistrictClick,
   onDistrictClear,
+  onSearchHere,
   pins,
   hoveredId,
   selectedId,
@@ -142,6 +148,7 @@ export function NaverMapView({
   districtCounts: Record<string, number>;
   activeDistrict: string | null;
   onDistrictClick: (id: string) => void;
+  onSearchHere: (bounds: SearchBounds) => void;
   onDistrictClear: () => void;
   pins: Listing[];
   hoveredId: string | null;
@@ -161,6 +168,9 @@ export function NaverMapView({
   const [zoom, setZoom] = useState(DEFAULT_ZOOM);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [locating, setLocating] = useState(false);
+  const [hasMoved, setHasMoved] = useState(false);
+  // 다음 idle 이벤트를 무시하기 위한 플래그 — 프로그래매틱 morph 후 또는 초기 로드 시
+  const ignoreNextIdleRef = useRef(true);
 
   useEffect(() => {
     if (!CLIENT_ID) {
@@ -183,6 +193,15 @@ export function NaverMapView({
         mapRef.current = map;
         naver.maps.Event.addListener(map, "zoom_changed", () => {
           setZoom(map.getZoom());
+        });
+        // idle 은 pan/zoom 등 모든 움직임이 끝난 뒤 한 번 발생.
+        // ignoreNextIdleRef 가 true 면 (초기 로드 / 프로그래매틱 morph 후) 무시.
+        naver.maps.Event.addListener(map, "idle", () => {
+          if (ignoreNextIdleRef.current) {
+            ignoreNextIdleRef.current = false;
+            return;
+          }
+          setHasMoved(true);
         });
         setReady(true);
       })
@@ -284,12 +303,15 @@ export function NaverMapView({
   useEffect(() => {
     if (!ready || !mapRef.current || !window.naver) return;
     const { naver } = window;
+    // 프로그래매틱 morph 다음에 발생할 idle 은 무시 — "지도 움직였음" 으로 잡으면 안 됨
+    ignoreNextIdleRef.current = true;
     if (activeDistrict) {
       const d = districts.find((x) => x.id === activeDistrict);
       if (d) mapRef.current.morph(new naver.maps.LatLng(d.lat, d.lng), DISTRICT_ZOOM);
     } else {
       mapRef.current.morph(new naver.maps.LatLng(SEOUL_CENTER.lat, SEOUL_CENTER.lng), DEFAULT_ZOOM);
     }
+    setHasMoved(false);
   }, [ready, activeDistrict, districts]);
 
   // Focus map on selected listing (e.g. when user clicks a card).
@@ -374,6 +396,26 @@ export function NaverMapView({
           <br />
           <span style={{ fontSize: 11, marginTop: 4, display: "block" }}>{loadError}</span>
         </div>
+      )}
+
+      {hasMoved && ready && (
+        <button
+          className="map-research"
+          onClick={() => {
+            const map = mapRef.current;
+            if (!map) return;
+            const b = map.getBounds();
+            const sw = b.getSW();
+            const ne = b.getNE();
+            onSearchHere({
+              swLat: sw.lat(), swLng: sw.lng(),
+              neLat: ne.lat(), neLng: ne.lng(),
+            });
+            setHasMoved(false);
+          }}
+        >
+          이 지역에서 다시 검색
+        </button>
       )}
 
       {!activeDistrict && showLegend && (

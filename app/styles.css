@@ -1084,6 +1084,37 @@ input, select { font-family: inherit; }
 }
 .map-recenter:hover { background: var(--seed-semantic-color-gray-hover); }
 
+/* "이 지역에서 다시 검색" 버튼 — 지도 상단 중앙 */
+.map-research {
+  position: absolute;
+  top: 72px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  background: var(--seed-semantic-color-ink-text);
+  color: white;
+  border: 0;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+  cursor: pointer;
+  transition: transform .12s, box-shadow .12s;
+  animation: research-pop .14s ease-out;
+}
+.map-research:hover {
+  transform: translateX(-50%) translateY(-1px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.22);
+}
+@keyframes research-pop {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
 .map-active-region {
   position: absolute;
   top: 16px; left: 16px;
