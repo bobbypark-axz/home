@@ -74,6 +74,47 @@ input, select { font-family: inherit; }
   flex-shrink: 0;
 }
 .region-btn:hover { background: var(--seed-semantic-color-gray-hover); }
+.region-wrap { position: relative; }
+.region-menu-backdrop {
+  position: fixed; inset: 0;
+  z-index: 90;
+}
+.region-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 180px;
+  max-height: 380px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid var(--seed-semantic-color-divider-2);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  padding: 4px;
+  z-index: 100;
+}
+.region-menu-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--seed-semantic-color-ink-text);
+  border-radius: 6px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.region-menu-item:hover {
+  background: var(--seed-scale-color-gray-100, #f4f5f7);
+}
+.region-menu-item.active {
+  background: var(--seed-semantic-color-primary-low);
+  color: var(--seed-semantic-color-primary);
+  font-weight: 700;
+}
 
 .topbar-spacer { flex: 1; }
 .brand-name {

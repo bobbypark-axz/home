@@ -26,6 +26,7 @@ export function AppShell({
   const [filters, setFilters] = useState<Filters>(INITIAL_FILTERS);
   const [sort, setSort] = useState<SortKey>("deadline");
   const [activeDistrict, setActiveDistrict] = useState<string | null>(null);
+  const [regionMenuOpen, setRegionMenuOpen] = useState(false);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [detailOpen, setDetailOpen] = useState(false);
@@ -101,11 +102,43 @@ export function AppShell({
             AI로 조건 찾기
           </button>
         </div>
-        <button className="region-btn">
-          <PinIcon size={13} />
-          서울특별시 전체
-          <ChevronIcon size={9} />
-        </button>
+        <div className="region-wrap">
+          <button className="region-btn" onClick={() => setRegionMenuOpen((v) => !v)}>
+            <PinIcon size={13} />
+            {activeDistrict
+              ? districts.find((d) => d.id === activeDistrict)?.name ?? "전체 지역"
+              : "전체 지역"}
+            <ChevronIcon size={9} />
+          </button>
+          {regionMenuOpen && (
+            <>
+              <div className="region-menu-backdrop" onClick={() => setRegionMenuOpen(false)} />
+              <div className="region-menu" role="menu">
+                <button
+                  className={`region-menu-item ${activeDistrict === null ? "active" : ""}`}
+                  onClick={() => {
+                    handleDistrictClear();
+                    setRegionMenuOpen(false);
+                  }}
+                >
+                  전체 지역
+                </button>
+                {districts.map((d) => (
+                  <button
+                    key={d.id}
+                    className={`region-menu-item ${activeDistrict === d.id ? "active" : ""}`}
+                    onClick={() => {
+                      handleDistrictClick(d.id);
+                      setRegionMenuOpen(false);
+                    }}
+                  >
+                    {d.name}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
         <div className="topbar-spacer" />
       </header>
 
