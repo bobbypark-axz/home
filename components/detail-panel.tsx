@@ -4,7 +4,7 @@ import { useState } from "react";
 import type { Listing } from "@/lib/types";
 import { ELIGIBILITY_LABELS, HOUSING_TYPES, STATUS_LABELS } from "@/lib/mock-data";
 import { thumbnailSVG } from "@/lib/svg";
-import { calcDday } from "@/lib/dday";
+import { calcDday, isRegularRecruitment } from "@/lib/dday";
 import {
   applyUrlFor,
   infoUrlFor,
@@ -50,8 +50,8 @@ export function DetailPanel({
   const svg = thumbnailSVG(item.thumbSeed, item.type);
   const status = STATUS_LABELS[item.status];
   const housingType = HOUSING_TYPES.find((t) => t.id === item.type);
-  const applyUrl = applyUrlFor(item.type, item.eligible);
-  const infoUrl = infoUrlFor(item.type, item.eligible);
+  const applyUrl = applyUrlFor(item.type);
+  const infoUrl = infoUrlFor(item.type);
   const deepLinks = deepLinksFor(item);
   const complex = complexName(item);
   const hasNotice = Boolean(item.deadline);
@@ -106,7 +106,14 @@ export function DetailPanel({
           </span>
         </div>
 
-        {item.deadline ? (
+        {isRegularRecruitment(item.deadline, item.status) ? (
+          <div className="detail-empty-notice">
+            <div className="detail-empty-notice-title">정례모집 단지</div>
+            <div className="detail-empty-notice-sub">
+              이 단지는 정해진 회차마다 모집해요. 현재 회차 접수가 끝났더라도 다음 회차에 다시 신청할 수 있습니다. 일정은 &lsquo;LH 청약플러스&rsquo;에서 확인하세요.
+            </div>
+          </div>
+        ) : item.deadline ? (
           <div className="detail-deadline">
             <div>
               <div className="detail-deadline-label">모집 마감</div>
@@ -130,7 +137,7 @@ export function DetailPanel({
           <div className="detail-vacancy-grid">
             <a className="vacancy-link" href={deepLinks.lhNoticeSearch} target="_blank" rel="noreferrer">
               <span className="vacancy-link-label">LH 청약플러스</span>
-              <span className="vacancy-link-sub">공고문 바로 보기 「{complex}」</span>
+              <span className="vacancy-link-sub">공고문 원문 보기 「{complex}」</span>
             </a>
             <a className="vacancy-link" href={deepLinks.lhComplexSearch} target="_blank" rel="noreferrer">
               <span className="vacancy-link-label">LH 임대주택검색</span>
@@ -293,7 +300,7 @@ export function DetailPanel({
           </button>
           <a
             className="secondary"
-            href={infoUrl}
+            href={item.sourceUrl ?? infoUrl}
             target="_blank"
             rel="noreferrer"
             style={{ textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center" }}

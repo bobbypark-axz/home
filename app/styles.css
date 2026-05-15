@@ -1260,7 +1260,7 @@ input, select { font-family: inherit; }
   padding: 10px 12px;
   border: 1px solid var(--seed-semantic-color-divider-2);
   border-radius: 10px;
-  background: var(--seed-semantic-color-paper-default);
+  background: #fff;
   text-decoration: none;
   color: var(--seed-semantic-color-ink-text);
   transition: border-color .15s, background .15s;
@@ -1269,7 +1269,7 @@ input, select { font-family: inherit; }
 }
 .vacancy-link:hover {
   border-color: var(--seed-semantic-color-primary);
-  background: var(--seed-semantic-color-primary-low);
+  background: #fff;
 }
 .vacancy-link-label {
   font-size: 12px; font-weight: 700;

@@ -15,10 +15,12 @@ export interface SeoulNotice {
 
 const ALL = noticesJson as SeoulNotice[];
 
-const FALLBACK_APPLY_URL =
-  "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancList.do?mi=1026";
-const FALLBACK_INFO_URL =
-  "https://www.myhome.go.kr/hws/portal/sch/selectRsdtRcritNtcList.do";
+// LH 청약플러스의 "청약신청 바로가기" 정적 entry URL — listing 단위 deep-link 는 불가능하므로
+// 임대 vs 분양 타입별로 분기. 사용자가 entry 페이지에서 단지/주택형은 한 번 더 골라야 함.
+const LH_APPLY_RENTAL_URL =
+  "https://apply.lh.or.kr/lhapply/apply/rtho/rtho01.do?mi=1204";
+const LH_APPLY_SALE_URL =
+  "https://apply.lh.or.kr/lhapply/apply/silh/silh01.do?mi=1060";
 
 export function allNotices(): SeoulNotice[] {
   return ALL;
@@ -40,12 +42,12 @@ export function pickNoticeFor(
   return topNotice();
 }
 
-export function applyUrlFor(type: HousingTypeId, eligible: string[]): string {
-  return pickNoticeFor(type, eligible)?.applyUrl || FALLBACK_APPLY_URL;
+export function applyUrlFor(type: HousingTypeId): string {
+  return type === "sale" ? LH_APPLY_SALE_URL : LH_APPLY_RENTAL_URL;
 }
 
-export function infoUrlFor(type: HousingTypeId, eligible: string[]): string {
-  return pickNoticeFor(type, eligible)?.infoUrl || FALLBACK_INFO_URL;
+export function infoUrlFor(type: HousingTypeId): string {
+  return applyUrlFor(type);
 }
 
 export function ddayOfNotice(n: SeoulNotice): string {
@@ -116,14 +118,6 @@ export interface DeepLinks {
 
 export function deepLinksFor(listing: Listing): DeepLinks {
   const kw = searchKeyword(listing);
-  // LH 청약플러스: 단지명으로 검색해도 panNm 은 공고명이라 0건 나옴.
-  // listing.sourceUrl 에 이미 panId 가 포함된 공고 상세 URL 이 들어있으니 그걸 쓴다.
-  const lhNoticeFallback = new URLSearchParams({
-    mi: "1026",
-    panNm: kw,
-    sCtprvnId: "11",
-    srchY: "Y",
-  });
   const lhComplex = new URLSearchParams({
     mi: "1353",
     sCtprvnId: "11",
@@ -133,7 +127,9 @@ export function deepLinksFor(listing: Listing): DeepLinks {
     searchKeyword: kw,
   });
   return {
-    lhNoticeSearch: listing.sourceUrl ?? `${LH_LIST_URL}?${lhNoticeFallback}`,
+    // "공고문 원문 보기" 카드: 라벨대로 listing 의 공고 상세 페이지로 이동.
+    // 그 페이지 안에 LH 의 "청약신청 바로가기" 버튼이 있어 거기서 신청 가능.
+    lhNoticeSearch: listing.sourceUrl ?? applyUrlFor(listing.type),
     lhComplexSearch: `${LH_LSHS_SCH_URL}?${lhComplex}`,
     myhomeSearch: `${MYHOME_SEARCH_URL}?${myhome}`,
   };
