@@ -1999,7 +1999,7 @@
     "provider": "LH",
     "sido": "경상남도",
     "sigungu": "",
-    "address": "",
+    "address": "경상남도 창원시 진해구 해원로 45(석동,진해석동 우림필유)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -2019,8 +2019,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1398",
     "mobileUrl": "",
     "attachmentId": "19dddd81af863",
-    "lat": 35.4606,
-    "lng": 128.2132,
+    "lat": 35.1611039,
+    "lng": 128.698182,
     "details": {
       "pageAddress": "경상남도 창원시 성산구 중앙대로 215(용호동) 1층 홍보관",
       "matchedTab": null,
@@ -2045,7 +2045,7 @@
         "maxPriceWon": 331000000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 33100
   },
   {
@@ -9591,7 +9591,7 @@
     "provider": "LH",
     "sido": "대구광역시",
     "sigungu": "",
-    "address": "",
+    "address": "대구광역시 동구 반야월북로 221(신서동,신서화성파크드림)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -9611,8 +9611,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1311",
     "mobileUrl": "",
     "attachmentId": "19a964234f128",
-    "lat": 35.8714,
-    "lng": 128.6014,
+    "lat": 35.8729266,
+    "lng": 128.7118782,
     "details": {
       "pageAddress": "대구광역시 달서구 상화로 272(도원동) ",
       "matchedTab": null,
@@ -9653,7 +9653,7 @@
         "maxPriceWon": 247000000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 24700
   },
   {
@@ -10048,7 +10048,7 @@
     "provider": "LH",
     "sido": "세종특별자치시",
     "sigungu": "",
-    "address": "",
+    "address": "세종특별자치시 누리로 119(한솔동,첫마을4단지)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -10068,8 +10068,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1306",
     "mobileUrl": "",
     "attachmentId": "19a38f2071094",
-    "lat": 36.4801,
-    "lng": 127.289,
+    "lat": 36.4809463,
+    "lng": 127.2530604,
     "details": {
       "pageAddress": "세종특별자치시 가름로 238-3(어진동) LH 세종특별본부 1층 주택판매팀",
       "matchedTab": null,
@@ -10102,7 +10102,7 @@
         "maxPriceWon": 508500000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 50850
   },
   {
@@ -10897,7 +10897,7 @@
     "provider": "LH",
     "sido": "경상남도",
     "sigungu": "",
-    "address": "",
+    "address": "경상남도 김해시 가야로475번길 6-13(동상동,휴먼빌라)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -10917,8 +10917,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1295",
     "mobileUrl": "",
     "attachmentId": "199a24e084029",
-    "lat": 35.4606,
-    "lng": 128.2132,
+    "lat": 35.2391437,
+    "lng": 128.8875968,
     "details": {
       "pageAddress": "경상남도 창원시 성산구 중앙대로 215(용호동) ",
       "matchedTab": null,
@@ -10951,7 +10951,7 @@
         "maxPriceWon": 81200000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 8120
   },
   {
@@ -10967,7 +10967,7 @@
     "provider": "LH",
     "sido": "대구광역시",
     "sigungu": "",
-    "address": "",
+    "address": "대구광역시 동구 반야월북로 221(신서동,신서화성파크드림)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -10987,8 +10987,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1294",
     "mobileUrl": "",
     "attachmentId": "1999e88d3c918",
-    "lat": 35.8714,
-    "lng": 128.6014,
+    "lat": 35.8729266,
+    "lng": 128.7118782,
     "details": {
       "pageAddress": "대구광역시 달서구 상화로 272(도원동) ",
       "matchedTab": null,
@@ -11029,7 +11029,7 @@
         "maxPriceWon": 247000000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 24700
   },
   {
@@ -16341,7 +16341,7 @@
     "provider": "LH",
     "sido": "경상남도",
     "sigungu": "",
-    "address": "",
+    "address": "경상남도 양산시 대평들5길 16(주남동,웅상신원아침도시아파트)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -16361,8 +16361,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1233",
     "mobileUrl": "",
     "attachmentId": "19835a63f5716",
-    "lat": 35.4606,
-    "lng": 128.2132,
+    "lat": 35.4164244,
+    "lng": 129.1648624,
     "details": {
       "pageAddress": "경상남도 창원시 성산구 중앙대로 215(용호동) ",
       "matchedTab": null,
@@ -16386,7 +16386,7 @@
         "name": "양산시매입임대잔여주택일반매각선착순동호지정공고문(2025.07.23.).pdf"
       }
     },
-    "geocoded": "sido-center"
+    "geocoded": "page-addr-osm"
   },
   {
     "id": "lh-sale-1232",
@@ -16709,7 +16709,7 @@
     "provider": "LH",
     "sido": "경기도",
     "sigungu": "",
-    "address": "",
+    "address": "경기도 부천시 원미구 수도로 18(약대동,부천두산위브트레지움)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -16729,8 +16729,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1224",
     "mobileUrl": "",
     "attachmentId": "197cf6144ac19",
-    "lat": 37.4138,
-    "lng": 127.5183,
+    "lat": 37.5125956,
+    "lng": 126.7682033,
     "details": {
       "pageAddress": "인천광역시 남동구 논현로46번길 23(논현동) 1층 접수실",
       "matchedTab": null,
@@ -16763,7 +16763,7 @@
         "maxPriceWon": 378500000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 37850
   },
   {
@@ -16927,7 +16927,7 @@
     "provider": "LH",
     "sido": "경상남도",
     "sigungu": "",
-    "address": "",
+    "address": "경상남도 김해시 김해대로 1784-27(삼계동,김해북부두산위브아파트)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -16947,8 +16947,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1223",
     "mobileUrl": "",
     "attachmentId": "197bff6d3941",
-    "lat": 35.4606,
-    "lng": 128.2132,
+    "lat": 35.2214105,
+    "lng": 128.9291446,
     "details": {
       "pageAddress": "경상남도 창원시 성산구 중앙대로 215(용호동) 1층 홍보관",
       "matchedTab": null,
@@ -16973,7 +16973,7 @@
         "maxPriceWon": 129000000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 12900
   },
   {
@@ -19595,7 +19595,7 @@
     "provider": "LH",
     "sido": "경상남도",
     "sigungu": "",
-    "address": "",
+    "address": "경상남도 창원시 진해구 해원로 45(석동,진해석동 우림필유)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -19615,8 +19615,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1183",
     "mobileUrl": "",
     "attachmentId": "19685ccd12578",
-    "lat": 35.4606,
-    "lng": 128.2132,
+    "lat": 35.1611039,
+    "lng": 128.698182,
     "details": {
       "pageAddress": "경상남도 창원시 성산구 중앙대로 215(용호동) 2층 임대공급운영팀",
       "matchedTab": null,
@@ -19641,7 +19641,7 @@
         "maxPriceWon": 331000000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 33100
   },
   {
@@ -25618,7 +25618,7 @@
     "provider": "LH",
     "sido": "경기도",
     "sigungu": "",
-    "address": "",
+    "address": "경기도 부천시 원미구 수도로 18(약대동,부천두산위브트레지움)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -25638,8 +25638,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1096",
     "mobileUrl": "",
     "attachmentId": "19300fd5c7777",
-    "lat": 37.4138,
-    "lng": 127.5183,
+    "lat": 37.5125956,
+    "lng": 126.7682033,
     "details": {
       "pageAddress": "경기도 성남시 분당구 성남대로54번길 3(구미동) 209호, 분양전환상담센터",
       "matchedTab": null,
@@ -25672,7 +25672,7 @@
         "maxPriceWon": 378500000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 37850
   },
   {
@@ -25688,7 +25688,7 @@
     "provider": "LH",
     "sido": "부산광역시",
     "sigungu": "",
-    "address": "",
+    "address": "부산광역시 해운대구 해운대로 732(중동,해운대경남아너스빌)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -25708,8 +25708,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1095",
     "mobileUrl": "",
     "attachmentId": "1930007938316",
-    "lat": 35.1796,
-    "lng": 129.0756,
+    "lat": 35.165031,
+    "lng": 129.1613612,
     "details": {
       "pageAddress": "부산광역시 동구 중앙대로 224(초량동) LH 부산울산지역본부 임대공급운영팀(4층)",
       "matchedTab": null,
@@ -25734,7 +25734,7 @@
         "maxPriceWon": 332500000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 33250
   },
   {
@@ -26529,7 +26529,7 @@
     "provider": "LH",
     "sido": "경상남도",
     "sigungu": "",
-    "address": "",
+    "address": "경상남도 창원시 진해구 해원로 45(석동,진해석동 우림필유)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -26549,8 +26549,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1074",
     "mobileUrl": "",
     "attachmentId": "1926b6d2b5026",
-    "lat": 35.4606,
-    "lng": 128.2132,
+    "lat": 35.1611039,
+    "lng": 128.698182,
     "details": {
       "pageAddress": "경상남도 창원시 성산구 중앙대로 215(용호동) 2층 임대공급운영팀",
       "matchedTab": null,
@@ -26575,7 +26575,7 @@
         "maxPriceWon": 331000000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 33100
   },
   {
@@ -28708,7 +28708,7 @@
     "provider": "LH",
     "sido": "경기도",
     "sigungu": "",
-    "address": "",
+    "address": "경기도 부천시 원미구 수도로 18(약대동,부천두산위브트레지움)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -28728,8 +28728,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1050",
     "mobileUrl": "",
     "attachmentId": "191d5ef768214",
-    "lat": 37.4138,
-    "lng": 127.5183,
+    "lat": 37.5125956,
+    "lng": 126.7682033,
     "details": {
       "pageAddress": "경기도 성남시 분당구 성남대로54번길 3(구미동) 209호, 분양전환상담센터",
       "matchedTab": null,
@@ -28762,7 +28762,7 @@
         "maxPriceWon": 378500000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 37850
   },
   {
@@ -29193,7 +29193,7 @@
     "provider": "LH",
     "sido": "경상남도",
     "sigungu": "",
-    "address": "",
+    "address": "경상남도 양산시 회현1길 48(교동,일동 미라주 아파트)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -29213,8 +29213,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1079",
     "mobileUrl": "",
     "attachmentId": "19289eaf17559",
-    "lat": 35.4606,
-    "lng": 128.2132,
+    "lat": 35.3449659,
+    "lng": 129.0234514,
     "details": {
       "pageAddress": "경상남도 창원시 성산구 중앙대로 215(용호동) ",
       "matchedTab": null,
@@ -29238,7 +29238,7 @@
         "name": "(정정)양산시매입임대잔여주택일반매각선착순동호지정공고_24.10.11.pdf"
       }
     },
-    "geocoded": "sido-center"
+    "geocoded": "page-addr-osm"
   },
   {
     "id": "lh-sale-1041",
@@ -29253,7 +29253,7 @@
     "provider": "LH",
     "sido": "경상남도",
     "sigungu": "",
-    "address": "",
+    "address": "경상남도 양산시 회현1길 48(교동,일동 미라주 아파트)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -29273,8 +29273,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1041",
     "mobileUrl": "",
     "attachmentId": "1917936674886",
-    "lat": 35.4606,
-    "lng": 128.2132,
+    "lat": 35.3449659,
+    "lng": 129.0234514,
     "details": {
       "pageAddress": "경상남도 창원시 성산구 중앙대로 215(용호동) ",
       "matchedTab": null,
@@ -29299,7 +29299,7 @@
         "maxPriceWon": 162000000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 16200
   },
   {
@@ -30512,7 +30512,7 @@
     "provider": "LH",
     "sido": "부산광역시",
     "sigungu": "",
-    "address": "",
+    "address": "부산광역시 남구 홍곡로320번길 132 (신대연코오롱하늘채아파트)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -30532,8 +30532,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1018",
     "mobileUrl": "",
     "attachmentId": "190a5ff29b660",
-    "lat": 35.1796,
-    "lng": 129.0756,
+    "lat": 35.1246156,
+    "lng": 129.0943956,
     "details": {
       "pageAddress": "부산광역시 동구 중앙대로 224(초량동) LH 부산울산지역본부 임대공급운영팀 (4층)",
       "matchedTab": null,
@@ -30558,7 +30558,7 @@
         "maxPriceWon": 313500000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 31350
   },
   {
@@ -32580,7 +32580,7 @@
     "provider": "LH",
     "sido": "부산광역시",
     "sigungu": "",
-    "address": "",
+    "address": "부산광역시 해운대구 해운대로 732(중동,해운대경남아너스빌)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -32600,8 +32600,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=979",
     "mobileUrl": "",
     "attachmentId": "18f8572c63f54",
-    "lat": 35.1796,
-    "lng": 129.0756,
+    "lat": 35.165031,
+    "lng": 129.1613612,
     "details": {
       "pageAddress": "부산광역시 동구 중앙대로 224(초량동) LH 부산울산지역본부 임대공급운영팀 (4층)",
       "matchedTab": null,
@@ -32626,7 +32626,7 @@
         "maxPriceWon": 332500000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 33250
   },
   {
@@ -32642,7 +32642,7 @@
     "provider": "LH",
     "sido": "경상남도",
     "sigungu": "",
-    "address": "",
+    "address": "경상남도 김해시 김해대로 1784-27(삼계동,김해북부두산위브아파트)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -32662,8 +32662,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=976",
     "mobileUrl": "",
     "attachmentId": "18f8136335436",
-    "lat": 35.4606,
-    "lng": 128.2132,
+    "lat": 35.2214105,
+    "lng": 128.9291446,
     "details": {
       "pageAddress": "경상남도 창원시 성산구 중앙대로 215(용호동) 2층 임대공급운영팀",
       "matchedTab": null,
@@ -32688,7 +32688,7 @@
         "maxPriceWon": 129000000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 12900
   },
   {
@@ -33494,7 +33494,7 @@
     "provider": "LH",
     "sido": "경상남도",
     "sigungu": "",
-    "address": "",
+    "address": "경상남도 창원시 진해구 해원로 45(석동,진해석동 우림필유)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -33514,8 +33514,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=963",
     "mobileUrl": "",
     "attachmentId": "18ee0f63c5959",
-    "lat": 35.4606,
-    "lng": 128.2132,
+    "lat": 35.1611039,
+    "lng": 128.698182,
     "details": {
       "pageAddress": "경상남도 창원시 성산구 중앙대로 215(용호동) 2층 임대공급운영팀",
       "matchedTab": null,
@@ -33540,7 +33540,7 @@
         "maxPriceWon": 331000000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 33100
   },
   {
@@ -33960,7 +33960,7 @@
     "provider": "LH",
     "sido": "부산광역시",
     "sigungu": "",
-    "address": "",
+    "address": "부산광역시 남구 홍곡로320번길 132 (신대연코오롱하늘채아파트)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -33980,8 +33980,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=957",
     "mobileUrl": "",
     "attachmentId": "18ea2ec912a10",
-    "lat": 35.1796,
-    "lng": 129.0756,
+    "lat": 35.1246156,
+    "lng": 129.0943956,
     "details": {
       "pageAddress": "부산광역시 동구 중앙대로 224(초량동) LH 부산울산지역본부 임대공급운영팀 (4층)",
       "matchedTab": null,
@@ -34006,7 +34006,7 @@
         "maxPriceWon": 313500000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 31350
   },
   {
@@ -35651,7 +35651,7 @@
     "provider": "LH",
     "sido": "부산광역시",
     "sigungu": "",
-    "address": "",
+    "address": "부산광역시 남구 홍곡로320번길 132 (신대연코오롱하늘채아파트)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -35671,8 +35671,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=884",
     "mobileUrl": "",
     "attachmentId": "18dce5d314011",
-    "lat": 35.1796,
-    "lng": 129.0756,
+    "lat": 35.1246156,
+    "lng": 129.0943956,
     "details": {
       "pageAddress": "부산광역시 동구 중앙대로 224(초량동) LH 부산울산지역본부 임대공급운영팀 (4층)",
       "matchedTab": null,
@@ -35697,7 +35697,7 @@
         "maxPriceWon": 313500000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 31350
   },
   {
@@ -36150,7 +36150,7 @@
     "provider": "LH",
     "sido": "경상남도",
     "sigungu": "",
-    "address": "",
+    "address": "경상남도 양산시 대평들5길 16(주남동,웅상신원아침도시아파트)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -36170,8 +36170,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=876",
     "mobileUrl": "",
     "attachmentId": "18cc9094c6752",
-    "lat": 35.4606,
-    "lng": 128.2132,
+    "lat": 35.4164244,
+    "lng": 129.1648624,
     "details": {
       "pageAddress": "경상남도 창원시 성산구 중앙대로 215(용호동) LH경남지역본부 2층 임대공급운영부",
       "matchedTab": null,
@@ -36196,7 +36196,7 @@
         "maxPriceWon": 162000000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 16200
   },
   {
@@ -38483,7 +38483,7 @@
     "provider": "LH",
     "sido": "경기도",
     "sigungu": "",
-    "address": "",
+    "address": "경기도 군포시 금산로 91(산본동,래미안 하이어스)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -38503,8 +38503,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=845",
     "mobileUrl": "",
     "attachmentId": "18b647753b394",
-    "lat": 37.4138,
-    "lng": 127.5183,
+    "lat": 37.3693191,
+    "lng": 126.9368176,
     "details": {
       "pageAddress": "경기도 성남시 분당구 성남대로54번길 3(구미동) 209호, 분양전환상담센터",
       "matchedTab": null,
@@ -38529,7 +38529,7 @@
         "maxPriceWon": 612000000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 61200
   },
   {
@@ -39510,7 +39510,7 @@
     "provider": "LH",
     "sido": "경상남도",
     "sigungu": "",
-    "address": "",
+    "address": "경상남도 창원시 진해구 해원로 45(석동,진해석동 우림필유)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -39530,8 +39530,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=829",
     "mobileUrl": "",
     "attachmentId": "18ad01ee30d63",
-    "lat": 35.4606,
-    "lng": 128.2132,
+    "lat": 35.1611039,
+    "lng": 128.698182,
     "details": {
       "pageAddress": "경상남도 창원시 성산구 중앙대로 215(용호동) LH경남지역본부",
       "matchedTab": null,
@@ -39556,7 +39556,7 @@
         "maxPriceWon": 333500000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 33350
   },
   {
@@ -41116,7 +41116,7 @@
     "provider": "LH",
     "sido": "경상남도",
     "sigungu": "",
-    "address": "",
+    "address": "경상남도 양산시 대평들5길 16(주남동,웅상신원아침도시아파트)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -41136,8 +41136,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=848",
     "mobileUrl": "",
     "attachmentId": "18b8ee00cea3",
-    "lat": 35.4606,
-    "lng": 128.2132,
+    "lat": 35.4164244,
+    "lng": 129.1648624,
     "details": {
       "pageAddress": "경상남도 창원시 성산구 중앙대로 215(용호동) LH경남지역본부 2층 임대공급운영부",
       "matchedTab": null,
@@ -41162,7 +41162,7 @@
         "maxPriceWon": 188500000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 18850
   },
   {
@@ -41178,7 +41178,7 @@
     "provider": "LH",
     "sido": "경상남도",
     "sigungu": "",
-    "address": "",
+    "address": "경상남도 양산시 대평들5길 16(주남동,웅상신원아침도시아파트)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -41198,8 +41198,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=819",
     "mobileUrl": "",
     "attachmentId": "18a45907a3649",
-    "lat": 35.4606,
-    "lng": 128.2132,
+    "lat": 35.4164244,
+    "lng": 129.1648624,
     "details": {
       "pageAddress": "경상남도 창원시 성산구 중앙대로 215(용호동) LH경남지역본부 2층 임대공급운영부",
       "matchedTab": null,
@@ -41224,7 +41224,7 @@
         "maxPriceWon": 188500000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "page-addr-osm",
     "salePriceManwon": 18850
   },
   {
