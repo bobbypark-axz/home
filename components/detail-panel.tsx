@@ -238,8 +238,6 @@ export function DetailPanel({
                 <dd>{item.deadline}</dd>
               </>
             ) : null}
-            <dt>출처</dt>
-            <dd>마이홈포털 공공주택 모집공고 API (HWSPR02)</dd>
           </dl>
         </section>
 
@@ -289,34 +287,34 @@ export function DetailPanel({
             <li>계약 체결 및 입주</li>
           </ol>
         </section>
+      </div>
 
-        <div className="detail-actions">
-          <button
-            className={`icon-btn ${liked ? "active" : ""}`}
-            onClick={() => setLiked(!liked)}
-            aria-label="관심 목록"
-          >
-            <HeartIcon size={20} filled={liked} />
-          </button>
-          <a
-            className="secondary"
-            href={item.sourceUrl ?? infoUrl}
-            target="_blank"
-            rel="noreferrer"
-            style={{ textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center" }}
-          >
-            공고문 원문 보기
-          </a>
-          <a
-            className="primary"
-            href={applyUrl}
-            target="_blank"
-            rel="noreferrer"
-            style={{ textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center" }}
-          >
-            청약 신청하기 →
-          </a>
-        </div>
+      <div className="detail-actions">
+        <button
+          className={`icon-btn ${liked ? "active" : ""}`}
+          onClick={() => setLiked(!liked)}
+          aria-label="관심 목록"
+        >
+          <HeartIcon size={20} filled={liked} />
+        </button>
+        <a
+          className="secondary"
+          href={item.sourceUrl ?? infoUrl}
+          target="_blank"
+          rel="noreferrer"
+          style={{ textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center" }}
+        >
+          공고문 원문 보기
+        </a>
+        <a
+          className="primary"
+          href={applyUrl}
+          target="_blank"
+          rel="noreferrer"
+          style={{ textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center" }}
+        >
+          청약 신청하기 →
+        </a>
       </div>
     </aside>
   );
