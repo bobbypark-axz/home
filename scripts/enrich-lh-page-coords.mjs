@@ -1,8 +1,7 @@
-// LH 공고 상세 페이지 → 주소 추출 → OSM Nominatim 으로 좌표 변환.
+// LH 공고 상세 페이지 → 주소 추출 → VWorld Geocoder 로 좌표 변환.
 // 대상: lib/lh-notices-all.json 의 geocoded === "sido-center" + selectWrtancInfo.do URL.
 //
-// LH 페이지의 var lat_0/lng_0 변수가 비어있는 경우(sido-center 폴백된 listing 들이 대부분)
-// 페이지 내 "소재지" 텍스트에서 주소를 뽑아 외부 geocoder 로 처리.
+// VWORLD_API_KEY 환경변수 필수 (.env.local 또는 인라인).
 
 import fs from "node:fs";
 import path from "node:path";
@@ -10,37 +9,76 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DATA_PATH = path.join(ROOT, "lib/lh-notices-all.json");
+const ENV_PATH = path.join(ROOT, ".env.local");
 
-const UA = "doongji-app/1.0 (LH page-coords enricher; polite 1req/1.2s)";
+// .env.local 파일에서 환경변수 로드 (없으면 process.env 그대로)
+try {
+  const txt = fs.readFileSync(ENV_PATH, "utf8");
+  for (const line of txt.split(/\r?\n/)) {
+    const m = line.match(/^([A-Z0-9_]+)=(.*)$/);
+    if (m && !process.env[m[1]]) {
+      process.env[m[1]] = m[2].replace(/^["']|["']$/g, "");
+    }
+  }
+} catch {
+  /* ignore */
+}
+
+const VWORLD_KEY = process.env.VWORLD_API_KEY;
+if (!VWORLD_KEY) {
+  console.error("VWORLD_API_KEY 가 없습니다 (.env.local 또는 인라인 환경변수로 지정)");
+  process.exit(1);
+}
+
+const UA = "doongji-app/1.0 (LH page-coords enricher)";
 const COORD_RE = /var\s+lat_0\s*=\s*"([\d.]+)"[\s\S]{0,200}?var\s+lng_0\s*=\s*"([\d.]+)"/;
-// "<li class="w100"><strong>소재지</strong> 대구광역시 동구 반야월북로 221(신서동,신서화성파크드림) </li>"
-const ADDR_RE =
-  /<strong>\s*소재지\s*<\/strong>\s*([^<]+?)(?:<|$)/;
-const NOMINATIM_BASE = "https://nominatim.openstreetmap.org/search";
-const REQ_DELAY_MS = 1200; // Nominatim TOS: 1 req/s
+const ADDR_RE = /<strong>\s*소재지\s*<\/strong>\s*([^<]+?)(?:<|$)/;
+const REQ_DELAY_MS = 400; // LH 페이지 fetch 사이 폴라이트 딜레이
+const VWORLD_DELAY_MS = 200; // VWorld 4만건/일 충분, 빠르게 가능
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 function cleanAddress(raw) {
-  // "(신서동,신서화성파크드림)" 같은 괄호 안은 단지명 — geocoder 정확도 위해 제거 시도
   return raw.replace(/\s+/g, " ").trim();
 }
 
 function addressForGeocode(addr) {
-  // 괄호 안 제거: "대구광역시 동구 반야월북로 221(신서동,...)" → "대구광역시 동구 반야월북로 221"
+  // 괄호 안 단지명/동 정보 제거: "...반야월북로 221(신서동,신서화성파크드림)" → "...반야월북로 221"
   return cleanAddress(addr).replace(/\s*\([^)]*\)\s*$/, "").trim();
 }
 
-async function nominatimGeocode(q) {
-  const url = `${NOMINATIM_BASE}?format=json&limit=1&countrycodes=kr&q=${encodeURIComponent(q)}`;
-  const res = await fetch(url, { headers: { "User-Agent": UA, "Accept-Language": "ko" } });
-  if (!res.ok) throw new Error(`nominatim HTTP ${res.status}`);
-  const arr = await res.json();
-  if (!Array.isArray(arr) || arr.length === 0) return null;
-  const lat = Number(arr[0].lat);
-  const lng = Number(arr[0].lon);
+async function vworldGeocode(addr, type = "ROAD") {
+  const url = new URL("https://api.vworld.kr/req/address");
+  url.searchParams.set("service", "address");
+  url.searchParams.set("request", "getCoord");
+  url.searchParams.set("version", "2.0");
+  url.searchParams.set("crs", "epsg:4326");
+  url.searchParams.set("type", type);
+  url.searchParams.set("format", "json");
+  url.searchParams.set("address", addr);
+  url.searchParams.set("key", VWORLD_KEY);
+  const res = await fetch(url, { headers: { "User-Agent": UA } });
+  if (!res.ok) throw new Error(`vworld HTTP ${res.status}`);
+  const json = await res.json();
+  const r = json?.response;
+  if (r?.status !== "OK") return null;
+  const p = r.result?.point;
+  if (!p) return null;
+  const lat = Number(p.y);
+  const lng = Number(p.x);
   if (!Number.isFinite(lat) || !Number.isFinite(lng)) return null;
   return { lat, lng };
+}
+
+async function geocodeWithFallback(addr) {
+  // 1차: 도로명
+  let coords = await vworldGeocode(addr, "ROAD");
+  if (coords) return { coords, source: "ROAD" };
+  await sleep(VWORLD_DELAY_MS);
+  // 2차: 지번
+  coords = await vworldGeocode(addr, "PARCEL");
+  if (coords) return { coords, source: "PARCEL" };
+  return null;
 }
 
 async function main() {
@@ -54,7 +92,8 @@ async function main() {
   console.log(`targets: ${targets.length}`);
 
   let updatedPage = 0;
-  let updatedGeocode = 0;
+  let updatedRoad = 0;
+  let updatedParcel = 0;
   let noAddr = 0;
   let geocodeFail = 0;
   let httpFail = 0;
@@ -86,7 +125,7 @@ async function main() {
         }
       }
 
-      // 2) 소재지 주소 추출 → Nominatim
+      // 2) 소재지 주소 추출 → VWorld
       const am = html.match(ADDR_RE);
       if (!am) {
         noAddr++;
@@ -96,19 +135,22 @@ async function main() {
       }
       const rawAddr = cleanAddress(am[1]);
       const queryAddr = addressForGeocode(rawAddr);
-      const coords = await nominatimGeocode(queryAddr);
-      if (!coords) {
+      const result = await geocodeWithFallback(queryAddr);
+      if (!result) {
         geocodeFail++;
-        if (geocodeFail < 10) console.warn(`${prefix} geocode failed for: ${queryAddr}`);
+        if (geocodeFail < 15) console.warn(`${prefix} geocode failed for: ${queryAddr}`);
         await sleep(REQ_DELAY_MS);
         continue;
       }
-      r.lat = coords.lat;
-      r.lng = coords.lng;
-      r.address = rawAddr; // 주소도 같이 보강
-      r.geocoded = "page-addr-osm";
-      updatedGeocode++;
-      console.log(`${prefix} osm: ${coords.lat}, ${coords.lng} (${queryAddr.slice(0, 40)})`);
+      r.lat = result.coords.lat;
+      r.lng = result.coords.lng;
+      r.address = rawAddr;
+      r.geocoded = result.source === "ROAD" ? "vworld-road" : "vworld-parcel";
+      if (result.source === "ROAD") updatedRoad++;
+      else updatedParcel++;
+      console.log(
+        `${prefix} ${result.source.toLowerCase()}: ${result.coords.lat}, ${result.coords.lng} (${queryAddr.slice(0, 40)})`,
+      );
     } catch (e) {
       console.warn(`${prefix} error: ${e.message}`);
     }
@@ -117,7 +159,16 @@ async function main() {
 
   fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2));
   console.log("---");
-  console.log({ updatedPage, updatedGeocode, noAddr, geocodeFail, httpFail, total: targets.length });
+  console.log({
+    updatedPage,
+    updatedRoad,
+    updatedParcel,
+    totalUpdated: updatedPage + updatedRoad + updatedParcel,
+    noAddr,
+    geocodeFail,
+    httpFail,
+    total: targets.length,
+  });
 }
 
 main().catch((e) => {

@@ -2703,7 +2703,7 @@
     "provider": "LH",
     "sido": "대구광역시",
     "sigungu": "",
-    "address": "",
+    "address": "대구광역시 북구 노원로10길 40(노원동3가) .",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -2723,8 +2723,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1389",
     "mobileUrl": "",
     "attachmentId": "19ddcf9847168",
-    "lat": 35.8714,
-    "lng": 128.6014,
+    "lat": 35.89127601453649,
+    "lng": 128.57001877301008,
     "details": {
       "pageAddress": "대구광역시 달서구 상화로 272(도원동) ",
       "matchedTab": null,
@@ -2749,7 +2749,7 @@
         "maxPriceWon": 144496000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "vworld-road",
     "salePriceManwon": 14450
   },
   {
@@ -3554,7 +3554,7 @@
     "provider": "LH",
     "sido": "대구광역시",
     "sigungu": "",
-    "address": "",
+    "address": "대구광역시 북구 대현남로6길 20(대현동,대구대현엘에이치3단지, 301동)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -3574,8 +3574,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1386",
     "mobileUrl": "",
     "attachmentId": "19db3ad394f0",
-    "lat": 35.8714,
-    "lng": 128.6014,
+    "lat": 35.880421261791206,
+    "lng": 128.60853144597797,
     "details": {
       "pageAddress": "대구광역시 달서구 상화로 272(도원동) ",
       "matchedTab": null,
@@ -3608,7 +3608,7 @@
         "maxPriceWon": 154011000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "vworld-road",
     "salePriceManwon": 15401
   },
   {
@@ -19657,7 +19657,7 @@
     "provider": "LH",
     "sido": "경기도",
     "sigungu": "",
-    "address": "",
+    "address": "경기도 남양주시 사릉로58번길 4-32(금곡동,신도브래뉴아파트)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -19677,8 +19677,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1182",
     "mobileUrl": "",
     "attachmentId": "1968597944d61",
-    "lat": 37.4138,
-    "lng": 127.5183,
+    "lat": 37.63714828814605,
+    "lng": 127.21010936191507,
     "details": {
       "pageAddress": "경기도 의정부시 산단로76번길 116(용현동) 한국토지주택공사 경기북부지역본부",
       "matchedTab": null,
@@ -19725,7 +19725,7 @@
         "url": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=37622132"
       }
     ],
-    "geocoded": "sido-center",
+    "geocoded": "vworld-road",
     "salePriceManwon": 29450
   },
   {
@@ -22101,7 +22101,7 @@
     "provider": "LH",
     "sido": "대구광역시",
     "sigungu": "",
-    "address": "",
+    "address": "대구광역시 북구 노원로10길 40(노원동3가) .",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -22121,8 +22121,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1153",
     "mobileUrl": "",
     "attachmentId": "195b296e33541",
-    "lat": 35.8714,
-    "lng": 128.6014,
+    "lat": 35.89127601453649,
+    "lng": 128.57001877301008,
     "details": {
       "pageAddress": "대구광역시 달서구 상화로 272(도원동) 임대공급운영팀",
       "matchedTab": null,
@@ -22147,7 +22147,7 @@
         "maxPriceWon": 182251000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "vworld-road",
     "salePriceManwon": 18225
   },
   {
@@ -24727,7 +24727,7 @@
     "provider": "LH",
     "sido": "대구광역시",
     "sigungu": "",
-    "address": "",
+    "address": "대구광역시 북구 노원로10길 40(노원동3가) .",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -24747,8 +24747,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1110",
     "mobileUrl": "",
     "attachmentId": "19347416ce977",
-    "lat": 35.8714,
-    "lng": 128.6014,
+    "lat": 35.89127601453649,
+    "lng": 128.57001877301008,
     "details": {
       "pageAddress": "대구광역시 달서구 상화로 272(도원동) 임대공급운영팀",
       "matchedTab": null,
@@ -24773,7 +24773,7 @@
         "maxPriceWon": 182251000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "vworld-road",
     "salePriceManwon": 18225
   },
   {
@@ -27591,7 +27591,7 @@
     "provider": "LH",
     "sido": "부산광역시",
     "sigungu": "",
-    "address": "",
+    "address": "부산광역시 부산진구 초연로 11(연지동,연지자이2차아파트) 11, 부산연지자이2차 (연지동)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -27611,8 +27611,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1062",
     "mobileUrl": "",
     "attachmentId": "1922d1b2ab64",
-    "lat": 35.1796,
-    "lng": 129.0756,
+    "lat": 35.173835871452795,
+    "lng": 129.04830859945332,
     "details": {
       "pageAddress": "부산광역시 동구 중앙대로 224(초량동) LH 부산울산지역본부 임대공급운영팀(4층)",
       "matchedTab": null,
@@ -27645,7 +27645,7 @@
         "maxPriceWon": 330000000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "vworld-road",
     "salePriceManwon": 33000
   },
   {
@@ -28778,7 +28778,7 @@
     "provider": "LH",
     "sido": "충청북도",
     "sigungu": "",
-    "address": "",
+    "address": "충청북도 충주시 원호암5길 32(호암동,호암리버빌아파트) 32 (호암리버빌아파트)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -28798,8 +28798,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1049",
     "mobileUrl": "",
     "attachmentId": "191bb0a45b283",
-    "lat": 36.6358,
-    "lng": 127.4914,
+    "lat": 36.953707416408335,
+    "lng": 127.93861360002283,
     "details": {
       "pageAddress": "충청북도 청주시 서원구 구룡산로52번길 40(성화동) LH충북지역본부 주거복지사업1팀",
       "matchedTab": null,
@@ -28819,7 +28819,7 @@
         "maxPriceWon": 176200000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "vworld-road",
     "salePriceManwon": 17620
   },
   {
@@ -29481,7 +29481,7 @@
     "provider": "LH",
     "sido": "부산광역시",
     "sigungu": "",
-    "address": "",
+    "address": "부산광역시 부산진구 초연로 11(연지동,연지자이2차아파트) 11, 부산연지자이2차 (연지동)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -29501,8 +29501,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1037",
     "mobileUrl": "",
     "attachmentId": "1914f548b8847",
-    "lat": 35.1796,
-    "lng": 129.0756,
+    "lat": 35.173835871452795,
+    "lng": 129.04830859945332,
     "details": {
       "pageAddress": "부산광역시 동구 중앙대로 224(초량동) LH 부산울산지역본부 임대공급운영팀(4층)",
       "matchedTab": null,
@@ -29527,7 +29527,7 @@
         "maxPriceWon": 330000000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "vworld-road",
     "salePriceManwon": 33000
   },
   {
@@ -30270,7 +30270,7 @@
     "provider": "LH",
     "sido": "경기도",
     "sigungu": "",
-    "address": "",
+    "address": "경기도 남양주시 사릉로58번길 4-32(금곡동,신도브래뉴아파트)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -30290,8 +30290,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=1021",
     "mobileUrl": "",
     "attachmentId": "190e39b996985",
-    "lat": 37.4138,
-    "lng": 127.5183,
+    "lat": 37.63714828814605,
+    "lng": 127.21010936191507,
     "details": {
       "pageAddress": "경기도 의정부시 산단로76번길 116(용현동) LH 경기북부지역본부",
       "matchedTab": null,
@@ -30338,7 +30338,7 @@
         "url": "https://apply.lh.or.kr/lhapply/lhFile.do?fileid=37622132"
       }
     ],
-    "geocoded": "sido-center",
+    "geocoded": "vworld-road",
     "salePriceManwon": 29450
   },
   {
@@ -34769,7 +34769,7 @@
     "provider": "LH",
     "sido": "부산광역시",
     "sigungu": "",
-    "address": "",
+    "address": "부산광역시 부산진구 초연로 11(연지동,연지자이2차아파트) 11, 부산연지자이2차 (연지동)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -34789,8 +34789,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=946",
     "mobileUrl": "",
     "attachmentId": "18e748fb7d697",
-    "lat": 35.1796,
-    "lng": 129.0756,
+    "lat": 35.173835871452795,
+    "lng": 129.04830859945332,
     "details": {
       "pageAddress": "부산광역시 동구 중앙대로 224(초량동) LH 부산울산지역본부 임대공급운영팀(4층)",
       "matchedTab": null,
@@ -34823,7 +34823,7 @@
         "maxPriceWon": 330000000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "vworld-road",
     "salePriceManwon": 33000
   },
   {
@@ -37055,7 +37055,7 @@
     "provider": "LH",
     "sido": "인천광역시",
     "sigungu": "",
-    "address": "",
+    "address": "인천광역시 미추홀구 경원대로 717(주안동,인천관교 한신휴플러스) 인천 관교한신휴플러스",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -37075,8 +37075,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=865",
     "mobileUrl": "",
     "attachmentId": "",
-    "lat": 37.4563,
-    "lng": 126.7052,
+    "lat": 37.447233846727485,
+    "lng": 126.68949154191668,
     "details": {
       "pageAddress": "인천광역시 남동구 논현로46번길 23(논현동) ",
       "matchedTab": null,
@@ -37101,7 +37101,7 @@
         "maxPriceWon": 376500000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "vworld-road",
     "salePriceManwon": 37650
   },
   {
@@ -38811,7 +38811,7 @@
     "provider": "LH",
     "sido": "부산광역시",
     "sigungu": "",
-    "address": "",
+    "address": "부산광역시 부산진구 초연로 11(연지동,연지자이2차아파트) 11, 부산연지자이2차 (연지동)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -38831,8 +38831,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=842",
     "mobileUrl": "",
     "attachmentId": "18b3c86b50418",
-    "lat": 35.1796,
-    "lng": 129.0756,
+    "lat": 35.173835871452795,
+    "lng": 129.04830859945332,
     "details": {
       "pageAddress": "부산광역시 동구 중앙대로 224(초량동) LH 부산울산지역본부 임대공급운영부(4층)",
       "matchedTab": null,
@@ -38865,7 +38865,7 @@
         "maxPriceWon": 330000000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "vworld-road",
     "salePriceManwon": 33000
   },
   {
@@ -38881,7 +38881,7 @@
     "provider": "LH",
     "sido": "부산광역시",
     "sigungu": "",
-    "address": "",
+    "address": "부산광역시 부산진구 초연로 11(연지동,연지자이2차아파트) 11, 부산연지자이2차 (연지동)",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -38901,8 +38901,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=838",
     "mobileUrl": "",
     "attachmentId": "18b27ec090287",
-    "lat": 35.1796,
-    "lng": 129.0756,
+    "lat": 35.173835871452795,
+    "lng": 129.04830859945332,
     "details": {
       "pageAddress": "부산광역시 동구 중앙대로 224(초량동) LH 부산울산지역본부 임대공급운영부(4층)",
       "matchedTab": null,
@@ -38935,7 +38935,7 @@
         "maxPriceWon": 330000000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "vworld-road",
     "salePriceManwon": 33000
   },
   {
@@ -39951,7 +39951,7 @@
     "provider": "LH",
     "sido": "인천광역시",
     "sigungu": "",
-    "address": "",
+    "address": "인천광역시 미추홀구 경원대로 717(주안동,인천관교 한신휴플러스) 인천 관교한신휴플러스",
     "pnu": "",
     "totalUnits": null,
     "supplyUnits": null,
@@ -39971,8 +39971,8 @@
     "detailUrl": "https://www.myhome.go.kr/hws/portal/sch/selectLttotHouseDetailView.do?pblancId=824",
     "mobileUrl": "",
     "attachmentId": "18a73df607491",
-    "lat": 37.4563,
-    "lng": 126.7052,
+    "lat": 37.447233846727485,
+    "lng": 126.68949154191668,
     "details": {
       "pageAddress": "인천광역시 남동구 논현로46번길 23(논현동) 4층 주택관리부",
       "matchedTab": null,
@@ -39997,7 +39997,7 @@
         "maxPriceWon": 376500000
       }
     },
-    "geocoded": "sido-center",
+    "geocoded": "vworld-road",
     "salePriceManwon": 37650
   },
   {

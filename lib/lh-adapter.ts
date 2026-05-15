@@ -92,10 +92,30 @@ function pickType(typeId: string, category: string): HousingTypeId {
   return TYPE_MAP[typeId] ?? (category === "분양" ? "sale" : "integ");
 }
 
+const TODAY_MS = (() => {
+  const d = new Date();
+  d.setHours(0, 0, 0, 0);
+  return d.getTime();
+})();
+
+function parseYmd(s: string | undefined): number | null {
+  if (!s) return null;
+  const m = s.match(/^(\d{4})[.](\d{2})[.](\d{2})$/);
+  if (!m) return null;
+  return new Date(+m[1], +m[2] - 1, +m[3]).getTime();
+}
+
 function pickStatus(notice: LhNotice): StatusId {
-  // progressStatus 가 "모집완료" 면 activeStatus 가 "open" 이라도 실제로는 마감.
-  // LH 데이터의 두 필드가 일치하지 않는 옛 분양 기록이 많아서 진실은 progressStatus.
+  // 1) progressStatus 가 "모집완료" 면 activeStatus 가 "open" 이라도 실제로는 마감.
   if (notice.progressStatus === "모집완료") return "closed";
+  // 2) winnerDate 가 과거면 해당 회차 종료. 단 endDate 가 1년+ 미래인 정례모집/장기
+  //    프로그램은 다음 회차로 계속 운영되므로 그대로 active 유지.
+  const winnerMs = parseYmd(notice.winnerDate);
+  const endMs = parseYmd(notice.endDate);
+  const isLongRunning = endMs !== null && endMs - TODAY_MS > 365 * 86400000;
+  if (winnerMs !== null && winnerMs < TODAY_MS && !isLongRunning) {
+    return "closed";
+  }
   return notice.activeStatus;
 }
 
