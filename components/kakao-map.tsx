@@ -30,8 +30,7 @@ function districtShortName(name: string): string {
   if (SHORT_SIDO_NAMES[name]) return SHORT_SIDO_NAMES[name];
   return name
     .replace(/특별자치도$|광역시$|특별자치시$|특별시$/, "")
-    .replace(/도$/, "")
-    .replace(/구$/, "");
+    .replace(/도$/, "");
 }
 
 function makeDistrictEl(id: string, name: string, count: number): HTMLElement {
