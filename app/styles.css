@@ -83,6 +83,11 @@ input, select { font-family: inherit; }
   color: var(--seed-semantic-color-ink-text);
   line-height: 1;
 }
+.brand-logo {
+  height: 32px;
+  width: auto;
+  display: block;
+}
 .brand-ai-cta {
   display: inline-flex;
   align-items: center;
