@@ -23,7 +23,7 @@ const OUT_PATH = path.join(ROOT, "lib/sh-listing-notices.json");
 const BASE_URL =
   "https://www.i-sh.co.kr/main/lay2/program/S1T305C311/www/m_491/hmng/viewRentalHouseBlockInfoList.do";
 const HEADERS = {
-  "User-Agent": "bogeum-app/1.0 (SH block matcher; polite crawler; 1req/s)",
+  "User-Agent": "doongji-app/1.0 (SH block matcher; polite crawler; 1req/s)",
   Accept: "text/html",
 };
 

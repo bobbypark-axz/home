@@ -15,7 +15,7 @@ const OUT_PATH = path.join(ROOT, "lib/lh-listing-notices.json");
 const BASE_URL =
   "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancList.do?mi=1026";
 const HEADERS = {
-  "User-Agent": "bogeum-app/1.0 (LH notice matcher; polite crawler; 1req/s)",
+  "User-Agent": "doongji-app/1.0 (LH notice matcher; polite crawler; 1req/s)",
   Accept: "text/html",
 };
 
