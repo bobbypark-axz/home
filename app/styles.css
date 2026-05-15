@@ -1545,6 +1545,16 @@ input, select { font-family: inherit; }
   font-size: 14px;
 }
 .detail-actions .primary:hover { background: var(--seed-semantic-color-primary-hover); }
+.detail-actions .primary.disabled,
+.detail-actions .primary:disabled {
+  background: var(--seed-scale-color-gray-200, #e3e5e8);
+  color: var(--seed-semantic-color-ink-text-low);
+  cursor: not-allowed;
+}
+.detail-actions .primary.disabled:hover,
+.detail-actions .primary:disabled:hover {
+  background: var(--seed-scale-color-gray-200, #e3e5e8);
+}
 
 /* ——— Tweaks panel ——— */
 .tweaks-panel {

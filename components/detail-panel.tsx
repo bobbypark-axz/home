@@ -55,6 +55,15 @@ export function DetailPanel({
   const deepLinks = deepLinksFor(item);
   const complex = complexName(item);
   const hasNotice = Boolean(item.deadline);
+  // 청약 신청 버튼 상태: 신청 가능한 시점인지에 따라 라벨/활성 결정
+  const isRecurring = isRegularRecruitment(item.deadline, item.status);
+  const applyButton: { label: string; active: boolean } = isRecurring
+    ? { label: "공고 확인 →", active: true }
+    : item.status === "open" || item.status === "closing"
+      ? { label: "청약 신청하기 →", active: true }
+      : item.status === "upcoming"
+        ? { label: "접수 예정", active: false }
+        : { label: "접수 마감", active: false };
 
   return (
     <aside className={`detail-panel ${open ? "open" : ""}`}>
@@ -305,15 +314,25 @@ export function DetailPanel({
           >
             공고문 원문 보기
           </a>
-          <a
-            className="primary"
-            href={applyUrl}
-            target="_blank"
-            rel="noreferrer"
-            style={{ textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center" }}
-          >
-            청약 신청하기 →
-          </a>
+          {applyButton.active ? (
+            <a
+              className="primary"
+              href={applyUrl}
+              target="_blank"
+              rel="noreferrer"
+              style={{ textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center" }}
+            >
+              {applyButton.label}
+            </a>
+          ) : (
+            <button
+              className="primary disabled"
+              disabled
+              style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+            >
+              {applyButton.label}
+            </button>
+          )}
         </div>
       </div>
     </aside>
