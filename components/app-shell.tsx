@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import type { Density, District, Filters, HousingTypeId, Listing, SortKey, ViewMode } from "@/lib/types";
+import type { Density, District, Filters, HousingTypeId, Listing, SortKey } from "@/lib/types";
 import { FilterBar } from "./filter-bar";
 import { ListingPanel } from "./listing-panel";
 import { NaverMapView } from "./kakao-map";
@@ -9,7 +9,7 @@ import { DetailPanel } from "./detail-panel";
 import { EligibilityModal } from "./eligibility-modal";
 import { FloatingChat } from "./floating-chat";
 import { TweaksPanel } from "./tweaks-panel";
-import { ChevronIcon, ListIcon, MapIcon, PinIcon } from "./icons";
+import { ChevronIcon, PinIcon } from "./icons";
 
 const INITIAL_FILTERS: Filters = {
   type: [],
@@ -51,7 +51,6 @@ export function AppShell({
   const [tweaksOpen, setTweaksOpen] = useState(false);
   const [eliOpen, setEliOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
-  const [mode, setMode] = useState<ViewMode>("split");
   const [density, setDensity] = useState<Density>("comfort");
   const [showLegend, setShowLegend] = useState(false);
 
@@ -184,7 +183,7 @@ export function AppShell({
         <div className="topbar-spacer" />
       </header>
 
-      <div className={`main ${mode === "list" ? "list-mode" : ""} ${detailOpen && selectedItem ? "detail-open" : ""}`}>
+      <div className={`main ${detailOpen && selectedItem ? "detail-open" : ""}`}>
         <ListingPanel
           items={filtered}
           sort={sort}
@@ -196,65 +195,25 @@ export function AppShell({
           onSelect={handleSelect}
         />
 
-        {mode === "split" && (
-          <NaverMapView
-            districts={districts}
-            districtCounts={districtCounts}
-            activeDistrict={activeDistrict}
-            onDistrictClick={handleDistrictClick}
-            onDistrictClear={handleDistrictClear}
-            onSearchHere={handleSearchHere}
-            pins={filtered}
-            hoveredId={hoveredId}
-            selectedId={selectedId}
-            onPinHover={setHoveredId}
-            onPinClick={handleSelect}
-            showLegend={showLegend}
-            overlay={
-              <FilterBar filters={filters} setFilters={setFilters} onReset={resetFilters} />
-            }
-          />
-        )}
+        <NaverMapView
+          districts={districts}
+          districtCounts={districtCounts}
+          activeDistrict={activeDistrict}
+          onDistrictClick={handleDistrictClick}
+          onDistrictClear={handleDistrictClear}
+          onSearchHere={handleSearchHere}
+          pins={filtered}
+          hoveredId={hoveredId}
+          selectedId={selectedId}
+          onPinHover={setHoveredId}
+          onPinClick={handleSelect}
+          showLegend={showLegend}
+          overlay={
+            <FilterBar filters={filters} setFilters={setFilters} onReset={resetFilters} />
+          }
+        />
 
         <DetailPanel item={selectedItem} open={detailOpen} onClose={handleDetailClose} />
-
-        {mode === "split" && (
-          <div className="mode-toggle">
-            <button className={mode === "split" ? "active" : ""} onClick={() => setMode("split")}>
-              <MapIcon size={13} /> 지도
-            </button>
-            <button
-              className={(mode as ViewMode) === "list" ? "active" : ""}
-              onClick={() => setMode("list")}
-            >
-              <ListIcon size={13} /> 리스트
-            </button>
-          </div>
-        )}
-        {mode === "list" && (
-          <button
-            onClick={() => setMode("split")}
-            style={{
-              position: "fixed",
-              bottom: 24,
-              left: "50%",
-              transform: "translateX(-50%)",
-              background: "rgba(33,33,36,.92)",
-              color: "white",
-              padding: "10px 18px",
-              borderRadius: 999,
-              fontSize: 13,
-              fontWeight: 600,
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 6,
-              zIndex: 10,
-              boxShadow: "0 6px 20px rgba(0,0,0,.2)",
-            }}
-          >
-            <MapIcon size={13} /> 지도로 보기
-          </button>
-        )}
       </div>
 
       <EligibilityModal
@@ -271,8 +230,6 @@ export function AppShell({
 
       <TweaksPanel
         open={tweaksOpen}
-        mode={mode}
-        setMode={setMode}
         density={density}
         setDensity={setDensity}
         showLegend={showLegend}

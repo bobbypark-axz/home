@@ -1,19 +1,15 @@
 "use client";
 
-import type { Density, ViewMode } from "@/lib/types";
+import type { Density } from "@/lib/types";
 
 export function TweaksPanel({
   open,
-  mode,
-  setMode,
   density,
   setDensity,
   showLegend,
   setShowLegend,
 }: {
   open: boolean;
-  mode: ViewMode;
-  setMode: (v: ViewMode) => void;
   density: Density;
   setDensity: (v: Density) => void;
   showLegend: boolean;
@@ -23,18 +19,6 @@ export function TweaksPanel({
     <div className={`tweaks-panel ${open ? "open" : ""}`}>
       <div className="tweaks-title">
         <span>Tweaks</span>
-      </div>
-
-      <div className="tweak-row">
-        <span className="tweak-label">보기 모드</span>
-        <div className="seg">
-          <button className={mode === "split" ? "active" : ""} onClick={() => setMode("split")}>
-            지도+리스트
-          </button>
-          <button className={mode === "list" ? "active" : ""} onClick={() => setMode("list")}>
-            리스트
-          </button>
-        </div>
       </div>
 
       <div className="tweak-row">
