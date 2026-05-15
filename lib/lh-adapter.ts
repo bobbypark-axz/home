@@ -208,7 +208,11 @@ function isUnboundedProgram(notice: LhNotice): boolean {
   // 2) 제목이 "수시/상시 모집" — 마감일 개념 없는 전국 프로그램
   const title = `${notice.title ?? ""}${notice.noticeTitle ?? ""}`;
   const isContinuous = /수시\s*모집|상시\s*모집/.test(title);
-  return isSidoFallbackRental || isContinuous;
+  // 3) 시도 중심 + 모집완료 — 옛 공고로 실제 위치/상세 페이지가 LH 에 더 이상 없음
+  //    (예: 2017~2018 분양 옛 기록 97건 — 모두 sourceUrl 이 LH 메인페이지로만 가서 무의미)
+  const isStaleSidoCenter =
+    notice.geocoded === "sido-center" && notice.progressStatus === "모집완료";
+  return isSidoFallbackRental || isContinuous || isStaleSidoCenter;
 }
 
 function adapt(notice: LhNotice, idx: number): Listing | null {
