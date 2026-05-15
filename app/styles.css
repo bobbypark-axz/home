@@ -1264,6 +1264,8 @@ input, select { font-family: inherit; }
   text-decoration: none;
   color: var(--seed-semantic-color-ink-text);
   transition: border-color .15s, background .15s;
+  /* grid 셀이 긴 한글 텍스트로 인해 늘어나지 않도록 — ellipsis 가 제대로 먹게 */
+  min-width: 0;
 }
 .vacancy-link:hover {
   border-color: var(--seed-semantic-color-primary);
@@ -1273,11 +1275,13 @@ input, select { font-family: inherit; }
   font-size: 12px; font-weight: 700;
   color: var(--seed-semantic-color-primary);
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 .vacancy-link-sub {
   font-size: 11px;
   color: var(--seed-semantic-color-ink-text-low);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  min-width: 0;
 }
 .detail-vacancy-hint {
   font-size: 11px;

@@ -8,9 +8,6 @@ import { calcDday } from "@/lib/dday";
 import {
   applyUrlFor,
   infoUrlFor,
-  pickNoticeFor,
-  ddayOfNotice,
-  fmtNoticeDate,
   deepLinksFor,
   complexName,
 } from "@/lib/notice-match";
@@ -53,12 +50,11 @@ export function DetailPanel({
   const svg = thumbnailSVG(item.thumbSeed, item.type);
   const status = STATUS_LABELS[item.status];
   const housingType = HOUSING_TYPES.find((t) => t.id === item.type);
-  const matchedNotice = pickNoticeFor(item.type, item.eligible);
   const applyUrl = applyUrlFor(item.type, item.eligible);
   const infoUrl = infoUrlFor(item.type, item.eligible);
   const deepLinks = deepLinksFor(item);
   const complex = complexName(item);
-  const hasNotice = Boolean(item.deadline) || Boolean(matchedNotice);
+  const hasNotice = Boolean(item.deadline);
 
   return (
     <aside className={`detail-panel ${open ? "open" : ""}`}>
@@ -117,17 +113,6 @@ export function DetailPanel({
               <div className="detail-deadline-date">{item.deadline.replace(/\./g, ". ")} 18:00까지</div>
             </div>
             <div className="detail-deadline-dday">{calcDday(item.deadline)}</div>
-          </div>
-        ) : matchedNotice ? (
-          <div className="detail-deadline">
-            <div>
-              <div className="detail-deadline-label">관련 통합공고 · {matchedNotice.supplyType}</div>
-              <div className="detail-deadline-date">
-                {matchedNotice.title.length > 40 ? matchedNotice.title.slice(0, 40) + "…" : matchedNotice.title}
-                {" · ~ "}{fmtNoticeDate(matchedNotice.endDate)}
-              </div>
-            </div>
-            <div className="detail-deadline-dday">{ddayOfNotice(matchedNotice)}</div>
           </div>
         ) : (
           <div className="detail-empty-notice">
