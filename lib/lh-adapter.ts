@@ -92,8 +92,11 @@ function pickType(typeId: string, category: string): HousingTypeId {
   return TYPE_MAP[typeId] ?? (category === "분양" ? "sale" : "integ");
 }
 
-function pickStatus(active: LhNotice["activeStatus"]): StatusId {
-  return active;
+function pickStatus(notice: LhNotice): StatusId {
+  // progressStatus 가 "모집완료" 면 activeStatus 가 "open" 이라도 실제로는 마감.
+  // LH 데이터의 두 필드가 일치하지 않는 옛 분양 기록이 많아서 진실은 progressStatus.
+  if (notice.progressStatus === "모집완료") return "closed";
+  return notice.activeStatus;
 }
 
 function asNumber(value: unknown, fallback = 0): number {
@@ -231,7 +234,9 @@ function adapt(notice: LhNotice, idx: number): Listing | null {
     district: sido.name,
     lat: notice.lat,
     lng: notice.lng,
-    address: notice.address || notice.details?.pageAddress || "",
+    // pageAddress 는 LH 운영자(본사) 주소라서 listing 주소가 비어있을 때 fallback 으로
+    // 쓰면 "강남구 선릉로121길 12 (논현동)" 같은 LH 본사 주소가 표시됨 — 사용 금지
+    address: notice.address || "",
     pnu: notice.pnu,
     deposit: notice.depositManwon ?? 0,
     rent: notice.monthlyRentManwon ?? 0,
@@ -240,7 +245,7 @@ function adapt(notice: LhNotice, idx: number): Listing | null {
     totalUnits: asNumber(notice.totalUnits, 0),
     supplyUnits: asNumber(notice.supplyUnits, 0),
     heatMethod: "",
-    status: pickStatus(notice.activeStatus),
+    status: pickStatus(notice),
     deadline: notice.endDate,
     beginDate: notice.beginDate,
     eligible: [],
