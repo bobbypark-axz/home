@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { Listing } from "@/lib/types";
-import { DISTRICTS } from "@/lib/mock-data";
+import type { District, Listing } from "@/lib/types";
 import { loadNaverMaps } from "@/lib/naver-loader";
 import "@/lib/naver-types";
 import type { NaverMarker, NaverMap } from "@/lib/naver-types";
@@ -117,6 +116,7 @@ function clusterPins(pins: Listing[], zoom: number): Array<
 }
 
 export function NaverMapView({
+  districts,
   districtCounts,
   activeDistrict,
   onDistrictClick,
@@ -129,6 +129,7 @@ export function NaverMapView({
   showLegend,
   overlay,
 }: {
+  districts: District[];
   districtCounts: Record<string, number>;
   activeDistrict: string | null;
   onDistrictClick: (id: string) => void;
@@ -197,7 +198,7 @@ export function NaverMapView({
 
     if (!showDistrictMarkers) return;
 
-    DISTRICTS.forEach((d) => {
+    districts.forEach((d) => {
       const count = districtCounts[d.id] ?? 0;
       if (count === 0) return;
       const el = makeDistrictEl(d.id, d.name, count);
@@ -210,7 +211,7 @@ export function NaverMapView({
       });
       districtMarkersRef.current.push(marker);
     });
-  }, [ready, showDistrictMarkers, districtCounts, onDistrictClick]);
+  }, [ready, showDistrictMarkers, districtCounts, districts, onDistrictClick]);
 
   // Individual listing pin markers + clustering
   useEffect(() => {
@@ -275,21 +276,25 @@ export function NaverMapView({
     if (!ready || !mapRef.current || !window.naver) return;
     const { naver } = window;
     if (activeDistrict) {
-      const d = DISTRICTS.find((x) => x.id === activeDistrict);
+      const d = districts.find((x) => x.id === activeDistrict);
       if (d) mapRef.current.morph(new naver.maps.LatLng(d.lat, d.lng), DISTRICT_ZOOM);
     } else {
       mapRef.current.morph(new naver.maps.LatLng(SEOUL_CENTER.lat, SEOUL_CENTER.lng), DEFAULT_ZOOM);
     }
-  }, [ready, activeDistrict]);
+  }, [ready, activeDistrict, districts]);
 
-  // Focus map on selected listing (e.g. when user clicks a card)
+  // Focus map on selected listing (e.g. when user clicks a card).
+  // 이미 화면 안에 보이는 핀이면 카메라를 움직이지 않는다 — morph 애니메이션이 클릭마다 끼어들면서 끊겨 보이는 버벅임 방지.
   useEffect(() => {
     if (!ready || !mapRef.current || !window.naver || !selectedId) return;
     const pin = pins.find((p) => p.id === selectedId);
     if (!pin) return;
     const { naver } = window;
-    const targetZoom = Math.max(mapRef.current.getZoom(), 15);
-    mapRef.current.morph(new naver.maps.LatLng(pin.lat, pin.lng), targetZoom);
+    const map = mapRef.current;
+    const target = new naver.maps.LatLng(pin.lat, pin.lng);
+    if (map.getBounds().hasLatLng(target)) return;
+    const targetZoom = Math.max(map.getZoom(), 15);
+    map.morph(target, targetZoom);
   }, [ready, selectedId, pins]);
 
   const handleLocate = () => {
@@ -336,7 +341,7 @@ export function NaverMapView({
     );
   };
 
-  const activeDistObj = activeDistrict ? DISTRICTS.find((d) => d.id === activeDistrict) : null;
+  const activeDistObj = activeDistrict ? districts.find((d) => d.id === activeDistrict) : null;
 
   return (
     <div className="map-wrap">

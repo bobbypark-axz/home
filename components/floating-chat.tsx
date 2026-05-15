@@ -6,16 +6,38 @@ import { DefaultChatTransport, type UIMessage } from "ai";
 import ReactMarkdown from "react-markdown";
 import { CloseIcon } from "./icons";
 
-function MessageBubble({ message }: { message: UIMessage }) {
+function useTypewriter(target: string, enabled: boolean) {
+  const [displayed, setDisplayed] = useState("");
+  const targetRef = useRef(target);
+  targetRef.current = target;
+
+  useEffect(() => {
+    if (!enabled) return;
+    const id = setInterval(() => {
+      setDisplayed((prev) => {
+        const t = targetRef.current;
+        if (prev === t) return prev;
+        if (!t.startsWith(prev)) return t;
+        return t.slice(0, prev.length + 1);
+      });
+    }, 20);
+    return () => clearInterval(id);
+  }, [enabled]);
+
+  return enabled ? displayed : target;
+}
+
+function MessageBubble({ message, animate }: { message: UIMessage; animate: boolean }) {
   const isUser = message.role === "user";
   const text = message.parts
     .map((p) => (p.type === "text" ? p.text : ""))
     .join("");
+  const shown = useTypewriter(text, !isUser && animate);
   return (
     <div className={`chat-msg ${isUser ? "user" : "ai"}`}>
       <div className="chat-bubble">
         {isUser ? (
-          text
+          shown
         ) : (
           <ReactMarkdown
             components={{
@@ -36,7 +58,7 @@ function MessageBubble({ message }: { message: UIMessage }) {
               ),
             }}
           >
-            {text}
+            {shown}
           </ReactMarkdown>
         )}
       </div>
@@ -60,12 +82,13 @@ export function FloatingChat({
     transport: new DefaultChatTransport({ api: "/api/chat" }),
   });
 
-  // 응답이 완전히 끝나기 전엔 마지막 AI 메시지를 숨기고 타이핑 인디케이터만 보여서
-  // 토큰 단위로 깜빡이는 것 방지
-  const isWaiting = status === "submitted" || status === "streaming";
-  const lastIsAssistant = messages[messages.length - 1]?.role === "assistant";
-  const visibleMessages =
-    isWaiting && lastIsAssistant ? messages.slice(0, -1) : messages;
+  // 마지막 AI 메시지는 한 글자씩 흘러나오게(타이핑 효과), 첫 토큰 도착 전엔 점 인디케이터
+  const lastMsg = messages[messages.length - 1];
+  const hasAssistantText =
+    lastMsg?.role === "assistant" &&
+    lastMsg.parts.some((p) => p.type === "text" && p.text.length > 0);
+  const showTyping =
+    status === "submitted" || (status === "streaming" && !hasAssistantText);
 
   const handleClose = () => {
     onOpenChange(false);
@@ -147,10 +170,14 @@ export function FloatingChat({
                 </div>
               </div>
             )}
-            {visibleMessages.map((m) => (
-              <MessageBubble key={m.id} message={m} />
+            {messages.map((m, i) => (
+              <MessageBubble
+                key={m.id}
+                message={m}
+                animate={i === messages.length - 1 && m.role === "assistant"}
+              />
             ))}
-            {isWaiting && (
+            {showTyping && (
               <div className="chat-msg ai">
                 <div className="chat-bubble chat-typing">
                   <span /><span /><span />

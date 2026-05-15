@@ -68,7 +68,6 @@ export function DetailPanel({
 
       <div className="detail-hero">
         <NaverPanorama
-          key={item.id}
           lat={item.lat}
           lng={item.lng}
           fallback={

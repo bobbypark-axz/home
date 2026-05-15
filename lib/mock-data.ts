@@ -1,7 +1,4 @@
-import type { District, HousingType, Listing, StatusId, StatusLabel } from "./types";
-import { LH_DISTRICTS, LH_LISTINGS } from "./lh-adapter";
-
-export const DISTRICTS: District[] = LH_DISTRICTS;
+import type { HousingType, StatusId, StatusLabel } from "./types";
 
 export const HOUSING_TYPES: HousingType[] = [
   { id: "happy", name: "행복주택", badge: "happy" },
@@ -30,5 +27,3 @@ export const ELIGIBILITY_LABELS: Record<string, string> = {
   가구: "일반 세대",
   고령: "고령자 세대",
 };
-
-export const LISTINGS: Listing[] = LH_LISTINGS;

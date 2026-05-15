@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import type { Density, Filters, HousingTypeId, SortKey, ViewMode } from "@/lib/types";
-import { DISTRICTS, LISTINGS } from "@/lib/mock-data";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import type { Density, District, Filters, HousingTypeId, Listing, SortKey, ViewMode } from "@/lib/types";
 import { FilterBar } from "./filter-bar";
 import { ListingPanel } from "./listing-panel";
 import { NaverMapView } from "./kakao-map";
@@ -17,7 +16,13 @@ const INITIAL_FILTERS: Filters = {
   status: [],
 };
 
-export function AppShell() {
+export function AppShell({
+  listings,
+  districts,
+}: {
+  listings: Listing[];
+  districts: District[];
+}) {
   const [filters, setFilters] = useState<Filters>(INITIAL_FILTERS);
   const [sort, setSort] = useState<SortKey>("deadline");
   const [activeDistrict, setActiveDistrict] = useState<string | null>(null);
@@ -39,7 +44,7 @@ export function AppShell() {
   const filtered = useMemo(() => {
     // 마감된 공고는 기본적으로 숨김 — 마감 필터를 명시적으로 켰을 때만 노출
     const showClosed = filters.status.includes("closed");
-    let list = LISTINGS.slice();
+    let list = listings.slice();
     if (!showClosed) list = list.filter((x) => x.status !== "closed");
     if (filters.type.length) list = list.filter((x) => filters.type.includes(x.type));
     if (filters.status.length) list = list.filter((x) => filters.status.includes(x.status));
@@ -55,32 +60,35 @@ export function AppShell() {
       list.sort((a, b) => a.id.localeCompare(b.id));
     }
     return list;
-  }, [filters, sort, activeDistrict]);
+  }, [filters, sort, activeDistrict, listings]);
 
   const districtCounts = useMemo<Record<string, number>>(() => {
     const map: Record<string, number> = {};
     const showClosed = filters.status.includes("closed");
-    let list = LISTINGS.slice();
+    let list = listings.slice();
     if (!showClosed) list = list.filter((x) => x.status !== "closed");
     if (filters.type.length) list = list.filter((x) => filters.type.includes(x.type));
     if (filters.status.length) list = list.filter((x) => filters.status.includes(x.status));
     list.forEach((x) => {
       map[x.districtId] = (map[x.districtId] ?? 0) + 1;
     });
-    DISTRICTS.forEach((d) => {
+    districts.forEach((d) => {
       if (!map[d.id]) map[d.id] = 0;
     });
     return map;
-  }, [filters]);
+  }, [filters, listings, districts]);
 
   const resetFilters = () => setFilters(INITIAL_FILTERS);
 
-  const selectedItem = filtered.find((x) => x.id === selectedId) ?? LISTINGS.find((x) => x.id === selectedId);
+  const selectedItem = filtered.find((x) => x.id === selectedId) ?? listings.find((x) => x.id === selectedId);
 
-  const handleSelect = (id: string) => {
+  const handleSelect = useCallback((id: string) => {
     setSelectedId(id);
     setDetailOpen(true);
-  };
+  }, []);
+  const handleDistrictClick = useCallback((id: string) => setActiveDistrict(id), []);
+  const handleDistrictClear = useCallback(() => setActiveDistrict(null), []);
+  const handleDetailClose = useCallback(() => setDetailOpen(false), []);
 
   return (
     <div className="app">
@@ -98,11 +106,6 @@ export function AppShell() {
           <ChevronIcon size={9} />
         </button>
         <div className="topbar-spacer" />
-        <div className="topbar-auth">
-          <button className="ghost" onClick={() => setTweaksOpen((v) => !v)} aria-label="tweaks">
-            ⚙
-          </button>
-        </div>
       </header>
 
       <div className={`main ${mode === "list" ? "list-mode" : ""} ${detailOpen && selectedItem ? "detail-open" : ""}`}>
@@ -119,10 +122,11 @@ export function AppShell() {
 
         {mode === "split" && (
           <NaverMapView
+            districts={districts}
             districtCounts={districtCounts}
             activeDistrict={activeDistrict}
-            onDistrictClick={(id) => setActiveDistrict(id)}
-            onDistrictClear={() => setActiveDistrict(null)}
+            onDistrictClick={handleDistrictClick}
+            onDistrictClear={handleDistrictClear}
             pins={filtered}
             hoveredId={hoveredId}
             selectedId={selectedId}
@@ -135,7 +139,7 @@ export function AppShell() {
           />
         )}
 
-        <DetailPanel item={selectedItem} open={detailOpen} onClose={() => setDetailOpen(false)} />
+        <DetailPanel item={selectedItem} open={detailOpen} onClose={handleDetailClose} />
 
         {mode === "split" && (
           <div className="mode-toggle">

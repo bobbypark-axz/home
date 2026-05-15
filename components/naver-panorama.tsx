@@ -15,11 +15,16 @@ export function NaverPanorama({
   lng: number;
   fallback?: ReactNode;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const panoRef = useRef<NaverPanoramaInstance | null>(null);
+  const latRef = useRef(lat);
+  const lngRef = useRef(lng);
+  latRef.current = lat;
+  lngRef.current = lng;
   const [failed, setFailed] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  // SDK 로드 + 파노라마 인스턴스 1회 생성 (마운트 시). 좌표 변화는 아래 effect 가 setPosition으로 처리.
   useEffect(() => {
     if (!CLIENT_ID) {
       setFailed(true);
@@ -27,20 +32,17 @@ export function NaverPanorama({
     }
     let cancelled = false;
 
-    setFailed(false);
-    setLoading(true);
-
     loadNaverMaps(CLIENT_ID)
       .then(() => {
-        if (cancelled || !ref.current) return;
+        if (cancelled || !containerRef.current) return;
         const naver = window.naver;
         if (!naver?.maps?.Panorama) {
           setFailed(true);
           return;
         }
         try {
-          const pano = new naver.maps.Panorama(ref.current, {
-            position: new naver.maps.LatLng(lat, lng),
+          const pano = new naver.maps.Panorama(containerRef.current, {
+            position: new naver.maps.LatLng(latRef.current, lngRef.current),
             pov: { pan: 0, tilt: 5, fov: 100 },
             flightSpot: false,
             logoControl: false,
@@ -49,14 +51,10 @@ export function NaverPanorama({
           });
           panoRef.current = pano;
 
-          // 거리뷰가 좌표 근처에 없으면 pano_changed에서 panoId가 비어 있음
           naver.maps.Event.addListener(pano, "pano_changed", () => {
             const id = pano.getPanoId?.();
-            if (!id) {
-              setFailed(true);
-            } else {
-              setLoading(false);
-            }
+            setFailed(!id);
+            setLoading(false);
           });
         } catch (e) {
           console.error("Naver panorama init failed", e);
@@ -79,16 +77,35 @@ export function NaverPanorama({
       }
       panoRef.current = null;
     };
-  }, [lat, lng]);
+  }, []);
 
-  if (failed) {
-    return <>{fallback ?? null}</>;
-  }
+  // 좌표 변경 시 인스턴스 재사용 — setPosition 만 호출
+  useEffect(() => {
+    const pano = panoRef.current;
+    const naver = window.naver;
+    if (!pano || !naver?.maps?.LatLng) return;
+    try {
+      pano.setPosition(new naver.maps.LatLng(lat, lng));
+    } catch (e) {
+      console.error("Naver panorama setPosition failed", e);
+      setFailed(true);
+    }
+  }, [lat, lng]);
 
   return (
     <div style={{ width: "100%", height: "100%", position: "relative" }}>
-      <div ref={ref} style={{ width: "100%", height: "100%" }} />
-      {loading && (
+      <div
+        ref={containerRef}
+        style={{
+          width: "100%",
+          height: "100%",
+          visibility: failed ? "hidden" : "visible",
+        }}
+      />
+      {failed && (
+        <div style={{ position: "absolute", inset: 0 }}>{fallback ?? null}</div>
+      )}
+      {!failed && loading && (
         <div
           style={{
             position: "absolute",
