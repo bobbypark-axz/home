@@ -116,7 +116,9 @@ export interface DeepLinks {
 
 export function deepLinksFor(listing: Listing): DeepLinks {
   const kw = searchKeyword(listing);
-  const lhNotice = new URLSearchParams({
+  // LH 청약플러스: 단지명으로 검색해도 panNm 은 공고명이라 0건 나옴.
+  // listing.sourceUrl 에 이미 panId 가 포함된 공고 상세 URL 이 들어있으니 그걸 쓴다.
+  const lhNoticeFallback = new URLSearchParams({
     mi: "1026",
     panNm: kw,
     sCtprvnId: "11",
@@ -131,7 +133,7 @@ export function deepLinksFor(listing: Listing): DeepLinks {
     searchKeyword: kw,
   });
   return {
-    lhNoticeSearch: `${LH_LIST_URL}?${lhNotice}`,
+    lhNoticeSearch: listing.sourceUrl ?? `${LH_LIST_URL}?${lhNoticeFallback}`,
     lhComplexSearch: `${LH_LSHS_SCH_URL}?${lhComplex}`,
     myhomeSearch: `${MYHOME_SEARCH_URL}?${myhome}`,
   };

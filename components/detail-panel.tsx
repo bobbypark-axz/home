@@ -145,7 +145,7 @@ export function DetailPanel({
           <div className="detail-vacancy-grid">
             <a className="vacancy-link" href={deepLinks.lhNoticeSearch} target="_blank" rel="noreferrer">
               <span className="vacancy-link-label">LH 청약플러스</span>
-              <span className="vacancy-link-sub">공고문 검색 「{complex}」</span>
+              <span className="vacancy-link-sub">공고문 바로 보기 「{complex}」</span>
             </a>
             <a className="vacancy-link" href={deepLinks.lhComplexSearch} target="_blank" rel="noreferrer">
               <span className="vacancy-link-label">LH 임대주택검색</span>
