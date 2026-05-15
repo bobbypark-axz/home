@@ -16,6 +16,20 @@ const INITIAL_FILTERS: Filters = {
   status: [],
 };
 
+const SHORT_SIDO_NAMES: Record<string, string> = {
+  "충청북도": "충북",
+  "충청남도": "충남",
+  "전라남도": "전남",
+  "경상북도": "경북",
+  "경상남도": "경남",
+};
+function shortRegionName(name: string): string {
+  if (SHORT_SIDO_NAMES[name]) return SHORT_SIDO_NAMES[name];
+  return name
+    .replace(/특별자치도$|광역시$|특별자치시$|특별시$/, "")
+    .replace(/도$/, "");
+}
+
 export function AppShell({
   listings,
   districts,
@@ -106,7 +120,7 @@ export function AppShell({
           <button className="region-btn" onClick={() => setRegionMenuOpen((v) => !v)}>
             <PinIcon size={13} />
             {activeDistrict
-              ? districts.find((d) => d.id === activeDistrict)?.name ?? "전체 지역"
+              ? shortRegionName(districts.find((d) => d.id === activeDistrict)?.name ?? "전체 지역")
               : "전체 지역"}
             <ChevronIcon size={9} />
           </button>

@@ -5,7 +5,7 @@ import type { District, Listing } from "@/lib/types";
 import { loadNaverMaps } from "@/lib/naver-loader";
 import "@/lib/naver-types";
 import type { NaverMarker, NaverMap } from "@/lib/naver-types";
-import { CloseIcon, LocateIcon, PinIcon } from "./icons";
+import { LocateIcon } from "./icons";
 
 const SEOUL_CENTER = { lat: 37.5665, lng: 126.978 };
 const DEFAULT_ZOOM = 11;
@@ -350,8 +350,6 @@ export function NaverMapView({
     );
   };
 
-  const activeDistObj = activeDistrict ? districts.find((d) => d.id === activeDistrict) : null;
-
   return (
     <div className="map-wrap">
       <div ref={containerRef} style={{ position: "absolute", inset: 0 }} />
@@ -375,17 +373,6 @@ export function NaverMapView({
           지도를 불러올 수 없어요
           <br />
           <span style={{ fontSize: 11, marginTop: 4, display: "block" }}>{loadError}</span>
-        </div>
-      )}
-
-      {activeDistObj && (
-        <div className="map-active-region">
-          <PinIcon size={13} />
-          {activeDistObj.name} ·{" "}
-          <strong style={{ color: "var(--seed-semantic-color-primary)" }}>{pins.length}건</strong>
-          <button className="close" onClick={onDistrictClear} aria-label="전체 보기로 돌아가기">
-            <CloseIcon size={10} />
-          </button>
         </div>
       )}
 
