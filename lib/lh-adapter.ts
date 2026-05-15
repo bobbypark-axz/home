@@ -203,19 +203,14 @@ function parseSalePriceManwon(details: LhNotice["details"]): number | null {
 }
 
 function isUnboundedProgram(notice: LhNotice): boolean {
-  // 1) 시도 중심에 폴백된 임대 (전세/매입 통합) — 단지 단위가 아님
-  const isSidoFallbackRental =
-    notice.geocoded === "sido-center" &&
-    notice.category === "임대" &&
-    (notice.housingType === "전세임대" || notice.housingType === "매입임대");
+  // 1) 시도 중심에 폴백된 모든 항목 — 실제 단지 좌표가 없어 지도 표시 무의미
+  //    이전엔 임대(전세/매입) + 모집완료만 잡았는데, 분양 잔여세대 선착순처럼 활성 상태로
+  //    sido-center 에 폴백된 케이스도 있어서 모두 제외로 통일.
+  const isSidoCenterFallback = notice.geocoded === "sido-center";
   // 2) 제목이 "수시/상시 모집" — 마감일 개념 없는 전국 프로그램
   const title = `${notice.title ?? ""}${notice.noticeTitle ?? ""}`;
   const isContinuous = /수시\s*모집|상시\s*모집/.test(title);
-  // 3) 시도 중심 + 모집완료 — 옛 공고로 실제 위치/상세 페이지가 LH 에 더 이상 없음
-  //    (예: 2017~2018 분양 옛 기록 97건 — 모두 sourceUrl 이 LH 메인페이지로만 가서 무의미)
-  const isStaleSidoCenter =
-    notice.geocoded === "sido-center" && notice.progressStatus === "모집완료";
-  return isSidoFallbackRental || isContinuous || isStaleSidoCenter;
+  return isSidoCenterFallback || isContinuous;
 }
 
 function adapt(notice: LhNotice, idx: number): Listing | null {
