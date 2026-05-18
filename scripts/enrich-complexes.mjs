@@ -22,16 +22,31 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 //   <h4 class="tit2 mgt0">시흥목감A-4(공임리츠) 1</h4>
 //   <h4 class="tit2">주택형 안내(공공임대)</h4>
 //   <table>...</table>
+// 페이지 안의 lat_N / lng_N 변수를 인덱스 → 좌표 맵으로 모음.
+function extractCoordMap(html) {
+  const map = new Map();
+  const re = /var\s+lat_(\d+)\s*=\s*"([\d.]+)"[\s\S]{0,200}?var\s+lng_\1\s*=\s*"([\d.]+)"/g;
+  let m;
+  while ((m = re.exec(html))) {
+    const i = Number(m[1]);
+    const lat = Number(m[2]);
+    const lng = Number(m[3]);
+    if (Number.isFinite(lat) && Number.isFinite(lng)) map.set(i, { lat, lng });
+  }
+  return map;
+}
+
 function extractComplexTables(html) {
-  // 1) 단지명 후보: h4.tit2 mgt0 (단지 시작 표지)
-  // 2) 그 뒤 첫 "주택형 안내" + 첫 table 매칭
+  const coords = extractCoordMap(html);
   const result = [];
   const splitRe = /<h4[^>]*class=["'][^"']*tit2[^"']*mgt0[^"']*["'][^>]*>([\s\S]*?)<\/h4>/g;
   const matches = [...html.matchAll(splitRe)];
   if (!matches.length) {
-    // 단지명 헤더 없는 페이지 — 전체에서 "주택형 안내" 표만 추출 (단일 단지)
     const tbls = extractTablesFrom(html);
-    if (tbls.length) result.push({ name: null, rows: tbls.flat() });
+    if (tbls.length) {
+      const c0 = coords.get(0);
+      result.push({ name: null, rows: tbls.flat(), lat: c0?.lat ?? null, lng: c0?.lng ?? null });
+    }
     return result;
   }
   for (let i = 0; i < matches.length; i++) {
@@ -40,7 +55,10 @@ function extractComplexTables(html) {
     const end = i + 1 < matches.length ? matches[i + 1].index : html.length;
     const segment = html.slice(start, end);
     const tbls = extractTablesFrom(segment);
-    if (tbls.length) result.push({ name, rows: tbls.flat() });
+    if (tbls.length) {
+      const c = coords.get(i);
+      result.push({ name, rows: tbls.flat(), lat: c?.lat ?? null, lng: c?.lng ?? null });
+    }
   }
   return result;
 }

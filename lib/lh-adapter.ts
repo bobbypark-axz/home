@@ -178,9 +178,35 @@ function adaptApi(r: ApiListing): Listing | null {
   };
 }
 
+// 다중 단지 매물 분리: 한 공고에 여러 단지가 묶인 경우 (시흥시 10년 공공임대 = 11 단지 등)
+// 각 단지를 별도 Listing 으로 분리. 좌표는 단지별, 가격/면적은 원본 공유.
+// (단지별 표 컬럼 매핑이 LH 페이지마다 달라 raw 값 신뢰 어려움 — 추후 보강)
+function splitByComplex(base: Listing, raw: ApiListing): Listing[] {
+  const complexes = Array.isArray(raw.complexes) ? (raw.complexes as Array<{
+    name: string | null;
+    rows: Array<{ houseType: string; area: number; supplyTotal: number | null; supplyThisRound: number | null; deposit: number | null; rent: number | null }>;
+    lat: number | null;
+    lng: number | null;
+  }>) : [];
+  const usable = complexes.filter((c) => c.lat && c.lng);
+  if (usable.length < 2) return [base];
+
+  return usable.map((c, idx) => ({
+    ...base,
+    id: `${base.id}-c${idx}`,
+    title: c.name ? `${base.title} (${c.name})` : base.title,
+    lat: c.lat!,
+    lng: c.lng!,
+    complexes: [{ name: c.name, rows: c.rows }], // 분리 후엔 그 단지 표만
+  }));
+}
+
 const ALL: Listing[] = (apiListings as unknown as ApiListing[])
-  .map((r) => adaptApi(r))
-  .filter((x): x is Listing => x !== null);
+  .flatMap((r) => {
+    const base = adaptApi(r);
+    if (!base) return [];
+    return splitByComplex(base, r);
+  });
 
 // 같은 공고가 정정공고/재게시 형태로 여러 번 올라오는 경우 dedupe.
 // title 에서 [정정공고]/[재게시] 같은 접두 라벨을 떼고 남는 본 title 로 그룹핑 → 그룹당 1건.
