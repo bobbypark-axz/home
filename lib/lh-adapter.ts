@@ -1,37 +1,51 @@
 import type { District, HousingTypeId, Listing, StatusId } from "./types";
-import apiListings from "./listings-api.json";
+import notices from "./lh-notices-all.json";
 
-// LH 공공데이터 API 3종 + VWorld 통합 sync 결과 (scripts/sync-lh-api.mjs)
-interface ApiListing {
+interface LhNotice {
   id: string;
   pblancId: string;
+  houseSn: number | null;
+  category: "임대" | "분양";
+  typeId: string;
+  housingType: string;
+  houseType: string;
   title: string;
   noticeTitle: string;
-  type: string;
-  agency: string;
-  district: string;
-  districtId: string | null;
-  status: string;
-  deadline: string;
-  announceDate: string;
+  provider: "LH";
+  sido: string;
+  sigungu: string;
   address: string;
-  lat: number | null;
-  lng: number | null;
-  geocoded: string;
-  area: string;
-  depositManwon: number;
-  monthlyRentManwon: number;
-  salePriceManwon: number | null;
+  pnu: string;
+  totalUnits: number | null;
   supplyUnits: number | null;
-  complexName: string | null;
-  pnu: string | null;
-  houseType: string | null;
-  heatMethod: string | null;
-  parkngCo: number | null;
-  coverPhotoUrl: string | null;
-  coverPhotoLocal: string | null;
+  depositWon: number | null;
+  monthlyRentWon: number | null;
+  depositManwon: number | null;
+  monthlyRentManwon: number | null;
+  announceDate: string;
+  beginDate: string;
+  endDate: string;
+  winnerDate: string;
+  noticeStatus: string;
+  progressStatus: string;
+  activeStatus: "upcoming" | "open" | "closing" | "closed";
+  daysToDeadline: number | null;
   sourceUrl: string;
-  thumbSeed: number;
+  detailUrl: string;
+  mobileUrl: string;
+  attachmentId: string;
+  lat?: number;
+  lng?: number;
+  geocoded?: string;
+  salePriceManwon?: number | null;
+  coverPhotoLocal?: string;
+  photos?: Array<{ kind: string | null; name: string | null; url: string }>;
+  details?: {
+    pageAddress?: string;
+    matchedTab?: string | null;
+    housingTypes?: Array<Record<string, string>>;
+    schedule?: Array<Record<string, string>>;
+  };
 }
 
 interface SidoEntry {
@@ -61,47 +75,212 @@ const SIDOS: SidoEntry[] = [
   { id: "jeju", name: "제주특별자치도", lat: 33.4996, lng: 126.5312 },
 ];
 
-function adaptApi(r: ApiListing): Listing | null {
-  // 좌표/시도 없는 항목 제외
-  if (!r.lat || !r.lng) return null;
-  if (!r.districtId) return null;
+const SIDO_BY_NAME = new Map<string, SidoEntry>(SIDOS.map((s) => [s.name, s]));
+
+const TYPE_MAP: Record<string, HousingTypeId> = {
+  happy: "happy",
+  nation: "nation",
+  perm: "perm",
+  buy: "buy",
+  jeonse: "jeonse",
+  fifty: "fifty",
+  sale: "sale",
+  integ: "integ",
+};
+
+function pickType(typeId: string, category: string): HousingTypeId {
+  return TYPE_MAP[typeId] ?? (category === "분양" ? "sale" : "integ");
+}
+
+const TODAY_MS = (() => {
+  const d = new Date();
+  d.setHours(0, 0, 0, 0);
+  return d.getTime();
+})();
+
+function parseYmd(s: string | undefined): number | null {
+  if (!s) return null;
+  const m = s.match(/^(\d{4})[.](\d{2})[.](\d{2})$/);
+  if (!m) return null;
+  return new Date(+m[1], +m[2] - 1, +m[3]).getTime();
+}
+
+function pickStatus(notice: LhNotice): StatusId {
+  // 1) progressStatus 가 "모집완료" 면 activeStatus 가 "open" 이라도 실제로는 마감.
+  if (notice.progressStatus === "모집완료") return "closed";
+  // 2) winnerDate 가 과거면 해당 회차 종료. 단 endDate 가 1년+ 미래인 정례모집/장기
+  //    프로그램은 다음 회차로 계속 운영되므로 그대로 active 유지.
+  const winnerMs = parseYmd(notice.winnerDate);
+  const endMs = parseYmd(notice.endDate);
+  const isLongRunning = endMs !== null && endMs - TODAY_MS > 365 * 86400000;
+  if (winnerMs !== null && winnerMs < TODAY_MS && !isLongRunning) {
+    return "closed";
+  }
+  return notice.activeStatus;
+}
+
+function asNumber(value: unknown, fallback = 0): number {
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+  if (typeof value === "string" && value.trim() !== "") {
+    const n = Number(value);
+    if (Number.isFinite(n)) return n;
+  }
+  return fallback;
+}
+
+function buildLayout(details: LhNotice["details"]): string {
+  const rows = details?.housingTypes ?? [];
+  if (rows.length === 0) return "";
+  const names = rows
+    .map((r) => r["주택형"] ?? r["주택유형"] ?? "")
+    .filter(Boolean)
+    .slice(0, 3);
+  return names.join(", ");
+}
+
+function buildArea(details: LhNotice["details"]): string {
+  const rows = details?.housingTypes ?? [];
+  if (rows.length === 0) return "";
+  const areas = rows
+    .map((r) => r["전용면적(㎡)"] ?? r["전용면적"] ?? "")
+    .filter(Boolean);
+  if (areas.length === 0) return "";
+  return `${areas[0]}㎡${areas.length > 1 ? ` 외 ${areas.length - 1}` : ""}`;
+}
+
+const PHOTO_PRIORITY = [
+  "단지조감도",
+  "단지전경",
+  "단지배치도",
+  "동호배치도",
+  "지구조감도",
+  "지역조감도",
+  "위치도",
+  "교통망도",
+  "투시도",
+  "평면도",
+];
+
+function photoRank(photo: { kind: string | null; name: string | null }): number {
+  const tag = `${photo.kind ?? ""}${photo.name ?? ""}`;
+  for (let i = 0; i < PHOTO_PRIORITY.length; i++) {
+    if (tag.includes(PHOTO_PRIORITY[i])) return i;
+  }
+  return PHOTO_PRIORITY.length;
+}
+
+function sortPhotos(
+  photos?: Array<{ kind: string | null; name: string | null; url: string }>,
+) {
+  if (!photos?.length) return photos;
+  return [...photos].sort((a, b) => photoRank(a) - photoRank(b));
+}
+
+const PHOTO_SAFE_EXT = /\.(jpe?g|png|webp)(?:$|\?)/i;
+
+function isAerialRender(p: { kind: string | null; name: string | null }): boolean {
+  const tag = `${p.kind ?? ""}${p.name ?? ""}`;
+  if (!tag.includes("단지조감도")) return false;
+  // 배치도/평면도/현황도 같이 도면 류는 거른다
+  if (/배치도|평면도|현황도|구조도|투시도|동호도|토지이용|위치도|찾아오시는|교통/.test(tag)) return false;
+  // 사진 호환 포맷만
+  if (p.name && !PHOTO_SAFE_EXT.test(p.name)) return false;
+  return true;
+}
+
+function coverRank(p: { kind: string | null; name: string | null }): number {
+  const tag = `${p.kind ?? ""}${p.name ?? ""}`;
+  // 확대이미지 = 고해상도 렌더 — 가장 깨끗
+  if (tag.includes("단지조감도-확대") || tag.includes("단지조감도확대")) return 0;
+  return 1;
+}
+
+function pickCoverPhoto(
+  photos?: Array<{ kind: string | null; name: string | null; url: string }>,
+): string | undefined {
+  if (!photos?.length) return undefined;
+  const candidates = photos.filter(isAerialRender);
+  if (candidates.length === 0) return undefined;
+  candidates.sort((a, b) => coverRank(a) - coverRank(b));
+  return candidates[0].url;
+}
+
+const PRICE_RE = /([\d,]+)/;
+
+function parseSalePriceManwon(details: LhNotice["details"]): number | null {
+  const rows = details?.housingTypes ?? [];
+  if (rows.length === 0) return null;
+  for (const row of rows) {
+    for (const [k, v] of Object.entries(row)) {
+      if (!k.includes("분양가") && !k.includes("매각가")) continue;
+      const m = String(v).match(PRICE_RE);
+      if (!m) continue;
+      const won = Number(m[1].replace(/,/g, ""));
+      if (Number.isFinite(won) && won > 0) return Math.round(won / 10000);
+    }
+  }
+  return null;
+}
+
+function isUnboundedProgram(notice: LhNotice): boolean {
+  // 1) 시도 중심에 폴백된 모든 항목 — 실제 단지 좌표가 없어 지도 표시 무의미
+  //    이전엔 임대(전세/매입) + 모집완료만 잡았는데, 분양 잔여세대 선착순처럼 활성 상태로
+  //    sido-center 에 폴백된 케이스도 있어서 모두 제외로 통일.
+  const isSidoCenterFallback = notice.geocoded === "sido-center";
+  // 2) 제목이 "수시/상시 모집" — 마감일 개념 없는 전국 프로그램
+  const title = `${notice.title ?? ""}${notice.noticeTitle ?? ""}`;
+  const isContinuous = /수시\s*모집|상시\s*모집/.test(title);
+  return isSidoCenterFallback || isContinuous;
+}
+
+function adapt(notice: LhNotice, idx: number): Listing | null {
+  if (!notice.lat || !notice.lng) return null;
+  if (isUnboundedProgram(notice)) return null;
+  const sido = SIDO_BY_NAME.get(notice.sido);
+  if (!sido) return null;
   return {
-    id: r.id,
-    pblancId: r.pblancId,
-    title: r.title,
-    type: r.type as HousingTypeId,
+    id: notice.id,
+    pblancId: notice.pblancId,
+    houseSn: notice.houseSn,
+    title: notice.title || notice.noticeTitle,
+    type: pickType(notice.typeId, notice.category),
     agency: "LH",
-    districtId: r.districtId,
-    district: r.district,
-    lat: r.lat,
-    lng: r.lng,
-    address: r.address || "",
-    pnu: r.pnu || undefined,
-    deposit: r.depositManwon || 0,
-    rent: r.monthlyRentManwon || 0,
-    area: r.area || "",
-    layout: "",
-    totalUnits: r.supplyUnits ?? null,
-    supplyUnits: r.supplyUnits ?? null,
-    heatMethod: r.heatMethod ?? "",
-    salePriceManwon: r.salePriceManwon,
-    status: r.status as StatusId,
-    deadline: r.deadline || "",
-    beginDate: r.announceDate || "",
+    districtId: sido.id,
+    district: sido.name,
+    lat: notice.lat,
+    lng: notice.lng,
+    // pageAddress 는 LH 운영자(본사) 주소라서 listing 주소가 비어있을 때 fallback 으로
+    // 쓰면 "강남구 선릉로121길 12 (논현동)" 같은 LH 본사 주소가 표시됨 — 사용 금지
+    address: notice.address || "",
+    pnu: notice.pnu,
+    deposit: notice.depositManwon ?? 0,
+    rent: notice.monthlyRentManwon ?? 0,
+    area: buildArea(notice.details),
+    layout: buildLayout(notice.details),
+    totalUnits: asNumber(notice.totalUnits, 0),
+    supplyUnits: asNumber(notice.supplyUnits, 0),
+    heatMethod: "",
+    status: pickStatus(notice),
+    deadline: notice.endDate,
+    beginDate: notice.beginDate,
     eligible: [],
     features: [],
     transit: "",
     competition: null,
-    thumbSeed: r.thumbSeed,
-    suplyTyNm: r.houseType || undefined,
-    pblancNm: r.noticeTitle,
-    sourceUrl: r.sourceUrl,
-    coverPhotoUrl: r.coverPhotoLocal || r.coverPhotoUrl || undefined,
+    thumbSeed: idx,
+    salePriceManwon: notice.salePriceManwon ?? parseSalePriceManwon(notice.details),
+    suplyTyNm: notice.housingType,
+    pblancNm: notice.noticeTitle,
+    sourceUrl: notice.sourceUrl,
+    pcUrl: notice.detailUrl,
+    mobileUrl: notice.mobileUrl,
+    photos: sortPhotos(notice.photos),
+    coverPhotoUrl: notice.coverPhotoLocal ?? pickCoverPhoto(notice.photos),
   };
 }
 
-const ALL: Listing[] = (apiListings as unknown as ApiListing[])
-  .map((r) => adaptApi(r))
+const ALL: Listing[] = (notices as unknown as LhNotice[])
+  .map((n, idx) => adapt(n, idx))
   .filter((x): x is Listing => x !== null);
 
 export const LH_LISTINGS: Listing[] = ALL;
