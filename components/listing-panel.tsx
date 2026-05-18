@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import type { Listing, SortKey } from "@/lib/types";
 import { ELIGIBILITY_LABELS, HOUSING_TYPES } from "@/lib/mock-data";
 import { dDayText } from "@/lib/dday";
@@ -102,12 +101,15 @@ function ListingCard({
         {statusLabel && <span className={`status-chip ${item.status}`}>{statusLabel}</span>}
         {photo && (
           <div className="card-thumb">
-            <Image
+            {/* next/image 가 mtime 변경된 파일을 인식 못해 옛 조감도가 캐시돼서 보이는 문제. detail 과 통일. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={photo}
               alt={item.title}
               width={72}
               height={72}
-              unoptimized={!photo.startsWith("/lh-covers/")}
+              loading="lazy"
+              referrerPolicy="no-referrer"
             />
           </div>
         )}
