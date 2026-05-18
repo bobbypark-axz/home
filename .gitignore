@@ -48,3 +48,4 @@ next-env.d.ts
 lib/*.progress.json
 lib/lh-complexes.json
 lib/subway-stations.json
+.cache/
