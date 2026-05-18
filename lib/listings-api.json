@@ -79,7 +79,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6189958,
+        "lng": 127.1775469
       }
     ]
   },
@@ -138,7 +140,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.4826051,
+        "lng": 126.5285838
       }
     ]
   },
@@ -222,7 +226,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6189958,
+        "lng": 127.1775469
       }
     ]
   },
@@ -280,7 +286,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.1024083,
+        "lng": 126.8902969
       }
     ]
   },
@@ -365,7 +373,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6195036,
+        "lng": 127.1719866
       }
     ]
   },
@@ -415,7 +425,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.120299,
+        "lng": 128.790812
       }
     ]
   },
@@ -462,7 +474,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": null,
+        "lng": null
       }
     ]
   },
@@ -546,7 +560,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6189958,
+        "lng": 127.1775469
       }
     ]
   },
@@ -631,7 +647,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6293613,
+        "lng": 126.847074
       }
     ]
   },
@@ -678,7 +696,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": null,
+        "lng": null
       }
     ]
   },
@@ -777,7 +797,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.1156093,
+        "lng": 129.0101257
       }
     ]
   },
@@ -829,7 +851,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.7629987,
+        "lng": 127.0245482
       }
     ]
   },
@@ -888,7 +912,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": null,
+        "lng": null
       }
     ]
   },
@@ -1031,7 +1057,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.5244954,
+        "lng": 127.3250323
       }
     ]
   },
@@ -1115,7 +1143,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.5357383,
+        "lng": 126.6680565
       }
     ]
   },
@@ -1181,7 +1211,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3207755,
+        "lng": 127.9766018
       }
     ]
   },
@@ -1289,7 +1321,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.3283333,
+        "lng": 127.4462402
       }
     ]
   },
@@ -1350,7 +1384,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3102728,
+        "lng": 127.921063
       }
     ]
   },
@@ -1408,7 +1444,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.1024083,
+        "lng": 126.8902969
       }
     ]
   },
@@ -1468,7 +1506,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.4826051,
+        "lng": 126.5285838
       }
     ]
   },
@@ -1520,7 +1560,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 33.2489376,
+        "lng": 126.5229826
       }
     ]
   },
@@ -1743,7 +1785,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": null,
+        "lng": null
       }
     ]
   },
@@ -1879,7 +1923,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.0436919,
+        "lng": 129.3691264
       }
     ]
   },
@@ -2109,7 +2155,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3113354,
+        "lng": 129.06366
       }
     ]
   },
@@ -2179,7 +2227,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.5913308,
+        "lng": 127.5031054
       }
     ]
   },
@@ -2266,7 +2316,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.4758852,
+        "lng": 126.8899646
       }
     ]
   },
@@ -2377,7 +2429,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.4956902,
+        "lng": 126.8476987
       }
     ]
   },
@@ -2447,7 +2501,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.5085561,
+        "lng": 126.8403739
       }
     ]
   },
@@ -2509,7 +2565,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.3920777,
+        "lng": 127.3095509
       }
     ]
   },
@@ -2578,7 +2636,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6352575,
+        "lng": 128.5577827
       }
     ]
   },
@@ -2696,7 +2756,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.001997,
+        "lng": 126.7575813
       }
     ]
   },
@@ -2774,7 +2836,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9467536,
+        "lng": 126.931235
       }
     ]
   },
@@ -2963,7 +3027,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.5746464,
+        "lng": 128.6882293
       }
     ]
   },
@@ -3096,7 +3162,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.8541969,
+        "lng": 127.2303323
       }
     ]
   },
@@ -3206,7 +3274,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.5685187,
+        "lng": 129.2714194
       }
     ]
   },
@@ -3299,7 +3369,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 34.9880637,
+        "lng": 127.4968846
       }
     ]
   },
@@ -3368,7 +3440,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3912141,
+        "lng": 129.0520095
       }
     ]
   },
@@ -3462,7 +3536,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.2964062,
+        "lng": 126.7758587
       }
     ]
   },
@@ -3524,7 +3600,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3120996,
+        "lng": 126.9870489
       }
     ]
   },
@@ -3762,7 +3840,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3267344,
+        "lng": 129.1679493
       }
     ]
   },
@@ -3968,7 +4048,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.1465704,
+        "lng": 126.7797561
       }
     ]
   },
@@ -4071,7 +4153,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.5706086,
+        "lng": 129.2708541
       }
     ]
   },
@@ -4142,7 +4226,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.128899,
+        "lng": 126.789675
       }
     ]
   },
@@ -4211,7 +4297,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 34.8128968,
+        "lng": 126.4501332
       }
     ]
   },
@@ -4273,7 +4361,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.0680234,
+        "lng": 126.5294302
       }
     ]
   },
@@ -4350,7 +4440,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.169427,
+        "lng": 128.8204361
       }
     ]
   },
@@ -4411,7 +4503,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.5898242,
+        "lng": 126.6657956
       }
     ]
   },
@@ -4473,7 +4567,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.0106766,
+        "lng": 126.7931465
       }
     ]
   },
@@ -4542,7 +4638,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.7649574,
+        "lng": 127.2879386
       }
     ]
   },
@@ -4635,7 +4733,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 34.9880637,
+        "lng": 127.4968846
       }
     ]
   },
@@ -4705,7 +4805,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.3264114,
+        "lng": 127.443587
       }
     ]
   },
@@ -4783,7 +4885,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.2627866,
+        "lng": 127.2537663
       }
     ]
   },
@@ -4876,7 +4980,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.1509666,
+        "lng": 127.022074
       }
     ]
   },
@@ -4937,7 +5043,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.0978931,
+        "lng": 127.4927038
       }
     ]
   },
@@ -5023,7 +5131,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.1114006,
+        "lng": 127.484337
       }
     ]
   },
@@ -5101,7 +5211,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.5290152,
+        "lng": 127.7322393
       }
     ]
   },
@@ -5171,7 +5283,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.1668001,
+        "lng": 128.0565873
       }
     ]
   },
@@ -5240,7 +5354,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.7850702,
+        "lng": 128.9134275
       }
     ]
   },
@@ -5334,7 +5450,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.0634871,
+        "lng": 128.0658445
       }
     ]
   },
@@ -5452,7 +5570,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.9122854,
+        "lng": 127.5104714
       }
     ]
   },
@@ -5521,7 +5641,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.0638917,
+        "lng": 128.3323399
       }
     ]
   },
@@ -5614,7 +5736,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 38.1428735,
+        "lng": 127.304859
       }
     ]
   },
@@ -5675,7 +5799,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9721179,
+        "lng": 128.9306875
       }
     ]
   },
@@ -5793,7 +5919,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.6321978,
+        "lng": 129.3569077
       }
     ]
   },
@@ -5871,7 +5999,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3385915,
+        "lng": 127.9220688
       }
     ]
   },
@@ -5941,7 +6071,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.9267155,
+        "lng": 127.6909256
       }
     ]
   },
@@ -6003,7 +6135,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.8052722,
+        "lng": 127.794458
       }
     ]
   },
@@ -6073,7 +6207,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.6160221,
+        "lng": 127.4387001
       }
     ]
   },
@@ -6152,7 +6288,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9688408,
+        "lng": 126.7097936
       }
     ]
   },
@@ -6239,7 +6377,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.5171265,
+        "lng": 126.7004808
       }
     ]
   },
@@ -6336,7 +6476,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.2334023,
+        "lng": 127.1963161
       }
     ]
   },
@@ -6412,7 +6554,9 @@
             "deposit": 528920,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3741694,
+        "lng": 126.8562602
       },
       {
         "name": "시흥목감A-4(공임리츠) 1",
@@ -6449,7 +6593,9 @@
             "deposit": 538680,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3721554,
+        "lng": 126.8555771
       },
       {
         "name": "시흥목감B-3(공임리츠) B-3",
@@ -6462,7 +6608,9 @@
             "deposit": 747550,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3766491,
+        "lng": 126.8545673
       },
       {
         "name": "시흥은계S-2(공임리츠) S-2",
@@ -6483,7 +6631,9 @@
             "deposit": 644170,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.4388176,
+        "lng": 126.8065202
       },
       {
         "name": "시흥목감A-2(공임리츠) A-2",
@@ -6512,7 +6662,9 @@
             "deposit": 507330,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3745982,
+        "lng": 126.8434128
       },
       {
         "name": "시흥배곧B1(공임리츠) B1",
@@ -6541,7 +6693,9 @@
             "deposit": 680040,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3843099,
+        "lng": 126.73496
       },
       {
         "name": "시흥배곧B5(공임리츠) B5",
@@ -6570,7 +6724,9 @@
             "deposit": 723220,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3766699,
+        "lng": 126.7344203
       },
       {
         "name": "시흥장현B1(공임리츠) B-1",
@@ -6599,7 +6755,9 @@
             "deposit": 712430,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3828981,
+        "lng": 126.7999548
       },
       {
         "name": "시흥은계(09,보금4) S3",
@@ -6612,7 +6770,9 @@
             "deposit": 474950,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.43099,
+        "lng": 126.8014806
       },
       {
         "name": "시흥장현 A-2(공임리츠) A-2",
@@ -6625,7 +6785,9 @@
             "deposit": 505700,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3821506,
+        "lng": 126.7907773
       },
       {
         "name": "시흥장현 A-10(공임리츠) A-10",
@@ -6646,7 +6808,9 @@
             "deposit": 505700,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3821506,
+        "lng": 126.7907773
       }
     ]
   },
@@ -6724,7 +6888,9 @@
             "deposit": 292150,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.9040145,
+        "lng": 127.5280454
       },
       {
         "name": "충북혁신 B3(공임리츠) B3-1",
@@ -6761,7 +6927,9 @@
             "deposit": 429270,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.9011751,
+        "lng": 127.5261364
       }
     ]
   },
@@ -6840,7 +7008,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9688408,
+        "lng": 126.7097936
       }
     ]
   },
@@ -7064,7 +7234,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3413804,
+        "lng": 129.1617319
       }
     ]
   },
@@ -7254,7 +7426,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.0022253,
+        "lng": 127.1014273
       }
     ]
   },
@@ -7325,7 +7499,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 34.9934679,
+        "lng": 126.721125
       }
     ]
   },
@@ -7409,7 +7585,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.7319488,
+        "lng": 126.6924639
       }
     ]
   },
@@ -7475,7 +7653,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9911856,
+        "lng": 129.2116355
       }
     ]
   },
@@ -7544,7 +7724,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.81357,
+        "lng": 126.8959651
       }
     ]
   },
@@ -7689,7 +7871,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.341308,
+        "lng": 126.934735
       }
     ]
   },
@@ -7840,7 +8024,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.5915907,
+        "lng": 127.1418778
       }
     ]
   },
@@ -7908,7 +8094,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.5691833,
+        "lng": 126.9133164
       }
     ]
   },
@@ -8026,7 +8214,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.4080403,
+        "lng": 126.7127388
       }
     ]
   },
@@ -8128,7 +8318,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.4089434,
+        "lng": 126.7344598
       }
     ]
   },
@@ -8502,7 +8694,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.5857363,
+        "lng": 126.8695505
       }
     ]
   },
@@ -8565,7 +8759,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.1621526,
+        "lng": 128.109842
       }
     ]
   },
@@ -8629,7 +8825,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.9887013,
+        "lng": 127.5931625
       }
     ]
   },
@@ -9003,7 +9201,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.5857363,
+        "lng": 126.8695505
       }
     ]
   },
@@ -9193,7 +9393,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.0022253,
+        "lng": 127.1014273
       }
     ]
   },
@@ -9375,7 +9577,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.754505,
+        "lng": 127.0609553
       }
     ]
   },
@@ -9460,7 +9664,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.212414,
+        "lng": 127.0500452
       }
     ]
   },
@@ -9658,7 +9864,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3641329,
+        "lng": 126.8125344
       }
     ]
   },
@@ -9728,7 +9936,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.9822869,
+        "lng": 126.9225986
       }
     ]
   },
@@ -9958,7 +10168,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.1409362,
+        "lng": 127.0500908
       }
     ]
   },
@@ -10060,7 +10272,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.4089434,
+        "lng": 126.7344598
       }
     ]
   },
@@ -10162,7 +10376,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.341308,
+        "lng": 126.934735
       }
     ]
   },
@@ -10277,7 +10493,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.2358394,
+        "lng": 127.2148748
       }
     ]
   },
@@ -10327,6 +10545,143 @@
       "소득100",
       "자산",
       "자동차"
+    ],
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "16.39",
+            "area": 25,
+            "supplyTotal": null,
+            "supplyThisRound": null,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "26.41",
+            "area": 15,
+            "supplyTotal": null,
+            "supplyThisRound": null,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "26.41",
+            "area": 15,
+            "supplyTotal": null,
+            "supplyThisRound": null,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "36.08",
+            "area": 15,
+            "supplyTotal": null,
+            "supplyThisRound": null,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "36.08",
+            "area": 15,
+            "supplyTotal": null,
+            "supplyThisRound": null,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "36.08",
+            "area": 15,
+            "supplyTotal": null,
+            "supplyThisRound": null,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "16.67",
+            "area": 20,
+            "supplyTotal": null,
+            "supplyThisRound": null,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "26.65",
+            "area": 30,
+            "supplyTotal": null,
+            "supplyThisRound": null,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "26.82",
+            "area": 20,
+            "supplyTotal": null,
+            "supplyThisRound": null,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "36.4",
+            "area": 35,
+            "supplyTotal": null,
+            "supplyThisRound": null,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "36.4",
+            "area": 15,
+            "supplyTotal": null,
+            "supplyThisRound": null,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "21.92",
+            "area": 25,
+            "supplyTotal": null,
+            "supplyThisRound": null,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "21.92",
+            "area": 40,
+            "supplyTotal": null,
+            "supplyThisRound": null,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "26.97",
+            "area": 15,
+            "supplyTotal": null,
+            "supplyThisRound": null,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "44.8",
+            "area": 10,
+            "supplyTotal": null,
+            "supplyThisRound": null,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "44.77",
+            "area": 10,
+            "supplyTotal": null,
+            "supplyThisRound": null,
+            "deposit": null,
+            "rent": null
+          }
+        ],
+        "lat": 37.2335722,
+        "lng": 127.2014622
+      }
     ]
   },
   {
@@ -10451,7 +10806,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.8627964,
+        "lng": 126.7795025
       }
     ]
   },
@@ -10513,7 +10870,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.5161333,
+        "lng": 129.1054
       }
     ]
   },
@@ -10569,7 +10928,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9575455,
+        "lng": 126.9845004
       }
     ]
   },
@@ -10647,7 +11008,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.8300857,
+        "lng": 127.0999973
       }
     ]
   },
@@ -10726,7 +11089,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6268373,
+        "lng": 126.8191481
       }
     ]
   },
@@ -10805,7 +11170,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6268373,
+        "lng": 126.8191481
       }
     ]
   },
@@ -10900,7 +11267,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.7285755,
+        "lng": 127.1937743
       }
     ]
   },
@@ -11051,7 +11420,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.5915907,
+        "lng": 127.1418778
       }
     ]
   },
@@ -11258,7 +11629,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.3337837,
+        "lng": 127.3353456
       }
     ]
   },
@@ -11318,7 +11691,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.8093491,
+        "lng": 128.6099145
       }
     ]
   },
@@ -11501,7 +11876,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.2335722,
+        "lng": 127.2014622
       }
     ]
   },
@@ -11572,7 +11949,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.001997,
+        "lng": 126.7575813
       }
     ]
   },
@@ -11641,7 +12020,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3384971,
+        "lng": 129.1681915
       }
     ]
   },
@@ -11936,7 +12317,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6593195,
+        "lng": 126.6288803
       }
     ]
   },
@@ -12006,7 +12389,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.8647128,
+        "lng": 127.738787
       }
     ]
   },
@@ -12285,7 +12670,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.4723001,
+        "lng": 127.1515562
       }
     ]
   },
@@ -12371,7 +12758,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.6437562,
+        "lng": 126.6780371
       }
     ]
   },
@@ -12496,7 +12885,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.225116,
+        "lng": 126.9520102
       }
     ]
   },
@@ -12558,7 +12949,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.4436659,
+        "lng": 129.1628798
       }
     ]
   },
@@ -12628,7 +13021,9 @@
             "deposit": 669250,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.1724132,
+        "lng": 127.0676252
       }
     ]
   },
@@ -12688,7 +13083,9 @@
             "deposit": 723220,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.714739,
+        "lng": 126.714904
       }
     ]
   },
@@ -12837,7 +13234,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.6445125,
+        "lng": 126.6766843
       }
     ]
   },
@@ -12893,7 +13292,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.8057292,
+        "lng": 127.1194111
       }
     ]
   },
@@ -12949,7 +13350,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.8057292,
+        "lng": 127.1194111
       }
     ]
   },
@@ -13005,7 +13408,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.8057292,
+        "lng": 127.1194111
       }
     ]
   },
@@ -13076,7 +13481,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 34.9404159,
+        "lng": 128.0879487
       }
     ]
   },
@@ -13146,7 +13553,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.5343012,
+        "lng": 129.3282188
       }
     ]
   },
@@ -13264,7 +13673,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.2090508,
+        "lng": 129.0156078
       }
     ]
   },
@@ -13351,7 +13762,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.2578033,
+        "lng": 126.6636766
       }
     ]
   },
@@ -13454,7 +13867,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.7025293,
+        "lng": 127.8951513
       }
     ]
   },
@@ -13548,7 +13963,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.8604572,
+        "lng": 127.0964038
       }
     ]
   },
@@ -13738,7 +14155,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9234022,
+        "lng": 127.1168808
       }
     ]
   },
@@ -13962,7 +14381,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3413804,
+        "lng": 129.1617319
       }
     ]
   },
@@ -14041,7 +14462,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.937581,
+        "lng": 127.6897396
       }
     ]
   },
@@ -14120,7 +14543,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.937581,
+        "lng": 127.6897396
       }
     ]
   },
@@ -14189,7 +14614,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.5311249,
+        "lng": 126.7978358
       }
     ]
   },
@@ -14284,7 +14711,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.1445969,
+        "lng": 128.097527
       }
     ]
   },
@@ -14371,7 +14800,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.303807,
+        "lng": 127.9734436
       }
     ]
   },
@@ -14490,7 +14921,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.1934748,
+        "lng": 128.0947312
       }
     ]
   },
@@ -14601,7 +15034,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.1654773,
+        "lng": 128.1631565
       }
     ]
   },
@@ -14825,7 +15260,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3413804,
+        "lng": 129.1617319
       }
     ]
   },
@@ -14952,7 +15389,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.1205797,
+        "lng": 128.3497307
       }
     ]
   },
@@ -15175,7 +15614,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.7898713,
+        "lng": 127.076774
       }
     ]
   },
@@ -15381,7 +15822,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 33.4886708,
+        "lng": 126.5950981
       }
     ]
   },
@@ -15548,7 +15991,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3069345,
+        "lng": 128.9922384
       }
     ]
   },
@@ -15643,7 +16088,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9963422,
+        "lng": 126.7577634
       }
     ]
   },
@@ -15754,7 +16201,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9267939,
+        "lng": 126.9542334
       }
     ]
   },
@@ -15897,7 +16346,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.1639233,
+        "lng": 128.8250334
       }
     ]
   },
@@ -16105,7 +16556,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.2551557,
+        "lng": 128.6474938
       }
     ]
   },
@@ -16185,7 +16638,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3211412,
+        "lng": 128.271905
       }
     ]
   },
@@ -16271,7 +16726,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.8019089,
+        "lng": 128.5295858
       }
     ]
   },
@@ -16357,7 +16814,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.8019089,
+        "lng": 128.5295858
       }
     ]
   },
@@ -16460,7 +16919,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 34.7415365,
+        "lng": 127.7418262
       }
     ]
   },
@@ -16684,7 +17145,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3413804,
+        "lng": 129.1617319
       }
     ]
   },
@@ -16778,7 +17241,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.0385212,
+        "lng": 126.9814422
       }
     ]
   },
@@ -16880,7 +17345,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.8525738,
+        "lng": 126.8852311
       }
     ]
   },
@@ -16983,7 +17450,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 34.7415365,
+        "lng": 127.7418262
       }
     ]
   },
@@ -17060,7 +17529,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.4802333,
+        "lng": 128.7504014
       }
     ]
   },
@@ -17163,7 +17634,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.7025293,
+        "lng": 127.8951513
       }
     ]
   },
@@ -17225,7 +17698,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.4436659,
+        "lng": 129.1628798
       }
     ]
   },
@@ -17313,7 +17788,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3593173,
+        "lng": 127.9567411
       }
     ]
   },
@@ -17462,7 +17939,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.6445125,
+        "lng": 126.6766843
       }
     ]
   },
@@ -17573,7 +18052,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.6000031,
+        "lng": 129.3676106
       }
     ]
   },
@@ -17636,7 +18117,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.7786641,
+        "lng": 127.5818978
       }
     ]
   },
@@ -17859,7 +18342,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.7898713,
+        "lng": 127.076774
       }
     ]
   },
@@ -17961,7 +18446,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3466488,
+        "lng": 126.9232968
       }
     ]
   },
@@ -18085,7 +18572,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.4128692,
+        "lng": 127.095712
       }
     ]
   },
@@ -18177,7 +18666,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.4717129,
+        "lng": 127.1349195
       }
     ]
   },
@@ -18296,7 +18787,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.8703015,
+        "lng": 128.5471651
       }
     ]
   },
@@ -18367,7 +18860,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 34.9455435,
+        "lng": 127.7105601
       }
     ]
   },
@@ -18439,7 +18934,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.5594739,
+        "lng": 126.8484236
       }
     ]
   },
@@ -18518,7 +19015,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.9397848,
+        "lng": 127.8995052
       }
     ]
   },
@@ -18597,7 +19096,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.9397848,
+        "lng": 127.8995052
       }
     ]
   },
@@ -18708,7 +19209,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3757071,
+        "lng": 126.8527817
       }
     ]
   },
@@ -18825,7 +19328,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.7632804,
+        "lng": 127.0417924
       }
     ]
   },
@@ -18888,7 +19393,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9582179,
+        "lng": 126.9858875
       }
     ]
   },
@@ -18962,7 +19469,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6700615,
+        "lng": 127.1114214
       }
     ]
   },
@@ -19083,7 +19592,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.8983123,
+        "lng": 128.515519
       }
     ]
   },
@@ -19154,7 +19665,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6747956,
+        "lng": 126.7563906
       }
     ]
   },
@@ -19223,7 +19736,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.81357,
+        "lng": 126.8959651
       }
     ]
   },
@@ -19294,7 +19809,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6747956,
+        "lng": 126.7563906
       }
     ]
   },
@@ -19485,7 +20002,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6515227,
+        "lng": 126.8671004
       }
     ]
   },
@@ -19580,7 +20099,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3419644,
+        "lng": 126.9756688
       }
     ]
   },
@@ -19859,7 +20380,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.7330182,
+        "lng": 126.7328527
       }
     ]
   },
@@ -19978,7 +20501,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.7801674,
+        "lng": 127.0858006
       }
     ]
   },
@@ -20089,7 +20614,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.1355133,
+        "lng": 127.0472301
       }
     ]
   },
@@ -20166,7 +20693,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.6500391,
+        "lng": 127.4865343
       }
     ]
   },
@@ -20316,7 +20845,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6833307,
+        "lng": 126.6041186
       }
     ]
   },
@@ -20401,7 +20932,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.3523799,
+        "lng": 127.3341739
       }
     ]
   },
@@ -20630,7 +21163,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 34.9928171,
+        "lng": 126.4738526
       }
     ]
   },
@@ -20700,7 +21235,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3836404,
+        "lng": 129.1415375
       }
     ]
   },
@@ -20800,7 +21337,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.8594889,
+        "lng": 127.4524491
       }
     ]
   },
@@ -20876,7 +21415,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.9313516,
+        "lng": 127.4326392
       }
     ]
   },
@@ -20953,7 +21494,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.6500391,
+        "lng": 127.4865343
       }
     ]
   },
@@ -21038,7 +21581,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.5863655,
+        "lng": 126.6665439
       }
     ]
   },
@@ -21108,7 +21653,9 @@
             "deposit": 420980,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.6097296,
+        "lng": 127.5231186
       },
       {
         "name": "청주모충(06,주환1) 1",
@@ -21129,7 +21676,9 @@
             "deposit": 373770,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.6280506,
+        "lng": 127.4797456
       }
     ]
   },
@@ -21271,7 +21820,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.2542252,
+        "lng": 128.6357176
       }
     ]
   },
@@ -21341,7 +21892,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.6282225,
+        "lng": 127.331589
       }
     ]
   },
@@ -21403,7 +21956,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.5290137,
+        "lng": 128.5026917
       }
     ]
   },
@@ -21545,7 +22100,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.2542252,
+        "lng": 128.6357176
       }
     ]
   },
@@ -21621,7 +22178,9 @@
             "deposit": 386430,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3008537,
+        "lng": 127.9216831
       }
     ]
   },
@@ -21684,7 +22243,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.5829345,
+        "lng": 126.8538113
       }
     ]
   },
@@ -21754,7 +22315,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3836404,
+        "lng": 129.1415375
       }
     ]
   },
@@ -22008,7 +22571,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3084763,
+        "lng": 128.9905685
       }
     ]
   },
@@ -22133,7 +22698,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9898682,
+        "lng": 128.4170436
       }
     ]
   },
@@ -22202,7 +22769,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9871678,
+        "lng": 128.4125805
       }
     ]
   },
@@ -22288,7 +22857,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 34.9501397,
+        "lng": 128.4079898
       }
     ]
   },
@@ -22350,7 +22921,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.1720167,
+        "lng": 128.0535665
       }
     ]
   },
@@ -22428,7 +23001,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.0092403,
+        "lng": 128.0631414
       }
     ]
   },
@@ -22479,7 +23054,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.4576918,
+        "lng": 126.6949592
       }
     ]
   },
@@ -22621,7 +23198,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.856349,
+        "lng": 127.7598422
       }
     ]
   },
@@ -22691,7 +23270,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.2778145,
+        "lng": 127.4677733
       }
     ]
   },
@@ -22769,7 +23350,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.1934313,
+        "lng": 127.1005438
       }
     ]
   },
@@ -22855,7 +23438,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.3578047,
+        "lng": 126.6042442
       }
     ]
   },
@@ -22973,7 +23558,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.0070333,
+        "lng": 126.70635
       }
     ]
   },
@@ -23227,7 +23814,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3084763,
+        "lng": 128.9905685
       }
     ]
   },
@@ -23401,7 +23990,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.7878417,
+        "lng": 127.574505
       }
     ]
   },
@@ -23471,7 +24062,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.6282225,
+        "lng": 127.331589
       }
     ]
   },
@@ -23741,7 +24334,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.5294404,
+        "lng": 127.350468
       }
     ]
   },
@@ -23907,7 +24502,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9629763,
+        "lng": 126.7248375
       }
     ]
   },
@@ -24025,7 +24622,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9467536,
+        "lng": 126.931235
       }
     ]
   },
@@ -24151,7 +24750,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.8679704,
+        "lng": 128.8386808
       }
     ]
   },
@@ -24405,7 +25006,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3084763,
+        "lng": 128.9905685
       }
     ]
   },
@@ -24475,7 +25078,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3836404,
+        "lng": 129.1415375
       }
     ]
   },
@@ -24537,7 +25142,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.3920777,
+        "lng": 127.3095509
       }
     ]
   },
@@ -24599,7 +25206,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.2963255,
+        "lng": 127.3425947
       }
     ]
   },
@@ -24741,7 +25350,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.4120757,
+        "lng": 126.5632522
       }
     ]
   },
@@ -24811,7 +25422,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.3146065,
+        "lng": 127.4464513
       }
     ]
   },
@@ -24868,7 +25481,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.7530526,
+        "lng": 129.2000233
       }
     ]
   },
@@ -24953,7 +25568,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3172904,
+        "lng": 127.8267474
       }
     ]
   },
@@ -25046,7 +25663,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.3482762,
+        "lng": 126.6131414
       }
     ]
   },
@@ -25220,7 +25839,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.0906065,
+        "lng": 128.4473198
       }
     ]
   },
@@ -25474,7 +26095,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3213739,
+        "lng": 129.1923434
       }
     ]
   },
@@ -25735,7 +26358,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 34.9928171,
+        "lng": 126.4738526
       }
     ]
   },
@@ -25813,7 +26438,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3388073,
+        "lng": 127.9535325
       }
     ]
   },
@@ -25995,7 +26622,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.6179698,
+        "lng": 127.4510881
       }
     ]
   },
@@ -26121,7 +26750,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.092047,
+        "lng": 129.3827728
       }
     ]
   },
@@ -26183,7 +26814,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.5290137,
+        "lng": 128.5026917
       }
     ]
   },
@@ -26397,7 +27030,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.130999,
+        "lng": 126.795175
       }
     ]
   },
@@ -26539,7 +27174,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.2542252,
+        "lng": 128.6357176
       }
     ]
   },
@@ -26657,7 +27294,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 34.9742325,
+        "lng": 127.4740312
       }
     ]
   },
@@ -26726,7 +27365,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3075655,
+        "lng": 128.7430021
       }
     ]
   },
@@ -26811,7 +27452,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.3523799,
+        "lng": 127.3341739
       }
     ]
   },
@@ -26945,7 +27588,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.7941365,
+        "lng": 127.0890081
       }
     ]
   },
@@ -27087,7 +27732,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.2542252,
+        "lng": 128.6357176
       }
     ]
   },
@@ -27173,7 +27820,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.2984917,
+        "lng": 126.7759375
       }
     ]
   },
@@ -27315,7 +27964,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.3821733,
+        "lng": 127.3033044
       }
     ]
   },
@@ -27409,7 +28060,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3111242,
+        "lng": 126.98675
       }
     ]
   },
@@ -27503,7 +28156,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.0106766,
+        "lng": 126.7931465
       }
     ]
   },
@@ -27574,7 +28229,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.1285707,
+        "lng": 126.7877485
       }
     ]
   },
@@ -27636,7 +28293,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.2698471,
+        "lng": 126.5153986
       }
     ]
   },
@@ -27737,7 +28396,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9234022,
+        "lng": 127.1168808
       }
     ]
   },
@@ -27814,7 +28475,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.4802333,
+        "lng": 128.7504014
       }
     ]
   },
@@ -27884,7 +28547,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.4880879,
+        "lng": 127.9804536
       }
     ]
   },
@@ -27954,7 +28619,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.2778145,
+        "lng": 127.4677733
       }
     ]
   },
@@ -28032,7 +28699,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.1934313,
+        "lng": 127.1005438
       }
     ]
   },
@@ -28118,7 +28787,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.3578047,
+        "lng": 126.6042442
       }
     ]
   },
@@ -28236,7 +28907,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.0070333,
+        "lng": 126.70635
       }
     ]
   },
@@ -28314,7 +28987,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.2933062,
+        "lng": 127.3437618
       }
     ]
   },
@@ -28381,7 +29056,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6909769,
+        "lng": 127.8692905
       }
     ]
   },
@@ -28450,7 +29127,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 34.8377281,
+        "lng": 128.695728
       }
     ]
   },
@@ -28536,7 +29215,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 34.9501397,
+        "lng": 128.4079898
       }
     ]
   },
@@ -28598,7 +29279,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.1720167,
+        "lng": 128.0535665
       }
     ]
   },
@@ -28676,7 +29359,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.0092403,
+        "lng": 128.0631414
       }
     ]
   },
@@ -28818,7 +29503,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.1215356,
+        "lng": 128.206623
       }
     ]
   },
@@ -28888,7 +29575,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.4880879,
+        "lng": 127.9804536
       }
     ]
   },
@@ -28966,7 +29655,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3388073,
+        "lng": 127.9535325
       }
     ]
   },
@@ -29043,7 +29734,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3912141,
+        "lng": 129.0520095
       }
     ]
   },
@@ -29104,7 +29797,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.4692968,
+        "lng": 130.8350411
       }
     ]
   },
@@ -29165,7 +29860,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.1431078,
+        "lng": 128.3192707
       }
     ]
   },
@@ -29379,7 +30076,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.1097449,
+        "lng": 127.6465044
       }
     ]
   },
@@ -29440,7 +30139,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.8013362,
+        "lng": 128.5104231
       }
     ]
   },
@@ -29614,7 +30315,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.7878417,
+        "lng": 127.574505
       }
     ]
   },
@@ -29756,7 +30459,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.856349,
+        "lng": 127.7598422
       }
     ]
   },
@@ -29818,7 +30523,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.8052722,
+        "lng": 127.794458
       }
     ]
   },
@@ -29944,7 +30651,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.8679704,
+        "lng": 128.8386808
       }
     ]
   },
@@ -30013,7 +30722,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3384735,
+        "lng": 127.9171293
       }
     ]
   },
@@ -30082,7 +30793,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9871678,
+        "lng": 128.4125805
       }
     ]
   },
@@ -30192,7 +30905,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.6428488,
+        "lng": 129.3511318
       }
     ]
   },
@@ -30253,7 +30968,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9116689,
+        "lng": 128.5453067
       }
     ]
   },
@@ -30330,7 +31047,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9898682,
+        "lng": 128.4170436
       }
     ]
   },
@@ -30440,7 +31159,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.9551856,
+        "lng": 127.9273291
       }
     ]
   },
@@ -30510,7 +31231,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.6282225,
+        "lng": 127.331589
       }
     ]
   },
@@ -30573,7 +31296,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.3380051,
+        "lng": 126.6027864
       }
     ]
   },
@@ -30644,7 +31369,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.1796994,
+        "lng": 127.103884
       }
     ]
   },
@@ -30707,7 +31434,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.0102868,
+        "lng": 126.7031703
       }
     ]
   },
@@ -30770,7 +31499,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.2698209,
+        "lng": 126.882682
       }
     ]
   },
@@ -30841,7 +31572,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.2627866,
+        "lng": 127.2537663
       }
     ]
   },
@@ -31102,7 +31835,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3068897,
+        "lng": 126.9665187
       }
     ]
   },
@@ -31159,7 +31894,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.531307,
+        "lng": 126.799312
       }
     ]
   },
@@ -31285,7 +32022,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.3821733,
+        "lng": 127.3033044
       }
     ]
   },
@@ -31361,7 +32100,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.1159442,
+        "lng": 129.0410264
       }
     ]
   },
@@ -31543,7 +32284,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.059817,
+        "lng": 127.049692
       }
     ]
   },
@@ -31709,7 +32452,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6332363,
+        "lng": 127.1200297
       }
     ]
   },
@@ -31787,7 +32532,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 36.4831963,
+        "lng": 127.725131
       }
     ]
   },
@@ -31985,7 +32732,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 33.2541332,
+        "lng": 126.5024246
       }
     ]
   },
@@ -35774,7 +36523,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.5933973,
+        "lng": 129.2761037
       }
     ]
   },
@@ -35849,7 +36600,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.5567597,
+        "lng": 126.7651223
       }
     ]
   },
@@ -35924,7 +36677,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.5567597,
+        "lng": 126.7651223
       }
     ]
   },
@@ -35999,7 +36754,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.5567597,
+        "lng": 126.7651223
       }
     ]
   },
@@ -36108,7 +36865,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.347158,
+        "lng": 126.9687392
       }
     ]
   },
@@ -36183,7 +36942,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3944873,
+        "lng": 126.8028769
       }
     ]
   },
@@ -36245,7 +37006,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6673434,
+        "lng": 127.1218088
       }
     ]
   },
@@ -36347,7 +37110,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.150712,
+        "lng": 126.7821846
       }
     ]
   },
@@ -36441,7 +37206,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.9242482,
+        "lng": 127.1192605
       }
     ]
   },
@@ -36559,7 +37326,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.3215735,
+        "lng": 129.0725363
       }
     ]
   },
@@ -36630,7 +37399,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 35.2548945,
+        "lng": 128.6465183
       }
     ]
   },
@@ -36699,7 +37470,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.3685981,
+        "lng": 127.0727381
       }
     ]
   },
@@ -36800,7 +37573,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.4729093,
+        "lng": 127.148475
       }
     ]
   },
@@ -36854,7 +37629,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.5311224,
+        "lng": 126.8029576
       }
     ]
   },
@@ -36908,7 +37685,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.5311224,
+        "lng": 126.8029576
       }
     ]
   },
@@ -37055,7 +37834,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.0320973,
+        "lng": 127.022596
       }
     ]
   },
@@ -37141,7 +37922,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6506625,
+        "lng": 126.7559077
       }
     ]
   },
@@ -37227,7 +38010,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.6506625,
+        "lng": 126.7559077
       }
     ]
   },
@@ -37281,7 +38066,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.5380425,
+        "lng": 126.6680218
       }
     ]
   },
@@ -37335,7 +38122,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.5380425,
+        "lng": 126.6680218
       }
     ]
   },
@@ -37402,7 +38191,9 @@
             "deposit": null,
             "rent": null
           }
-        ]
+        ],
+        "lat": 37.5314366,
+        "lng": 126.8028926
       }
     ]
   }
