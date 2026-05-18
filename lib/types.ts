@@ -68,6 +68,21 @@ export interface Listing {
   photos?: ListingPhoto[];
   coverPhotoUrl?: string;
   attachments?: ListingPhoto[];
+  complexes?: ComplexInfo[]; // 한 공고에 여러 단지가 묶인 경우 단지별 표
+}
+
+export interface ComplexRow {
+  houseType: string;
+  area: number;
+  supplyTotal: number | null;
+  supplyThisRound: number | null;
+  deposit: number | null;     // 원, null=공고문 확인
+  rent: number | null;        // 원
+}
+
+export interface ComplexInfo {
+  name: string | null;
+  rows: ComplexRow[];
 }
 
 export interface ListingPhoto {

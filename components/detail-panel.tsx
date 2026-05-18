@@ -14,6 +14,50 @@ import {
 import { NaverPanorama } from "./naver-panorama";
 import { CloseIcon, HeartIcon, TrainIcon } from "./icons";
 
+function ListingComplexes({ item }: { item: Listing }) {
+  if (!item.complexes || !item.complexes.length) return null;
+  function fmtPrice(v: number | null): string {
+    if (v == null) return "공고문 확인";
+    return Math.round(v / 10000).toLocaleString() + "만원";
+  }
+  return (
+    <section className="detail-section">
+      <h3>단지별 공급 정보</h3>
+      {item.complexes.map((c, ci) => (
+        <div key={ci} style={{ marginTop: ci === 0 ? 0 : 16 }}>
+          {c.name && (
+            <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 6 }}>{c.name}</div>
+          )}
+          <div style={{ overflowX: "auto" }}>
+            <table style={{ width: "100%", fontSize: 12, borderCollapse: "collapse" }}>
+              <thead>
+                <tr style={{ borderBottom: "1px solid var(--seed-scale-color-gray-200)", color: "var(--seed-semantic-color-ink-text-low)" }}>
+                  <th style={{ textAlign: "left", padding: "6px 8px" }}>주택형</th>
+                  <th style={{ textAlign: "right", padding: "6px 8px" }}>전용면적</th>
+                  <th style={{ textAlign: "right", padding: "6px 8px" }}>세대수</th>
+                  <th style={{ textAlign: "right", padding: "6px 8px" }}>보증금</th>
+                  <th style={{ textAlign: "right", padding: "6px 8px" }}>월세</th>
+                </tr>
+              </thead>
+              <tbody>
+                {c.rows.map((r, ri) => (
+                  <tr key={ri} style={{ borderBottom: "1px solid var(--seed-scale-color-gray-100)" }}>
+                    <td style={{ padding: "6px 8px" }}>{r.houseType}</td>
+                    <td style={{ textAlign: "right", padding: "6px 8px" }}>{r.area}㎡</td>
+                    <td style={{ textAlign: "right", padding: "6px 8px" }}>{r.supplyTotal ?? "-"}</td>
+                    <td style={{ textAlign: "right", padding: "6px 8px" }}>{fmtPrice(r.deposit)}</td>
+                    <td style={{ textAlign: "right", padding: "6px 8px" }}>{fmtPrice(r.rent)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ))}
+    </section>
+  );
+}
+
 function ListingPhotos({ item }: { item: Listing }) {
   const cover = item.coverPhotoUrl;
   if (!cover) return null;
@@ -140,6 +184,7 @@ export function DetailPanel({
         )}
 
         <ListingPhotos item={item} />
+        <ListingComplexes item={item} />
 
         <section className="detail-section detail-vacancy-search">
           <h3>이 단지 공실·모집 공고 알아보기</h3>
@@ -192,13 +237,21 @@ export function DetailPanel({
           <h3>입주 자격</h3>
           <div className="detail-eligibility">
             {item.eligible.map((e) => (
-              <span key={e} className={`eli-pill ${e === "청년" ? "match" : ""}`}>
-                {e === "청년" && "✓"} {ELIGIBILITY_LABELS[e] ?? e}
+              <span key={e} className="eli-pill">
+                {ELIGIBILITY_LABELS[e] ?? e}
               </span>
             ))}
           </div>
-          <div style={{ fontSize: 12, color: "var(--seed-semantic-color-ink-text-low)", marginTop: 6 }}>
-            · 소득 기준 전년도 도시근로자 월평균 소득 100~150% 이하 · 무주택 세대구성원
+          <div style={{ fontSize: 12, color: "var(--seed-semantic-color-ink-text-low)", marginTop: 8, lineHeight: 1.6 }}>
+            · 정확한 자격 요건은 LH 공고문을 반드시 확인하세요.
+            {item.sourceUrl && (
+              <>
+                {" "}
+                <a href={item.sourceUrl} target="_blank" rel="noreferrer" style={{ color: "var(--seed-semantic-color-primary)", textDecoration: "underline" }}>
+                  공고문 보기 →
+                </a>
+              </>
+            )}
           </div>
         </section>
 
