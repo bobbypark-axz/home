@@ -41,15 +41,13 @@ function makeDistrictEl(id: string, name: string, count: number): HTMLElement {
   return el;
 }
 
-function pinClass(type: Listing["type"]): string {
-  if (type === "sale") return "map-pin sale";
-  if (type === "happy") return "map-pin happy";
-  if (type === "nation") return "map-pin nation";
-  if (type === "perm") return "map-pin perm";
-  if (type === "buy") return "map-pin buy";
-  if (type === "jeonse") return "map-pin jeonse";
-  if (type === "fifty") return "map-pin fifty";
-  return "map-pin";
+// 카테고리별 SVG 마커 (public/markers/marker-{type}.svg)
+// 디자인이 핀 모양 + 색상 + 아이콘 모두 포함되어 있어 별도 텍스트 라벨 없이 SVG 한 장으로 표시.
+const PIN_TYPES = new Set([
+  "happy", "nation", "perm", "buy", "jeonse", "fifty", "integ", "sale",
+]);
+function pinIconSrc(type: Listing["type"]): string {
+  return PIN_TYPES.has(type) ? `/markers/marker-${type}.svg` : "/markers/marker-nation.svg";
 }
 
 function pinLabel(p: Listing): string {
@@ -61,6 +59,7 @@ function pinLabel(p: Listing): string {
     case "buy": return "매입임대";
     case "jeonse": return "전세임대";
     case "fifty": return "50년임대";
+    case "integ": return "통합공공임대";
     default: return p.suplyTyNm || "LH";
   }
 }
@@ -69,7 +68,8 @@ function makePinEl(p: Listing): HTMLElement {
   const el = document.createElement("div");
   el.className = "map-pin-wrap";
   el.dataset.listingId = p.id;
-  el.innerHTML = `<div class="${pinClass(p.type)}">${pinLabel(p)}</div>`;
+  el.title = pinLabel(p);
+  el.innerHTML = `<img src="${pinIconSrc(p.type)}" class="map-pin-svg" alt="${pinLabel(p)}" draggable="false" />`;
   return el;
 }
 
