@@ -2,6 +2,7 @@ import type { District, HousingTypeId, Listing, StatusId } from "./types";
 import apiListings from "./listings-api.json";
 
 // LH 공공데이터 API 3종 + VWorld 통합 sync 결과 (scripts/sync-lh-api.mjs)
+// 일부 메타 필드는 API1 응답이 빈 객체(`{}`)로 직렬화돼 들어오는 경우가 있어 unknown 으로 받고 런타임에 정규화.
 interface ApiListing {
   id: string;
   pblancId: string;
@@ -25,13 +26,18 @@ interface ApiListing {
   supplyUnits: number | null;
   complexName: string | null;
   pnu: string | null;
-  houseType: string | null;
-  heatMethod: string | null;
+  houseType: unknown;
+  heatMethod: unknown;
   parkngCo: number | null;
   coverPhotoUrl: string | null;
   coverPhotoLocal: string | null;
   sourceUrl: string;
   thumbSeed: number;
+  scope?: "single" | "regional"; // sync v2+ 부터 채워짐 — 광역 공고는 지도에서 제외
+}
+
+function safeString(v: unknown): string {
+  return typeof v === "string" && v.trim() ? v : "";
 }
 
 interface SidoEntry {
@@ -62,6 +68,9 @@ const SIDOS: SidoEntry[] = [
 ];
 
 function adaptApi(r: ApiListing): Listing | null {
+  // 광역(매입임대/전세형 등 다지점) 공고는 단일 좌표 의미 없음 → 지도 노출 제외.
+  // 향후 별도 "전국 공고" 섹션에서 노출하려면 별도 export 추가.
+  if (r.scope === "regional") return null;
   // 좌표/시도 없는 항목 제외
   if (!r.lat || !r.lng) return null;
   if (!r.districtId) return null;
@@ -83,7 +92,7 @@ function adaptApi(r: ApiListing): Listing | null {
     layout: "",
     totalUnits: r.supplyUnits ?? null,
     supplyUnits: r.supplyUnits ?? null,
-    heatMethod: r.heatMethod ?? "",
+    heatMethod: safeString(r.heatMethod),
     salePriceManwon: r.salePriceManwon,
     status: r.status as StatusId,
     deadline: r.deadline || "",
@@ -93,7 +102,7 @@ function adaptApi(r: ApiListing): Listing | null {
     transit: "",
     competition: null,
     thumbSeed: r.thumbSeed,
-    suplyTyNm: r.houseType || undefined,
+    suplyTyNm: safeString(r.houseType) || undefined,
     pblancNm: r.noticeTitle,
     sourceUrl: r.sourceUrl,
     coverPhotoUrl: r.coverPhotoLocal || r.coverPhotoUrl || undefined,
