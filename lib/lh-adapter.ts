@@ -287,18 +287,29 @@ export const LH_LISTINGS: Listing[] = ALL;
 
 export function buildDistricts(listings: Listing[]): District[] {
   const counts = new Map<string, number>();
+  // 시도별 listing 좌표 누적 — 시도 기하학적 중심 대신 실제 listing 분포의 평균(centroid)으로
+  // 마커 위치 잡기. 경기도처럼 면적이 넓은 시도는 중심점이 실제 매물 분포와 떨어져 어색했음.
+  const sums = new Map<string, { latSum: number; lngSum: number; n: number }>();
   for (const l of listings) {
     counts.set(l.districtId, (counts.get(l.districtId) ?? 0) + 1);
+    const s = sums.get(l.districtId) ?? { latSum: 0, lngSum: 0, n: 0 };
+    s.latSum += l.lat;
+    s.lngSum += l.lng;
+    s.n += 1;
+    sums.set(l.districtId, s);
   }
-  return SIDOS.filter((s) => counts.has(s.id)).map((s, idx) => ({
-    id: s.id,
-    name: s.name,
-    x: idx,
-    y: idx,
-    lat: s.lat,
-    lng: s.lng,
-    count: counts.get(s.id) ?? 0,
-  }));
+  return SIDOS.filter((s) => counts.has(s.id)).map((s, idx) => {
+    const c = sums.get(s.id);
+    return {
+      id: s.id,
+      name: s.name,
+      x: idx,
+      y: idx,
+      lat: c && c.n > 0 ? c.latSum / c.n : s.lat,
+      lng: c && c.n > 0 ? c.lngSum / c.n : s.lng,
+      count: counts.get(s.id) ?? 0,
+    };
+  });
 }
 
 export const LH_DISTRICTS: District[] = buildDistricts(LH_LISTINGS);
