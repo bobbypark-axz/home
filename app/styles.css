@@ -944,33 +944,43 @@ input, select { font-family: inherit; }
 .map-marker.size-md .label { font-size: 11px; }
 .map-marker.size-lg .label { font-size: 12px; }
 
-/* Pin marker (single listing) — SVG 디자인 마커 사용 */
+/* Pin marker (single listing) */
 .map-pin-wrap {
   display: inline-block;
   transform: translate(-50%, -100%);
   cursor: pointer;
   z-index: 2;
 }
-.map-pin-svg {
-  display: block;
-  width: 56px;
-  height: 56px;
-  pointer-events: none;
-  transition: transform .12s ease-out, filter .12s ease-out;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,.18));
+.map-pin {
+  background: var(--seed-semantic-color-primary);
+  color: white;
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  position: relative;
+  white-space: nowrap;
+  transition: transform .12s ease-out, box-shadow .12s ease-out;
+}
+.map-pin::after {
+  content: '';
+  position: absolute;
+  bottom: -5px; left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--seed-semantic-color-primary);
+  border-bottom: 0;
 }
 .map-pin-wrap.hovered,
 .map-pin-wrap.selected {
   z-index: 3;
 }
-.map-pin-wrap.hovered .map-pin-svg,
-.map-pin-wrap.selected .map-pin-svg {
-  transform: scale(1.2);
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,.32));
+.map-pin-wrap.hovered .map-pin,
+.map-pin-wrap.selected .map-pin {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 2px #fff, 0 4px 10px rgba(0,0,0,.28);
 }
-
-/* 옛 .map-pin (카테고리 색상 pill) — SVG 마커로 대체되었으므로 더 이상 사용 안 함.
-   .map-pin.sale/.happy/.nation/... 색상 정의는 그대로 두지만 마커엔 적용 안 됨. */
 
 /* Category pin colors (Naver map markers) */
 .map-pin.sale { background: #e23859; }
