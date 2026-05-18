@@ -455,29 +455,31 @@ async function main() {
     if (matchedComplex) complexMatched++;
 
     // Phase 3+4: 주소/좌표
-    // 우선순위: 단지매칭(API 1) > 기존 데이터 > 페이지 scrape > VWorld geocode
+    // 우선순위: 단지매칭(API 1)+VWorld > 기존 데이터 좌표 > 페이지 scrape > VWorld(페이지 주소)
+    // VWorld 실패 / 키없음 시에도 ex 좌표 fallback 으로 가도록 — 옛 데이터 좌표 살림.
     const ex = existingByPanId.get(id);
+    const hasExCoord = ex && ex.lat && ex.lng && ex.geocoded && ex.geocoded !== "sido-center";
     let lat = null, lng = null, address = "", geocoded = "none";
 
-    if (matchedComplex?.rnAdres) {
-      // API 1 의 도로명 주소를 VWorld 로 변환
+    if (matchedComplex?.rnAdres && VWORLD_API_KEY) {
       address = matchedComplex.rnAdres;
-      if (VWORLD_API_KEY) {
-        const gc = await vworldGeocode(address);
-        if (gc) {
-          lat = gc.lat; lng = gc.lng; geocoded = "api1-" + gc.source;
-          coordVworld++;
-        } else {
-          geocoded = "api1-addr-only";
-          coordNone++;
-        }
-        await sleep(DELAY);
+      const gc = await vworldGeocode(address);
+      if (gc) {
+        lat = gc.lat; lng = gc.lng; geocoded = "api1-" + gc.source;
+        coordVworld++;
+      } else if (hasExCoord) {
+        lat = ex.lat; lng = ex.lng; geocoded = ex.geocoded + "+api1-addr";
+        coordExisting++;
       } else {
         geocoded = "api1-addr-only";
         coordNone++;
       }
-    } else if (ex && ex.lat && ex.lng && ex.geocoded && ex.geocoded !== "sido-center") {
-      lat = ex.lat; lng = ex.lng; address = ex.address || ""; geocoded = ex.geocoded;
+      await sleep(DELAY);
+    } else if (hasExCoord) {
+      // VWorld 없거나 API1 매칭 안된 경우: ex 좌표 fallback
+      lat = ex.lat; lng = ex.lng;
+      address = matchedComplex?.rnAdres || ex.address || "";
+      geocoded = ex.geocoded;
       coordExisting++;
     } else {
       // 페이지 scrape
