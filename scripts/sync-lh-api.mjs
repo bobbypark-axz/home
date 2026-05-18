@@ -211,16 +211,16 @@ async function fetchAllComplexes() {
   return all;
 }
 
-// 단지명에서 핵심 키워드 추출 (괄호/접미사 제거)
-function complexKeywords(name) {
-  if (!name) return [];
-  const cleaned = String(name)
-    .replace(/\([^)]*\)/g, " ")
-    .replace(/[\[\]]/g, " ")
-    .replace(/[A-Z]+-?\d+[A-Z]*[Bb][Ll]/g, (m) => " " + m + " ")
-    .replace(/\s+/g, " ")
-    .trim();
-  return cleaned.split(/\s+/).filter((s) => s.length >= 2);
+// 블록번호 추출 — "A-24BL", "A24블록", "A8BL", "A-2블" 등 다양한 표기 정규화.
+// 같은 사업지구의 다른 블록이 잘못 매칭되는 문제 해결용.
+//   "남양주왕숙2 A-3BL" → "A3"
+//   "양주옥정 A-25BL"   → "A25"
+//   "A8블록"           → "A8"
+function extractBlock(s) {
+  if (!s) return null;
+  const m = String(s).match(/([A-Z]+)[-\s]?(\d+)\s*(?:BL[OoKk]*|블[록]?)/i);
+  if (!m) return null;
+  return (m[1] + m[2]).toUpperCase();
 }
 
 function buildComplexIndex(complexes) {
@@ -248,28 +248,48 @@ function noticeKeywords(panNm) {
   return cleaned.split(/\s+/).filter((s) => s.length >= 2);
 }
 
-// 공고 → 단지 매칭 (시도 일치 + 단지명 키워드 substring)
+// 공고 → 단지 매칭 (시도 일치 + 키워드 substring + 블록번호 검증)
+// 블록 미일치는 명백한 거짓매칭이라 제외. 한쪽만 블록 없으면 키워드만으로 fallback 허용.
 function findMatchingComplex(notice, complexesByKey, sidoCode) {
   if (!sidoCode) return null;
   const keywords = noticeKeywords(notice.PAN_NM);
   if (!keywords.length) return null;
+  const noticeBlock = extractBlock(notice.PAN_NM);
 
-  // 해당 시도의 모든 단지를 합쳐 검색 (시군구 미상)
   const candidates = [];
   for (const [key, list] of complexesByKey.entries()) {
     if (key.startsWith(sidoCode + "-")) candidates.push(...list);
   }
   if (!candidates.length) return null;
 
-  // 단지명/주소 안에 공고의 키워드가 포함되는지
+  // Pass 1: 키워드 매칭 + 블록 둘 다 존재하면 일치 강제
   for (const kw of keywords) {
-    if (kw.length < 3) continue; // 너무 짧으면 거짓 매칭 위험
-    const hit = candidates.find((c) => {
+    if (kw.length < 3) continue;
+    for (const c of candidates) {
       const blob = `${c.hsmpNm || ""} ${c.rnAdres || ""}`;
-      return blob.includes(kw);
-    });
-    if (hit) return hit;
+      if (!blob.includes(kw)) continue;
+      const cBlock = extractBlock(c.hsmpNm);
+      if (noticeBlock && cBlock) {
+        if (noticeBlock === cBlock) return c;
+        continue;
+      }
+      // 한쪽만 블록 있는 경우는 Pass 2 에서 fallback
+    }
   }
+
+  // Pass 2: 블록이 한쪽만 있거나 둘 다 없으면 키워드 매칭 첫 후보
+  for (const kw of keywords) {
+    if (kw.length < 3) continue;
+    for (const c of candidates) {
+      const blob = `${c.hsmpNm || ""} ${c.rnAdres || ""}`;
+      if (!blob.includes(kw)) continue;
+      const cBlock = extractBlock(c.hsmpNm);
+      // 둘 다 블록 있는데 다른 케이스는 이미 Pass 1 에서 거른 상태
+      if (noticeBlock && cBlock && noticeBlock !== cBlock) continue;
+      return c;
+    }
+  }
+
   return null;
 }
 
@@ -371,6 +391,26 @@ function mapStatus(panSs) {
   return "open";
 }
 
+// API 1 응답이 빈 객체(`{}`)로 직렬화돼 들어오는 필드가 있어서 string/number 만 살리고 나머진 null.
+function strOrNull(v) {
+  return typeof v === "string" && v.trim() ? v : null;
+}
+function numOrNull(v) {
+  return typeof v === "number" && Number.isFinite(v) ? v : null;
+}
+
+// 공고 scope 추론 — 매입/전세임대 같은 다지점 광역 공고는 단일 좌표 의미 없음.
+// 시도 중앙에 잘못된 핀 찍는 대신 명시적으로 분류해서 UI에서 별도 처리.
+// (주의: "예비입주자"는 단지 공고에서도 흔히 쓰이는 보일러플레이트라 키워드에서 제외)
+function inferScope(notice, mappedType) {
+  if (mappedType === "buy" || mappedType === "jeonse") return "regional";
+  const t = notice.PAN_NM || "";
+  const d = notice.CNP_CD_NM || "";
+  if (d === "전국" || /외$/.test(d)) return "regional";
+  if (/전국|상시모집|기숙사형|전세형|든든전세/.test(t)) return "regional";
+  return "single";
+}
+
 // ─────────────────────────────────────────────────────────────
 // 메인
 // ─────────────────────────────────────────────────────────────
@@ -470,12 +510,14 @@ async function main() {
 
     // Phase 5: 정규화 → Listing 타입
     const type = mapType(n);
+    const scope = inferScope(n, type);
     const listing = {
       id: `lh-${type === "sale" ? "sale" : "rental"}-${id}`,
       pblancId: id,
       title: n.PAN_NM,
       noticeTitle: n.PAN_NM,
       type,
+      scope,
       agency: "LH",
       district: n.CNP_CD_NM || "",
       districtId: SIDO_NAME_TO_ID[n.CNP_CD_NM] || null,
@@ -490,12 +532,12 @@ async function main() {
       monthlyRentManwon: rentWon ? Math.round(rentWon / 10000) : 0,
       salePriceManwon: pa?.saleAvg ? Math.round(pa.saleAvg / 10000) : null,
       supplyUnits: pa?.units ?? matchedComplex?.hshldCo ?? null,
-      // 단지 메타 (API 1 매칭된 경우)
-      complexName: matchedComplex?.hsmpNm || null,
-      pnu: matchedComplex?.pnu || null,
-      houseType: matchedComplex?.houseTyNm || null,
-      heatMethod: matchedComplex?.heatMthdDetailNm || null,
-      parkngCo: matchedComplex?.parkngCo ?? null,
+      // 단지 메타 (API 1 매칭된 경우) — 빈객체 응답 방어
+      complexName: strOrNull(matchedComplex?.hsmpNm),
+      pnu: strOrNull(matchedComplex?.pnu),
+      houseType: strOrNull(matchedComplex?.houseTyNm),
+      heatMethod: strOrNull(matchedComplex?.heatMthdDetailNm),
+      parkngCo: numOrNull(matchedComplex?.parkngCo),
       // 사진 보존
       coverPhotoUrl: ex?.coverPhotoUrl ?? null,
       coverPhotoLocal: ex?.coverPhotoLocal ?? null,
