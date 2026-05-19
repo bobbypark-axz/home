@@ -23,8 +23,6 @@ const nextConfig: NextConfig = {
     "/api/chat": [
       "node_modules/pdf-parse/**/*",
       "node_modules/sharp/**/*",
-      "node_modules/@swc/**/*",
-      "node_modules/@esbuild/**/*",
       "node_modules/typescript/**/*",
       "lib/notice-texts/**/*",
       "lib/notice-embeddings/vectors.bin",
@@ -35,8 +33,6 @@ const nextConfig: NextConfig = {
     "/api/eligibility/**": [
       "node_modules/pdf-parse/**/*",
       "node_modules/sharp/**/*",
-      "node_modules/@swc/**/*",
-      "node_modules/@esbuild/**/*",
       "lib/notice-texts/**/*",
       "lib/notice-embeddings/**/*",
       "public/lh-covers/**/*",
