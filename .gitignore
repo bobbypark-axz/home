@@ -52,7 +52,13 @@ lib/subway-stations.json
 .env*.local
 
 # 큰 자산 — Vercel Blob 에 업로드, 매핑 JSON 으로 reference
-# (.gitignore 인라인 comment 는 패턴의 일부로 해석되니 줄별로 분리)
 public/lh-covers/
 lib/notice-texts/
 lib/notice-embeddings/vectors.bin
+lib/notice-embeddings/index.json
+# sync 캐시 / source — 런타임에 안 씀
+lib/lh-complexes.json
+lib/myhome-all-notices.json
+lib/myhome-rental-notices.json
+lib/myhome-sale-notices.json
+_prototype/

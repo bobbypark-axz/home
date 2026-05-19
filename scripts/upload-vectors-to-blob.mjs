@@ -11,31 +11,38 @@ import { put } from "@vercel/blob";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
-const VEC_PATH = path.join(ROOT, "lib/notice-embeddings/vectors.bin");
-const OUT_PATH = path.join(ROOT, "lib/blob-vectors.json");
-
 const TOKEN = process.env.BLOB_READ_WRITE_TOKEN;
 if (!TOKEN) { console.error("ERROR: BLOB_READ_WRITE_TOKEN 누락"); process.exit(1); }
 
-const buf = await fs.readFile(VEC_PATH);
-const sizeMB = (buf.length / 1024 / 1024).toFixed(1);
-console.log(`업로드 시작: ${sizeMB} MB`);
-const t0 = Date.now();
+async function uploadOne(localPath, blobPath, contentType) {
+  const buf = await fs.readFile(localPath);
+  const sizeMB = (buf.length / 1024 / 1024).toFixed(1);
+  console.log(`[upload] ${blobPath}  ${sizeMB} MB`);
+  const t0 = Date.now();
+  const blob = await put(blobPath, buf, {
+    access: "public",
+    token: TOKEN,
+    contentType,
+    addRandomSuffix: false,
+    allowOverwrite: true,
+  });
+  console.log(`  → ${((Date.now() - t0) / 1000).toFixed(1)}s  ${blob.url}`);
+  return { url: blob.url, bytes: buf.length };
+}
 
-// 같은 파일명 유지 — 매번 재업로드 시 동일 경로 (allowOverwrite)
-const blob = await put("notice-embeddings/vectors.bin", buf, {
-  access: "public",
-  token: TOKEN,
-  contentType: "application/octet-stream",
-  addRandomSuffix: false,
-  allowOverwrite: true,
-});
-
-const elapsed = ((Date.now() - t0) / 1000).toFixed(1);
-console.log(`완료: ${elapsed}s → ${blob.url}`);
+const vectors = await uploadOne(
+  path.join(ROOT, "lib/notice-embeddings/vectors.bin"),
+  "notice-embeddings/vectors.bin",
+  "application/octet-stream",
+);
+const index = await uploadOne(
+  path.join(ROOT, "lib/notice-embeddings/index.json"),
+  "notice-embeddings/index.json",
+  "application/json",
+);
 
 await fs.writeFile(
-  OUT_PATH,
-  JSON.stringify({ url: blob.url, bytes: buf.length, uploadedAt: new Date().toISOString() }, null, 2) + "\n",
+  path.join(ROOT, "lib/blob-vectors.json"),
+  JSON.stringify({ vectors, index, uploadedAt: new Date().toISOString() }, null, 2) + "\n",
 );
-console.log(`저장: ${OUT_PATH}`);
+console.log(`\n저장: lib/blob-vectors.json`);

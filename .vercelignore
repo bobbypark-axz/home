@@ -5,10 +5,15 @@ node_modules
 
 # 큰 로컬 자산 — 모두 Vercel Blob 으로 이전됨
 public/lh-covers/
-lib/notice-embeddings/vectors.bin
+lib/notice-embeddings/
 
 # 런타임에 안 쓰는 데이터
 lib/notice-texts/
+lib/lh-complexes.json
+lib/myhome-all-notices.json
+lib/myhome-rental-notices.json
+lib/myhome-sale-notices.json
+_prototype/
 
 # 빌드 / sync 도구
 scripts/

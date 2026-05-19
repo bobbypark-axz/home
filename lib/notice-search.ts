@@ -14,8 +14,10 @@ import blobVectors from "./blob-vectors.json";
 const ROOT = path.resolve(process.cwd());
 const INDEX_PATH = path.join(ROOT, "lib/notice-embeddings/index.json");
 const VECTORS_PATH = path.join(ROOT, "lib/notice-embeddings/vectors.bin");
-// production 에선 vectors.bin 이 git/deploy 에 없음 → Blob 에서 fetch.
-const VECTORS_BLOB_URL = (blobVectors as { url?: string }).url;
+// production 에선 둘 다 git/deploy 에 없음 → Blob 에서 fetch.
+const VECTORS_BLOB_URL = (blobVectors as { vectors?: { url?: string }; url?: string }).vectors?.url
+  ?? (blobVectors as { url?: string }).url;
+const INDEX_BLOB_URL = (blobVectors as { index?: { url?: string } }).index?.url;
 
 // panId ↔ notice-all id 양방향 매핑.
 const PAN_TO_NOTICE_ID = new Map<string, string>();
@@ -53,12 +55,21 @@ type NoticeIndex = {
 let cached: { index: NoticeIndex; vectors: Float32Array } | null = null;
 let loadingPromise: Promise<{ index: NoticeIndex; vectors: Float32Array } | null> | null = null;
 
+async function loadIndexJson(): Promise<NoticeIndex | null> {
+  try {
+    return JSON.parse(fs.readFileSync(INDEX_PATH, "utf8")) as NoticeIndex;
+  } catch {
+    if (!INDEX_BLOB_URL) return null;
+    const r = await fetch(INDEX_BLOB_URL);
+    if (!r.ok) return null;
+    return (await r.json()) as NoticeIndex;
+  }
+}
+
 async function loadVectorsBuffer(): Promise<Buffer | null> {
-  // 1순위: 로컬 fs (dev 환경, 파일 있음)
   try {
     return fs.readFileSync(VECTORS_PATH);
   } catch {
-    // 2순위: Blob URL fetch (production)
     if (!VECTORS_BLOB_URL) return null;
     const r = await fetch(VECTORS_BLOB_URL);
     if (!r.ok) return null;
@@ -68,16 +79,14 @@ async function loadVectorsBuffer(): Promise<Buffer | null> {
 }
 
 // 인덱스 + binary 벡터 로딩 (lazy, process 수명 동안 메모리 보존).
-// Vercel function 첫 cold start 시 한 번만 fetch — 이후 메모리 hit.
+// production: index.json + vectors.bin 둘 다 Blob 에서 병렬 fetch.
 async function load(): Promise<{ index: NoticeIndex; vectors: Float32Array } | null> {
   if (cached) return cached;
   if (loadingPromise) return loadingPromise;
   loadingPromise = (async () => {
     try {
-      const indexJson = fs.readFileSync(INDEX_PATH, "utf8");
-      const index = JSON.parse(indexJson) as NoticeIndex;
-      const buf = await loadVectorsBuffer();
-      if (!buf) return null;
+      const [index, buf] = await Promise.all([loadIndexJson(), loadVectorsBuffer()]);
+      if (!index || !buf) return null;
       const vectors = new Float32Array(buf.buffer, buf.byteOffset, buf.byteLength / 4);
       cached = { index, vectors };
       return cached;
