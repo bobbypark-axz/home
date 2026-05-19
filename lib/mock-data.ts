@@ -12,11 +12,69 @@ export const HOUSING_TYPES: HousingType[] = [
 ];
 
 export const STATUS_LABELS: Record<StatusId, StatusLabel> = {
-  open: { text: "입주가능", color: "#1aa174" },
+  open: { text: "접수중", color: "#1aa174" },
   upcoming: { text: "예정", color: "#c27f29" },
   closing: { text: "마감임박", color: "#ff4133" },
   closed: { text: "마감", color: "#868b94" },
 };
+
+// 입주자격 키 그룹 — PDF 에서 추출되는 키들은 "기본 자격(모두 충족)" 과
+// "우선공급 대상(해당 시 가산)" 이 섞여 있어서 사용자에게 오해를 줌. 분류해서 별도 표시.
+export type EligibilityGroup = "base" | "tier" | "special";
+export const ELIGIBILITY_GROUP: Record<string, EligibilityGroup> = {
+  // 기본 자격 — 신청하려면 모두 충족 필요
+  무주택: "base",
+  청약저축: "base",
+  소득70: "base",
+  소득100: "base",
+  소득150: "base",
+  자산: "base",
+  자동차: "base",
+  거주10: "base",
+  거주30: "base",
+  거주50: "base",
+  // 계층 우선공급 — 해당하면 가산점
+  청년: "tier",
+  신혼: "tier",
+  자녀: "tier",
+  다자녀: "tier",
+  "1인": "tier",
+  가구: "tier",
+  고령: "tier",
+  대학생: "tier",
+  한부모: "tier",
+  // 특별 자격 — 영구임대 등에 우선공급
+  수급: "special",
+  차상위: "special",
+  장애: "special",
+  국가유공: "special",
+  북한이탈: "special",
+};
+
+export function groupEligibilityKeys(keys: string[]): Record<EligibilityGroup, string[]> {
+  const out: Record<EligibilityGroup, string[]> = { base: [], tier: [], special: [] };
+  for (const k of keys) {
+    const g = ELIGIBILITY_GROUP[k];
+    if (g) out[g].push(k);
+  }
+  return out;
+}
+
+// 카드 요약 — 슬라이스 대신 housing type 의 자격 narrative 를 한 줄로.
+// 너무 디테일한 키 나열보다 "이 매물은 누구를 위한 것인지" 전달이 목적.
+const ELIGIBILITY_SUMMARY_BY_TYPE: Record<string, string> = {
+  happy: "청년·신혼·고령 등 6대 계층",
+  nation: "무주택 · 소득 70% 이하",
+  perm: "수급·차상위·장애 등 특별 자격",
+  integ: "무주택 · 소득 기준 차등 (100~150%)",
+  fifty: "무주택 · 소득 70% 이하",
+  buy: "청년·신혼·자녀 (매입임대)",
+  jeonse: "청년·신혼 (전세임대)",
+  sale: "무주택 · 청약저축 가입자",
+};
+export function eligibilitySummaryByType(type: string): string {
+  return ELIGIBILITY_SUMMARY_BY_TYPE[type] ?? "공고문 확인";
+}
 
 export const ELIGIBILITY_LABELS: Record<string, string> = {
   // 계층

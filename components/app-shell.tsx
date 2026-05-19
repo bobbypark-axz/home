@@ -1,7 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import type { Density, District, Filters, HousingTypeId, Listing, SortKey } from "@/lib/types";
+import { effectiveStatus } from "@/lib/dday";
 import { FilterBar } from "./filter-bar";
 import { ListingPanel } from "./listing-panel";
 import { NaverMapView } from "./kakao-map";
@@ -10,6 +12,7 @@ import { EligibilityModal } from "./eligibility-modal";
 import { FloatingChat } from "./floating-chat";
 import { TweaksPanel } from "./tweaks-panel";
 import { ChevronIcon, PinIcon } from "./icons";
+import { MobileChrome } from "./mobile-chrome";
 
 const INITIAL_FILTERS: Filters = {
   type: [],
@@ -37,6 +40,7 @@ export function AppShell({
   listings: Listing[];
   districts: District[];
 }) {
+  const router = useRouter();
   const [filters, setFilters] = useState<Filters>(INITIAL_FILTERS);
   const [sort, setSort] = useState<SortKey>("deadline");
   const [activeDistrict, setActiveDistrict] = useState<string | null>(null);
@@ -64,7 +68,8 @@ export function AppShell({
     let list = listings.slice();
     if (!showClosed) list = list.filter((x) => x.status !== "closed");
     if (filters.type.length) list = list.filter((x) => filters.type.includes(x.type));
-    if (filters.status.length) list = list.filter((x) => filters.status.includes(x.status));
+    // 마감임박(closing)은 raw status 에 없고 deadline 으로 derive 되므로 effectiveStatus 비교.
+    if (filters.status.length) list = list.filter((x) => filters.status.includes(effectiveStatus(x.status, x.deadline, x.beginDate)));
     // 지역 필터: 지도 영역 모드가 우선, 그 다음 시도 클릭 모드
     if (searchBounds) {
       list = list.filter((x) =>
@@ -95,7 +100,7 @@ export function AppShell({
     let list = listings.slice();
     if (!showClosed) list = list.filter((x) => x.status !== "closed");
     if (filters.type.length) list = list.filter((x) => filters.type.includes(x.type));
-    if (filters.status.length) list = list.filter((x) => filters.status.includes(x.status));
+    if (filters.status.length) list = list.filter((x) => filters.status.includes(effectiveStatus(x.status, x.deadline, x.beginDate)));
     list.forEach((x) => {
       map[x.districtId] = (map[x.districtId] ?? 0) + 1;
     });
@@ -110,9 +115,14 @@ export function AppShell({
   const selectedItem = filtered.find((x) => x.id === selectedId) ?? listings.find((x) => x.id === selectedId);
 
   const handleSelect = useCallback((id: string) => {
+    // 모바일 viewport: 풀스크린 라우트로 이동 (overlay 대신 별도 페이지)
+    if (typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches) {
+      router.push(`/listings/${id}`);
+      return;
+    }
     setSelectedId(id);
     setDetailOpen(true);
-  }, []);
+  }, [router]);
   const handleDistrictClick = useCallback((id: string) => {
     setActiveDistrict(id);
     setSearchBounds(null);
@@ -132,6 +142,24 @@ export function AppShell({
 
   return (
     <div className="app">
+      {/* 모바일 전용 상단 (지역선택 + 필터칩) — desktop 에서는 CSS 로 숨김 */}
+      <MobileChrome.Top
+        regionLabel={
+          searchBounds
+            ? "지도 영역"
+            : activeDistrict
+              ? districts.find((d) => d.id === activeDistrict)?.name ?? "전체 지역"
+              : "전체 지역"
+        }
+        districts={districts}
+        activeDistrict={activeDistrict}
+        districtCounts={districtCounts}
+        onDistrictClick={handleDistrictClick}
+        onDistrictClear={handleDistrictClear}
+        filters={filters}
+        setFilters={setFilters}
+        onReset={resetFilters}
+      />
       <header className="topbar">
         <div className="brand">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -226,6 +254,7 @@ export function AppShell({
         open={chatOpen}
         onOpenChange={setChatOpen}
         shifted={detailOpen && Boolean(selectedItem)}
+        allListings={listings}
       />
 
       <TweaksPanel

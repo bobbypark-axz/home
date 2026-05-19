@@ -16,6 +16,13 @@ export interface NaverMap {
   getBounds(): NaverBounds;
   panTo(latlng: NaverLatLng, transitionOptions?: { duration?: number; easing?: string }): void;
   morph(latlng: NaverLatLng, zoom?: number, transitionOptions?: { duration?: number }): void;
+  setOptions(options: {
+    scaleControl?: boolean;
+    logoControl?: boolean;
+    mapDataControl?: boolean;
+    zoomControl?: boolean;
+    mapTypeControl?: boolean;
+  }): void;
 }
 
 export interface NaverMarker {
@@ -45,6 +52,7 @@ export interface NaverNamespace {
         logoControl?: boolean;
         mapDataControl?: boolean;
         zoomControl?: boolean;
+        mapTypeControl?: boolean;
       }
     ) => NaverMap;
     Marker: new (options: {

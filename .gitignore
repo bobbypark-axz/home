@@ -49,3 +49,9 @@ lib/*.progress.json
 lib/lh-complexes.json
 lib/subway-stations.json
 .cache/
+.env*.local
+
+# 큰 자산 — Vercel Blob 에 업로드, 매핑 JSON 으로 reference
+public/lh-covers/                       # lib/blob-covers.json 매핑
+lib/notice-texts/                       # Doc Parse markdown — 검색은 embeddings/ 만 사용
+lib/notice-embeddings/vectors.bin       # 301MB. lib/blob-vectors.json 으로 fetch

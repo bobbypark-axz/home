@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { Listing, SortKey } from "@/lib/types";
-import { ELIGIBILITY_LABELS, HOUSING_TYPES } from "@/lib/mock-data";
-import { dDayText } from "@/lib/dday";
+import { eligibilitySummaryByType, HOUSING_TYPES } from "@/lib/mock-data";
+import { dDayText, effectiveStatus } from "@/lib/dday";
 
 function typeBadge(type: Listing["type"]) {
   const t = HOUSING_TYPES.find((x) => x.id === type);
@@ -52,7 +52,11 @@ function ListingCard({
 }) {
   const dday = dDayText(item.deadline, item.status);
   const photo = item.coverPhotoUrl;
-  const statusLabel = dday || (item.status === "open" ? "수시모집" : "");
+  const effStatus = effectiveStatus(item.status, item.deadline, item.beginDate);
+  // closing 이면 강한 라벨 "마감임박"으로 대체, 외엔 D-day or 수시모집
+  const statusLabel = effStatus === "closing"
+    ? (dday || "마감임박")
+    : (dday || (item.status === "open" ? "수시모집" : ""));
   return (
     <article
       className={`card ${hovered ? "hovered" : ""} ${selected ? "selected" : ""}`}
@@ -83,12 +87,7 @@ function ListingCard({
           )}
         </div>
         <div className="card-foot">
-          <span className="eligibility">
-            {item.eligible
-              .map((e) => ELIGIBILITY_LABELS[e]?.split("·")[0] ?? e)
-              .slice(0, 2)
-              .join(" · ")}
-          </span>
+          <span className="eligibility">{eligibilitySummaryByType(item.type)}</span>
           {item.competition != null && (
             <>
               <span style={{ color: "var(--seed-scale-color-gray-400)" }}>·</span>
@@ -98,7 +97,7 @@ function ListingCard({
         </div>
       </div>
       <aside className="card-side">
-        {statusLabel && <span className={`status-chip ${item.status}`}>{statusLabel}</span>}
+        {statusLabel && <span className={`status-chip ${effStatus}`}>{statusLabel}</span>}
         {photo && (
           <div className="card-thumb">
             {/* next/image 가 mtime 변경된 파일을 인식 못해 옛 조감도가 캐시돼서 보이는 문제. detail 과 통일. */}
@@ -125,6 +124,9 @@ const SORT_OPTIONS: { id: SortKey; label: string }[] = [
   { id: "low-depo", label: "보증금 낮은순" },
 ];
 
+// 모바일 바텀시트 — 핸들 탭으로 peek ↔ expanded 토글
+type SheetSnap = "peek" | "expanded";
+
 export function ListingPanel({
   items,
   sort,
@@ -145,11 +147,14 @@ export function ListingPanel({
   onSelect: (id: string) => void;
 }) {
   const [loadedCount, setLoadedCount] = useState(15);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const itemsRef = useRef<HTMLDivElement>(null);
+  const [snap, setSnap] = useState<SheetSnap>("peek");
+
+  const toggleSnap = () => setSnap((s) => (s === "peek" ? "expanded" : "peek"));
 
   useEffect(() => {
     setLoadedCount(15);
-    if (scrollRef.current) scrollRef.current.scrollTop = 0;
+    if (itemsRef.current) itemsRef.current.scrollTop = 0;
   }, [items.length, activeDistrict]);
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
@@ -162,7 +167,14 @@ export function ListingPanel({
   const visible = items.slice(0, loadedCount);
 
   return (
-    <div className="listing" ref={scrollRef} onScroll={handleScroll}>
+    <div className={`listing sheet-${snap}`} data-snap={snap}>
+      <button
+        type="button"
+        className="listing-handle"
+        onClick={toggleSnap}
+        aria-label={snap === "peek" ? "매물 목록 펼치기" : "매물 목록 접기"}
+        aria-expanded={snap === "expanded"}
+      />
       <div className="listing-head">
         <div className="listing-count">
           총 <em>{items.length.toLocaleString()}</em>개의 공공임대 매물
@@ -179,7 +191,7 @@ export function ListingPanel({
           ))}
         </div>
       </div>
-      <div className="listing-items">
+      <div className="listing-items" ref={itemsRef} onScroll={handleScroll}>
         {visible.length === 0 && (
           <div style={{ padding: "40px 16px", textAlign: "center", color: "var(--seed-semantic-color-ink-text-low)" }}>
             <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 4 }}>조건에 맞는 매물이 없어요</div>

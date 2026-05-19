@@ -1,0 +1,29 @@
+{
+  "supplyTotal": null,
+  "tiers": [
+    {
+      "id": "general",
+      "name": "일반(입주자격완화)",
+      "units": null,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": null,
+        "byHousehold": null,
+        "note": "완화모집으로 소득기준 적용 배제"
+      },
+      "asset": {
+        "total": null,
+        "car": 4542
+      },
+      "other": [
+        "무주택세대구성원으로서 자동차가액 기준만 충족하면 신청 가능",
+        "총자산(34,500만원) 기준 적용 배제",
+        "소득 기준 적용 배제",
+        "단독세대 신청 가능",
+        "분양전환 없는 공공임대주택으로 최장 30년 거주 가능"
+      ]
+    }
+  ],
+  "priority": []
+}

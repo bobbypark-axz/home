@@ -189,7 +189,10 @@ export function NaverMapView({
           logoControl: true,
           mapDataControl: false,
           zoomControl: false,
+          mapTypeControl: false,
         });
+        // 일부 SDK 빌드/HMR 케이스에서 초기 옵션 무시되는 경우가 있어 한 번 더 강제
+        map.setOptions({ zoomControl: false, scaleControl: false, mapDataControl: false, mapTypeControl: false });
         mapRef.current = map;
         naver.maps.Event.addListener(map, "zoom_changed", () => {
           setZoom(map.getZoom());
@@ -436,8 +439,14 @@ export function NaverMapView({
         </div>
       )}
 
-      <button className="map-recenter" onClick={handleLocate} disabled={locating}>
-        <LocateIcon size={13} /> {locating ? "위치 찾는 중…" : "내 위치"}
+      <button
+        className="map-recenter"
+        onClick={handleLocate}
+        disabled={locating}
+        aria-label={locating ? "위치 찾는 중" : "내 위치로 이동"}
+      >
+        <LocateIcon size={13} />
+        <span className="map-recenter-label">{locating ? "위치 찾는 중…" : "내 위치"}</span>
       </button>
     </div>
   );

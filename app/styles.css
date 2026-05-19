@@ -890,6 +890,13 @@ input, select { font-family: inherit; }
   overflow: hidden;
   background: #eaf1e3;
 }
+/* Naver 기본 줌 컨트롤 강제 숨김 — zoomControl: false 가 무시되는 케이스 방어.
+ * :has() 로 zoom 이미지를 가진 모든 ancestor div 를 nuke. SDK DOM 구조 변경 대비. */
+.map-wrap div:has(img[src*="zoom-in-large"]),
+.map-wrap div:has(img[src*="zoom-out-large"]),
+.map-wrap div:has(img[src*="zoom-handle"]) {
+  display: none !important;
+}
 .map-svg {
   width: 100%; height: 100%;
   display: block;
@@ -1172,6 +1179,17 @@ input, select { font-family: inherit; }
   height: 100%;
   min-width: 0;
 }
+/* /listings/[id] 풀스크린 라우트 — DetailPanel 그대로 재사용 */
+.detail-fullpage {
+  height: 100vh;
+  width: 100vw;
+  background: white;
+  overflow: hidden;
+}
+.detail-fullpage > .detail-panel {
+  border-left: none;
+  height: 100%;
+}
 .detail-panel.open {
   display: block;
   animation: detailFadeIn .12s ease-out;
@@ -1451,6 +1469,381 @@ input, select { font-family: inherit; }
   border-color: var(--seed-scale-color-carrot-200);
   color: var(--seed-scale-color-carrot-700);
   font-weight: 600;
+}
+/* 기본 자격 — 무조건 충족 필요한 조건. 살짝 강조 */
+.eli-pill.base {
+  background: var(--seed-scale-color-gray-50, #f8f9fa);
+  border-color: var(--seed-semantic-color-divider-1);
+  color: var(--seed-semantic-color-ink-text);
+}
+/* 우선공급 대상 — 해당하면 가산점, 필수 X. 차분한 톤 */
+.eli-pill.priority {
+  background: white;
+  border-color: var(--seed-semantic-color-divider-2);
+  color: var(--seed-semantic-color-ink-text-low);
+  font-weight: 400;
+}
+
+/* ============================================================
+ *  입주 자격 디테일 — 계층 탭 / 카드형 row / 가구원수 grid / 우선공급 / CTA
+ *  (시안: 신혼부부 42세대 / 일반세대 / 고령자 같은 탭 구조)
+ * ============================================================ */
+.eli-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.eli-skeleton {
+  height: 60px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #f5f5f7 0%, #ebebee 50%, #f5f5f7 100%);
+  background-size: 200% 100%;
+  animation: eli-shimmer 1.4s infinite;
+}
+@keyframes eli-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.eli-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+/* detail-section h3 의 margin-bottom: 10px 를 override — eli-header 안에서 줄바꿈 없이 inline */
+.detail-section h3.eli-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.eli-header-meta {
+  font-size: 12px;
+  color: var(--seed-semantic-color-ink-text-low);
+}
+
+/* 계층 탭 */
+.eli-tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 6px;
+}
+.eli-tab {
+  appearance: none;
+  border: 1px solid var(--seed-semantic-color-divider-2);
+  background: white;
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  transition: all 0.15s;
+}
+.eli-tab:hover:not(.on) {
+  border-color: var(--seed-scale-color-gray-300);
+}
+.eli-tab.on {
+  background: var(--seed-semantic-color-primary-low, #fff4ed);
+  border-color: var(--seed-semantic-color-primary);
+  color: var(--seed-semantic-color-primary);
+}
+.eli-tab-name {
+  font-size: 13px;
+  font-weight: 600;
+}
+.eli-tab.on .eli-tab-name { font-weight: 700; }
+.eli-tab-units {
+  font-size: 14px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.eli-tab-units::after { content: "세대"; font-size: 10px; font-weight: 600; margin-left: 1px; opacity: 0.65; }
+
+/* row 카드 */
+.eli-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--seed-semantic-color-divider-1);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--seed-semantic-color-divider-1);
+}
+.eli-row {
+  display: grid;
+  grid-template-columns: 24px 52px 1fr;
+  gap: 10px;
+  padding: 11px 12px;
+  background: white;
+  align-items: start;
+}
+.eli-row-icon {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  background: var(--seed-scale-color-gray-100);
+  border-radius: 7px;
+  color: var(--seed-semantic-color-ink-text);
+}
+.eli-row-icon svg { width: 12px; height: 12px; }
+.eli-row-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--seed-semantic-color-ink-text);
+  line-height: 24px;
+}
+.eli-row-content {
+  font-size: 12.5px;
+  color: var(--seed-semantic-color-ink-text);
+  line-height: 1.55;
+  min-width: 0;
+}
+.eli-row-headline strong {
+  color: var(--seed-semantic-color-primary);
+  font-weight: 800;
+}
+.eli-row-note {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: var(--seed-semantic-color-primary-low, #fff4ed);
+  color: var(--seed-semantic-color-ink-text);
+  border-radius: 8px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* 가구원수별 소득 grid */
+.eli-income-grid {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
+  gap: 4px;
+}
+.eli-income-cell {
+  position: relative;
+  padding: 10px 6px 8px;
+  background: var(--seed-scale-color-gray-50, #f8f9fa);
+  border-radius: 8px;
+  text-align: center;
+}
+.eli-income-cell.active {
+  background: var(--seed-semantic-color-primary);
+  color: white;
+}
+.eli-income-cell.active .eli-income-key,
+.eli-income-cell.active .eli-income-val { color: white; }
+.eli-income-tag {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--seed-semantic-color-primary-strong, #e64f00);
+  color: white;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.eli-income-key {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--seed-semantic-color-ink-text-low);
+}
+.eli-income-val {
+  font-size: 14px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  margin-top: 2px;
+}
+
+.eli-asset-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.eli-asset-list strong { font-weight: 700; }
+
+.eli-other-list {
+  margin: 0;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.eli-other-list li { line-height: 1.5; }
+
+.eli-empty {
+  padding: 20px 16px;
+  background: var(--seed-scale-color-gray-50, #f8f9fa);
+  border-radius: 12px;
+  text-align: center;
+}
+.eli-empty-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--seed-semantic-color-ink-text);
+}
+.eli-empty-sub {
+  font-size: 12px;
+  color: var(--seed-semantic-color-ink-text-low);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+.eli-empty-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--seed-semantic-color-primary);
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 1px solid var(--seed-semantic-color-primary);
+  border-radius: 999px;
+}
+.eli-empty-link:hover {
+  background: var(--seed-semantic-color-primary-low);
+}
+.eli-link {
+  color: var(--seed-semantic-color-primary);
+  text-decoration: underline;
+}
+
+/* "+N개 더 보기" 토글 */
+.eli-more-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--seed-semantic-color-primary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 0 0;
+  text-align: left;
+}
+.eli-more-btn:hover { text-decoration: underline; }
+
+/* 우선공급 */
+.eli-priority {
+  padding: 12px;
+  border: 1px solid var(--seed-semantic-color-divider-1);
+  border-radius: 10px;
+  background: white;
+}
+.eli-priority-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--seed-semantic-color-ink-text);
+}
+.eli-priority-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+}
+.eli-priority-chip {
+  border: 1px solid var(--seed-semantic-color-divider-2);
+  background: white;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--seed-semantic-color-ink-text);
+}
+
+/* CTA */
+.eli-cta {
+  appearance: none;
+  border: 0;
+  display: grid;
+  grid-template-columns: 30px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 12px;
+  background: var(--seed-semantic-color-primary-low, #fff4ed);
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+.eli-cta:not(:disabled):hover {
+  background: var(--seed-scale-color-carrot-100);
+}
+.eli-cta:disabled {
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+.eli-cta-spark {
+  width: 30px;
+  height: 30px;
+  background: var(--seed-semantic-color-primary);
+  color: white;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.eli-cta-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--seed-semantic-color-primary);
+  letter-spacing: -0.02em;
+}
+.eli-cta-sub {
+  font-size: 11px;
+  color: var(--seed-semantic-color-ink-text-low);
+  margin-top: 1px;
+}
+.eli-cta-arrow {
+  font-size: 18px;
+  color: var(--seed-semantic-color-primary);
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* 가구원수 선택 — 매물 간 영속화 (localStorage) */
+.eli-household-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--seed-scale-color-gray-50, #f8f9fa);
+  border-radius: 10px;
+}
+.eli-household-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--seed-semantic-color-ink-text-low);
+}
+.eli-household-btns {
+  display: inline-flex;
+  gap: 4px;
+}
+.eli-household-btn {
+  appearance: none;
+  border: 1px solid var(--seed-semantic-color-divider-2);
+  background: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 11px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--seed-semantic-color-ink-text);
+  transition: all 0.15s;
+}
+.eli-household-btn.on {
+  background: var(--seed-semantic-color-primary);
+  color: white;
+  border-color: var(--seed-semantic-color-primary);
 }
 
 .detail-unit-table {
@@ -2121,4 +2514,655 @@ img[src*="streetview_btn"] {
 div:has(> img[src*="flightview_btn"]),
 div:has(> img[src*="streetview_btn"]) {
   display: none !important;
+}
+
+/* 지역 선택 시트 애니메이션 — @media 밖에 두어 portal 컨텍스트에서도 확실히 매칭 */
+@keyframes m-sheet-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes m-sheet-slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+/* /m URL 강제 모바일 캔버스 — viewport 무관 모바일 UI 만 보여줌 */
+.mobile-only-force {
+  max-width: 480px;
+  margin: 0 auto;
+  height: 100vh;
+  background: #fff;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================================
+ * 반응형 — 모바일(<768) 에서:
+ *  - 데스크탑 topbar / FilterBar overlay 숨김
+ *  - 상단 MobileChrome.Top (검색 + 필터칩) 노출
+ *  - .listing (데스크탑 좌측 사이드바) 를 바텀시트로 재배치
+ *  - 지도(NaverMapView) 는 그대로
+ * ============================================================ */
+.app-m-top {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  /* .app: grid → flex column */
+  .app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+  /* 데스크탑 chrome 숨김 */
+  .topbar,
+  .map-overlay-top {
+    display: none !important;
+  }
+  /* .main: flex column 으로 — 지도가 남는 공간 차지, .listing 은 absolute 바텀시트 */
+  .main,
+  .main.detail-open,
+  .main.list-mode {
+    display: flex !important;
+    flex-direction: column;
+    grid-template-columns: none;
+    flex: 1;
+    min-height: 0;
+    position: relative;
+  }
+  .main > .map-wrap {
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* 상단 모바일 chrome — flex column, 최상단 고정, popover 앵커 */
+  .app-m-top {
+    display: flex !important;
+    flex-direction: column;
+    background: white;
+    flex-shrink: 0;
+    z-index: 50;
+    position: relative;
+    min-height: 92px; /* 검색바(40+18) + 칩 row(34) — 명시적으로 공간 확보 */
+  }
+
+  /* 모바일 칩 카운트 배지 */
+  .m-fchip-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 14px;
+    height: 14px;
+    padding: 0 4px;
+    border-radius: 999px;
+    background: var(--seed-semantic-color-primary);
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    margin-left: 2px;
+  }
+  .m-fchip.on .m-fchip-count {
+    background: white;
+    color: var(--seed-semantic-color-primary);
+  }
+
+  /* .m-search 가 button 으로 바뀌면서 브라우저 기본 스타일 리셋 */
+  button.m-search {
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+    color: inherit;
+    width: 100%;
+  }
+  /* 지역 칩 / 닫기 버튼도 같은 리셋 */
+  .m-region-sheet-close,
+  .m-region-sheet-item {
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  /* 지역 선택 바텀시트 */
+  .m-region-sheet-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 100;
+    animation: m-sheet-fade-in 0.18s ease-out;
+  }
+  .m-region-sheet {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 80vh;
+    background: white;
+    border-radius: 18px 18px 0 0;
+    box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.16);
+    display: flex;
+    flex-direction: column;
+    z-index: 101;
+    animation: m-sheet-slide-up 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    transform: translateY(0);
+  }
+  .m-region-sheet-handle {
+    width: 36px;
+    height: 4px;
+    margin: 8px auto 4px;
+    border-radius: 2px;
+    background: var(--seed-scale-color-gray-300);
+    flex-shrink: 0;
+  }
+  .m-region-sheet-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px 12px;
+    border-bottom: 1px solid var(--seed-semantic-color-divider-1);
+    flex-shrink: 0;
+  }
+  .m-region-sheet-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .m-region-sheet-close {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--seed-semantic-color-ink-text);
+  }
+  .m-region-sheet-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 0 24px;
+  }
+  .m-region-sheet-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 13px 16px;
+    font-size: 14px;
+    text-align: left;
+    color: var(--seed-semantic-color-ink-text);
+    border-bottom: 1px solid var(--seed-semantic-color-divider-1);
+    background: white;
+  }
+  .m-region-sheet-item.on {
+    color: var(--seed-semantic-color-primary);
+    font-weight: 700;
+    background: var(--seed-semantic-color-primary-low);
+  }
+  .m-region-sheet-count {
+    font-size: 12px;
+    color: var(--seed-semantic-color-ink-text-low);
+    font-variant-numeric: tabular-nums;
+  }
+  .m-region-sheet-item.on .m-region-sheet-count {
+    color: var(--seed-semantic-color-primary);
+  }
+
+  /* 모바일 필터 popover */
+  .m-fpop {
+    position: absolute;
+    top: 100%;
+    left: 14px;
+    right: 14px;
+    margin-top: 2px;
+    background: white;
+    border: 1px solid var(--seed-semantic-color-divider-2);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    padding: 10px;
+    z-index: 11;
+  }
+  .m-fpop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .m-fpop-opt {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid var(--seed-semantic-color-divider-2);
+    border-radius: 8px;
+    background: white;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--seed-semantic-color-ink-text);
+    text-align: center;
+  }
+  .m-fpop-opt.on {
+    border-color: var(--seed-semantic-color-primary);
+    background: var(--seed-semantic-color-primary-low);
+    color: var(--seed-semantic-color-primary);
+    font-weight: 700;
+  }
+
+  /* .listing(ListingPanel root) 을 바텀시트로 — 매물 카드 리스트 그 자체가 시트가 된다 */
+  .main > .listing {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 240px;
+    z-index: 8;
+    background: white;
+    border-radius: 18px 18px 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: height 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .main > .listing.sheet-expanded {
+    height: calc(100vh - 120px);
+  }
+  /* 핸들 — 탭하면 시트 토글 */
+  .main > .listing .listing-handle {
+    flex-shrink: 0;
+    width: 100%;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .main > .listing .listing-handle::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--seed-scale-color-gray-300);
+    transition: background 0.15s;
+  }
+  .main > .listing .listing-handle:active::before {
+    background: var(--seed-scale-color-gray-400);
+  }
+  .main > .listing .listing-head {
+    padding: 0 16px 8px;
+    flex-shrink: 0;
+  }
+  .main > .listing .listing-items {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* "내 위치" 버튼 — 모바일에선 원형 아이콘 only */
+  .map-recenter {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    gap: 0;
+    border-radius: 50%;
+    justify-content: center;
+    /* 바텀시트(.listing peek 240px)와 안 겹치게 위로 */
+    bottom: calc(240px + 12px);
+    left: 12px;
+  }
+  .map-recenter-label {
+    display: none;
+  }
+}
+
+/* 데스크탑에서는 핸들 숨김 — desktop layout 영향 X */
+@media (min-width: 768px) {
+  .listing-handle {
+    display: none;
+  }
+}
+
+/* ============================================================
+ *  AI 챗 suggestion chips — AI 답변 후 클릭 가능한 빠른 응답
+ * ============================================================ */
+.chat-suggest {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.chat-suggest-chip {
+  appearance: none;
+  border: 1px solid var(--seed-semantic-color-primary);
+  background: white;
+  color: var(--seed-semantic-color-primary);
+  border-radius: 999px;
+  padding: 7px 13px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  letter-spacing: -0.01em;
+  /* 채팅 버블과 동일 fade-in */
+  animation: chat-suggest-in 0.32s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.chat-suggest-chip:nth-child(1) { animation-delay: 0.05s; }
+.chat-suggest-chip:nth-child(2) { animation-delay: 0.13s; }
+.chat-suggest-chip:nth-child(3) { animation-delay: 0.21s; }
+.chat-suggest-chip:nth-child(4) { animation-delay: 0.29s; }
+@keyframes chat-suggest-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.chat-suggest-chip:hover:not(:disabled) {
+  background: var(--seed-semantic-color-primary-low);
+}
+.chat-suggest-chip:active:not(:disabled) {
+  transform: scale(0.97);
+}
+.chat-suggest-chip:disabled {
+  cursor: default;
+  border-color: var(--seed-semantic-color-divider-2);
+  color: var(--seed-semantic-color-ink-text-low);
+  background: var(--seed-scale-color-gray-50, #f8f9fa);
+}
+
+/* ============================================================
+ *  AI 챗 추천 매물 캐러셀 — 메시지 본문 하단에 가로 스크롤로 노출
+ *  디자인 기준: 1순위/2순위 칩, 하트, D-day pill, 풍부한 카드
+ * ============================================================ */
+.chat-rec-carousel {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 4px 16px 12px;
+  /* 왼쪽은 chat-body 패딩 안쪽에 정렬 (1순위 카드가 너무 가장자리 붙지 않게).
+     오른쪽은 -16px 로 끝까지 흘러나가 스크롤 affordance 확보.
+     상하는 chat-body 의 gap:10px 가 처리. */
+  margin: 0 -16px 0 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* .chat-body 가 column flex 라 caroussel 이 세로로 압축되는 걸 막음 */
+  flex-shrink: 0;
+}
+.chat-rec-carousel::-webkit-scrollbar { display: none; }
+
+.chat-rec-card {
+  flex: 0 0 auto;
+  width: 240px;
+  background: white;
+  border: 1px solid var(--seed-semantic-color-divider-2);
+  border-radius: 14px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s, box-shadow 0.15s;
+  /* 채팅 버블과 동일 fade-in + 순위 순서로 stagger */
+  animation: chat-rec-card-in 0.32s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.chat-rec-card:nth-child(1) { animation-delay: 0.05s; }
+.chat-rec-card:nth-child(2) { animation-delay: 0.16s; }
+.chat-rec-card:nth-child(3) { animation-delay: 0.27s; }
+.chat-rec-card:nth-child(4) { animation-delay: 0.38s; }
+@keyframes chat-rec-card-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.chat-rec-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.chat-rec-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, #ffd2b9 0%, #ff9e66 100%);
+  overflow: hidden;
+}
+.chat-rec-thumb img,
+.chat-rec-thumb-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.chat-rec-thumb-svg svg { width: 100%; height: 100%; }
+
+.chat-rec-rank {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--seed-semantic-color-primary);
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  letter-spacing: -0.01em;
+}
+.chat-rec-heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  border: 0;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: var(--seed-semantic-color-ink-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.chat-rec-heart:hover { color: var(--seed-semantic-color-primary); }
+
+.chat-rec-dday {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  background: rgba(31, 31, 31, 0.82);
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  letter-spacing: -0.01em;
+}
+.chat-rec-dday.closing {
+  background: #ff4133;
+}
+
+.chat-rec-body {
+  padding: 10px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.chat-rec-tags {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.chat-rec-competition {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--seed-semantic-color-ink-text-low);
+}
+.chat-rec-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 2px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.chat-rec-price {
+  font-size: 12px;
+  font-weight: 600;
+}
+.chat-rec-meta {
+  font-size: 11px;
+  color: var(--seed-semantic-color-ink-text-low);
+}
+.chat-rec-meta .dot {
+  margin: 0 4px;
+  color: var(--seed-scale-color-gray-300);
+}
+
+/* "보금이가 선택한 이유" 박스 — 카드 본문 하단, 옅은 primary 톤 */
+.chat-rec-reasons {
+  margin-top: 8px;
+  background: var(--seed-semantic-color-primary-low, #fff4ed);
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+.chat-rec-reasons-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--seed-semantic-color-primary, #ff6f0f);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: -0.01em;
+}
+.chat-rec-reasons-check {
+  display: inline-grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--seed-semantic-color-primary, #ff6f0f);
+  color: white;
+  flex-shrink: 0;
+}
+.chat-rec-reasons-check svg {
+  display: block;
+}
+.chat-rec-reasons-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+.chat-rec-reason-chip {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--seed-semantic-color-ink-text);
+  background: white;
+  border: 1px solid var(--seed-scale-color-carrot-200, #ffd2b9);
+  border-radius: 999px;
+  padding: 3px 9px;
+  letter-spacing: -0.01em;
+}
+
+/* 풀스크린 /ai 라우트와 floating 패널 양쪽에서 양 끝까지 흐르도록 */
+.ai-fullscreen .chat-rec-carousel { padding-left: 16px; padding-right: 16px; }
+
+/* ============================================================
+ *  면적 단위 토글 (㎡ ↔ 평) — detail-panel "단지별 공급 정보" 헤더
+ * ============================================================ */
+.area-unit-toggle {
+  display: inline-flex;
+  background: var(--seed-scale-color-gray-100);
+  border-radius: 8px;
+  padding: 2px;
+  gap: 2px;
+}
+.area-unit-toggle-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--seed-semantic-color-ink-text-low);
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  min-width: 32px;
+  transition: background 0.15s, color 0.15s;
+}
+.area-unit-toggle-btn.on {
+  background: white;
+  color: var(--seed-semantic-color-ink-text);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+.area-unit-toggle-btn:not(.on):hover {
+  color: var(--seed-semantic-color-ink-text);
+}
+
+/* ============================================================
+ *  /ai 풀스크린 라우트 — 모바일 챗 페이지
+ *  데스크탑에서도 동작하되 주 용도는 모바일.
+ * ============================================================ */
+.ai-fullscreen {
+  position: fixed;
+  inset: 0;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+.ai-fullscreen-header {
+  display: flex;
+  align-items: center;
+  height: 52px;
+  padding: 0 8px;
+  border-bottom: 1px solid var(--seed-semantic-color-divider-1);
+  background: white;
+  flex-shrink: 0;
+}
+.ai-fullscreen-back {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--seed-semantic-color-ink-text);
+}
+.ai-fullscreen-back:active {
+  background: var(--seed-scale-color-gray-100);
+}
+.ai-fullscreen-title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.ai-fullscreen-beta {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--seed-semantic-color-primary);
+  background: var(--seed-semantic-color-primary-low);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.ai-fullscreen-spacer {
+  width: 40px;
+}
+/* 본문 — chat-body/input-row 는 panel 스타일 재사용, 컨테이너 안에서 풀 사이즈 */
+.ai-fullscreen .chat-body {
+  flex: 1;
+  min-height: 0;
+}
+.ai-fullscreen .chat-input-row {
+  flex-shrink: 0;
 }

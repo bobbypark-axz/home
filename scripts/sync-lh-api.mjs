@@ -387,8 +387,15 @@ function mapType(notice) {
 function mapStatus(panSs) {
   if (panSs === "공고중") return "upcoming";
   if (panSs === "접수중" || panSs === "정정공고중" || panSs === "상담요청") return "open";
-  if (panSs === "접수마감") return "closed";
+  if (panSs === "접수마감" || panSs === "모집중지") return "closed";
   return "open";
+}
+
+// 상세 페이지에서 직접 추출한 "공고상태" 우선 사용. detail status 없으면 PAN_SS fallback.
+// PAN_SS 는 API sync 시점의 값이라 stale 일 수 있는 반면, 페이지 status 는 사용자가 보는 실시간 값.
+function resolveStatus(panSs, detailStatus) {
+  if (detailStatus) return mapStatus(detailStatus);
+  return mapStatus(panSs);
 }
 
 // API 1 응답이 빈 객체(`{}`)로 직렬화돼 들어오는 필드가 있어서 string/number 만 살리고 나머진 null.
@@ -523,7 +530,7 @@ async function main() {
       agency: "LH",
       district: n.CNP_CD_NM || "",
       districtId: SIDO_NAME_TO_ID[n.CNP_CD_NM] || null,
-      status: mapStatus(n.PAN_SS),
+      status: resolveStatus(n.PAN_SS, ex?.details?.noticeStatus),
       deadline: n.CLSG_DT || "",
       announceDate: n.PAN_NT_ST_DT || "",
       address,

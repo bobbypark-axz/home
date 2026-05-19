@@ -80,6 +80,16 @@ function extractPageAddress(html) {
   return html.match(/var\s+address\s*=\s*"([^"]+)"/)?.[1] ?? "";
 }
 
+// LH 상세 페이지의 "공고상태" 텍스트 추출.
+// 가능한 값: 공고중 / 정정공고중 / 접수중 / 상담요청 / 접수마감 / 모집중지.
+// PAN_SS API 값이 sync 시점에 stale 될 수 있어, 페이지의 실시간 상태를 가져와 우선 사용.
+function extractNoticeStatus(html) {
+  const m = html.match(
+    /공고\s*상태[\s\S]{0,200}?(공고중|정정공고중|접수중|상담요청|접수마감|모집중지)/,
+  );
+  return m?.[1] ?? null;
+}
+
 const PHOTO_KIND_PRIORITY = ["단지조감도", "단지전경", "단지배치도", "지역조감도", "지구조감도", "위치도", "동호배치도", "평면도"];
 
 function extractPhotos(html) {
@@ -202,7 +212,8 @@ async function main() {
     if (processed >= limit) break;
     const n = notices[i];
     // 이미 enrichment 완료된 항목은 건너뜀. photos는 별도 보강(아래)에서 처리.
-    if (n.details?.enrichedAt && n.photos?.length) {
+    // noticeStatus 추가 이후 옛 항목은 그 필드 없으므로, 없으면 다시 enrich.
+    if (n.details?.enrichedAt && n.photos?.length && n.details?.noticeStatus) {
       skipCount++;
       progress.done = i + 1;
       continue;
@@ -222,6 +233,7 @@ async function main() {
       const housingTypes = extractHousingTypes(html);
       const schedule = extractSchedule(html);
       const photos = extractPhotos(html);
+      const noticeStatus = extractNoticeStatus(html);
 
       if (coord && coord.lat && coord.lng) {
         n.lat = coord.lat;
@@ -234,6 +246,7 @@ async function main() {
         coordCount: Object.keys(coords).length,
         housingTypes,
         schedule,
+        noticeStatus,
         enrichedAt: new Date().toISOString(),
       };
       okCount++;

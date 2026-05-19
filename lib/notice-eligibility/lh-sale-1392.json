@@ -1,0 +1,175 @@
+{
+  "supplyTotal": 686,
+  "tiers": [
+    {
+      "id": "etc",
+      "name": "사전청약 당첨자",
+      "units": 557,
+      "age": null,
+      "marriage": null,
+      "income": null,
+      "asset": null,
+      "other": [
+        "수도권 거주 성년 무주택세대구성원",
+        "남양주왕숙2 A-3블록 사전청약 당첨자 대상"
+      ]
+    },
+    {
+      "id": "etc",
+      "name": "이주자주택 대상자",
+      "units": 48,
+      "age": null,
+      "marriage": null,
+      "income": null,
+      "asset": null,
+      "other": [
+        "협의양도인·철거주택 소유자 포함"
+      ]
+    },
+    {
+      "id": "child",
+      "name": "다자녀가구 특별공급",
+      "units": 8,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 120,
+        "byHousehold": null,
+        "note": "월평균소득 120% 이하 (맞벌이 200%)"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "청약통장 6개월·6회 이상",
+        "수도권 거주 성년 무주택세대구성원"
+      ]
+    },
+    {
+      "id": "newlywed",
+      "name": "신혼부부 특별공급",
+      "units": 7,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 130,
+        "byHousehold": null,
+        "note": "월평균소득 130% 이하 (맞벌이 200%)"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "청약통장 6개월·6회 이상",
+        "수도권 거주 성년 무주택세대구성원",
+        "예비신혼부부 포함"
+      ]
+    },
+    {
+      "id": "general",
+      "name": "생애최초 특별공급",
+      "units": 11,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 130,
+        "byHousehold": null,
+        "note": "월평균소득 130% 이하 (맞벌이 200%)"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "청약통장 12개월·12회 이상, 납입액 600만원 이상",
+        "세대구성원 전원 과거 주택소유사실 없어야 함",
+        "수도권 거주 성년 무주택세대구성원"
+      ]
+    },
+    {
+      "id": "senior",
+      "name": "노부모부양 특별공급",
+      "units": 3,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 120,
+        "byHousehold": null,
+        "note": "월평균소득 120% 이하 (맞벌이 200%)"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "청약통장 12개월·12회 이상",
+        "수도권 거주 성년 무주택세대구성원"
+      ]
+    },
+    {
+      "id": "etc",
+      "name": "신생아 특별공급",
+      "units": 16,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 140,
+        "byHousehold": null,
+        "note": "월평균소득 140% 이하 (맞벌이 200%)"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "청약통장 6개월·6회 이상",
+        "수도권 거주 성년 무주택세대구성원"
+      ]
+    },
+    {
+      "id": "etc",
+      "name": "기관추천 특별공급",
+      "units": 4,
+      "age": null,
+      "marriage": null,
+      "income": null,
+      "asset": null,
+      "other": [
+        "청약통장 6개월·6회 이상 (국가유공자 등 불필요)",
+        "해당 기관 추천 대상자"
+      ]
+    },
+    {
+      "id": "general",
+      "name": "일반공급",
+      "units": 20,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 100,
+        "byHousehold": null,
+        "note": "전용 60㎡ 이하 세대 월평균소득 100% 이하 (맞벌이 200%) 적용, 전용 60㎡ 초과는 소득 제한 없음"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "1순위: 청약통장 12개월·12회 이상 / 2순위: 가입자",
+        "수도권 거주 성년 무주택세대구성원",
+        "남양주시 1년 이상 거주자 우선 공급",
+        "자산 조건은 전용 60㎡ 이하만 적용"
+      ]
+    }
+  ],
+  "priority": [
+    "다자녀",
+    "신혼부부",
+    "생애최초",
+    "노부모부양",
+    "신생아",
+    "기관추천"
+  ]
+}

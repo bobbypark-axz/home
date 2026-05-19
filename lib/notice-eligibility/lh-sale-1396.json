@@ -1,0 +1,189 @@
+{
+  "supplyTotal": 812,
+  "tiers": [
+    {
+      "id": "etc",
+      "name": "다자녀가구 특별공급",
+      "units": 17,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 120,
+        "byHousehold": null,
+        "note": "맞벌이 200%, 세대 월평균소득 기준"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "청약저축 6개월 6회 이상",
+        "무주택세대구성원",
+        "부동산 215,500천원 이하 / 자동차 45,420천원 이하"
+      ]
+    },
+    {
+      "id": "newlywed",
+      "name": "신혼부부 특별공급",
+      "units": 17,
+      "age": null,
+      "marriage": "신혼부부 또는 예비신혼부부",
+      "income": {
+        "percent": 130,
+        "byHousehold": null,
+        "note": "맞벌이 200%, 세대 월평균소득 기준"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "청약저축 6개월 6회 이상",
+        "무주택세대구성원"
+      ]
+    },
+    {
+      "id": "etc",
+      "name": "생애최초 특별공급",
+      "units": 25,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 130,
+        "byHousehold": null,
+        "note": "맞벌이 200%, 세대 월평균소득 기준"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "청약저축 12개월 12회 이상, 저축액 600만원 이상(선납금 포함)",
+        "세대구성원 전원 과거 주택소유사실 없어야 함",
+        "무주택세대구성원"
+      ]
+    },
+    {
+      "id": "senior",
+      "name": "노부모부양 특별공급",
+      "units": 7,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 120,
+        "byHousehold": null,
+        "note": "맞벌이 200%, 세대 월평균소득 기준"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "청약저축 12개월 12회 이상",
+        "무주택세대구성원"
+      ]
+    },
+    {
+      "id": "etc",
+      "name": "신생아 특별공급",
+      "units": 32,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 140,
+        "byHousehold": null,
+        "note": "맞벌이 200%, 세대 월평균소득 기준"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "청약저축 6개월 6회 이상",
+        "무주택세대구성원"
+      ]
+    },
+    {
+      "id": "etc",
+      "name": "국가유공자 특별공급",
+      "units": 8,
+      "age": null,
+      "marriage": null,
+      "income": null,
+      "asset": null,
+      "other": [
+        "기관추천(국가유공자)",
+        "입주자저축 불필요"
+      ]
+    },
+    {
+      "id": "etc",
+      "name": "협의양도인 특별공급",
+      "units": 8,
+      "age": null,
+      "marriage": null,
+      "income": null,
+      "asset": null,
+      "other": [
+        "입주자저축 불필요",
+        "무주택여부 신청자 본인만 해당"
+      ]
+    },
+    {
+      "id": "etc",
+      "name": "기관추천 특별공급",
+      "units": 17,
+      "age": null,
+      "marriage": null,
+      "income": null,
+      "asset": null,
+      "other": [
+        "기관추천 대상자",
+        "입주자저축 6개월 6회 이상(국가유공자·장애인·철거민 등 불필요)"
+      ]
+    },
+    {
+      "id": "general",
+      "name": "일반공급",
+      "units": 43,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 100,
+        "byHousehold": null,
+        "note": "1순위 우선공급(전용 60㎡ 이하, 59A·59B): 세대 월평균소득 100% 이하(맞벌이 200%), 2순위: 소득기준 없음. 전용 60㎡ 초과(74A·84A)는 소득기준 없음"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "청약저축 12개월 12회 이상(1순위)",
+        "자산기준(부동산·자동차)은 전용 60㎡ 이하(59A·59B)만 적용",
+        "무주택세대구성원",
+        "수도권 거주 성년자",
+        "남양주시 1년 이상 거주자 우선"
+      ]
+    },
+    {
+      "id": "etc",
+      "name": "사전청약 당첨자",
+      "units": 630,
+      "age": null,
+      "marriage": null,
+      "income": null,
+      "asset": null,
+      "other": [
+        "왕숙2지구 A-1블록 사전청약 당첨자",
+        "사전청약 입주자모집공고일(2021.10.15.) 기준 지역우선공급 충족 필요(남양주시 1년 이상, 경기도 6개월 이상)"
+      ]
+    }
+  ],
+  "priority": [
+    "다자녀",
+    "한부모",
+    "노부모부양",
+    "장애인",
+    "신생아"
+  ]
+}

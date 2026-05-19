@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import type { Listing } from "@/lib/types";
-import { ELIGIBILITY_LABELS, HOUSING_TYPES, STATUS_LABELS } from "@/lib/mock-data";
+import { HOUSING_TYPES, STATUS_LABELS } from "@/lib/mock-data";
 import { thumbnailSVG } from "@/lib/svg";
-import { calcDday, isRegularRecruitment } from "@/lib/dday";
+import { calcDday, isRegularRecruitment, effectiveStatus } from "@/lib/dday";
 import {
   applyUrlFor,
   infoUrlFor,
@@ -13,8 +13,24 @@ import {
 } from "@/lib/notice-match";
 import { NaverPanorama } from "./naver-panorama";
 import { CloseIcon, HeartIcon, TrainIcon } from "./icons";
+import { EligibilityDetail } from "./eligibility-detail";
+
+// 1평 ≈ 3.3058㎡ — 부동산 공인 환산
+const PYEONG_PER_M2 = 1 / 3.3058;
+type AreaUnit = "m2" | "pyeong";
+
+function formatAreaCell(m2: number, unit: AreaUnit): string {
+  if (!Number.isFinite(m2) || m2 <= 0) return "-";
+  if (unit === "pyeong") {
+    const py = m2 * PYEONG_PER_M2;
+    return py >= 100 ? `${Math.round(py)}평` : `${py.toFixed(1)}평`;
+  }
+  // ㎡ 표시: 정수면 그대로, 소수면 .00 절단 (74.96 → 74.96, 75.00 → 75)
+  return Number.isInteger(m2) ? `${m2}㎡` : `${m2}㎡`;
+}
 
 function ListingComplexes({ item }: { item: Listing }) {
+  const [areaUnit, setAreaUnit] = useState<AreaUnit>("m2");
   if (!item.complexes || !item.complexes.length) return null;
   function fmtPrice(v: number | null): string {
     if (v == null) return "공고문 확인";
@@ -22,7 +38,27 @@ function ListingComplexes({ item }: { item: Listing }) {
   }
   return (
     <section className="detail-section">
-      <h3>단지별 공급 정보</h3>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
+        <h3 style={{ margin: 0 }}>단지별 공급 정보</h3>
+        <div className="area-unit-toggle" role="group" aria-label="면적 단위">
+          <button
+            type="button"
+            className={`area-unit-toggle-btn ${areaUnit === "m2" ? "on" : ""}`}
+            onClick={() => setAreaUnit("m2")}
+            aria-pressed={areaUnit === "m2"}
+          >
+            ㎡
+          </button>
+          <button
+            type="button"
+            className={`area-unit-toggle-btn ${areaUnit === "pyeong" ? "on" : ""}`}
+            onClick={() => setAreaUnit("pyeong")}
+            aria-pressed={areaUnit === "pyeong"}
+          >
+            평
+          </button>
+        </div>
+      </div>
       {item.complexes.map((c, ci) => (
         <div key={ci} style={{ marginTop: ci === 0 ? 0 : 16 }}>
           {c.name && (
@@ -32,23 +68,27 @@ function ListingComplexes({ item }: { item: Listing }) {
             <table style={{ width: "100%", fontSize: 12, borderCollapse: "collapse" }}>
               <thead>
                 <tr style={{ borderBottom: "1px solid var(--seed-scale-color-gray-200)", color: "var(--seed-semantic-color-ink-text-low)" }}>
-                  <th style={{ textAlign: "left", padding: "6px 8px" }}>주택형</th>
-                  <th style={{ textAlign: "right", padding: "6px 8px" }}>전용면적</th>
+                  <th style={{ textAlign: "left", padding: "6px 8px" }}>
+                    전용면적 ({areaUnit === "pyeong" ? "평" : "㎡"})
+                  </th>
                   <th style={{ textAlign: "right", padding: "6px 8px" }}>세대수</th>
                   <th style={{ textAlign: "right", padding: "6px 8px" }}>보증금</th>
                   <th style={{ textAlign: "right", padding: "6px 8px" }}>월세</th>
                 </tr>
               </thead>
               <tbody>
-                {c.rows.map((r, ri) => (
-                  <tr key={ri} style={{ borderBottom: "1px solid var(--seed-scale-color-gray-100)" }}>
-                    <td style={{ padding: "6px 8px" }}>{r.houseType}</td>
-                    <td style={{ textAlign: "right", padding: "6px 8px" }}>{r.area}㎡</td>
-                    <td style={{ textAlign: "right", padding: "6px 8px" }}>{r.supplyTotal ?? "-"}</td>
-                    <td style={{ textAlign: "right", padding: "6px 8px" }}>{fmtPrice(r.deposit)}</td>
-                    <td style={{ textAlign: "right", padding: "6px 8px" }}>{fmtPrice(r.rent)}</td>
-                  </tr>
-                ))}
+                {c.rows.map((r, ri) => {
+                  const m2 = Number(r.houseType);
+                  const units = r.supplyTotal ?? r.area ?? null;
+                  return (
+                    <tr key={ri} style={{ borderBottom: "1px solid var(--seed-scale-color-gray-100)" }}>
+                      <td style={{ padding: "6px 8px" }}>{formatAreaCell(m2, areaUnit)}</td>
+                      <td style={{ textAlign: "right", padding: "6px 8px" }}>{units ?? "-"}</td>
+                      <td style={{ textAlign: "right", padding: "6px 8px" }}>{fmtPrice(r.deposit)}</td>
+                      <td style={{ textAlign: "right", padding: "6px 8px" }}>{fmtPrice(r.rent)}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -92,7 +132,8 @@ export function DetailPanel({
   if (!item) return <div className={`detail-panel ${open ? "open" : ""}`} />;
 
   const svg = thumbnailSVG(item.thumbSeed, item.type);
-  const status = STATUS_LABELS[item.status];
+  const effStatus = effectiveStatus(item.status, item.deadline, item.beginDate);
+  const status = STATUS_LABELS[effStatus];
   const housingType = HOUSING_TYPES.find((t) => t.id === item.type);
   const applyUrl = applyUrlFor(item.type);
   const infoUrl = infoUrlFor(item.type);
@@ -234,25 +275,7 @@ export function DetailPanel({
         )}
 
         <section className="detail-section">
-          <h3>입주 자격</h3>
-          <div className="detail-eligibility">
-            {item.eligible.map((e) => (
-              <span key={e} className="eli-pill">
-                {ELIGIBILITY_LABELS[e] ?? e}
-              </span>
-            ))}
-          </div>
-          <div style={{ fontSize: 12, color: "var(--seed-semantic-color-ink-text-low)", marginTop: 8, lineHeight: 1.6 }}>
-            · 정확한 자격 요건은 LH 공고문을 반드시 확인하세요.
-            {item.sourceUrl && (
-              <>
-                {" "}
-                <a href={item.sourceUrl} target="_blank" rel="noreferrer" style={{ color: "var(--seed-semantic-color-primary)", textDecoration: "underline" }}>
-                  공고문 보기 →
-                </a>
-              </>
-            )}
-          </div>
+          <EligibilityDetail listingId={item.id} sourceUrl={item.sourceUrl} />
         </section>
 
         <section className="detail-section">
