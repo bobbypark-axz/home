@@ -52,6 +52,7 @@ lib/subway-stations.json
 .env*.local
 
 # 큰 자산 — Vercel Blob 에 업로드, 매핑 JSON 으로 reference
-public/lh-covers/                       # lib/blob-covers.json 매핑
-lib/notice-texts/                       # Doc Parse markdown — 검색은 embeddings/ 만 사용
-lib/notice-embeddings/vectors.bin       # 301MB. lib/blob-vectors.json 으로 fetch
+# (.gitignore 인라인 comment 는 패턴의 일부로 해석되니 줄별로 분리)
+public/lh-covers/
+lib/notice-texts/
+lib/notice-embeddings/vectors.bin

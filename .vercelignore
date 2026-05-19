@@ -1,0 +1,17 @@
+# Vercel deploy package 에서 제외 — 함수 번들 size 절감 + 빌드 속도 ↑
+# (Vercel 이 자체적으로 npm install 하니까 node_modules 도 제외)
+node_modules
+.next/cache
+
+# 큰 로컬 자산 — 모두 Vercel Blob 으로 이전됨
+public/lh-covers/
+lib/notice-embeddings/vectors.bin
+
+# 런타임에 안 쓰는 데이터
+lib/notice-texts/
+
+# 빌드 / sync 도구
+scripts/
+docs/
+*.progress.json
+.cache/
