@@ -27,8 +27,9 @@ jobs:
 
       - run: npm ci
 
-      # 공고문 PDF → markdown 캐시 공유 (gitignored 폴더 → runs 간 GitHub cache 로 누적).
-      # 캐시 없으면 매 run 마다 active 매물 전부 다시 파싱 (1~2시간). 캐시 hit 시 신규만 파싱 (수분).
+      # gitignored 폴더 → runs 간 GitHub cache 로 누적.
+      # 캐시 없으면 매 run 마다 전부 다시 파싱/임베딩 (Phase 3 ~2h, Phase 4 ~30m+).
+      # 캐시 hit 시 신규 매물만 처리 (각 수분).
       - name: Restore notice-texts cache
         uses: actions/cache@v4
         with:
@@ -36,6 +37,14 @@ jobs:
           key: notice-texts-v1-${{ github.run_id }}
           restore-keys: |
             notice-texts-v1-
+
+      - name: Restore notice-embeddings cache
+        uses: actions/cache@v4
+        with:
+          path: lib/notice-embeddings
+          key: notice-embeddings-v1-${{ github.run_id }}
+          restore-keys: |
+            notice-embeddings-v1-
 
       - name: Phase 1 — LH 공고 list sync (data.go.kr)
         env:
