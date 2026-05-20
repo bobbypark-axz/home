@@ -42,7 +42,7 @@ export function AppShell({
 }) {
   const router = useRouter();
   const [filters, setFilters] = useState<Filters>(INITIAL_FILTERS);
-  const [sort, setSort] = useState<SortKey>("deadline");
+  const [sort, setSort] = useState<SortKey>("recent");
   const [activeDistrict, setActiveDistrict] = useState<string | null>(null);
   const [searchBounds, setSearchBounds] = useState<{
     swLat: number; swLng: number; neLat: number; neLng: number;
