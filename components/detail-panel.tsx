@@ -234,11 +234,15 @@ export function DetailPanel({
           <div className="detail-price">
             <div className="detail-price-cell">
               <div className="detail-price-label">보증금</div>
-              <div className="detail-price-value">{item.deposit.toLocaleString()}만원</div>
+              <div className="detail-price-value">
+                {item.deposit > 0 ? `${item.deposit.toLocaleString()}만원` : "공고문 확인"}
+              </div>
             </div>
             <div className="detail-price-cell">
               <div className="detail-price-label">월 임대료</div>
-              <div className="detail-price-value">{item.rent}만원</div>
+              <div className="detail-price-value">
+                {item.rent > 0 ? `${item.rent}만원` : "공고문 확인"}
+              </div>
             </div>
           </div>
         )}
