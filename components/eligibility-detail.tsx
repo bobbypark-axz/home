@@ -354,11 +354,11 @@ export function EligibilityDetail({
       {data.priority && data.priority.length > 0 && (
         <div className="eli-priority">
           <div className="eli-priority-title"><IconStar /> 우선공급 대상이면 가점이 있어요</div>
-          <div className="eli-priority-chips">
+          <ul className="eli-priority-list">
             {data.priority.map((p, i) => (
-              <span key={i} className="eli-priority-chip">{p}</span>
+              <li key={i} className="eli-priority-item">{p}</li>
             ))}
-          </div>
+          </ul>
         </div>
       )}
 

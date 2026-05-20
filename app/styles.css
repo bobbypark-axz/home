@@ -1747,20 +1747,33 @@ input, select { font-family: inherit; }
   font-weight: 700;
   color: var(--seed-semantic-color-ink-text);
 }
-.eli-priority-chips {
+.eli-priority-list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
   display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 8px;
+  flex-direction: column;
+  gap: 6px;
 }
-.eli-priority-chip {
-  border: 1px solid var(--seed-semantic-color-divider-2);
-  background: white;
-  border-radius: 999px;
-  padding: 4px 10px;
-  font-size: 11.5px;
-  font-weight: 600;
+.eli-priority-item {
+  position: relative;
+  padding-left: 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+  line-height: 1.5;
   color: var(--seed-semantic-color-ink-text);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.eli-priority-item::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--seed-semantic-color-primary);
 }
 
 /* CTA */
