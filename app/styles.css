@@ -2674,6 +2674,8 @@ div:has(> img[src*="streetview_btn"]) {
     height: 100vh;
     overflow: hidden;
   }
+  /* "이 지역에서 다시 검색" 버튼 — 모바일에선 지도 상단 가까이 */
+  .map-research { top: 16px; }
   /* 데스크탑 chrome 숨김 */
   .topbar,
   .map-overlay-top {
