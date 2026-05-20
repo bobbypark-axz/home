@@ -174,21 +174,21 @@ function parseRentTable(md) {
       return header1.findIndex((c) => RENT_HEADER_RE.test(c.trim()));
     })();
 
-    // 보증금-계: header2 에서 "계" 단독 셀 (header1 의 같은 인덱스가 "임대보증금" 또는 "임대조건").
+    // 보증금-계: header2 에서 "계" 또는 "합계" 단독 셀. header1 의 같은 인덱스가 "임대보증금" 또는 "임대조건".
+    const isTotalCell = (c) => /^(계|합계)$/.test(c.trim());
     const depositIdx = (() => {
       if (!header2) {
-        // header1 만 있을 때: "임대보증금" 또는 "계" 첫 등장
-        return header1.findIndex((c) => /^계$/.test(c.trim()) || c.includes("임대보증금"));
+        return header1.findIndex((c) => isTotalCell(c) || c.includes("임대보증금"));
       }
-      // 모든 "계" 인덱스 → 그 자리 header1 이 임대보증금/임대조건 인 것 선택
+      // header2 에서 "계"/"합계" 위치 + header1 의 같은 자리가 임대보증금/임대조건
       for (let idx = 0; idx < header2.length; idx++) {
-        if (/^계$/.test(header2[idx].trim())) {
+        if (isTotalCell(header2[idx])) {
           const h1 = header1[idx] || "";
           if (h1.includes("임대보증금") || h1.includes("임대조건")) return idx;
         }
       }
-      // fallback: 첫 "계"
-      return header2.findIndex((c) => /^계$/.test(c.trim()));
+      // fallback: 첫 "계"/"합계"
+      return header2.findIndex(isTotalCell);
     })();
 
     if (typeIdx < 0 || depositIdx < 0 || rentIdx < 0) {
@@ -320,6 +320,23 @@ async function main() {
           })),
       }];
       changed = true;
+    } else if (item.complexes && item.complexes.length > 0 && u.units && u.units.length > 0) {
+      // complexes 이미 있고 rows 채워져 있는데 deposit/rent 만 null 인 경우 — 보강.
+      // 매칭: houseType (= 면적 string) ↔ unit.area. 같은 면적이 여러 개면 순서대로.
+      for (const c of item.complexes) {
+        if (!c.rows) continue;
+        for (const r of c.rows) {
+          if (r.deposit != null && r.rent != null) continue;
+          // 같은 area 의 unit 찾기 (먼저 안 매칭된 것 우선)
+          const targetArea = parseFloat(r.houseType);
+          const match = u.units.find((un) => un._consumed !== true && Math.abs((un.area ?? -1) - targetArea) < 0.01 && un.deposit != null);
+          if (match) {
+            if (r.deposit == null && match.deposit != null) { r.deposit = match.deposit; changed = true; }
+            if (r.rent == null && match.rent != null) { r.rent = match.rent; changed = true; }
+            match._consumed = true;
+          }
+        }
+      }
     }
     if (changed) patched++;
   }

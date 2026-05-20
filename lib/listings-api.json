@@ -1442,8 +1442,8 @@
           {
             "houseType": "33.6",
             "supplyTotal": 10,
-            "deposit": null,
-            "rent": null
+            "deposit": 8904000,
+            "rent": 142910
           },
           {
             "houseType": "37.99",
@@ -1730,38 +1730,38 @@
           {
             "houseType": "29.85",
             "supplyTotal": 30,
-            "deposit": null,
-            "rent": null
+            "deposit": 8493000,
+            "rent": 129780
           },
           {
             "houseType": "36.63",
             "supplyTotal": 30,
-            "deposit": null,
-            "rent": null
+            "deposit": 11963000,
+            "rent": 84330
           },
           {
             "houseType": "46.9",
             "supplyTotal": 30,
-            "deposit": null,
-            "rent": null
+            "deposit": 18001000,
+            "rent": 115730
           },
           {
             "houseType": "46.9",
             "supplyTotal": 31,
-            "deposit": null,
-            "rent": null
+            "deposit": 17700000,
+            "rent": 115730
           },
           {
             "houseType": "46.9",
             "supplyTotal": 23,
-            "deposit": null,
-            "rent": null
+            "deposit": 18940000,
+            "rent": 130010
           },
           {
             "houseType": "51.93",
             "supplyTotal": 10,
-            "deposit": null,
-            "rent": null
+            "deposit": 20572000,
+            "rent": 125980
           }
         ]
       }
@@ -1998,8 +1998,8 @@
           {
             "houseType": "36.16",
             "supplyTotal": 20,
-            "deposit": null,
-            "rent": null
+            "deposit": 8765000,
+            "rent": 71450
           },
           {
             "houseType": "37.43",
@@ -3996,8 +3996,8 @@
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061087&ccrCnntSysDsCd=02&uppAisTpCd=06&aisTpCd=08&mi=1026",
     "thumbSeed": 77,
-    "deposit": 1497,
-    "rent": 51,
+    "deposit": 447960008743,
+    "rent": 46,
     "complexes": [
       {
         "name": null,
@@ -4050,54 +4050,56 @@
           {
             "houseType": "59.97",
             "supplyTotal": 10,
-            "deposit": null,
-            "rent": null
+            "deposit": 33148000,
+            "rent": 292150
           },
           {
             "houseType": "59.98",
             "supplyTotal": 70,
-            "deposit": null,
-            "rent": null
+            "deposit": 33148000,
+            "rent": 292150
           },
           {
             "houseType": "59.98",
             "supplyTotal": 30,
-            "deposit": null,
-            "rent": null
+            "deposit": 33148000,
+            "rent": 292150
           },
           {
             "houseType": "59.98",
             "supplyTotal": 20,
-            "deposit": null,
-            "rent": null
+            "deposit": 33148000,
+            "rent": 292150
           },
           {
             "houseType": "74.68",
             "supplyTotal": 30,
-            "deposit": null,
-            "rent": null
+            "deposit": 36645000,
+            "rent": 382150
           },
           {
             "houseType": "74.88",
             "supplyTotal": 20,
-            "deposit": null,
-            "rent": null
+            "deposit": 36645000,
+            "rent": 382150
           },
           {
             "houseType": "84.73",
             "supplyTotal": 20,
-            "deposit": null,
-            "rent": null
+            "deposit": 47115000,
+            "rent": 429270
           },
           {
             "houseType": "84.84",
             "supplyTotal": 10,
-            "deposit": null,
-            "rent": null
+            "deposit": 47115000,
+            "rent": 429270
           }
         ]
       }
-    ]
+    ],
+    "deposit": 3315,
+    "rent": 29
   },
   {
     "id": "lh-rental-2015122300019970",
@@ -5255,32 +5257,32 @@
           {
             "houseType": "36.65",
             "supplyTotal": 30,
-            "deposit": null,
-            "rent": null
+            "deposit": 12934000,
+            "rent": 107770
           },
           {
             "houseType": "39.48",
             "supplyTotal": 10,
-            "deposit": null,
-            "rent": null
+            "deposit": 14889000,
+            "rent": 123950
           },
           {
             "houseType": "39.72",
             "supplyTotal": 20,
-            "deposit": null,
-            "rent": null
+            "deposit": 15117000,
+            "rent": 125300
           },
           {
             "houseType": "46.9",
             "supplyTotal": 10,
-            "deposit": null,
-            "rent": null
+            "deposit": 20966000,
+            "rent": 175170
           },
           {
             "houseType": "51.93",
             "supplyTotal": 12,
-            "deposit": null,
-            "rent": null
+            "deposit": 26113000,
+            "rent": 218280
           }
         ]
       }
