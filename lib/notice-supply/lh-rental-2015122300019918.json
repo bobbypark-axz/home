@@ -6,32 +6,44 @@
     {
       "type": "29",
       "area": 29.85,
-      "supply": 30
+      "supply": 30,
+      "deposit": 8493000,
+      "rent": 129780
     },
     {
       "type": "36",
       "area": 36.63,
-      "supply": 30
+      "supply": 30,
+      "deposit": 11963000,
+      "rent": 84330
     },
     {
       "type": "46",
       "area": 46.9,
-      "supply": 30
+      "supply": 30,
+      "deposit": 18001000,
+      "rent": 115730
     },
     {
       "type": "51",
       "area": 51.93,
-      "supply": 10
+      "supply": 10,
+      "deposit": 20572000,
+      "rent": 125980
     },
     {
       "type": "46A",
       "area": 46.9,
-      "supply": 31
+      "supply": 31,
+      "deposit": 17700000,
+      "rent": 115730
     },
     {
       "type": "46B",
       "area": 46.9,
-      "supply": 23
+      "supply": 23,
+      "deposit": 18940000,
+      "rent": 130010
     }
   ]
 }

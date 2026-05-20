@@ -67,19 +67,19 @@ function parseSupplyTable(md) {
     result.integrated = true;
   }
 
-  // 표 영역 찾기 — 헤더에 "주택형" + "모집할" (or "모집세대") 들어있는 라인
+  // 표 영역 찾기 — 헤더에 (주택형/공급형별) + 모집 키워드.
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     if (!line.startsWith("|")) continue;
     const cells = splitRow(line);
-    if (!cells.some((c) => c.includes("주택형"))) continue;
+    if (!cells.some((c) => TYPE_HEADER_RE.test(c.trim()))) continue;
     if (!cells.some((c) => /모집/.test(c))) continue;
 
     // 헤더 발견. 컬럼 인덱스 매핑.
     const idx = {
-      type: cells.findIndex((c) => c.trim() === "주택형"),
-      area: cells.findIndex((c) => c.includes("주거 전용") || c.includes("전용면적") || c.includes("주거전용")),
-      supply: cells.findIndex((c) => /모집할/.test(c) || /모집세대/.test(c)),
+      type: cells.findIndex((c) => TYPE_HEADER_RE.test(c.trim())),
+      area: cells.findIndex((c) => c.includes("주거 전용") || c.includes("전용면적") || c.includes("주거전용") || c.includes("전용")),
+      supply: cells.findIndex((c) => /모집할|모집세대|금회\s*모집|모집\s*호수/.test(c)),
     };
 
     // 하위 헤더 행 (병합셀의 두 번째 줄) 가 있을 수 있어 데이터까지 진행
@@ -96,7 +96,7 @@ function parseSupplyTable(md) {
       const type = idx.type >= 0 ? row[idx.type] : null;
       const area = idx.area >= 0 ? Number(row[idx.area]) : null;
       const supply = idx.supply >= 0 ? parseInt2(row[idx.supply]) : null;
-      if (type && /^[\dA-Z]+$/i.test(type) && supply != null) {
+      if (type && /[\dA-Z]/i.test(type) && supply != null) {
         result.units.push({ type, area: Number.isFinite(area) ? area : null, supply });
       }
     }
@@ -118,9 +118,13 @@ function parseSupplyTable(md) {
   return result;
 }
 
-// 임대조건 표 추출 — 단지명/주택형/임대보증금(계, 계약금, 잔금)/월임대료
-// 표는 병합셀이 평탄화되며 같은 헤더 셀 ("임대보증금") 이 4번 반복되는 식.
-// 데이터 행은 단지명/주택형/계/계약금/잔금/월임대료/전환한도/최대보증금/최대월세 순.
+// "주택형" / "공급형별" / "공급 형별" / "공급형별 (m2)" 등 변형 매칭.
+const TYPE_HEADER_RE = /^\s*(주택\s*형|공급\s*형별?|주택\s*유형)/;
+// "월 임대료" / "월임대료" 공백 변형 매칭.
+const RENT_HEADER_RE = /^월\s*임대료/;
+
+// 임대조건 표 추출 — 헤더 두 줄 분석으로 컬럼 인덱스 동적 매핑.
+// 표 변형: 컬럼 앞에 "번호" 추가, 단지명 생략, "(천원)" 단위, 가/나군 두 블록 등.
 function parseRentTable(md) {
   const lines = md.split("\n");
   const result = []; // [{type, deposit, rent}]
@@ -129,25 +133,80 @@ function parseRentTable(md) {
     const line = lines[i];
     if (!line.startsWith("|")) continue;
     const cells = splitRow(line);
-    // 헤더 식별: "임대보증금" + "월임대료" 동시 출현
     const hasDeposit = cells.some((c) => c.includes("임대보증금"));
-    const hasRent = cells.some((c) => c.includes("월임대료"));
+    const hasRent = cells.some((c) => RENT_HEADER_RE.test(c));
     if (!hasDeposit || !hasRent) continue;
-    if (!cells.some((c) => c.includes("주택형"))) continue;
+    if (!cells.some((c) => TYPE_HEADER_RE.test(c))) continue;
 
-    // 하위 헤더 줄들 skip 하며 데이터 추출.
-    // 컬럼 위치 — LH 패턴: 단지명(0), 주택형(1), 계(2), 계약금(3), 잔금(4), 월임대료(5)
-    for (let j = i + 1; j < lines.length && lines[j].startsWith("|"); j++) {
+    // 헤더 두 줄 수집 (상위 + 하위) — 같은 인덱스로 의미 매핑.
+    const header1 = cells;
+    // 다음 비-구분자(---) 헤더 라인 찾기
+    let header2 = null;
+    let dataStart = i + 1;
+    for (let k = i + 1; k < lines.length && lines[k].startsWith("|"); k++) {
+      const r = splitRow(lines[k]);
+      if (r.every((c) => c === "---" || c === "")) continue;
+      if (isHeaderLikeRow(r)) {
+        header2 = r;
+        dataStart = k + 1;
+      } else {
+        dataStart = k;
+        break;
+      }
+    }
+
+    // 단위 감지 — "(천원)" 명시 시 1000배 (천원→원).
+    const unitMultiplier = (header1.some((c) => /\(천원\)/.test(c)) || (header2 || []).some((c) => /\(천원\)/.test(c))) ? 1000 : 1;
+
+    // 컬럼 인덱스 찾기.
+    // 주택형 / 공급형별 / 공급 형별 등 — header1 우선 (영구임대는 header1 에만 있음), 없으면 header2.
+    const typeIdx = (() => {
+      const i1 = header1.findIndex((c) => TYPE_HEADER_RE.test(c.trim()));
+      if (i1 >= 0) return i1;
+      return header2 ? header2.findIndex((c) => TYPE_HEADER_RE.test(c.trim())) : -1;
+    })();
+
+    // 월임대료: 첫 "월임대료" 셀 (가/나군 표는 가군이 첫 번째).
+    const rentIdx = (() => {
+      const h = header2 || header1;
+      const i = h.findIndex((c) => RENT_HEADER_RE.test(c.trim()));
+      if (i >= 0) return i;
+      return header1.findIndex((c) => RENT_HEADER_RE.test(c.trim()));
+    })();
+
+    // 보증금-계: header2 에서 "계" 단독 셀 (header1 의 같은 인덱스가 "임대보증금" 또는 "임대조건").
+    const depositIdx = (() => {
+      if (!header2) {
+        // header1 만 있을 때: "임대보증금" 또는 "계" 첫 등장
+        return header1.findIndex((c) => /^계$/.test(c.trim()) || c.includes("임대보증금"));
+      }
+      // 모든 "계" 인덱스 → 그 자리 header1 이 임대보증금/임대조건 인 것 선택
+      for (let idx = 0; idx < header2.length; idx++) {
+        if (/^계$/.test(header2[idx].trim())) {
+          const h1 = header1[idx] || "";
+          if (h1.includes("임대보증금") || h1.includes("임대조건")) return idx;
+        }
+      }
+      // fallback: 첫 "계"
+      return header2.findIndex((c) => /^계$/.test(c.trim()));
+    })();
+
+    if (typeIdx < 0 || depositIdx < 0 || rentIdx < 0) {
+      break; // 헤더 못 잡으면 종료
+    }
+
+    // 데이터 행 파싱.
+    for (let j = dataStart; j < lines.length && lines[j].startsWith("|"); j++) {
       const row = splitRow(lines[j]);
       if (row.every((c) => c === "---" || c === "")) continue;
       if (isHeaderLikeRow(row)) continue;
-      // 데이터 행: 단지명 / 주택형 / 보증금-계 / 계약금 / 잔금 / 월임대료 / ...
-      if (row.length < 6) continue;
-      const type = row[1];
-      const deposit = parseInt2(row[2]);
-      const rent = parseInt2(row[5]);
-      if (type && /^[\dA-Z]+$/i.test(type) && deposit != null && rent != null) {
-        result.push({ type, deposit, rent });
+      const type = row[typeIdx];
+      const deposit = parseInt2(row[depositIdx]);
+      const rent = parseInt2(row[rentIdx]);
+      // type 패턴: 숫자/영문 최소 1자 포함 (헤더 잔류물 거부용).
+      // 예: "26, 26(주거약자)" / "26.37" / "37A" / "39B(복층)" 등 모두 허용.
+      if (type && /[\dA-Z]/i.test(type) && deposit != null && rent != null) {
+        result.push({ type, deposit: deposit * unitMultiplier, rent: rent * unitMultiplier });
       }
     }
     break;

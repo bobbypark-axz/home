@@ -7,67 +7,82 @@
       "type": "26",
       "area": 26.98,
       "supply": 50,
-      "deposit": 15984,
-      "rent": 172140
+      "deposit": 15984000,
+      "rent": 172140000
     },
     {
       "type": "36",
       "area": 36.74,
       "supply": 30,
-      "deposit": 22134,
-      "rent": 221340
+      "deposit": 22134000,
+      "rent": 221340000
     },
     {
       "type": "46",
       "area": 46.98,
       "supply": 20,
-      "deposit": 41808,
-      "rent": 307420
+      "deposit": 41808000,
+      "rent": 307420000
     },
     {
       "type": "51",
       "area": 51.6,
       "supply": 10,
-      "deposit": 45446,
-      "rent": 340840
+      "deposit": 45446000,
+      "rent": 340840000
     },
     {
       "type": "59",
       "area": 59.95,
       "supply": 20,
-      "deposit": 58070,
-      "rent": 416580
+      "deposit": 58070000,
+      "rent": 416580000
     },
     {
       "type": "29A",
       "area": 29.85,
       "supply": 10,
-      "deposit": 23166,
-      "rent": 173470
+      "deposit": 23166000,
+      "rent": 173470000
     },
     {
       "type": "37A",
       "area": 37.75,
       "supply": 10,
-      "deposit": 39716,
-      "rent": 223570
+      "deposit": 39716000,
+      "rent": 223570000
     },
     {
       "type": "46A",
       "area": 46.71,
       "supply": 20,
-      "deposit": 61843,
-      "rent": 293350
+      "deposit": 61843000,
+      "rent": 293350000
+    },
+    {
+      "type": "36 고양삼송18",
+      "deposit": 22596000,
+      "rent": 214580000
     },
     {
       "type": "26A",
-      "deposit": 18237,
-      "rent": 185470
+      "deposit": 18237000,
+      "rent": 185470000
     },
     {
       "type": "26B",
-      "deposit": 18237,
-      "rent": 185470
+      "deposit": 18237000,
+      "rent": 185470000
+    },
+    {
+      "type": "- 37,000",
+      "deposit": 49188000,
+      "rent": 368900000
+    },
+    {
+      "type": "51 59 36",
+      "deposit": 6025522863000,
+      "rent": 430390252710000
     }
   ]
 }
