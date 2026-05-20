@@ -64,7 +64,12 @@ export function effectiveStatus(status: StatusId, deadline: string, beginDate?: 
     }
   }
 
-  if (s !== "open") return s;
+  // raw 가 open 외(특히 closing) 인데 deadline 이 과거면 closed 로 정정.
+  // LH 가 "마감임박" 으로 분류한 상태에서 sync 후 시간이 지나 실제론 마감된 경우 자주 발생.
+  if (s !== "open") {
+    if (todayDiff != null && todayDiff < 0) return "closed";
+    return s;
+  }
   if (todayDiff == null) return s;
   // open 인데 마감 지났음 → closed (sync stale 자동 정정)
   if (todayDiff < 0) return "closed";
