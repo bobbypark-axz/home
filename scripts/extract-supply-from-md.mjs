@@ -118,8 +118,8 @@ function parseSupplyTable(md) {
   return result;
 }
 
-// "주택형" / "공급형별" / "공급 형별" / "공급형별 (m2)" 등 변형 매칭.
-const TYPE_HEADER_RE = /^\s*(주택\s*형|공급\s*형별?|주택\s*유형)/;
+// "주택형" / "공급형별" / "공급 형별" / "공급형별 (m2)" / "단지명(신청단위)" (매입임대) 매칭.
+const TYPE_HEADER_RE = /^\s*(주택\s*형|공급\s*형별?|주택\s*유형|단지명)/;
 // "월 임대료" / "월임대료" 공백 변형 매칭.
 const RENT_HEADER_RE = /^월\s*임대료/;
 
@@ -136,7 +136,7 @@ function parseRentTable(md) {
     const hasDeposit = cells.some((c) => c.includes("임대보증금"));
     const hasRent = cells.some((c) => RENT_HEADER_RE.test(c));
     if (!hasDeposit || !hasRent) continue;
-    if (!cells.some((c) => TYPE_HEADER_RE.test(c))) continue;
+    // type 헤더는 header1 또는 header2 어디든 OK (매입임대는 header2 의 "단지명").
 
     // 헤더 두 줄 수집 (상위 + 하위) — 같은 인덱스로 의미 매핑.
     const header1 = cells;
@@ -203,10 +203,10 @@ function parseRentTable(md) {
       const type = row[typeIdx];
       const deposit = parseInt2(row[depositIdx]);
       const rent = parseInt2(row[rentIdx]);
-      // type 패턴: 숫자/영문 최소 1자 포함 (헤더 잔류물 거부용).
-      // 예: "26, 26(주거약자)" / "26.37" / "37A" / "39B(복층)" 등 모두 허용.
-      if (type && /[\dA-Z]/i.test(type) && deposit != null && rent != null) {
-        result.push({ type, deposit: deposit * unitMultiplier, rent: rent * unitMultiplier });
+      // type 컬럼이 비어있지 않으면 데이터 행 (헤더는 isHeaderLikeRow 가 걸름).
+      // 매입임대 단지명("일동미라주") / 일반 주택형("37A") 모두 허용.
+      if (type && type.trim() && deposit != null && rent != null) {
+        result.push({ type: type.trim(), deposit: deposit * unitMultiplier, rent: rent * unitMultiplier });
       }
     }
     break;

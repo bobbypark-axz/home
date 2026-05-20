@@ -28575,7 +28575,22 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019919&ccrCnntSysDsCd=03&uppAisTpCd=13&aisTpCd=26&mi=1026",
-    "thumbSeed": 304
+    "thumbSeed": 304,
+    "deposit": 9450,
+    "rent": 49,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "우남퍼스트빌",
+            "supplyTotal": null,
+            "deposit": 94500000,
+            "rent": 489460
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019940",

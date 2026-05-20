@@ -1418,6 +1418,32 @@ input, select { font-family: inherit; }
   letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
 }
+/* "공고문에서 확인" link — 보증금/월세 카드 안에서 작게 표시 */
+.detail-confirm-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--seed-semantic-color-primary);
+  text-decoration: none;
+}
+.detail-confirm-link:hover { text-decoration: underline; }
+/* 단지별 공급정보 표의 row 가 전부 비었을 때 안내 박스 */
+.detail-confirm-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+  background: var(--seed-semantic-color-primary-low, #fff4ed);
+  border: 1px solid var(--seed-semantic-color-primary);
+  border-radius: 10px;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.detail-confirm-box a {
+  color: var(--seed-semantic-color-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+.detail-confirm-box a:hover { text-decoration: underline; }
 
 .detail-section {
   margin-bottom: 24px;

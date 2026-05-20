@@ -31,6 +31,10 @@ function ListingComplexes({ item }: { item: Listing }) {
     if (v == null) return "공고문 확인";
     return Math.round(v / 10000).toLocaleString() + "만원";
   }
+  // 모든 row 의 deposit/rent 가 null 인지 — 매입임대/위탁임대 등 LH 가 등록 안 한 케이스
+  const allRowsEmpty = item.complexes.every((c) =>
+    (c.rows ?? []).every((r) => (r.deposit ?? 0) === 0 && (r.rent ?? 0) === 0),
+  );
   return (
     <section className="detail-section">
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 8 }}>
@@ -54,6 +58,14 @@ function ListingComplexes({ item }: { item: Listing }) {
           </button>
         </div>
       </div>
+      {allRowsEmpty && (
+        <div className="detail-confirm-box">
+          <span>임대조건 정보가 등록되지 않은 매물입니다.</span>
+          <a href={item.sourceUrl} target="_blank" rel="noreferrer">
+            LH 공고문에서 단지별 보증금·월세 확인 →
+          </a>
+        </div>
+      )}
       {item.complexes.map((c, ci) => (
         <div key={ci} style={{ marginTop: ci === 0 ? 0 : 16 }}>
           {c.name && (
@@ -235,13 +247,25 @@ export function DetailPanel({
             <div className="detail-price-cell">
               <div className="detail-price-label">보증금</div>
               <div className="detail-price-value">
-                {item.deposit > 0 ? `${item.deposit.toLocaleString()}만원` : "공고문 확인"}
+                {item.deposit > 0 ? (
+                  `${item.deposit.toLocaleString()}만원`
+                ) : (
+                  <a href={item.sourceUrl} target="_blank" rel="noreferrer" className="detail-confirm-link">
+                    공고문에서 확인 →
+                  </a>
+                )}
               </div>
             </div>
             <div className="detail-price-cell">
               <div className="detail-price-label">월 임대료</div>
               <div className="detail-price-value">
-                {item.rent > 0 ? `${item.rent}만원` : "공고문 확인"}
+                {item.rent > 0 ? (
+                  `${item.rent}만원`
+                ) : (
+                  <a href={item.sourceUrl} target="_blank" rel="noreferrer" className="detail-confirm-link">
+                    공고문에서 확인 →
+                  </a>
+                )}
               </div>
             </div>
           </div>
