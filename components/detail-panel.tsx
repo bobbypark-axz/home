@@ -5,12 +5,7 @@ import type { Listing } from "@/lib/types";
 import { HOUSING_TYPES, STATUS_LABELS } from "@/lib/mock-data";
 import { thumbnailSVG } from "@/lib/svg";
 import { calcDday, isRegularRecruitment, effectiveStatus } from "@/lib/dday";
-import {
-  applyUrlFor,
-  infoUrlFor,
-  deepLinksFor,
-  complexName,
-} from "@/lib/notice-match";
+import { applyUrlFor, infoUrlFor } from "@/lib/notice-match";
 import { NaverPanorama } from "./naver-panorama";
 import { CloseIcon, HeartIcon, TrainIcon } from "./icons";
 import { EligibilityDetail } from "./eligibility-detail";
@@ -137,9 +132,6 @@ export function DetailPanel({
   const housingType = HOUSING_TYPES.find((t) => t.id === item.type);
   const applyUrl = applyUrlFor(item.type);
   const infoUrl = infoUrlFor(item.type);
-  const deepLinks = deepLinksFor(item);
-  const complex = complexName(item);
-  const hasNotice = Boolean(item.deadline);
   // 청약 신청 버튼 상태: 신청 가능한 시점인지에 따라 라벨/활성 결정
   const isRecurring = isRegularRecruitment(item.deadline, item.status);
   const applyButton: { label: string; active: boolean } = isRecurring
@@ -226,29 +218,6 @@ export function DetailPanel({
 
         <ListingPhotos item={item} />
         <ListingComplexes item={item} />
-
-        <section className="detail-section detail-vacancy-search">
-          <h3>이 단지 공실·모집 공고 알아보기</h3>
-          <div className="detail-vacancy-grid">
-            <a className="vacancy-link" href={deepLinks.lhNoticeSearch} target="_blank" rel="noreferrer">
-              <span className="vacancy-link-label">LH 청약플러스</span>
-              <span className="vacancy-link-sub">공고문 원문 보기 「{complex}」</span>
-            </a>
-            <a className="vacancy-link" href={deepLinks.lhComplexSearch} target="_blank" rel="noreferrer">
-              <span className="vacancy-link-label">LH 임대주택검색</span>
-              <span className="vacancy-link-sub">{item.district} 단지 정보</span>
-            </a>
-            <a className="vacancy-link" href={deepLinks.myhomeSearch} target="_blank" rel="noreferrer">
-              <span className="vacancy-link-label">마이홈포털</span>
-              <span className="vacancy-link-sub">통합 모집공고 검색</span>
-            </a>
-          </div>
-          {!hasNotice ? (
-            <div className="detail-vacancy-hint">
-              ※ 단지명·지역으로 사전 필터된 검색 결과로 이동합니다.
-            </div>
-          ) : null}
-        </section>
 
         {item.type === "sale" ? (
           <div className="detail-price">

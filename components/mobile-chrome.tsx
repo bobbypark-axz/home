@@ -5,7 +5,6 @@
 // 디자인 시안: app/m/MobileV1.tsx — 같은 .m-* 클래스를 그대로 사용.
 
 import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
 import { createPortal } from "react-dom";
 import type { District, Filters, FilterKey } from "@/lib/types";
 import { FILTER_CONFIG } from "./filter-bar";
@@ -154,7 +153,6 @@ function Top({
   setFilters: (f: Filters) => void;
   onReset: () => void;
 }) {
-  const router = useRouter();
   const [openKey, setOpenKey] = useState<FilterKey | null>(null);
   const [regionOpen, setRegionOpen] = useState(false);
   const keys = Object.keys(FILTER_CONFIG) as FilterKey[];
@@ -162,34 +160,6 @@ function Top({
 
   return (
     <div className="app-m-top">
-      <div className="m-topbar">
-        <button type="button" className="m-search" onClick={() => setRegionOpen(true)}>
-          <span className="m-search-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <circle cx="7" cy="7" r="4.5" stroke="currentColor" strokeWidth="1.5" />
-              <path
-                d="M 10.5 10.5 L 14 14"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-              />
-            </svg>
-          </span>
-          <span className="s-text">
-            {regionLabel}
-            <small>지역 변경</small>
-          </span>
-        </button>
-        <button
-          type="button"
-          className="m-top-ai"
-          onClick={() => router.push("/ai")}
-          aria-label="AI 자격상담사 열기"
-        >
-          <span className="m-top-ai-spark" aria-hidden>✨</span>
-          AI
-        </button>
-      </div>
       <div className="m-filterrow">
         <button
           className={`m-fchip ${totalSelected === 0 ? "on" : ""}`}
