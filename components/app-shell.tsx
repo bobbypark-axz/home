@@ -231,20 +231,19 @@ export function AppShell({
           snap={sheetSnap}
           setSnap={setSheetSnap}
         />
-        {/* 모바일 전용 — 시트 hidden 일 때 하단 "목록 N건" floating 버튼 */}
-        {sheetSnap === "hidden" && (
-          <button
-            type="button"
-            className="m-list-fab"
-            onClick={() => setSheetSnap("expanded")}
-            aria-label="매물 목록 보기"
-          >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
-              <path d="M 2 3 L 12 3 M 2 7 L 12 7 M 2 11 L 12 11" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-            </svg>
-            <span>목록 {filtered.length.toLocaleString()}건</span>
-          </button>
-        )}
+        {/* 모바일 전용 — 시트 hidden 일 때 하단 "목록 N건" floating 버튼 (opacity 트랜지션) */}
+        <button
+          type="button"
+          className={`m-list-fab ${sheetSnap === "hidden" ? "is-visible" : ""}`}
+          onClick={() => setSheetSnap("expanded")}
+          aria-label="매물 목록 보기"
+          aria-hidden={sheetSnap !== "hidden"}
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
+            <path d="M 2 3 L 12 3 M 2 7 L 12 7 M 2 11 L 12 11" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+          </svg>
+          <span>목록 {filtered.length.toLocaleString()}건</span>
+        </button>
 
         <NaverMapView
           districts={districts}

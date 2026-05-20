@@ -2873,13 +2873,15 @@ div:has(> img[src*="streetview_btn"]) {
   }
 
   /* .listing(ListingPanel root) 을 바텀시트로 — hidden 일 때 화면 밖,
-     expanded 일 때 매물 list 풀스크린 가까이. */
+     expanded 일 때 매물 list 풀스크린 가까이.
+     timing function: iOS sheet 의 ease-out (시작 빠름, 끝 부드럽게 감속). */
   .main > .listing {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 0;
+    /* hidden 일 때도 height 유지 — transform 만으로 슬라이드해야 부드러움 */
+    height: calc(100dvh - 120px);
     z-index: 8;
     background: white;
     border-radius: 20px 20px 0 0;
@@ -2888,22 +2890,21 @@ div:has(> img[src*="streetview_btn"]) {
     display: flex;
     flex-direction: column;
     transform: translateY(100%);
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), height 0s linear 0.3s;
+    transition: transform 0.42s cubic-bezier(0.32, 0.72, 0, 1);
+    will-change: transform;
   }
   .main > .listing.sheet-expanded {
-    height: calc(100dvh - 120px);
     transform: translateY(0);
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), height 0s;
   }
 
-  /* 하단 floating "목록 N건" 버튼 — 시트 hidden 일 때만 노출 (모바일 전용) */
+  /* 하단 floating "목록 N건" 버튼 — 시트 hidden 일 때만 노출.
+     항상 렌더 + opacity/translate 트랜지션으로 부드럽게 등장/퇴장. */
   .m-list-fab {
     position: fixed;
     left: 50%;
-    transform: translateX(-50%);
     bottom: calc(20px + env(safe-area-inset-bottom));
     z-index: 9;
-    display: inline-flex;
+    display: inline-flex !important;
     align-items: center;
     gap: 8px;
     padding: 11px 18px;
@@ -2915,13 +2916,19 @@ div:has(> img[src*="streetview_btn"]) {
     font-weight: 700;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
     cursor: pointer;
-    animation: m-list-fab-pop 0.18s ease-out;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(20px);
+    transition: opacity 0.28s ease-out, transform 0.36s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .m-list-fab.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+    /* 시트 닫힘 직후 살짝 늦게 등장 (시트 슬라이드 끝나갈 즈음) */
+    transition-delay: 0.08s;
   }
   .m-list-fab:active { transform: translateX(-50%) scale(0.97); }
-  @keyframes m-list-fab-pop {
-    from { opacity: 0; transform: translateX(-50%) translateY(8px); }
-    to { opacity: 1; transform: translateX(-50%) translateY(0); }
-  }
   /* 핸들 — 탭하면 시트 토글 */
   .main > .listing .listing-handle {
     flex-shrink: 0;
