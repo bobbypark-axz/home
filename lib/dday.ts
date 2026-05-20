@@ -40,33 +40,37 @@ export function dDayText(deadline: string, status: StatusId): string {
   return `D-${diff}`;
 }
 
-/** status 를 표시 계층에서 재해석:
- *  1) upcoming 이지만 공고일(beginDate)이 이미 지났고 마감 안 됐으면 → open (sync stale 보정)
- *  2) open + deadline 이 D-N(임계값 이내) 이면 → closing (마감임박)
- *  데이터에는 closing 이 없고 LH API 도 마감임박을 따로 안 보내므로 표시/필터 계층에서 derived.
- *  주의: deadline 이 과거이거나 정례/수시모집(D > 365)이면 closing 아님. */
+/** status 를 표시 계층에서 재해석 — sync 와 sync 사이 stale 자동 보정:
+ *  1) upcoming → 공고일 지났고 마감 안 됐으면 open
+ *  2) upcoming/open → 마감일 지났으면 closed
+ *  3) open → D-N(임계값) 이내면 closing (마감임박)
+ *  주의: 정례/수시모집(D > 365)은 closing 아님.
+ *  데이터에는 closing 이 없고 LH API 도 마감임박을 따로 안 보내므로 표시/필터 계층에서 derived. */
 export function effectiveStatus(status: StatusId, deadline: string, beginDate?: string): StatusId {
   let s = status;
+  const target = parseDeadline(deadline);
+  const todayDiff = target ? diffDays(target) : null;
 
-  // upcoming → open 보정: 공고일이 오늘 이전이고 마감일이 오늘 이후면 사실상 접수중.
-  // LH API 의 PAN_SS 가 sync 시점 값이라 stale 일 수 있어, 표시 계층에서 자동 정정.
+  // upcoming 보정
   if (s === "upcoming") {
     const begin = beginDate ? parseDeadline(beginDate) : null;
-    const end = parseDeadline(deadline);
-    if (begin && end) {
+    if (begin && target) {
       const beginDiff = diffDays(begin);
-      const endDiff = diffDays(end);
+      const endDiff = todayDiff ?? 0;
+      // 마감 지났음 → closed
+      if (endDiff < 0) return "closed";
+      // 공고일 지났고 마감 안 됨 → open
       if (beginDiff <= 0 && endDiff >= 0) s = "open";
     }
   }
 
   if (s !== "open") return s;
-  const target = parseDeadline(deadline);
-  if (!target) return s;
-  const diff = diffDays(target);
-  if (diff < 0) return s;
-  if (diff > 365) return s;
-  if (diff <= CLOSING_THRESHOLD_DAYS) return "closing";
+  if (todayDiff == null) return s;
+  // open 인데 마감 지났음 → closed (sync stale 자동 정정)
+  if (todayDiff < 0) return "closed";
+  // 정례/수시모집은 closing 아님
+  if (todayDiff > 365) return s;
+  if (todayDiff <= CLOSING_THRESHOLD_DAYS) return "closing";
   return s;
 }
 
