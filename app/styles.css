@@ -1484,7 +1484,7 @@ input, select { font-family: inherit; }
 /* 계층 탭 */
 .eli-tabs {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: 6px;
 }
 .eli-tab {
@@ -1511,6 +1511,8 @@ input, select { font-family: inherit; }
 .eli-tab-name {
   font-size: 13px;
   font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: -0.02em;
 }
 .eli-tab.on .eli-tab-name { font-weight: 700; }
 .eli-tab-units {
