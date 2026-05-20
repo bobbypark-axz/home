@@ -1482,6 +1482,29 @@ input, select { font-family: inherit; }
 }
 
 /* 계층 탭 */
+/* Material Symbols Rounded — Google Fonts CDN 로 layout.tsx 에서 로드.
+   ligature 텍스트(예: "schedule")가 자동으로 글리프로 치환됨. */
+.material-symbols-rounded {
+  font-family: "Material Symbols Rounded";
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "liga";
+}
+.eli-icon {
+  font-size: 18px;
+  font-variation-settings: "FILL" 1, "wght" 500, "GRAD" 0, "opsz" 24;
+  color: var(--seed-semantic-color-primary);
+}
+
 .eli-tabs {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
@@ -1492,13 +1515,14 @@ input, select { font-family: inherit; }
   border: 1px solid var(--seed-semantic-color-divider-2);
   background: white;
   border-radius: 10px;
-  padding: 8px 10px;
+  padding: 9px 8px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1px;
   transition: all 0.15s;
+  min-width: 0;
 }
 .eli-tab:hover:not(.on) {
   border-color: var(--seed-scale-color-gray-300);
@@ -1509,10 +1533,10 @@ input, select { font-family: inherit; }
   color: var(--seed-semantic-color-primary);
 }
 .eli-tab-name {
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
   white-space: nowrap;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 .eli-tab.on .eli-tab-name { font-weight: 700; }
 .eli-tab-units {

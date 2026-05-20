@@ -80,52 +80,17 @@ function formatManwon(v: number | null | undefined): string | null {
   return `${v.toLocaleString()}만원`;
 }
 
-function IconClock() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
-      <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.4" />
-      <path d="M 8 5 V 8 L 10.5 9.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-    </svg>
-  );
+// Google Material Symbols Rounded — layout.tsx 에서 폰트 link 로드.
+// ligature 방식: 이름 텍스트가 자동으로 아이콘 글리프로 치환됨.
+function MSIcon({ name }: { name: string }) {
+  return <span className="material-symbols-rounded eli-icon" aria-hidden>{name}</span>;
 }
-function IconRing() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
-      <circle cx="8" cy="10" r="4" stroke="currentColor" strokeWidth="1.4" />
-      <path d="M 6 6 L 8 3 L 10 6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-function IconCoin() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
-      <circle cx="8" cy="8" r="5.5" stroke="currentColor" strokeWidth="1.4" />
-      <path d="M 8 5 V 11 M 6 7.5 H 9 a 1 1 0 0 1 0 2 H 7 a 1 1 0 0 0 0 2 H 10" stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinecap="round" />
-    </svg>
-  );
-}
-function IconHome() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
-      <path d="M 2 8 L 8 3 L 14 8 V 13 H 2 Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" fill="none" />
-    </svg>
-  );
-}
-function IconCheck() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
-      <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.4" />
-      <path d="M 5 8 L 7 10 L 11 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-function IconStar() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
-      <path d="M 8 2 L 10 6.4 L 14.5 7 L 11.2 10.2 L 12 14.5 L 8 12.3 L 4 14.5 L 4.8 10.2 L 1.5 7 L 6 6.4 Z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" fill="none" />
-    </svg>
-  );
-}
+const IconClock = () => <MSIcon name="schedule" />;
+const IconRing = () => <MSIcon name="favorite" />;
+const IconCoin = () => <MSIcon name="payments" />;
+const IconHome = () => <MSIcon name="savings" />;
+const IconCheck = () => <MSIcon name="check_circle" />;
+const IconStar = () => <MSIcon name="star" />;
 
 function IncomeTable({ income }: { income: NonNullable<Tier["income"]> }) {
   if (!income.byHousehold) return null;
