@@ -157,9 +157,35 @@ function Top({
   const [regionOpen, setRegionOpen] = useState(false);
   const keys = Object.keys(FILTER_CONFIG) as FilterKey[];
   const totalSelected = Object.values(filters).reduce((a, arr) => a + arr.length, 0);
+  // "전체 지역" default 면 placeholder 톤, 지역 선택 후엔 진한 톤
+  const isRegionDefault = regionLabel === "전체 지역";
 
   return (
     <div className="app-m-top">
+      <div className="m-topbar">
+        <button
+          type="button"
+          className={`m-search ${isRegionDefault ? "is-placeholder" : ""}`}
+          onClick={() => setRegionOpen(true)}
+          aria-label="지역 선택"
+        >
+          <span className="m-search-icon" aria-hidden>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path
+                d="M 7 1 C 4.5 1 2.5 3 2.5 5.5 C 2.5 8.5 7 13 7 13 C 7 13 11.5 8.5 11.5 5.5 C 11.5 3 9.5 1 7 1 Z"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                fill="none"
+              />
+              <circle cx="7" cy="5.5" r="1.4" fill="currentColor" />
+            </svg>
+          </span>
+          <span className="s-text">{isRegionDefault ? "지역 선택" : regionLabel}</span>
+          <svg className="m-search-arrow" width="9" height="9" viewBox="0 0 10 10" fill="none" aria-hidden>
+            <path d="M 2 4 L 5 7 L 8 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+      </div>
       <div className="m-filterrow">
         <button
           className={`m-fchip ${totalSelected === 0 ? "on" : ""}`}

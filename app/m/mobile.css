@@ -27,62 +27,45 @@
 }
 .m-screen.no-top-pad { padding-top: 0; } /* for screens with full-bleed hero */
 
-/* ───── Top bar (search + AI) ───── */
+/* ───── Top bar (지역 선택) ───── */
 .m-topbar {
   position: relative;
-  padding: 8px 14px 10px;
+  padding: 10px 14px 8px;
   background: white;
   z-index: 10;
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 .m-search {
-  flex: 1;
-  min-width: 0;
+  width: 100%;
   display: flex; align-items: center; gap: 8px;
-  height: 40px;
+  height: 42px;
   padding: 0 14px;
   background: var(--seed-scale-color-gray-100);
-  border-radius: 999px;
+  border: 0;
+  border-radius: 12px;
   font-size: 14px;
-}
-/* AI 진입 칩 — 검색바 옆 */
-.m-top-ai {
-  appearance: none;
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  height: 40px;
-  padding: 0 14px;
-  background: var(--seed-semantic-color-primary-low, #fff4ed);
-  color: var(--seed-semantic-color-primary);
-  border: 1px solid var(--seed-scale-color-carrot-200, #ffd2b9);
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-  letter-spacing: -0.02em;
-  -webkit-tap-highlight-color: transparent;
-}
-.m-top-ai-spark { font-size: 14px; line-height: 1; }
-.m-top-ai:active { background: var(--seed-scale-color-carrot-100); }
-.m-search .s-text {
-  flex: 1;
-  color: var(--seed-semantic-color-ink-text);
   font-weight: 600;
   letter-spacing: -0.02em;
+  color: var(--seed-semantic-color-ink-text);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
-.m-search .s-text small {
-  color: var(--seed-semantic-color-ink-text-low);
-  font-weight: 500;
-  margin-left: 4px;
+.m-search:active { background: var(--seed-scale-color-gray-200); }
+
+.m-search-icon { color: var(--seed-semantic-color-ink-text); display: inline-flex; }
+.m-search .s-text {
+  flex: 1;
+  text-align: left;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.m-search-icon {
-  color: var(--seed-semantic-color-ink-text-low);
-}
+.m-search-arrow { color: var(--seed-semantic-color-ink-text-low); flex-shrink: 0; }
+
+/* 지역 미선택 상태 — placeholder 톤 (회색) */
+.m-search.is-placeholder { color: var(--seed-semantic-color-ink-text-low); font-weight: 500; }
+.m-search.is-placeholder .m-search-icon { color: var(--seed-semantic-color-ink-text-low); }
 
 /* Filter chip row */
 .m-filterrow {

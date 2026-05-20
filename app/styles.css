@@ -2558,7 +2558,7 @@ div:has(> img[src*="streetview_btn"]) {
     flex-shrink: 0;
     z-index: 50;
     position: relative;
-    min-height: 92px; /* 검색바(40+18) + 칩 row(34) — 명시적으로 공간 확보 */
+    /* 자연 height 으로 — 검색바(60) + 칩 row(34) 자동 계산 */
   }
 
   /* 모바일 칩 카운트 배지 */
