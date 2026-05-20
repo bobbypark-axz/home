@@ -427,8 +427,9 @@ input, select { font-family: inherit; }
   padding: 12px 44px 12px 16px;
   border: none;
   border-radius: 23px;
-  font-size: 14px;
-  line-height: 1.45;
+  /* 16px 미만이면 iOS Safari 가 focus 시 자동 줌 → 16px 유지 필수 */
+  font-size: 16px;
+  line-height: 1.4;
   background: transparent;
   outline: none;
   resize: none;
@@ -3277,7 +3278,13 @@ div:has(> img[src*="streetview_btn"]) {
  * ============================================================ */
 .ai-fullscreen {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* 100vh 는 iOS Safari 의 키보드 올라올 때 layout viewport 그대로라 input 이 키보드 뒤로 숨음.
+     100dvh (dynamic viewport height) 는 키보드 따라 자동 조정 — iOS 16.4+, Android 최신. */
+  height: 100vh;
+  height: 100dvh;
   background: white;
   display: flex;
   flex-direction: column;
@@ -3333,4 +3340,6 @@ div:has(> img[src*="streetview_btn"]) {
 }
 .ai-fullscreen .chat-input-row {
   flex-shrink: 0;
+  /* iOS safe area (홈 인디케이터) — 키보드 닫혔을 때 하단 여백 */
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
 }
