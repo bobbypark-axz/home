@@ -1461,6 +1461,14 @@ input, select { font-family: inherit; }
   flex-direction: column;
   gap: 10px;
 }
+/* 섹션 타이틀 — 작은 라벨로 컨텍스트만 (큰 h3 보다 컴팩트) */
+.eli-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--seed-semantic-color-ink-text);
+  letter-spacing: -0.02em;
+  margin-bottom: -2px;
+}
 .eli-skeleton {
   height: 60px;
   border-radius: 12px;

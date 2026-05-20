@@ -310,6 +310,7 @@ export function EligibilityDetail({
 
   return (
     <div className="eli-detail">
+      <div className="eli-section-title">입주 자격</div>
       {/* 계층 탭 — 2개 이상일 때만 노출. 1개 매물은 탭 자체가 의미 없음. */}
       {tiers.length > 1 && (
         <div className="eli-tabs" role="tablist">
