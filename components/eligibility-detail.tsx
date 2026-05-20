@@ -145,16 +145,33 @@ function IncomeTable({ income }: { income: NonNullable<Tier["income"]> }) {
   );
 }
 
+// 한 item 안에 동그라미 숫자 마커 (①②③...) 또는 "·" bullet 가 여러 개 있으면 split.
+// LH 공고문이 한 줄에 ①②③ 식으로 채우는 경우가 많아서 가독성 위해 펼침.
+function expandOtherItem(item: string): string[] {
+  // ①~⑳ 마커 기준 split (마커 직전에서 끊음)
+  if (/[①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳]/.test(item)) {
+    return item
+      .split(/(?=[①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳])/)
+      .map((s) => s.trim())
+      .filter(Boolean);
+  }
+  return [item];
+}
+
 function OtherList({ items }: { items: string[] }) {
   const [expanded, setExpanded] = useState(false);
-  const VISIBLE = 3;
-  const showAll = expanded || items.length <= VISIBLE;
-  const visibleItems = showAll ? items : items.slice(0, VISIBLE);
-  const hidden = items.length - VISIBLE;
+  const all = items.flatMap(expandOtherItem);
+  const VISIBLE = 5;
+  const showAll = expanded || all.length <= VISIBLE;
+  const visibleItems = showAll ? all : all.slice(0, VISIBLE);
+  const hidden = all.length - VISIBLE;
   return (
     <>
       <ul className="eli-other-list">
-        {visibleItems.map((o, i) => <li key={i}>{o}</li>)}
+        {visibleItems.map((o, i) => {
+          const hasMarker = /^[①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳]/.test(o.trim());
+          return <li key={i} className={hasMarker ? "has-marker" : ""}>{o}</li>;
+        })}
       </ul>
       {!showAll && (
         <button type="button" className="eli-more-btn" onClick={() => setExpanded(true)}>
