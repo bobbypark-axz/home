@@ -799,7 +799,68 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019988&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 24,
     "deposit": 857,
-    "rent": 15
+    "rent": 15,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "26.9",
+            "supplyTotal": 20,
+            "deposit": 8568000,
+            "rent": 152760
+          },
+          {
+            "houseType": "29.52",
+            "supplyTotal": 5,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "33.92",
+            "supplyTotal": 20,
+            "deposit": 10804000,
+            "rent": 187490
+          },
+          {
+            "houseType": "36.57",
+            "supplyTotal": 15,
+            "deposit": 11919000,
+            "rent": 99130
+          },
+          {
+            "houseType": "39.62",
+            "supplyTotal": 5,
+            "deposit": 18607000,
+            "rent": 123160
+          },
+          {
+            "houseType": "46.54",
+            "supplyTotal": 15,
+            "deposit": 25676000,
+            "rent": 284710
+          },
+          {
+            "houseType": "51.63",
+            "supplyTotal": 5,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "51.93",
+            "supplyTotal": 10,
+            "deposit": 19203000,
+            "rent": 135060
+          },
+          {
+            "houseType": "59.23",
+            "supplyTotal": 15,
+            "deposit": 22512000,
+            "rent": 173480
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019985",
@@ -865,7 +926,26 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019971&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 26,
     "deposit": 1835,
-    "rent": 23
+    "rent": 23,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "37.38",
+            "supplyTotal": 5,
+            "deposit": 18349000,
+            "rent": 229850
+          },
+          {
+            "houseType": "37.66",
+            "supplyTotal": 30,
+            "deposit": 18486000,
+            "rent": 231000
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019976",
@@ -995,7 +1075,20 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019943&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 30,
     "deposit": 2154,
-    "rent": 30
+    "rent": 30,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "59",
+            "supplyTotal": null,
+            "deposit": 21540000,
+            "rent": 295240
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019932",
@@ -1029,7 +1122,26 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019932&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 31,
     "deposit": 1249,
-    "rent": 13
+    "rent": 13,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "49",
+            "supplyTotal": null,
+            "deposit": 12490000,
+            "rent": 127800
+          },
+          {
+            "houseType": "51",
+            "supplyTotal": null,
+            "deposit": 15419000,
+            "rent": 156680
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019925",
@@ -1063,7 +1175,56 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019925&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 32,
     "deposit": 1071,
-    "rent": 8
+    "rent": 8,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "36",
+            "supplyTotal": 40,
+            "deposit": 10713000,
+            "rent": 79340
+          },
+          {
+            "houseType": "39",
+            "supplyTotal": 10,
+            "deposit": 19558000,
+            "rent": 155090
+          },
+          {
+            "houseType": "46",
+            "supplyTotal": 40,
+            "deposit": 19048000,
+            "rent": 119040
+          },
+          {
+            "houseType": "51",
+            "supplyTotal": 10,
+            "deposit": 24076000,
+            "rent": 136250
+          },
+          {
+            "houseType": "59",
+            "supplyTotal": 20,
+            "deposit": 27943000,
+            "rent": 134090
+          },
+          {
+            "houseType": "29A",
+            "supplyTotal": 60,
+            "deposit": 8662000,
+            "rent": 158050
+          },
+          {
+            "houseType": "46A",
+            "supplyTotal": null,
+            "deposit": 20777000,
+            "rent": 288270
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019965",
@@ -1097,7 +1258,26 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019965&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 33,
     "deposit": 1447,
-    "rent": 16
+    "rent": 16,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "39.45",
+            "supplyTotal": 30,
+            "deposit": 14474000,
+            "rent": 156080
+          },
+          {
+            "houseType": "51.61",
+            "supplyTotal": 30,
+            "deposit": 27237000,
+            "rent": 168600
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019864",
@@ -1131,7 +1311,38 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019864&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 34,
     "deposit": 932,
-    "rent": 15
+    "rent": 15,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "29.01",
+            "supplyTotal": 60,
+            "deposit": 9317000,
+            "rent": 151350
+          },
+          {
+            "houseType": "33.6",
+            "supplyTotal": 80,
+            "deposit": 8904000,
+            "rent": 142910
+          },
+          {
+            "houseType": "33.6",
+            "supplyTotal": 10,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "37.99",
+            "supplyTotal": 40,
+            "deposit": 16236000,
+            "rent": 203820
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019863",
@@ -1165,7 +1376,26 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019863&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 35,
     "deposit": 1349,
-    "rent": 11
+    "rent": 11,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "36.62",
+            "supplyTotal": 40,
+            "deposit": 13486000,
+            "rent": 114640
+          },
+          {
+            "houseType": "39.57",
+            "supplyTotal": 40,
+            "deposit": 16185000,
+            "rent": 121370
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019946",
@@ -1199,7 +1429,68 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019946&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 36,
     "deposit": 857,
-    "rent": 15
+    "rent": 15,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "26.9",
+            "supplyTotal": 20,
+            "deposit": 8568000,
+            "rent": 152760
+          },
+          {
+            "houseType": "29.52",
+            "supplyTotal": 5,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "33.92",
+            "supplyTotal": 20,
+            "deposit": 10804000,
+            "rent": 187490
+          },
+          {
+            "houseType": "36.57",
+            "supplyTotal": 15,
+            "deposit": 11919000,
+            "rent": 99130
+          },
+          {
+            "houseType": "39.62",
+            "supplyTotal": 5,
+            "deposit": 18607000,
+            "rent": 123160
+          },
+          {
+            "houseType": "46.54",
+            "supplyTotal": 15,
+            "deposit": 25676000,
+            "rent": 284710
+          },
+          {
+            "houseType": "51.63",
+            "supplyTotal": 5,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "51.93",
+            "supplyTotal": 10,
+            "deposit": 19203000,
+            "rent": 135060
+          },
+          {
+            "houseType": "59.23",
+            "supplyTotal": 15,
+            "deposit": 22512000,
+            "rent": 173480
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019937",
@@ -1233,7 +1524,62 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019937&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 37,
     "deposit": 856,
-    "rent": 17
+    "rent": 17,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "29.91",
+            "supplyTotal": 18,
+            "deposit": 8555000,
+            "rent": 171320
+          },
+          {
+            "houseType": "33.4",
+            "supplyTotal": 12,
+            "deposit": 9649000,
+            "rent": 140140
+          },
+          {
+            "houseType": "36.53",
+            "supplyTotal": 55,
+            "deposit": 10449000,
+            "rent": 220770
+          },
+          {
+            "houseType": "39.48",
+            "supplyTotal": 20,
+            "deposit": 15561000,
+            "rent": 129690
+          },
+          {
+            "houseType": "46.93",
+            "supplyTotal": 10,
+            "deposit": 23083000,
+            "rent": 290910
+          },
+          {
+            "houseType": "49.86",
+            "supplyTotal": 54,
+            "deposit": 25043000,
+            "rent": 241240
+          },
+          {
+            "houseType": "51.86",
+            "supplyTotal": 30,
+            "deposit": 21111000,
+            "rent": 169590
+          },
+          {
+            "houseType": "59.97",
+            "supplyTotal": 4,
+            "deposit": 30213000,
+            "rent": 338890
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019918",
@@ -1265,7 +1611,50 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019918&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 38
+    "thumbSeed": 38,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "29.85",
+            "supplyTotal": 30,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "36.63",
+            "supplyTotal": 30,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "46.9",
+            "supplyTotal": 30,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "46.9",
+            "supplyTotal": 31,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "46.9",
+            "supplyTotal": 23,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "51.93",
+            "supplyTotal": 10,
+            "deposit": null,
+            "rent": null
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019967",
@@ -1331,7 +1720,38 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019986&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 40,
     "deposit": 757,
-    "rent": 357
+    "rent": 357,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "26",
+            "supplyTotal": null,
+            "deposit": 7570000,
+            "rent": 3570000
+          },
+          {
+            "houseType": "36",
+            "supplyTotal": null,
+            "deposit": 15563000,
+            "rent": 3563000
+          },
+          {
+            "houseType": "39",
+            "supplyTotal": null,
+            "deposit": 13375000,
+            "rent": 3375000
+          },
+          {
+            "houseType": "46",
+            "supplyTotal": null,
+            "deposit": 18836000,
+            "rent": 3836000
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019984",
@@ -1365,7 +1785,26 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019984&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 41,
     "deposit": 1247,
-    "rent": 10
+    "rent": 10,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "39",
+            "supplyTotal": null,
+            "deposit": 12471000,
+            "rent": 104740
+          },
+          {
+            "houseType": "46",
+            "supplyTotal": null,
+            "deposit": 18708000,
+            "rent": 155880
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019980",
@@ -1399,7 +1838,44 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019980&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 42,
     "deposit": 0,
-    "rent": 676
+    "rent": 676,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "27.38",
+            "supplyTotal": 7,
+            "deposit": 27,
+            "rent": 6762100
+          },
+          {
+            "houseType": "29.44",
+            "supplyTotal": 10,
+            "deposit": 29,
+            "rent": 6864700
+          },
+          {
+            "houseType": "36.16",
+            "supplyTotal": 20,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "37.43",
+            "supplyTotal": 7,
+            "deposit": 37,
+            "rent": 12512450
+          },
+          {
+            "houseType": "46.61",
+            "supplyTotal": 5,
+            "deposit": 46,
+            "rent": 20067800
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019979",
@@ -1433,7 +1909,20 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019979&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 43,
     "deposit": 649,
-    "rent": 10
+    "rent": 10,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "26.79",
+            "supplyTotal": 30,
+            "deposit": 6492000,
+            "rent": 99510
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019978",
@@ -1467,7 +1956,68 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019978&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 44,
     "deposit": 794,
-    "rent": 15
+    "rent": 15,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "24.72",
+            "supplyTotal": 70,
+            "deposit": 7943000,
+            "rent": 153190
+          },
+          {
+            "houseType": "24.79",
+            "supplyTotal": 30,
+            "deposit": 7943000,
+            "rent": 153190
+          },
+          {
+            "houseType": "26.83",
+            "supplyTotal": 50,
+            "deposit": 8623000,
+            "rent": 161140
+          },
+          {
+            "houseType": "36.66",
+            "supplyTotal": 80,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "39.86",
+            "supplyTotal": 50,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "46.21",
+            "supplyTotal": 40,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "51.3",
+            "supplyTotal": 40,
+            "deposit": 31321000,
+            "rent": 183830
+          },
+          {
+            "houseType": "59.48",
+            "supplyTotal": 40,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "59.57",
+            "supplyTotal": 100,
+            "deposit": 40252000,
+            "rent": 240080
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019975",
@@ -1501,7 +2051,80 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019975&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 45,
     "deposit": 2199,
-    "rent": 12
+    "rent": 12,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "39.84",
+            "supplyTotal": 20,
+            "deposit": 21989000,
+            "rent": 122300
+          },
+          {
+            "houseType": "46.74",
+            "supplyTotal": 20,
+            "deposit": 28845000,
+            "rent": 156690
+          },
+          {
+            "houseType": "49.51",
+            "supplyTotal": 20,
+            "deposit": 25186000,
+            "rent": 112420
+          },
+          {
+            "houseType": "29",
+            "supplyTotal": null,
+            "deposit": 11705000,
+            "rent": 97540
+          },
+          {
+            "houseType": "31",
+            "supplyTotal": null,
+            "deposit": 10444000,
+            "rent": 89320
+          },
+          {
+            "houseType": "35",
+            "supplyTotal": null,
+            "deposit": 13743000,
+            "rent": 75570
+          },
+          {
+            "houseType": "36",
+            "supplyTotal": null,
+            "deposit": 14631000,
+            "rent": 182270
+          },
+          {
+            "houseType": "51",
+            "supplyTotal": null,
+            "deposit": 21371000,
+            "rent": 157270
+          },
+          {
+            "houseType": "26A",
+            "supplyTotal": null,
+            "deposit": 10459000,
+            "rent": 132120
+          },
+          {
+            "houseType": "26B",
+            "supplyTotal": null,
+            "deposit": 10459000,
+            "rent": 132120
+          },
+          {
+            "houseType": "51A",
+            "supplyTotal": null,
+            "deposit": 20391000,
+            "rent": 74740
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019974",
@@ -1567,7 +2190,26 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019947&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 47,
     "deposit": 1099,
-    "rent": 7
+    "rent": 7,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "38.64",
+            "supplyTotal": 30,
+            "deposit": 10992000,
+            "rent": 68690
+          },
+          {
+            "houseType": "42.54",
+            "supplyTotal": 15,
+            "deposit": 13054000,
+            "rent": 82440
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019964",
@@ -1601,7 +2243,20 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019964&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 48,
     "deposit": 980,
-    "rent": 7
+    "rent": 7,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "31.39",
+            "supplyTotal": 50,
+            "deposit": 9802000,
+            "rent": 74870
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019960",
@@ -1635,7 +2290,20 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019960&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 49,
     "deposit": 2133,
-    "rent": 16
+    "rent": 16,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "46.91",
+            "supplyTotal": 40,
+            "deposit": 21331000,
+            "rent": 159980
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019958",
@@ -1669,7 +2337,20 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019958&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 50,
     "deposit": 728,
-    "rent": 13
+    "rent": 13,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "33.53",
+            "supplyTotal": 10,
+            "deposit": 7275000,
+            "rent": 125360
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019952",
@@ -1703,7 +2384,26 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019952&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 51,
     "deposit": 1671,
-    "rent": 20
+    "rent": 20,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "37.25",
+            "supplyTotal": 200,
+            "deposit": 16711000,
+            "rent": 202270
+          },
+          {
+            "houseType": "51.93",
+            "supplyTotal": 20,
+            "deposit": 27491000,
+            "rent": 164940
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019951",
@@ -1737,7 +2437,20 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019951&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 52,
     "deposit": 2301,
-    "rent": 14
+    "rent": 14,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "46.9",
+            "supplyTotal": 30,
+            "deposit": 23012000,
+            "rent": 139440
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019949",
@@ -1771,7 +2484,20 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019949&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 53,
     "deposit": 926,
-    "rent": 13
+    "rent": 13,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "29",
+            "supplyTotal": null,
+            "deposit": 9259000,
+            "rent": 134630
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019911",
@@ -1805,7 +2531,38 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019911&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 54,
     "deposit": 757,
-    "rent": 357
+    "rent": 357,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "26",
+            "supplyTotal": null,
+            "deposit": 7570000,
+            "rent": 3570000
+          },
+          {
+            "houseType": "36",
+            "supplyTotal": null,
+            "deposit": 15563000,
+            "rent": 3563000
+          },
+          {
+            "houseType": "39",
+            "supplyTotal": null,
+            "deposit": 13375000,
+            "rent": 3375000
+          },
+          {
+            "houseType": "46",
+            "supplyTotal": null,
+            "deposit": 18836000,
+            "rent": 3836000
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019957",
@@ -1839,7 +2596,26 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019957&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 55,
     "deposit": 3642,
-    "rent": 21
+    "rent": 21,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "51",
+            "supplyTotal": 100,
+            "deposit": 36420000,
+            "rent": 209060
+          },
+          {
+            "houseType": "59",
+            "supplyTotal": 30,
+            "deposit": 47209000,
+            "rent": 269760
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019956",
@@ -1873,7 +2649,32 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019956&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 56,
     "deposit": 976,
-    "rent": 16
+    "rent": 16,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "29.92",
+            "supplyTotal": 100,
+            "deposit": 9755000,
+            "rent": 164870
+          },
+          {
+            "houseType": "37.7",
+            "supplyTotal": 100,
+            "deposit": 16827000,
+            "rent": 213460
+          },
+          {
+            "houseType": "46.14",
+            "supplyTotal": 50,
+            "deposit": 25855000,
+            "rent": 275050
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019955",
@@ -1907,7 +2708,38 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019955&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 57,
     "deposit": 1063,
-    "rent": 6
+    "rent": 6,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "39",
+            "supplyTotal": null,
+            "deposit": 10633000,
+            "rent": 59060
+          },
+          {
+            "houseType": "41",
+            "supplyTotal": null,
+            "deposit": 9898000,
+            "rent": 82490
+          },
+          {
+            "houseType": "49",
+            "supplyTotal": null,
+            "deposit": 15339000,
+            "rent": 85490
+          },
+          {
+            "houseType": "59",
+            "supplyTotal": null,
+            "deposit": 18862000,
+            "rent": 105610
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019954",
@@ -1941,7 +2773,20 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019954&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 58,
     "deposit": 1196,
-    "rent": 7
+    "rent": 7,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "41",
+            "supplyTotal": null,
+            "deposit": 11955000,
+            "rent": 67320
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019953",
@@ -1975,7 +2820,38 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019953&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 59,
     "deposit": 1512,
-    "rent": 13
+    "rent": 13,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "39.72",
+            "supplyTotal": 30,
+            "deposit": 15117000,
+            "rent": 130540
+          },
+          {
+            "houseType": "41.55",
+            "supplyTotal": 30,
+            "deposit": 16494000,
+            "rent": 137430
+          },
+          {
+            "houseType": "46.9",
+            "supplyTotal": 100,
+            "deposit": 20616000,
+            "rent": 164940
+          },
+          {
+            "houseType": "51.93",
+            "supplyTotal": 30,
+            "deposit": 28853000,
+            "rent": 183610
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019963",
@@ -2009,7 +2885,26 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019963&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 60,
     "deposit": 1165,
-    "rent": 16
+    "rent": 16,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "32.85",
+            "supplyTotal": 10,
+            "deposit": 11652000,
+            "rent": 155370
+          },
+          {
+            "houseType": "41.96",
+            "supplyTotal": 190,
+            "deposit": 17771000,
+            "rent": 166600
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019906",
@@ -2041,7 +2936,44 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019906&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 61
+    "thumbSeed": 61,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "36.72",
+            "supplyTotal": 30,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "39.49",
+            "supplyTotal": 40,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "46.45",
+            "supplyTotal": 50,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "51.86",
+            "supplyTotal": 60,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "59.99",
+            "supplyTotal": 40,
+            "deposit": null,
+            "rent": null
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019905",
@@ -2073,7 +3005,32 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019905&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 62
+    "thumbSeed": 62,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "33.48",
+            "supplyTotal": 70,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "46.9",
+            "supplyTotal": 90,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "51.97",
+            "supplyTotal": 80,
+            "deposit": null,
+            "rent": null
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019903",
@@ -2139,7 +3096,44 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019959&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 64,
     "deposit": 1257,
-    "rent": 11
+    "rent": 11,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "36.92",
+            "supplyTotal": 70,
+            "deposit": 12565000,
+            "rent": 105810
+          },
+          {
+            "houseType": "39.51",
+            "supplyTotal": 20,
+            "deposit": 13000000,
+            "rent": 91640
+          },
+          {
+            "houseType": "46.71",
+            "supplyTotal": 20,
+            "deposit": 15490000,
+            "rent": 111190
+          },
+          {
+            "houseType": "46.9",
+            "supplyTotal": 30,
+            "deposit": 15183000,
+            "rent": 112190
+          },
+          {
+            "houseType": "59.57",
+            "supplyTotal": 30,
+            "deposit": 24251000,
+            "rent": 190200
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019973",
@@ -2173,7 +3167,26 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019973&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 65,
     "deposit": 1199,
-    "rent": 9
+    "rent": 9,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "39.99",
+            "supplyTotal": 30,
+            "deposit": 11991000,
+            "rent": 88910
+          },
+          {
+            "houseType": "59.93",
+            "supplyTotal": 20,
+            "deposit": 24523000,
+            "rent": 181890
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019936",
@@ -2207,7 +3220,56 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019936&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 66,
     "deposit": 756,
-    "rent": 13
+    "rent": 13,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "36.47",
+            "supplyTotal": 20,
+            "deposit": 7564000,
+            "rent": 125020
+          },
+          {
+            "houseType": "36.63",
+            "supplyTotal": 30,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "45.48",
+            "supplyTotal": 10,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "45.98",
+            "supplyTotal": 10,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "46.19",
+            "supplyTotal": 40,
+            "deposit": 32320000,
+            "rent": 227420
+          },
+          {
+            "houseType": "51.93",
+            "supplyTotal": 60,
+            "deposit": 31491000,
+            "rent": 262420
+          },
+          {
+            "houseType": "59.99",
+            "supplyTotal": 20,
+            "deposit": null,
+            "rent": null
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019929",
@@ -2241,7 +3303,32 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019929&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 67,
     "deposit": 885,
-    "rent": 12
+    "rent": 12,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "26.8",
+            "supplyTotal": 80,
+            "deposit": 8850000,
+            "rent": 118730
+          },
+          {
+            "houseType": "29.75",
+            "supplyTotal": 90,
+            "deposit": 9006000,
+            "rent": 135090
+          },
+          {
+            "houseType": "36.62",
+            "supplyTotal": 50,
+            "deposit": 12126000,
+            "rent": 149550
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019923",
@@ -2275,7 +3362,26 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019923&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 68,
     "deposit": 1099,
-    "rent": 9
+    "rent": 9,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "36.62",
+            "supplyTotal": 20,
+            "deposit": 10992000,
+            "rent": 92060
+          },
+          {
+            "houseType": "46.9",
+            "supplyTotal": 10,
+            "deposit": 17177000,
+            "rent": 142920
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019921",
@@ -2309,7 +3415,20 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019921&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 69,
     "deposit": 2,
-    "rent": 17
+    "rent": 17,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "55.83",
+            "supplyTotal": 10,
+            "deposit": 19735,
+            "rent": 166220
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019962",
@@ -2343,7 +3462,38 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019962&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 70,
     "deposit": 1133,
-    "rent": 14
+    "rent": 14,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "29.59",
+            "supplyTotal": 15,
+            "deposit": 11334000,
+            "rent": 139240
+          },
+          {
+            "houseType": "30.71",
+            "supplyTotal": 5,
+            "deposit": 11873000,
+            "rent": 143560
+          },
+          {
+            "houseType": "39.56",
+            "supplyTotal": 5,
+            "deposit": 10030000,
+            "rent": 83810
+          },
+          {
+            "houseType": "46.9",
+            "supplyTotal": 20,
+            "deposit": 13743000,
+            "rent": 112670
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019948",
@@ -2377,7 +3527,20 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019948&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 71,
     "deposit": 1687,
-    "rent": 12
+    "rent": 12,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "51.69",
+            "supplyTotal": 20,
+            "deposit": 16869000,
+            "rent": 115860
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019944",
@@ -2507,7 +3670,44 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019938&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=08&mi=1026",
     "thumbSeed": 75,
     "deposit": 1481,
-    "rent": 27
+    "rent": 27,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "37.67",
+            "supplyTotal": 100,
+            "deposit": 14810000,
+            "rent": 270160
+          },
+          {
+            "houseType": "37.67",
+            "supplyTotal": 100,
+            "deposit": 15481000,
+            "rent": 277270
+          },
+          {
+            "houseType": "38.07",
+            "supplyTotal": 100,
+            "deposit": 15601000,
+            "rent": 278470
+          },
+          {
+            "houseType": "39.01",
+            "supplyTotal": 100,
+            "deposit": 15987000,
+            "rent": 282520
+          },
+          {
+            "houseType": "39.99",
+            "supplyTotal": 100,
+            "deposit": 15383000,
+            "rent": 274890
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019920",
@@ -2541,7 +3741,26 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019920&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=08&mi=1026",
     "thumbSeed": 76,
     "deposit": 2334,
-    "rent": 26
+    "rent": 26,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "49.43",
+            "supplyTotal": 30,
+            "deposit": 23340000,
+            "rent": 262160
+          },
+          {
+            "houseType": "49.43",
+            "supplyTotal": 30,
+            "deposit": 23340000,
+            "rent": 262160
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-0000061087",
@@ -2575,7 +3794,20 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061087&ccrCnntSysDsCd=02&uppAisTpCd=06&aisTpCd=08&mi=1026",
     "thumbSeed": 77,
     "deposit": 1079,
-    "rent": 51
+    "rent": 51,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "59D",
+            "supplyTotal": null,
+            "deposit": 10794000,
+            "rent": 507330
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-0000061085",
@@ -2705,7 +3937,38 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019939&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 81,
     "deposit": 1440,
-    "rent": 16
+    "rent": 16,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "26.12",
+            "supplyTotal": 60,
+            "deposit": 14395000,
+            "rent": 156260
+          },
+          {
+            "houseType": "36.63",
+            "supplyTotal": 60,
+            "deposit": 20302000,
+            "rent": 226400
+          },
+          {
+            "houseType": "46.49",
+            "supplyTotal": 100,
+            "deposit": 42733000,
+            "rent": 280100
+          },
+          {
+            "houseType": "51.75",
+            "supplyTotal": 70,
+            "deposit": 46189000,
+            "rent": 371570
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019924",
@@ -2771,7 +4034,38 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019913&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
     "thumbSeed": 83,
     "deposit": 2988,
-    "rent": 25
+    "rent": 25,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "51",
+            "supplyTotal": null,
+            "deposit": 29875000,
+            "rent": 249840
+          },
+          {
+            "houseType": "16A",
+            "supplyTotal": null,
+            "deposit": 16312000,
+            "rent": 74760
+          },
+          {
+            "houseType": "26A",
+            "supplyTotal": null,
+            "deposit": 33068000,
+            "rent": 151560
+          },
+          {
+            "houseType": "14AB",
+            "supplyTotal": null,
+            "deposit": 17724000,
+            "rent": 81230
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019916",
@@ -2837,7 +4131,26 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019915&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 85,
     "deposit": 1787,
-    "rent": 12
+    "rent": 12,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "34",
+            "supplyTotal": null,
+            "deposit": 17867000,
+            "rent": 116800
+          },
+          {
+            "houseType": "42",
+            "supplyTotal": null,
+            "deposit": 24919000,
+            "rent": 149490
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019895",
@@ -2869,7 +4182,26 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019895&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 86
+    "thumbSeed": 86,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "26.4673",
+            "supplyTotal": 170,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "26.5195",
+            "supplyTotal": 170,
+            "deposit": null,
+            "rent": null
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019914",
@@ -2903,7 +4235,38 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019914&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 87,
     "deposit": 2217,
-    "rent": 15
+    "rent": 15,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "26.91",
+            "supplyTotal": 15,
+            "deposit": 22174000,
+            "rent": 150930
+          },
+          {
+            "houseType": "36.63",
+            "supplyTotal": 20,
+            "deposit": 14403000,
+            "rent": 172840
+          },
+          {
+            "houseType": "46.96",
+            "supplyTotal": 10,
+            "deposit": 35392000,
+            "rent": 267860
+          },
+          {
+            "houseType": "55.74",
+            "supplyTotal": 10,
+            "deposit": 55834000,
+            "rent": 421930
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019912",
@@ -3033,7 +4396,74 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019909&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 91,
     "deposit": 2,
-    "rent": 17
+    "rent": 17,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "26.98",
+            "supplyTotal": 50,
+            "deposit": 15984,
+            "rent": 172140
+          },
+          {
+            "houseType": "29.85",
+            "supplyTotal": 10,
+            "deposit": 23166,
+            "rent": 173470
+          },
+          {
+            "houseType": "36.74",
+            "supplyTotal": 30,
+            "deposit": 22134,
+            "rent": 221340
+          },
+          {
+            "houseType": "37.75",
+            "supplyTotal": 10,
+            "deposit": 39716,
+            "rent": 223570
+          },
+          {
+            "houseType": "46.71",
+            "supplyTotal": 20,
+            "deposit": 61843,
+            "rent": 293350
+          },
+          {
+            "houseType": "46.98",
+            "supplyTotal": 20,
+            "deposit": 41808,
+            "rent": 307420
+          },
+          {
+            "houseType": "51.6",
+            "supplyTotal": 10,
+            "deposit": 45446,
+            "rent": 340840
+          },
+          {
+            "houseType": "59.95",
+            "supplyTotal": 20,
+            "deposit": 58070,
+            "rent": 416580
+          },
+          {
+            "houseType": "26A",
+            "supplyTotal": null,
+            "deposit": 18237,
+            "rent": 185470
+          },
+          {
+            "houseType": "26B",
+            "supplyTotal": null,
+            "deposit": 18237,
+            "rent": 185470
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019908",
@@ -3067,7 +4497,38 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019908&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 92,
     "deposit": 1416,
-    "rent": 14
+    "rent": 14,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "29.63",
+            "supplyTotal": 60,
+            "deposit": 14157000,
+            "rent": 138030
+          },
+          {
+            "houseType": "36.42",
+            "supplyTotal": 60,
+            "deposit": 17696000,
+            "rent": 188760
+          },
+          {
+            "houseType": "39.79",
+            "supplyTotal": 50,
+            "deposit": 19732000,
+            "rent": 224260
+          },
+          {
+            "houseType": "46.44",
+            "supplyTotal": 60,
+            "deposit": 34215000,
+            "rent": 230070
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019898",
@@ -3165,7 +4626,38 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019880&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 95,
     "deposit": 1440,
-    "rent": 16
+    "rent": 16,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "26.12",
+            "supplyTotal": 60,
+            "deposit": 14395000,
+            "rent": 156260
+          },
+          {
+            "houseType": "36.63",
+            "supplyTotal": 60,
+            "deposit": 20302000,
+            "rent": 226400
+          },
+          {
+            "houseType": "46.49",
+            "supplyTotal": 100,
+            "deposit": 42733000,
+            "rent": 280100
+          },
+          {
+            "houseType": "51.75",
+            "supplyTotal": 70,
+            "deposit": 46189000,
+            "rent": 371570
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019900",
@@ -3199,7 +4691,74 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019900&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 96,
     "deposit": 2,
-    "rent": 17
+    "rent": 17,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "26.98",
+            "supplyTotal": 50,
+            "deposit": 15984,
+            "rent": 172140
+          },
+          {
+            "houseType": "29.85",
+            "supplyTotal": 10,
+            "deposit": 23166,
+            "rent": 173470
+          },
+          {
+            "houseType": "36.74",
+            "supplyTotal": 30,
+            "deposit": 22134,
+            "rent": 221340
+          },
+          {
+            "houseType": "37.75",
+            "supplyTotal": 10,
+            "deposit": 39716,
+            "rent": 223570
+          },
+          {
+            "houseType": "46.71",
+            "supplyTotal": 20,
+            "deposit": 61843,
+            "rent": 293350
+          },
+          {
+            "houseType": "46.98",
+            "supplyTotal": 20,
+            "deposit": 41808,
+            "rent": 307420
+          },
+          {
+            "houseType": "51.6",
+            "supplyTotal": 10,
+            "deposit": 45446,
+            "rent": 340840
+          },
+          {
+            "houseType": "59.95",
+            "supplyTotal": 20,
+            "deposit": 58070,
+            "rent": 416580
+          },
+          {
+            "houseType": "26A",
+            "supplyTotal": null,
+            "deposit": 18237,
+            "rent": 185470
+          },
+          {
+            "houseType": "26B",
+            "supplyTotal": null,
+            "deposit": 18237,
+            "rent": 185470
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019879",
@@ -3233,7 +4792,32 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019879&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 97,
     "deposit": 1608,
-    "rent": 18
+    "rent": 18,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "36.16",
+            "supplyTotal": 100,
+            "deposit": 16082000,
+            "rent": 184430
+          },
+          {
+            "houseType": "45.48",
+            "supplyTotal": 50,
+            "deposit": 20338000,
+            "rent": 239800
+          },
+          {
+            "houseType": "51.86",
+            "supplyTotal": 100,
+            "deposit": 21589000,
+            "rent": 278860
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019878",
@@ -3265,7 +4849,44 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019878&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 98
+    "thumbSeed": 98,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "36.65",
+            "supplyTotal": 30,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "39.48",
+            "supplyTotal": 10,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "39.72",
+            "supplyTotal": 20,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "46.9",
+            "supplyTotal": 10,
+            "deposit": null,
+            "rent": null
+          },
+          {
+            "houseType": "51.93",
+            "supplyTotal": 12,
+            "deposit": null,
+            "rent": null
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019876",
@@ -3299,7 +4920,44 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019876&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 99,
     "deposit": 1424,
-    "rent": 17
+    "rent": 17,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "36.19",
+            "supplyTotal": 50,
+            "deposit": 14242000,
+            "rent": 173190
+          },
+          {
+            "houseType": "36.23",
+            "supplyTotal": 50,
+            "deposit": 14242000,
+            "rent": 173190
+          },
+          {
+            "houseType": "36.3",
+            "supplyTotal": 50,
+            "deposit": 14242000,
+            "rent": 173190
+          },
+          {
+            "houseType": "36.63",
+            "supplyTotal": 50,
+            "deposit": 14242000,
+            "rent": 173190
+          },
+          {
+            "houseType": "46.22",
+            "supplyTotal": 60,
+            "deposit": 18099000,
+            "rent": 232340
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019871",
@@ -3333,7 +4991,50 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019871&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 100,
     "deposit": 1624,
-    "rent": 23
+    "rent": 23,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "36",
+            "supplyTotal": null,
+            "deposit": 16242000,
+            "rent": 225660
+          },
+          {
+            "houseType": "39",
+            "supplyTotal": null,
+            "deposit": 1789700025420000,
+            "rent": 181560
+          },
+          {
+            "houseType": "41",
+            "supplyTotal": null,
+            "deposit": 28147000,
+            "rent": 243030
+          },
+          {
+            "houseType": "46",
+            "supplyTotal": null,
+            "deposit": 25601000,
+            "rent": 185170
+          },
+          {
+            "houseType": "51",
+            "supplyTotal": null,
+            "deposit": 31867000,
+            "rent": 231490
+          },
+          {
+            "houseType": "59",
+            "supplyTotal": null,
+            "deposit": 40174000,
+            "rent": 291420
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019866",
@@ -3367,7 +5068,38 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019866&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 101,
     "deposit": 1416,
-    "rent": 14
+    "rent": 14,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "29.63",
+            "supplyTotal": 60,
+            "deposit": 14157000,
+            "rent": 138030
+          },
+          {
+            "houseType": "36.42",
+            "supplyTotal": 60,
+            "deposit": 17696000,
+            "rent": 188760
+          },
+          {
+            "houseType": "39.79",
+            "supplyTotal": 50,
+            "deposit": 19732000,
+            "rent": 224260
+          },
+          {
+            "houseType": "46.44",
+            "supplyTotal": 60,
+            "deposit": 34215000,
+            "rent": 230070
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019859",
@@ -3401,7 +5133,38 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019859&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 102,
     "deposit": 1925,
-    "rent": 17
+    "rent": 17,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "36.42",
+            "supplyTotal": 50,
+            "deposit": 19249000,
+            "rent": 174720
+          },
+          {
+            "houseType": "36.7",
+            "supplyTotal": 50,
+            "deposit": 19397000,
+            "rent": 176080
+          },
+          {
+            "houseType": "45.44",
+            "supplyTotal": 40,
+            "deposit": 24018000,
+            "rent": 231190
+          },
+          {
+            "houseType": "45.92",
+            "supplyTotal": 40,
+            "deposit": 24273000,
+            "rent": 233650
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019899",
@@ -3467,7 +5230,38 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019892&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 104,
     "deposit": 2217,
-    "rent": 15
+    "rent": 15,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "26.91",
+            "supplyTotal": 15,
+            "deposit": 22174000,
+            "rent": 150930
+          },
+          {
+            "houseType": "36.63",
+            "supplyTotal": 20,
+            "deposit": 14403000,
+            "rent": 172840
+          },
+          {
+            "houseType": "46.96",
+            "supplyTotal": 10,
+            "deposit": 35392000,
+            "rent": 267860
+          },
+          {
+            "houseType": "55.74",
+            "supplyTotal": 10,
+            "deposit": 55834000,
+            "rent": 421930
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019889",
@@ -3501,7 +5295,20 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019889&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 105,
     "deposit": 2088,
-    "rent": 25
+    "rent": 25,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "45.32",
+            "supplyTotal": 150,
+            "deposit": 20875000,
+            "rent": 254930
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019901",
@@ -3661,7 +5468,20 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019850&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=09&mi=1026",
-    "thumbSeed": 110
+    "thumbSeed": 110,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "24A",
+            "supplyTotal": 25,
+            "deposit": null,
+            "rent": null
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019893",
@@ -3951,7 +5771,38 @@
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019852&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
     "thumbSeed": 119,
     "deposit": 1595,
-    "rent": 9
+    "rent": 9,
+    "complexes": [
+      {
+        "name": null,
+        "rows": [
+          {
+            "houseType": "16",
+            "supplyTotal": null,
+            "deposit": 15949000,
+            "rent": 92570
+          },
+          {
+            "houseType": "24",
+            "supplyTotal": null,
+            "deposit": 7943000,
+            "rent": 153190
+          },
+          {
+            "houseType": "26",
+            "supplyTotal": null,
+            "deposit": 25184000,
+            "rent": 146890
+          },
+          {
+            "houseType": "36",
+            "supplyTotal": null,
+            "deposit": 33579000,
+            "rent": 195050
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "lh-rental-2015122300019853",

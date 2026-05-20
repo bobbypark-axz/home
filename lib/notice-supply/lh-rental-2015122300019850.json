@@ -5,7 +5,8 @@
   "units": [
     {
       "type": "24A",
-      "area": null
+      "area": null,
+      "supply": 25
     }
   ]
 }

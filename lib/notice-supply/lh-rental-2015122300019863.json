@@ -6,12 +6,14 @@
     {
       "type": "36",
       "area": 36.62,
+      "supply": 40,
       "deposit": 13486000,
       "rent": 114640
     },
     {
       "type": "39",
       "area": 39.57,
+      "supply": 40,
       "deposit": 16185000,
       "rent": 121370
     }

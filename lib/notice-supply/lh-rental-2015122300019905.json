@@ -5,15 +5,18 @@
   "units": [
     {
       "type": "33",
-      "area": 33.48
+      "area": 33.48,
+      "supply": 70
     },
     {
       "type": "46",
-      "area": 46.9
+      "area": 46.9,
+      "supply": 90
     },
     {
       "type": "51",
-      "area": 51.97
+      "area": 51.97,
+      "supply": 80
     }
   ]
 }

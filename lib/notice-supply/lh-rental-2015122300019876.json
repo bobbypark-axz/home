@@ -6,30 +6,35 @@
     {
       "type": "36A",
       "area": 36.23,
+      "supply": 50,
       "deposit": 14242000,
       "rent": 173190
     },
     {
       "type": "36B",
       "area": 36.3,
+      "supply": 50,
       "deposit": 14242000,
       "rent": 173190
     },
     {
       "type": "36C",
       "area": 36.19,
+      "supply": 50,
       "deposit": 14242000,
       "rent": 173190
     },
     {
       "type": "36D",
       "area": 36.63,
+      "supply": 50,
       "deposit": 14242000,
       "rent": 173190
     },
     {
       "type": "46A",
       "area": 46.22,
+      "supply": 60,
       "deposit": 18099000,
       "rent": 232340
     }

@@ -6,36 +6,42 @@
     {
       "type": "36",
       "area": null,
+      "supply": 40,
       "deposit": 10713000,
       "rent": 79340
     },
     {
       "type": "39",
       "area": null,
+      "supply": 10,
       "deposit": 19558000,
       "rent": 155090
     },
     {
       "type": "46",
       "area": null,
+      "supply": 40,
       "deposit": 19048000,
       "rent": 119040
     },
     {
       "type": "51",
       "area": null,
+      "supply": 10,
       "deposit": 24076000,
       "rent": 136250
     },
     {
       "type": "59",
       "area": null,
+      "supply": 20,
       "deposit": 27943000,
       "rent": 134090
     },
     {
       "type": "29A",
       "area": null,
+      "supply": 60,
       "deposit": 8662000,
       "rent": 158050
     },

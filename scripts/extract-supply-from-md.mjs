@@ -190,9 +190,9 @@ async function main() {
         continue;
       }
 
-      // 주택형별 결합
+      // 주택형별 결합 — supply 정보 (area, supply) + rent 정보 (deposit, rent).
       const byType = {};
-      for (const u of supply.units) byType[u.type] = { type: u.type, area: u.area };
+      for (const u of supply.units) byType[u.type] = { type: u.type, area: u.area, supply: u.supply };
       for (const r of rents) byType[r.type] = { ...(byType[r.type] || { type: r.type }), deposit: r.deposit, rent: r.rent };
       const units = Object.values(byType);
 
@@ -219,6 +219,7 @@ async function main() {
         supplyUnits: supply.supplyTotal,
         deposit: depositManwon,
         rent: rentManwon,
+        units, // detail-panel 의 단지별 공급 정보 표용
       });
       ok++;
     } catch (e) {
@@ -244,6 +245,22 @@ async function main() {
       if (u.rent != null && (FORCE || item.rent == null || item.rent === 0)) {
         if (item.rent !== u.rent) { item.rent = u.rent; changed = true; }
       }
+    }
+    // complexes 비어있고 units 있으면 detail-panel 의 단지별 공급 정보 표용으로 채움.
+    if ((!item.complexes || item.complexes.length === 0) && u.units && u.units.length > 0) {
+      item.complexes = [{
+        name: null,
+        rows: u.units
+          .slice()
+          .sort((a, b) => (a.area ?? Infinity) - (b.area ?? Infinity))
+          .map((un) => ({
+            houseType: String(un.area ?? un.type),
+            supplyTotal: un.supply ?? null,
+            deposit: un.deposit ?? null,
+            rent: un.rent ?? null,
+          })),
+      }];
+      changed = true;
     }
     if (changed) patched++;
   }

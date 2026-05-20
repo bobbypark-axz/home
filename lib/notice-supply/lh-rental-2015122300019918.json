@@ -5,27 +5,33 @@
   "units": [
     {
       "type": "29",
-      "area": 29.85
+      "area": 29.85,
+      "supply": 30
     },
     {
       "type": "36",
-      "area": 36.63
+      "area": 36.63,
+      "supply": 30
     },
     {
       "type": "46",
-      "area": 46.9
+      "area": 46.9,
+      "supply": 30
     },
     {
       "type": "51",
-      "area": 51.93
+      "area": 51.93,
+      "supply": 10
     },
     {
       "type": "46A",
-      "area": 46.9
+      "area": 46.9,
+      "supply": 31
     },
     {
       "type": "46B",
-      "area": 46.9
+      "area": 46.9,
+      "supply": 23
     }
   ]
 }
