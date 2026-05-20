@@ -66,7 +66,8 @@ export function AppShell({
     // 마감된 공고는 기본적으로 숨김 — 마감 필터를 명시적으로 켰을 때만 노출
     const showClosed = filters.status.includes("closed");
     let list = listings.slice();
-    if (!showClosed) list = list.filter((x) => x.status !== "closed");
+    // raw status 가 open 이라도 deadline 지났으면 effStatus=closed — 마감 매물 노출 방지.
+    if (!showClosed) list = list.filter((x) => effectiveStatus(x.status, x.deadline, x.beginDate) !== "closed");
     if (filters.type.length) list = list.filter((x) => filters.type.includes(x.type));
     // 마감임박(closing)은 raw status 에 없고 deadline 으로 derive 되므로 effectiveStatus 비교.
     if (filters.status.length) list = list.filter((x) => filters.status.includes(effectiveStatus(x.status, x.deadline, x.beginDate)));
@@ -98,7 +99,8 @@ export function AppShell({
     const map: Record<string, number> = {};
     const showClosed = filters.status.includes("closed");
     let list = listings.slice();
-    if (!showClosed) list = list.filter((x) => x.status !== "closed");
+    // raw status 가 open 이라도 deadline 지났으면 effStatus=closed — 마감 매물 노출 방지.
+    if (!showClosed) list = list.filter((x) => effectiveStatus(x.status, x.deadline, x.beginDate) !== "closed");
     if (filters.type.length) list = list.filter((x) => filters.type.includes(x.type));
     if (filters.status.length) list = list.filter((x) => filters.status.includes(effectiveStatus(x.status, x.deadline, x.beginDate)));
     list.forEach((x) => {
