@@ -2665,6 +2665,10 @@ div:has(> img[src*="streetview_btn"]) {
 .app-m-top {
   display: none;
 }
+/* 모바일 전용 floating 버튼 — 데스크탑에선 안 보임 (모바일 media query 에서 inline-flex 로) */
+.m-list-fab {
+  display: none;
+}
 
 @media (max-width: 767px) {
   /* .app: grid → flex column */
@@ -2868,24 +2872,55 @@ div:has(> img[src*="streetview_btn"]) {
     font-weight: 700;
   }
 
-  /* .listing(ListingPanel root) 을 바텀시트로 — 매물 카드 리스트 그 자체가 시트가 된다 */
+  /* .listing(ListingPanel root) 을 바텀시트로 — hidden 일 때 화면 밖,
+     expanded 일 때 매물 list 풀스크린 가까이. */
   .main > .listing {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 240px;
+    height: 0;
     z-index: 8;
     background: white;
-    border-radius: 18px 18px 0 0;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.10);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: height 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), height 0s linear 0.3s;
   }
   .main > .listing.sheet-expanded {
-    height: calc(100vh - 120px);
+    height: calc(100dvh - 120px);
+    transform: translateY(0);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), height 0s;
+  }
+
+  /* 하단 floating "목록 N건" 버튼 — 시트 hidden 일 때만 노출 (모바일 전용) */
+  .m-list-fab {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(20px + env(safe-area-inset-bottom));
+    z-index: 9;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 18px;
+    background: var(--seed-semantic-color-ink-text);
+    color: white;
+    border: 0;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+    animation: m-list-fab-pop 0.18s ease-out;
+  }
+  .m-list-fab:active { transform: translateX(-50%) scale(0.97); }
+  @keyframes m-list-fab-pop {
+    from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
   }
   /* 핸들 — 탭하면 시트 토글 */
   .main > .listing .listing-handle {

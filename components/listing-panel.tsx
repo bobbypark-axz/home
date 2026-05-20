@@ -127,8 +127,9 @@ const SORT_OPTIONS: { id: SortKey; label: string }[] = [
   { id: "low-depo", label: "보증금 낮은순" },
 ];
 
-// 모바일 바텀시트 — 핸들 탭으로 peek ↔ expanded 토글
-type SheetSnap = "peek" | "expanded";
+// 모바일 바텀시트 — hidden(지도 풀스크린) ↔ expanded(매물 list) 토글.
+// snap 은 부모(AppShell) 에서 컨트롤 — "이 지역 검색" 같은 외부 트리거와 floating 버튼 공유.
+type SheetSnap = "hidden" | "expanded";
 
 export function ListingPanel({
   items,
@@ -139,6 +140,8 @@ export function ListingPanel({
   activeDistrict,
   onHover,
   onSelect,
+  snap = "hidden",
+  setSnap,
 }: {
   items: Listing[];
   sort: SortKey;
@@ -148,12 +151,13 @@ export function ListingPanel({
   activeDistrict: string | null;
   onHover: (id: string | null) => void;
   onSelect: (id: string) => void;
+  snap?: SheetSnap;
+  setSnap?: (s: SheetSnap) => void;
 }) {
   const [loadedCount, setLoadedCount] = useState(15);
   const itemsRef = useRef<HTMLDivElement>(null);
-  const [snap, setSnap] = useState<SheetSnap>("peek");
 
-  const toggleSnap = () => setSnap((s) => (s === "peek" ? "expanded" : "peek"));
+  const closeSheet = () => setSnap?.("hidden");
 
   useEffect(() => {
     setLoadedCount(15);
@@ -174,8 +178,8 @@ export function ListingPanel({
       <button
         type="button"
         className="listing-handle"
-        onClick={toggleSnap}
-        aria-label={snap === "peek" ? "매물 목록 펼치기" : "매물 목록 접기"}
+        onClick={closeSheet}
+        aria-label="매물 목록 닫기"
         aria-expanded={snap === "expanded"}
       />
       <div className="listing-head">

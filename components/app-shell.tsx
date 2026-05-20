@@ -57,6 +57,9 @@ export function AppShell({
   const [chatOpen, setChatOpen] = useState(false);
   const [density, setDensity] = useState<Density>("comfort");
   const [showLegend, setShowLegend] = useState(false);
+  // 모바일 바텀시트 — 기본 hidden (지도 풀스크린).
+  // floating "목록 보기" 버튼 or "이 지역 검색" 시 expanded.
+  const [sheetSnap, setSheetSnap] = useState<"hidden" | "expanded">("hidden");
 
   useEffect(() => {
     void density;
@@ -137,6 +140,8 @@ export function AppShell({
     (b: { swLat: number; swLng: number; neLat: number; neLng: number }) => {
       setSearchBounds(b);
       setActiveDistrict(null);
+      // 검색 직후 결과를 list 로 자동 노출
+      setSheetSnap("expanded");
     },
     [],
   );
@@ -223,7 +228,23 @@ export function AppShell({
           activeDistrict={activeDistrict}
           onHover={setHoveredId}
           onSelect={handleSelect}
+          snap={sheetSnap}
+          setSnap={setSheetSnap}
         />
+        {/* 모바일 전용 — 시트 hidden 일 때 하단 "목록 N건" floating 버튼 */}
+        {sheetSnap === "hidden" && (
+          <button
+            type="button"
+            className="m-list-fab"
+            onClick={() => setSheetSnap("expanded")}
+            aria-label="매물 목록 보기"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
+              <path d="M 2 3 L 12 3 M 2 7 L 12 7 M 2 11 L 12 11" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+            </svg>
+            <span>목록 {filtered.length.toLocaleString()}건</span>
+          </button>
+        )}
 
         <NaverMapView
           districts={districts}
