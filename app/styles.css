@@ -1296,6 +1296,8 @@ input, select { font-family: inherit; }
 }
 .detail-photo-card {
   display: block;
+  width: 100%;
+  appearance: none;
   border: 1px solid var(--seed-semantic-color-divider-2);
   border-radius: 10px;
   overflow: hidden;
@@ -1303,6 +1305,8 @@ input, select { font-family: inherit; }
   text-decoration: none;
   background: var(--seed-semantic-color-paper-default);
   transition: border-color .15s, box-shadow .15s;
+  cursor: zoom-in;
+  padding: 0;
 }
 .detail-photo-card:hover {
   border-color: var(--seed-scale-color-carrot-300);
@@ -1321,6 +1325,49 @@ input, select { font-family: inherit; }
   object-fit: contain;
   display: block;
 }
+
+/* 조감도 라이트박스 — 클릭 시 풀스크린 확대 + 닫기 버튼 */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  cursor: zoom-out;
+  animation: lightbox-fade-in 0.15s ease-out;
+}
+@keyframes lightbox-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.lightbox-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  cursor: default;
+  border-radius: 4px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+.lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 0;
+  color: white;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.15s;
+  backdrop-filter: blur(8px);
+}
+.lightbox-close:hover { background: rgba(255, 255, 255, 0.25); }
 .detail-photo-meta {
   display: flex;
   align-items: center;

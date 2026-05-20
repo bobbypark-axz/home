@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { Listing } from "@/lib/types";
 import { HOUSING_TYPES, STATUS_LABELS } from "@/lib/mock-data";
 import { thumbnailSVG } from "@/lib/svg";
@@ -107,11 +107,31 @@ function ListingComplexes({ item }: { item: Listing }) {
 
 function ListingPhotos({ item }: { item: Listing }) {
   const cover = item.coverPhotoUrl;
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  // 라이트박스 열려있을 때 ESC 로 닫기 + body scroll 잠금
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setLightboxOpen(false); };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [lightboxOpen]);
+
   if (!cover) return null;
   return (
     <section className="detail-section detail-photos">
       <h3>단지 조감도</h3>
-      <a className="detail-photo-card" href={cover} target="_blank" rel="noreferrer">
+      <button
+        type="button"
+        className="detail-photo-card"
+        onClick={() => setLightboxOpen(true)}
+        aria-label="조감도 크게 보기"
+      >
         <div className="detail-photo-frame">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -121,7 +141,35 @@ function ListingPhotos({ item }: { item: Listing }) {
             referrerPolicy="no-referrer"
           />
         </div>
-      </a>
+      </button>
+      {lightboxOpen && (
+        <div
+          className="lightbox-overlay"
+          onClick={() => setLightboxOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="조감도 확대 보기"
+        >
+          <button
+            type="button"
+            className="lightbox-close"
+            onClick={() => setLightboxOpen(false)}
+            aria-label="닫기"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
+              <path d="M 5 5 L 15 15 M 15 5 L 5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </button>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="lightbox-img"
+            src={cover}
+            alt={`${item.title} 단지 조감도 확대`}
+            referrerPolicy="no-referrer"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </section>
   );
 }
