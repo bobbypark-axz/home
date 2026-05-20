@@ -1,0 +1,85 @@
+name: Daily LH Sync
+
+# 매일 KST 00:00 (UTC 15:00) 자동 실행 + 수동 dispatch 허용.
+# 신규 공고만 incremental 처리 — 이미 캐시된 매물은 모든 단계에서 skip.
+on:
+  schedule:
+    - cron: "0 15 * * *"  # UTC 15:00 = KST 00:00
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180   # 첫 run / 큰 변동 대비
+
+    permissions:
+      contents: write       # 변경된 데이터 자동 commit + push
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm ci
+
+      - name: Phase 1 — LH 공고 list sync (data.go.kr)
+        env:
+          DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
+        run: |
+          node scripts/sync-myhome-all.mjs
+          node scripts/normalize-lh-notices.mjs
+
+      - name: Phase 2 — 상세 페이지 enrich (좌표·사진·일정·noticeStatus)
+        run: |
+          node scripts/enrich-lh-details.mjs --resume
+          node scripts/enrich-complexes.mjs
+
+      - name: Phase 3 — 공고문 PDF → markdown (Solar Document Parse)
+        env:
+          SOLAR_API_KEY: ${{ secrets.SOLAR_API_KEY }}
+        run: |
+          node scripts/enrich-notice-text.mjs --limit 9999 --active-only
+          node scripts/enrich-notice-text.mjs --limit 9999 --active-only --from-api
+
+      - name: Phase 4 — 임베딩 인덱스 (Solar embedding)
+        env:
+          SOLAR_API_KEY: ${{ secrets.SOLAR_API_KEY }}
+        run: |
+          node scripts/embed-notice-texts.mjs --limit 9999
+
+      - name: Phase 5 — 자격 정보 구조화 추출 (Claude)
+        env:
+          BIZROUTER_API_KEY: ${{ secrets.BIZROUTER_API_KEY }}
+        run: node scripts/extract-eligibility.mjs --limit 9999
+
+      - name: Phase 6 — 큰 자산을 Vercel Blob 으로 (cover photos + vectors)
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+        run: |
+          node scripts/upload-covers-to-blob.mjs
+          node scripts/upload-vectors-to-blob.mjs
+
+      - name: Phase 7 — 최종 sync (LH 공공데이터 API + 좌표 보강)
+        env:
+          DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
+          VWORLD_API_KEY: ${{ secrets.VWORLD_API_KEY }}
+        run: node scripts/sync-lh-api.mjs
+
+      - name: Commit & push data updates
+        run: |
+          git config user.name  "doongji-bot"
+          git config user.email "bot@doongji.local"
+          # gitignored 파일 (vectors.bin, lh-covers/) 은 자동 제외됨.
+          # blob-covers.json, blob-vectors.json, listings-api.json, lh-notices-all.json 등은 commit 대상.
+          git add lib/ || true
+          if git diff --cached --quiet; then
+            echo "No data changes — skip commit"
+          else
+            git commit -m "data: daily sync $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi

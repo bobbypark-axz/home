@@ -27,15 +27,20 @@
 }
 .m-screen.no-top-pad { padding-top: 0; } /* for screens with full-bleed hero */
 
-/* ───── Top bar (search) ───── */
+/* ───── Top bar (search + AI) ───── */
 .m-topbar {
   position: relative;
   padding: 8px 14px 10px;
   background: white;
   z-index: 10;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .m-search {
+  flex: 1;
+  min-width: 0;
   display: flex; align-items: center; gap: 8px;
   height: 40px;
   padding: 0 14px;
@@ -43,6 +48,27 @@
   border-radius: 999px;
   font-size: 14px;
 }
+/* AI 진입 칩 — 검색바 옆 */
+.m-top-ai {
+  appearance: none;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 40px;
+  padding: 0 14px;
+  background: var(--seed-semantic-color-primary-low, #fff4ed);
+  color: var(--seed-semantic-color-primary);
+  border: 1px solid var(--seed-scale-color-carrot-200, #ffd2b9);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: -0.02em;
+  -webkit-tap-highlight-color: transparent;
+}
+.m-top-ai-spark { font-size: 14px; line-height: 1; }
+.m-top-ai:active { background: var(--seed-scale-color-carrot-100); }
 .m-search .s-text {
   flex: 1;
   color: var(--seed-semantic-color-ink-text);

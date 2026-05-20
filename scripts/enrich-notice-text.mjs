@@ -115,6 +115,9 @@ function parseArgs() {
     limit: limIdx >= 0 ? Number(a[limIdx + 1]) : 5,
     activeOnly: a.includes("--active-only"),
     force: a.includes("--force"),
+    // listings-api.json 도 source 로 추가 (lh-notices-all 에 없는 매물 보완용).
+    // 출력 파일명은 매물 id 그대로 — listings-api id (lh-rental-{panId}) 형식 저장.
+    fromApi: a.includes("--from-api"),
   };
 }
 
@@ -122,16 +125,34 @@ async function main() {
   const args = parseArgs();
   await fs.mkdir(OUT_DIR, { recursive: true });
   const meta = await loadMeta();
-  const notices = JSON.parse(await fs.readFile(DATA_PATH, "utf8"));
 
-  // 선정
-  let pool = notices.filter((n) => typeof n.sourceUrl === "string" && n.sourceUrl.includes("selectWrtancInfo.do"));
-  if (args.activeOnly) {
-    // lh-notices-all.json 의 active 표시는 details.noticeStatus (방금 enrich 한 필드)
-    pool = pool.filter((n) => {
-      const s = n.details?.noticeStatus;
-      return s && s !== "접수마감" && s !== "모집중지";
+  let pool;
+  if (args.fromApi) {
+    // listings-api 매물 중 sourceUrl 있는 active 매물만
+    const apiPath = path.join(ROOT, "lib/listings-api.json");
+    const api = JSON.parse(await fs.readFile(apiPath, "utf8"));
+    pool = api.filter((l) => typeof l.sourceUrl === "string" && l.sourceUrl.includes("selectWrtancInfo.do"));
+    if (args.activeOnly) pool = pool.filter((l) => l.status !== "closed");
+    // 같은 panId 매물이 -c0, -c1 같이 중복일 수 있음 — base panId 로 dedupe
+    const seen = new Set();
+    pool = pool.filter((l) => {
+      const m = l.id.match(/lh-(?:rental|sale)-(\d+)/);
+      const key = m ? `${l.id.startsWith("lh-rental") ? "rental" : "sale"}-${m[1]}` : l.id;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      // dedupe 키 기반 새 id (suffix 제거)
+      l.id = `lh-${l.id.startsWith("lh-rental") ? "rental" : "sale"}-${m?.[1] ?? ""}`;
+      return true;
     });
+  } else {
+    const notices = JSON.parse(await fs.readFile(DATA_PATH, "utf8"));
+    pool = notices.filter((n) => typeof n.sourceUrl === "string" && n.sourceUrl.includes("selectWrtancInfo.do"));
+    if (args.activeOnly) {
+      pool = pool.filter((n) => {
+        const s = n.details?.noticeStatus;
+        return s && s !== "접수마감" && s !== "모집중지";
+      });
+    }
   }
   if (args.ids?.length) pool = pool.filter((n) => args.ids.includes(n.id));
   // 다양성: 매물 유형 섞기 (type 기준 라운드 로빈) — sample 용이라

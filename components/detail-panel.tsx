@@ -275,7 +275,7 @@ export function DetailPanel({
         )}
 
         <section className="detail-section">
-          <EligibilityDetail listingId={item.id} sourceUrl={item.sourceUrl} />
+          <EligibilityDetail listingId={item.id} sourceUrl={item.sourceUrl} housingType={item.type} />
         </section>
 
         <section className="detail-section">

@@ -1,8 +1,10 @@
 "use client";
 
 // AI 챗 메시지 하단에 끼워 넣는 추천 매물 가로 캐러셀.
-// 1단계: 디자인 확정 — 더미 데이터 prop 으로 받음. 백엔드 tool calling 은 2단계.
+// 카드 디자인: 1순위 칩 / 하트 / D-day pill / 둥지가 선택한 이유 / 상세보기 CTA.
+// 페이지 인디케이터 도트 — 캐러셀 하단에 현재 카드 위치 표시.
 
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { Listing } from "@/lib/types";
 import { HOUSING_TYPES } from "@/lib/mock-data";
@@ -108,18 +110,64 @@ function CarouselCard({ item: { listing: item, reasons }, rank }: { item: Carous
             </div>
           </div>
         )}
+        <button
+          type="button"
+          className="chat-rec-cta"
+          onClick={(e) => {
+            e.stopPropagation();
+            router.push(`/listings/${item.id}`);
+          }}
+        >
+          상세 보기
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden>
+            <path d="M 4 2 L 8 6 L 4 10" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
       </div>
     </article>
   );
 }
 
 export function ChatListingCarousel({ items }: { items: CarouselItem[] }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  // 가로 스크롤 시 현재 보이는 카드 인덱스 추적 — 도트 인디케이터 동기화.
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const cards = el.querySelectorAll<HTMLElement>(".chat-rec-card");
+      if (!cards.length) return;
+      const center = el.scrollLeft + el.clientWidth / 2;
+      let nearest = 0;
+      let minDist = Infinity;
+      cards.forEach((card, i) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const dist = Math.abs(cardCenter - center);
+        if (dist < minDist) { minDist = dist; nearest = i; }
+      });
+      setActiveIdx(nearest);
+    };
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
+  }, [items.length]);
+
   if (!items.length) return null;
   return (
-    <div className="chat-rec-carousel" role="region" aria-label="AI 추천 매물">
-      {items.map((it, idx) => (
-        <CarouselCard key={it.listing.id} item={it} rank={idx} />
-      ))}
+    <div className="chat-rec-wrap">
+      <div className="chat-rec-carousel" role="region" aria-label="AI 추천 매물" ref={scrollRef}>
+        {items.map((it, idx) => (
+          <CarouselCard key={it.listing.id} item={it} rank={idx} />
+        ))}
+      </div>
+      {items.length > 1 && (
+        <div className="chat-rec-dots" aria-hidden>
+          {items.map((_, i) => (
+            <span key={i} className={`chat-rec-dot ${i === activeIdx ? "on" : ""}`} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

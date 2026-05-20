@@ -5,6 +5,48 @@
 // 시안: 계층 탭 / 연령·혼인·월소득·자산 카드 / 기타 / 우선공급 / CTA.
 
 import { useEffect, useState } from "react";
+import { eligibilitySummaryByType } from "@/lib/mock-data";
+
+type HousingType = "happy" | "nation" | "perm" | "integ" | "fifty" | "sale" | "buy" | "jeonse";
+
+const TYPE_DESCRIPTIONS: Record<HousingType, { title: string; detail: string[] }> = {
+  happy: {
+    title: "행복주택 — 청년·신혼·고령 등 다계층",
+    detail: [
+      "만 19~39세 청년, 신혼부부, 한부모, 고령자, 대학생 등",
+      "소득 100~120% 이하, 무주택 세대구성원",
+      "최대 거주기간 6~20년 (계층별 상이)",
+    ],
+  },
+  nation: {
+    title: "국민임대 — 무주택 저소득층 (장기거주)",
+    detail: ["도시근로자 가구당 월평균 소득 70% 이하", "무주택 세대구성원", "최대 30년 거주 가능"],
+  },
+  perm: {
+    title: "영구임대 — 수급·차상위·장애 등 특별 자격",
+    detail: ["기초생활수급자 / 차상위 / 장애인 / 국가유공자 등", "무주택 세대구성원", "장기 거주"],
+  },
+  integ: {
+    title: "통합공공임대 — 무주택 (소득 100~150%)",
+    detail: ["도시근로자 가구당 월평균 소득 100% (계층 따라 150%) 이하", "무주택 세대구성원"],
+  },
+  fifty: {
+    title: "50년임대 — 무주택 저소득층",
+    detail: ["도시근로자 가구당 월평균 소득 70% 이하", "무주택 세대구성원", "최대 50년 거주"],
+  },
+  sale: {
+    title: "공공분양 — 무주택 + 청약통장",
+    detail: ["무주택 세대구성원", "주택청약저축 가입자", "공급 가격 합리적 분양가"],
+  },
+  buy: {
+    title: "매입임대 — 청년·신혼·자녀",
+    detail: ["청년, 신혼부부, 자녀가구 대상", "무주택 세대구성원", "기존 주택을 LH 가 매입 후 공급"],
+  },
+  jeonse: {
+    title: "전세임대 — 청년·신혼",
+    detail: ["청년, 신혼부부 대상", "본인이 원하는 집을 LH 가 전세 계약", "무주택 세대구성원"],
+  },
+};
 
 type Tier = {
   id: string;
@@ -179,7 +221,15 @@ function TierBody({ tier }: { tier: Tier }) {
   );
 }
 
-export function EligibilityDetail({ listingId, sourceUrl }: { listingId: string; sourceUrl?: string }) {
+export function EligibilityDetail({
+  listingId,
+  sourceUrl,
+  housingType,
+}: {
+  listingId: string;
+  sourceUrl?: string;
+  housingType?: HousingType;
+}) {
   const [data, setData] = useState<EligibilityData | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTierIdx, setActiveTierIdx] = useState(0);
@@ -208,18 +258,33 @@ export function EligibilityDetail({ listingId, sourceUrl }: { listingId: string;
   }
 
   if (!data) {
+    const desc = housingType ? TYPE_DESCRIPTIONS[housingType] : null;
+    const summary = housingType ? eligibilitySummaryByType(housingType) : null;
     return (
       <div className="eli-detail">
         <div className="eli-empty">
-          <div className="eli-empty-title">자격 정보를 정리하고 있어요</div>
-          <div className="eli-empty-sub">
-            정확한 자격은 LH 공고문을 확인해 주세요.
-          </div>
+          {desc ? (
+            <>
+              <div className="eli-empty-title">{desc.title}</div>
+              <div className="eli-empty-summary">{summary}</div>
+              <ul className="eli-empty-list">
+                {desc.detail.map((d, i) => <li key={i}>{d}</li>)}
+              </ul>
+            </>
+          ) : (
+            <>
+              <div className="eli-empty-title">자격 정보 안내</div>
+              <div className="eli-empty-sub">정확한 자격은 LH 공고문을 확인해 주세요.</div>
+            </>
+          )}
           {sourceUrl && (
             <a href={sourceUrl} target="_blank" rel="noreferrer" className="eli-empty-link">
-              공고문 보기 →
+              공고문에서 자세한 자격 확인 →
             </a>
           )}
+          <div className="eli-empty-foot">
+            ※ 매물별 세부 자격(완화/추가) 은 공고문이 우선합니다
+          </div>
         </div>
       </div>
     );

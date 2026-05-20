@@ -1,0 +1,203 @@
+{
+  "supplyTotal": 494,
+  "tiers": [
+    {
+      "id": "etc",
+      "name": "협의양도인 특별공급",
+      "units": 5,
+      "age": null,
+      "marriage": null,
+      "income": null,
+      "asset": null,
+      "other": [
+        "무주택세대구성원 요건",
+        "입주자저축 불필요"
+      ]
+    },
+    {
+      "id": "etc",
+      "name": "기관추천 특별공급",
+      "units": 12,
+      "age": null,
+      "marriage": null,
+      "income": null,
+      "asset": null,
+      "other": [
+        "무주택세대구성원 요건",
+        "입주자저축 6개월 6회 이상 납입(국가유공자·장애인·철거민 등 불필요)"
+      ]
+    },
+    {
+      "id": "child",
+      "name": "다자녀가구 특별공급",
+      "units": 12,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 120,
+        "byHousehold": null,
+        "note": "맞벌이 200% 이하"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "무주택세대구성원 요건",
+        "입주자저축 6개월 6회 이상 납입"
+      ]
+    },
+    {
+      "id": "newlywed",
+      "name": "신혼부부 특별공급",
+      "units": 12,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 130,
+        "byHousehold": null,
+        "note": "맞벌이 200% 이하"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "무주택세대구성원 요건",
+        "입주자저축 6개월 6회 이상 납입",
+        "예비신혼부부 포함"
+      ]
+    },
+    {
+      "id": "general",
+      "name": "생애최초 특별공급",
+      "units": 18,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 130,
+        "byHousehold": null,
+        "note": "맞벌이 200% 이하"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "무주택세대구성원 전원 과거 주택소유 사실 없어야 함",
+        "입주자저축 12개월 12회 이상 납입, 저축액 600만원 이상"
+      ]
+    },
+    {
+      "id": "senior",
+      "name": "노부모부양 특별공급",
+      "units": 6,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 120,
+        "byHousehold": null,
+        "note": "맞벌이 200% 이하"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "세대주 요건 적용",
+        "입주자저축 12개월 12회 이상 납입"
+      ]
+    },
+    {
+      "id": "etc",
+      "name": "신생아 특별공급",
+      "units": 25,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 140,
+        "byHousehold": null,
+        "note": "맞벌이 200% 이하"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "무주택세대구성원 요건",
+        "입주자저축 6개월 6회 이상 납입"
+      ]
+    },
+    {
+      "id": "etc",
+      "name": "일반공급 신생아 우선공급",
+      "units": null,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 100,
+        "byHousehold": null,
+        "note": "맞벌이 200% 이하, 전용면적 60㎡ 이하(59㎡A/B)만 적용"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "무주택세대구성원 요건",
+        "입주자저축 1순위 12개월 12회 이상 납입, 2순위 가입자",
+        "전용면적 60㎡ 이하만 소득·자산 기준 적용"
+      ]
+    },
+    {
+      "id": "general",
+      "name": "일반공급 우선공급(1순위)",
+      "units": null,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 100,
+        "byHousehold": null,
+        "note": "맞벌이 200% 이하, 전용면적 60㎡ 이하(59㎡A/B)만 적용"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "무주택세대구성원 요건",
+        "입주자저축 12개월 12회 이상 납입",
+        "전용면적 60㎡ 이하만 소득·자산 기준 적용"
+      ]
+    },
+    {
+      "id": "etc",
+      "name": "일반공급 추첨공급",
+      "units": 32,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 100,
+        "byHousehold": null,
+        "note": "맞벌이 200% 이하, 전용면적 60㎡ 이하(59㎡A/B)만 적용"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "무주택세대구성원 요건",
+        "입주자저축 1순위 12개월 12회 이상 납입, 2순위 가입자",
+        "전용면적 60㎡ 이하만 소득·자산 기준 적용"
+      ]
+    }
+  ],
+  "priority": [
+    "다자녀가구",
+    "한부모가족",
+    "노부모부양",
+    "장애인",
+    "국가유공자",
+    "신생아"
+  ]
+}

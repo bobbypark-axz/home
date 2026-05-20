@@ -52,17 +52,33 @@ export type EligibilityData = {
 
 const cache = new Map<string, EligibilityData | null>();
 
-/** listingId (listings-api 또는 notice-all 식) → 자격 JSON. 캐시. 없으면 null. */
+/** listingId (listings-api 또는 notice-all 식) → 자격 JSON. 캐시. 없으면 null.
+ *  세 가지 경로 시도:
+ *    1) listings-api 식 그대로 (lh-rental-2015...19890.json) — listings-api 매물에서 직접 추출한 파일
+ *    2) suffix 제거 (lh-rental-...-c0 → lh-rental-...)
+ *    3) panId → notice-all id 변환 (lh-rental-2015...19890 → lh-rental-20274-1)  */
 export function getEligibility(listingId: string): EligibilityData | null {
+  if (cache.has(listingId)) return cache.get(listingId) ?? null;
+
+  const candidates: string[] = [];
+  candidates.push(listingId);
+  // -c0, -c1 suffix 제거한 base
+  const stripped = listingId.replace(/-c\d+$/, "");
+  if (stripped !== listingId) candidates.push(stripped);
+  // notice-all id 매핑
   const noticeId = resolveNoticeId(listingId);
-  if (cache.has(noticeId)) return cache.get(noticeId) ?? null;
-  try {
-    const raw = fs.readFileSync(path.join(ELIG_DIR, `${noticeId}.json`), "utf8");
-    const parsed = JSON.parse(raw) as EligibilityData;
-    cache.set(noticeId, parsed);
-    return parsed;
-  } catch {
-    cache.set(noticeId, null);
-    return null;
+  if (noticeId !== listingId && !candidates.includes(noticeId)) candidates.push(noticeId);
+
+  for (const id of candidates) {
+    try {
+      const raw = fs.readFileSync(path.join(ELIG_DIR, `${id}.json`), "utf8");
+      const parsed = JSON.parse(raw) as EligibilityData;
+      cache.set(listingId, parsed);
+      return parsed;
+    } catch {
+      // try next candidate
+    }
   }
+  cache.set(listingId, null);
+  return null;
 }

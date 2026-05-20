@@ -1,0 +1,138 @@
+{
+  "supplyTotal": 686,
+  "tiers": [
+    {
+      "id": "etc",
+      "name": "다자녀가구 특별공급",
+      "units": 8,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 120,
+        "byHousehold": null,
+        "note": "세대 월평균소득 120% 이하 (맞벌이 200%)"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "입주자저축 6개월 6회 이상",
+        "무주택세대구성원"
+      ]
+    },
+    {
+      "id": "newlywed",
+      "name": "신혼부부 특별공급",
+      "units": 7,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 130,
+        "byHousehold": null,
+        "note": "세대 월평균소득 130% 이하 (맞벌이 200%)"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "입주자저축 6개월 6회 이상",
+        "무주택세대구성원"
+      ]
+    },
+    {
+      "id": "etc",
+      "name": "생애최초 특별공급",
+      "units": 11,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 130,
+        "byHousehold": null,
+        "note": "세대 월평균소득 130% 이하 (맞벌이 200%), 저축액 선납금 포함 600만원 이상"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "입주자저축 12개월 12회 이상",
+        "세대구성원 전원 과거 주택소유 사실 없어야 함",
+        "무주택세대구성원"
+      ]
+    },
+    {
+      "id": "senior",
+      "name": "노부모부양 특별공급",
+      "units": 3,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 120,
+        "byHousehold": null,
+        "note": "세대 월평균소득 120% 이하 (맞벌이 200%)"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "입주자저축 12개월 12회 이상",
+        "무주택세대구성원"
+      ]
+    },
+    {
+      "id": "etc",
+      "name": "신생아 특별공급",
+      "units": 16,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 140,
+        "byHousehold": null,
+        "note": "세대 월평균소득 140% 이하 (맞벌이 200%)"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "입주자저축 6개월 6회 이상",
+        "무주택세대구성원"
+      ]
+    },
+    {
+      "id": "general",
+      "name": "일반공급",
+      "units": 20,
+      "age": null,
+      "marriage": null,
+      "income": {
+        "percent": 100,
+        "byHousehold": null,
+        "note": "세대 월평균소득 100% 이하 (맞벌이 200%), 전용면적 60m² 이하만 적용"
+      },
+      "asset": {
+        "total": 21550,
+        "car": 4542
+      },
+      "other": [
+        "입주자저축 1순위 12개월 12회 이상",
+        "무주택세대구성원",
+        "수도권 거주 성년자",
+        "자산기준은 전용 60m² 이하만 적용"
+      ]
+    }
+  ],
+  "priority": [
+    "다자녀",
+    "신혼부부",
+    "생애최초",
+    "노부모부양",
+    "신생아",
+    "기관추천",
+    "협의양도인",
+    "철거주택소유자"
+  ]
+}
