@@ -46,6 +46,15 @@ jobs:
           restore-keys: |
             notice-embeddings-v1-
 
+      # lh-complexes.json — 66MB, sync-lh-api 가 캐시 있으면 그대로 사용 / 없으면 시도구별 풀 fetch.
+      - name: Restore lh-complexes cache
+        uses: actions/cache@v4
+        with:
+          path: lib/lh-complexes.json
+          key: lh-complexes-v1-${{ github.run_id }}
+          restore-keys: |
+            lh-complexes-v1-
+
       - name: Phase 1 — LH 공고 list sync (data.go.kr)
         env:
           DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
