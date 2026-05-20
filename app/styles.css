@@ -1180,9 +1180,12 @@ input, select { font-family: inherit; }
   height: 100%;
   min-width: 0;
 }
-/* /listings/[id] 풀스크린 라우트 — DetailPanel 그대로 재사용 */
+/* /listings/[id] 풀스크린 라우트 — DetailPanel 그대로 재사용.
+   100vh 는 iOS Safari 의 브라우저 chrome 영역까지 포함 → 하단 액션바가 chrome 뒤로 깔림.
+   100dvh (dynamic viewport) 는 chrome 제외한 실제 가시 영역. */
 .detail-fullpage {
   height: 100vh;
+  height: 100dvh;
   width: 100vw;
   background: white;
   overflow: hidden;
