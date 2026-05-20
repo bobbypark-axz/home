@@ -50,9 +50,10 @@ function ListingCard({
   onHover: (id: string | null) => void;
   onClick: (id: string) => void;
 }) {
-  const dday = dDayText(item.deadline, item.status);
   const photo = item.coverPhotoUrl;
   const effStatus = effectiveStatus(item.status, item.deadline, item.beginDate);
+  // dDayText 가 raw status 기반이라 effStatus 로 보정된 매물에선 잘못된 라벨 반환 — effStatus 로 호출.
+  const dday = dDayText(item.deadline, effStatus);
   // statusLabel — effStatus 우선. raw status 가 "open" 이지만 마감 지났으면 effStatus=closed → "마감".
   const statusLabel =
     effStatus === "closed" ? "마감"

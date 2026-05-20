@@ -21,7 +21,7 @@ function CarouselCard({ item: { listing: item, reasons }, rank }: { item: Carous
   const router = useRouter();
   const housing = HOUSING_TYPES.find((t) => t.id === item.type);
   const effStatus = effectiveStatus(item.status, item.deadline, item.beginDate);
-  const dday = dDayText(item.deadline, item.status);
+  const dday = dDayText(item.deadline, effStatus);
   const svg = thumbnailSVG(item.thumbSeed, item.type);
 
   const priceText =

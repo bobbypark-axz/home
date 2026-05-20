@@ -132,13 +132,13 @@ export function DetailPanel({
   const housingType = HOUSING_TYPES.find((t) => t.id === item.type);
   const applyUrl = applyUrlFor(item.type);
   const infoUrl = infoUrlFor(item.type);
-  // 청약 신청 버튼 상태: 신청 가능한 시점인지에 따라 라벨/활성 결정
+  // 청약 신청 버튼 — raw status 대신 effStatus 기반 (sync stale 보정 반영)
   const isRecurring = isRegularRecruitment(item.deadline, item.status);
   const applyButton: { label: string; active: boolean } = isRecurring
     ? { label: "공고 확인 →", active: true }
-    : item.status === "open" || item.status === "closing"
+    : effStatus === "open" || effStatus === "closing"
       ? { label: "청약 신청하기 →", active: true }
-      : item.status === "upcoming"
+      : effStatus === "upcoming"
         ? { label: "접수 예정", active: false }
         : { label: "접수 마감", active: false };
 
