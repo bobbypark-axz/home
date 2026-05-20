@@ -53,10 +53,12 @@ function ListingCard({
   const dday = dDayText(item.deadline, item.status);
   const photo = item.coverPhotoUrl;
   const effStatus = effectiveStatus(item.status, item.deadline, item.beginDate);
-  // closing 이면 강한 라벨 "마감임박"으로 대체, 외엔 D-day or 수시모집
-  const statusLabel = effStatus === "closing"
-    ? (dday || "마감임박")
-    : (dday || (item.status === "open" ? "수시모집" : ""));
+  // statusLabel — effStatus 우선. raw status 가 "open" 이지만 마감 지났으면 effStatus=closed → "마감".
+  const statusLabel =
+    effStatus === "closed" ? "마감"
+    : effStatus === "closing" ? (dday || "마감임박")
+    : effStatus === "upcoming" ? "모집 예정"
+    : (dday || "수시모집");
   return (
     <article
       className={`card ${hovered ? "hovered" : ""} ${selected ? "selected" : ""}`}
