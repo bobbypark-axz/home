@@ -788,7 +788,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 19,
+    "supplyUnits": 335,
     "complexName": null,
     "pnu": null,
     "houseType": null,
@@ -797,7 +797,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019988&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 24
+    "thumbSeed": 24,
+    "deposit": 857,
+    "rent": 15
   },
   {
     "id": "lh-rental-2015122300019985",
@@ -852,7 +854,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 22,
+    "supplyUnits": 35,
     "complexName": "경상남도 양산시",
     "pnu": "4833033021111760000",
     "houseType": "아파트",
@@ -861,7 +863,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019971&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 26
+    "thumbSeed": 26,
+    "deposit": 1835,
+    "rent": 23
   },
   {
     "id": "lh-rental-2015122300019976",
@@ -989,7 +993,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019943&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 30
+    "thumbSeed": 30,
+    "deposit": 2154,
+    "rent": 30
   },
   {
     "id": "lh-rental-2015122300019932",
@@ -1021,7 +1027,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019932&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 31
+    "thumbSeed": 31,
+    "deposit": 1249,
+    "rent": 13
   },
   {
     "id": "lh-rental-2015122300019925",
@@ -1044,7 +1052,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 14,
+    "supplyUnits": 460,
     "complexName": null,
     "pnu": null,
     "houseType": null,
@@ -1053,7 +1061,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019925&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 32
+    "thumbSeed": 32,
+    "deposit": 1071,
+    "rent": 8
   },
   {
     "id": "lh-rental-2015122300019965",
@@ -1076,7 +1086,7 @@
     "depositManwon": 742,
     "monthlyRentManwon": 11,
     "salePriceManwon": null,
-    "supplyUnits": 2,
+    "supplyUnits": 30,
     "complexName": "정읍첨단1",
     "pnu": "5218012700114940001",
     "houseType": "아파트",
@@ -1085,7 +1095,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019965&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 33
+    "thumbSeed": 33,
+    "deposit": 1447,
+    "rent": 16
   },
   {
     "id": "lh-rental-2015122300019864",
@@ -1108,7 +1120,7 @@
     "depositManwon": 22846,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 4,
+    "supplyUnits": 190,
     "complexName": "전북특별자치도 군산시",
     "pnu": "5213013700106480000",
     "houseType": "아파트",
@@ -1117,7 +1129,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019864&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 34
+    "thumbSeed": 34,
+    "deposit": 932,
+    "rent": 15
   },
   {
     "id": "lh-rental-2015122300019863",
@@ -1140,7 +1154,7 @@
     "depositManwon": 658,
     "monthlyRentManwon": 15,
     "salePriceManwon": null,
-    "supplyUnits": 3,
+    "supplyUnits": 40,
     "complexName": "주공1차아파트(부송동)",
     "pnu": "5214013400110690000",
     "houseType": "아파트",
@@ -1149,7 +1163,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019863&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 35
+    "thumbSeed": 35,
+    "deposit": 1349,
+    "rent": 11
   },
   {
     "id": "lh-rental-2015122300019946",
@@ -1172,7 +1188,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 19,
+    "supplyUnits": 335,
     "complexName": null,
     "pnu": null,
     "houseType": null,
@@ -1181,7 +1197,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019946&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 36
+    "thumbSeed": 36,
+    "deposit": 857,
+    "rent": 15
   },
   {
     "id": "lh-rental-2015122300019937",
@@ -1204,7 +1222,7 @@
     "depositManwon": 734,
     "monthlyRentManwon": 13,
     "salePriceManwon": null,
-    "supplyUnits": 13,
+    "supplyUnits": 378,
     "complexName": "포항흥해 국민임대주택",
     "pnu": "4711325026102290003",
     "houseType": "아파트",
@@ -1213,7 +1231,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019937&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 37
+    "thumbSeed": 37,
+    "deposit": 856,
+    "rent": 17
   },
   {
     "id": "lh-rental-2015122300019918",
@@ -1236,7 +1256,7 @@
     "depositManwon": 1221,
     "monthlyRentManwon": 9,
     "salePriceManwon": null,
-    "supplyUnits": 10,
+    "supplyUnits": 384,
     "complexName": "무주남대천휴먼시아",
     "pnu": "5273025021111900001",
     "houseType": "아파트",
@@ -1309,7 +1329,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019986&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 40
+    "thumbSeed": 40,
+    "deposit": 757,
+    "rent": 357
   },
   {
     "id": "lh-rental-2015122300019984",
@@ -1332,7 +1354,7 @@
     "depositManwon": 1199,
     "monthlyRentManwon": 10,
     "salePriceManwon": null,
-    "supplyUnits": 2,
+    "supplyUnits": 150,
     "complexName": "양산대석휴먼시아",
     "pnu": "4833033022108080000",
     "houseType": "아파트",
@@ -1341,7 +1363,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019984&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 41
+    "thumbSeed": 41,
+    "deposit": 1247,
+    "rent": 10
   },
   {
     "id": "lh-rental-2015122300019980",
@@ -1364,7 +1388,7 @@
     "depositManwon": 989,
     "monthlyRentManwon": 9,
     "salePriceManwon": null,
-    "supplyUnits": 5,
+    "supplyUnits": 49,
     "complexName": "장성수산",
     "pnu": "4688025021105040000",
     "houseType": "아파트",
@@ -1373,7 +1397,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019980&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 42
+    "thumbSeed": 42,
+    "deposit": 0,
+    "rent": 676
   },
   {
     "id": "lh-rental-2015122300019979",
@@ -1396,7 +1422,7 @@
     "depositManwon": 1139,
     "monthlyRentManwon": 9,
     "salePriceManwon": null,
-    "supplyUnits": 1,
+    "supplyUnits": 30,
     "complexName": "담양백동2(07,국민+영구)",
     "pnu": "4671025025107300000",
     "houseType": "아파트",
@@ -1405,7 +1431,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019979&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 43
+    "thumbSeed": 43,
+    "deposit": 649,
+    "rent": 10
   },
   {
     "id": "lh-rental-2015122300019978",
@@ -1428,7 +1456,7 @@
     "depositManwon": 359,
     "monthlyRentManwon": 6,
     "salePriceManwon": null,
-    "supplyUnits": 23,
+    "supplyUnits": 1045,
     "complexName": "부산광역시 중구",
     "pnu": "2611012100100790004",
     "houseType": "오피스텔",
@@ -1437,7 +1465,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019978&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 44
+    "thumbSeed": 44,
+    "deposit": 794,
+    "rent": 15
   },
   {
     "id": "lh-rental-2015122300019975",
@@ -1460,7 +1490,7 @@
     "depositManwon": 1620,
     "monthlyRentManwon": 37,
     "salePriceManwon": null,
-    "supplyUnits": 19,
+    "supplyUnits": 20,
     "complexName": "광주광역시 동구",
     "pnu": "2911010800102450016",
     "houseType": "오피스텔",
@@ -1469,7 +1499,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019975&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 45
+    "thumbSeed": 45,
+    "deposit": 2199,
+    "rent": 12
   },
   {
     "id": "lh-rental-2015122300019974",
@@ -1524,7 +1556,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 2,
+    "supplyUnits": 45,
     "complexName": null,
     "pnu": null,
     "houseType": null,
@@ -1533,7 +1565,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019947&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 47
+    "thumbSeed": 47,
+    "deposit": 1099,
+    "rent": 7
   },
   {
     "id": "lh-rental-2015122300019964",
@@ -1556,7 +1590,7 @@
     "depositManwon": 1620,
     "monthlyRentManwon": 37,
     "salePriceManwon": null,
-    "supplyUnits": 2,
+    "supplyUnits": 50,
     "complexName": "광주광역시 동구",
     "pnu": "2911010800102450016",
     "houseType": "오피스텔",
@@ -1565,7 +1599,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019964&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 48
+    "thumbSeed": 48,
+    "deposit": 980,
+    "rent": 7
   },
   {
     "id": "lh-rental-2015122300019960",
@@ -1588,7 +1624,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 2,
+    "supplyUnits": 40,
     "complexName": null,
     "pnu": null,
     "houseType": null,
@@ -1597,7 +1633,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019960&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 49
+    "thumbSeed": 49,
+    "deposit": 2133,
+    "rent": 16
   },
   {
     "id": "lh-rental-2015122300019958",
@@ -1620,7 +1658,7 @@
     "depositManwon": 700,
     "monthlyRentManwon": 12,
     "salePriceManwon": null,
-    "supplyUnits": 1,
+    "supplyUnits": 10,
     "complexName": "함평향교(국민+영구)",
     "pnu": "4686035026114280000",
     "houseType": "아파트",
@@ -1629,7 +1667,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019958&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 50
+    "thumbSeed": 50,
+    "deposit": 728,
+    "rent": 13
   },
   {
     "id": "lh-rental-2015122300019952",
@@ -1652,7 +1692,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 3,
+    "supplyUnits": 260,
     "complexName": "경상남도 김해시",
     "pnu": "4825010500104890012",
     "houseType": "다가구주택",
@@ -1661,7 +1701,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019952&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 51
+    "thumbSeed": 51,
+    "deposit": 1671,
+    "rent": 20
   },
   {
     "id": "lh-rental-2015122300019951",
@@ -1684,7 +1726,7 @@
     "depositManwon": 2213,
     "monthlyRentManwon": 13,
     "salePriceManwon": null,
-    "supplyUnits": 1,
+    "supplyUnits": 30,
     "complexName": "홍성남장2 주공아파트",
     "pnu": "4480025026105220000",
     "houseType": "아파트",
@@ -1693,7 +1735,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019951&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 52
+    "thumbSeed": 52,
+    "deposit": 2301,
+    "rent": 14
   },
   {
     "id": "lh-rental-2015122300019949",
@@ -1725,7 +1769,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019949&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 53
+    "thumbSeed": 53,
+    "deposit": 926,
+    "rent": 13
   },
   {
     "id": "lh-rental-2015122300019911",
@@ -1757,7 +1803,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019911&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 54
+    "thumbSeed": 54,
+    "deposit": 757,
+    "rent": 357
   },
   {
     "id": "lh-rental-2015122300019957",
@@ -1780,7 +1828,7 @@
     "depositManwon": 200,
     "monthlyRentManwon": 10,
     "salePriceManwon": null,
-    "supplyUnits": 2,
+    "supplyUnits": 130,
     "complexName": "대전광역시 동구",
     "pnu": "3011011700100100006",
     "houseType": null,
@@ -1789,7 +1837,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019957&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 55
+    "thumbSeed": 55,
+    "deposit": 3642,
+    "rent": 21
   },
   {
     "id": "lh-rental-2015122300019956",
@@ -1812,7 +1862,7 @@
     "depositManwon": 1133,
     "monthlyRentManwon": 10,
     "salePriceManwon": null,
-    "supplyUnits": 3,
+    "supplyUnits": 250,
     "complexName": "계룡대실 4단지",
     "pnu": "4425031024109690000",
     "houseType": "아파트",
@@ -1821,7 +1871,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019956&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 56
+    "thumbSeed": 56,
+    "deposit": 976,
+    "rent": 16
   },
   {
     "id": "lh-rental-2015122300019955",
@@ -1853,7 +1905,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019955&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 57
+    "thumbSeed": 57,
+    "deposit": 1063,
+    "rent": 6
   },
   {
     "id": "lh-rental-2015122300019954",
@@ -1885,7 +1939,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019954&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 58
+    "thumbSeed": 58,
+    "deposit": 1196,
+    "rent": 7
   },
   {
     "id": "lh-rental-2015122300019953",
@@ -1908,7 +1964,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 4,
+    "supplyUnits": 190,
     "complexName": null,
     "pnu": null,
     "houseType": null,
@@ -1917,7 +1973,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019953&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 59
+    "thumbSeed": 59,
+    "deposit": 1512,
+    "rent": 13
   },
   {
     "id": "lh-rental-2015122300019963",
@@ -1940,7 +1998,7 @@
     "depositManwon": 1120,
     "monthlyRentManwon": 15,
     "salePriceManwon": null,
-    "supplyUnits": 2,
+    "supplyUnits": 200,
     "complexName": "강릉초당아트피아",
     "pnu": "5115011200105530000",
     "houseType": "아파트",
@@ -1949,7 +2007,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019963&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 60
+    "thumbSeed": 60,
+    "deposit": 1165,
+    "rent": 16
   },
   {
     "id": "lh-rental-2015122300019906",
@@ -1972,7 +2032,7 @@
     "depositManwon": 1228,
     "monthlyRentManwon": 8,
     "salePriceManwon": null,
-    "supplyUnits": 5,
+    "supplyUnits": 220,
     "complexName": "사천진사",
     "pnu": "4824032025104500000",
     "houseType": "아파트",
@@ -2004,7 +2064,7 @@
     "depositManwon": 973,
     "monthlyRentManwon": 10,
     "salePriceManwon": null,
-    "supplyUnits": 3,
+    "supplyUnits": 240,
     "complexName": "함양교산 휴먼시아",
     "pnu": "4887025024103790000",
     "houseType": "아파트",
@@ -2068,7 +2128,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 8,
+    "supplyUnits": 300,
     "complexName": null,
     "pnu": null,
     "houseType": null,
@@ -2077,7 +2137,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019959&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 64
+    "thumbSeed": 64,
+    "deposit": 1257,
+    "rent": 11
   },
   {
     "id": "lh-rental-2015122300019973",
@@ -2100,7 +2162,7 @@
     "depositManwon": 734,
     "monthlyRentManwon": 13,
     "salePriceManwon": null,
-    "supplyUnits": 2,
+    "supplyUnits": 50,
     "complexName": "포항흥해 국민임대주택",
     "pnu": "4711325026102290003",
     "houseType": "아파트",
@@ -2109,7 +2171,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019973&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 65
+    "thumbSeed": 65,
+    "deposit": 1199,
+    "rent": 9
   },
   {
     "id": "lh-rental-2015122300019936",
@@ -2132,7 +2196,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 8,
+    "supplyUnits": 220,
     "complexName": "울산광역시 중구",
     "pnu": "3111011800103440000",
     "houseType": "오피스텔",
@@ -2141,7 +2205,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019936&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 66
+    "thumbSeed": 66,
+    "deposit": 756,
+    "rent": 13
   },
   {
     "id": "lh-rental-2015122300019929",
@@ -2164,7 +2230,7 @@
     "depositManwon": 958,
     "monthlyRentManwon": 10,
     "salePriceManwon": null,
-    "supplyUnits": 3,
+    "supplyUnits": 220,
     "complexName": "영월주천 국민임대주택",
     "pnu": "5175036021113970015",
     "houseType": "아파트",
@@ -2173,7 +2239,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019929&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 67
+    "thumbSeed": 67,
+    "deposit": 885,
+    "rent": 12
   },
   {
     "id": "lh-rental-2015122300019923",
@@ -2196,7 +2264,7 @@
     "depositManwon": 1078,
     "monthlyRentManwon": 9,
     "salePriceManwon": null,
-    "supplyUnits": 2,
+    "supplyUnits": 30,
     "complexName": "음성신천 휴먼시아",
     "pnu": "4377025029110580000",
     "houseType": "아파트",
@@ -2205,7 +2273,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019923&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 68
+    "thumbSeed": 68,
+    "deposit": 1099,
+    "rent": 9
   },
   {
     "id": "lh-rental-2015122300019921",
@@ -2228,7 +2298,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 1,
+    "supplyUnits": 10,
     "complexName": null,
     "pnu": null,
     "houseType": null,
@@ -2237,7 +2307,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019921&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 69
+    "thumbSeed": 69,
+    "deposit": 2,
+    "rent": 17
   },
   {
     "id": "lh-rental-2015122300019962",
@@ -2260,7 +2332,7 @@
     "depositManwon": 2071,
     "monthlyRentManwon": 12,
     "salePriceManwon": null,
-    "supplyUnits": 5,
+    "supplyUnits": 50,
     "complexName": "철원철원 행복주택(도시재생)",
     "pnu": "5178025021100450005",
     "houseType": "아파트",
@@ -2269,7 +2341,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019962&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 70
+    "thumbSeed": 70,
+    "deposit": 1133,
+    "rent": 14
   },
   {
     "id": "lh-rental-2015122300019948",
@@ -2292,7 +2366,7 @@
     "depositManwon": 1687,
     "monthlyRentManwon": 12,
     "salePriceManwon": null,
-    "supplyUnits": 1,
+    "supplyUnits": 20,
     "complexName": "영천문내주공",
     "pnu": "4723010400102070000",
     "houseType": "아파트",
@@ -2301,7 +2375,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019948&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 71
+    "thumbSeed": 71,
+    "deposit": 1687,
+    "rent": 12
   },
   {
     "id": "lh-rental-2015122300019944",
@@ -2420,7 +2496,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 1,
+    "supplyUnits": 100,
     "complexName": null,
     "pnu": null,
     "houseType": null,
@@ -2429,7 +2505,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019938&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=08&mi=1026",
-    "thumbSeed": 75
+    "thumbSeed": 75,
+    "deposit": 1481,
+    "rent": 27
   },
   {
     "id": "lh-rental-2015122300019920",
@@ -2452,7 +2530,7 @@
     "depositManwon": 7988,
     "monthlyRentManwon": 59,
     "salePriceManwon": null,
-    "supplyUnits": 1,
+    "supplyUnits": 30,
     "complexName": "성남고등 S-3 공공분양+공공임대",
     "pnu": "4113111200105760000",
     "houseType": "아파트",
@@ -2461,7 +2539,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019920&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=08&mi=1026",
-    "thumbSeed": 76
+    "thumbSeed": 76,
+    "deposit": 2334,
+    "rent": 26
   },
   {
     "id": "lh-rental-0000061087",
@@ -2493,7 +2573,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=0000061087&ccrCnntSysDsCd=02&uppAisTpCd=06&aisTpCd=08&mi=1026",
-    "thumbSeed": 77
+    "thumbSeed": 77,
+    "deposit": 1079,
+    "rent": 51
   },
   {
     "id": "lh-rental-0000061085",
@@ -2612,7 +2694,7 @@
     "depositManwon": 3066,
     "monthlyRentManwon": 21,
     "salePriceManwon": null,
-    "supplyUnits": 17,
+    "supplyUnits": 1090,
     "complexName": "성남판교대장 A-9블록 국민임대주택",
     "pnu": "4113511600106250000",
     "houseType": "아파트",
@@ -2621,7 +2703,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019939&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 81
+    "thumbSeed": 81,
+    "deposit": 1440,
+    "rent": 16
   },
   {
     "id": "lh-rental-2015122300019924",
@@ -2685,7 +2769,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019913&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=10&mi=1026",
-    "thumbSeed": 83
+    "thumbSeed": 83,
+    "deposit": 2988,
+    "rent": 25
   },
   {
     "id": "lh-rental-2015122300019916",
@@ -2749,7 +2835,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019915&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 85
+    "thumbSeed": 85,
+    "deposit": 1787,
+    "rent": 12
   },
   {
     "id": "lh-rental-2015122300019895",
@@ -2772,7 +2860,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": null,
+    "supplyUnits": 170,
     "complexName": null,
     "pnu": null,
     "houseType": null,
@@ -2804,7 +2892,7 @@
     "depositManwon": 3066,
     "monthlyRentManwon": 21,
     "salePriceManwon": null,
-    "supplyUnits": 6,
+    "supplyUnits": 80,
     "complexName": "성남판교대장 A-9블록 국민임대주택",
     "pnu": "4113511600106250000",
     "houseType": "아파트",
@@ -2813,7 +2901,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019914&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 87
+    "thumbSeed": 87,
+    "deposit": 2217,
+    "rent": 15
   },
   {
     "id": "lh-rental-2015122300019912",
@@ -2932,7 +3022,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 40,
+    "supplyUnits": 290,
     "complexName": "경기도 고양시",
     "pnu": "4128110400104100009",
     "houseType": "다세대주택",
@@ -2941,7 +3031,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019909&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 91
+    "thumbSeed": 91,
+    "deposit": 2,
+    "rent": 17
   },
   {
     "id": "lh-rental-2015122300019908",
@@ -2964,7 +3056,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 6,
+    "supplyUnits": 310,
     "complexName": "백운주택1구역(인천시청역 힐스테이트)",
     "pnu": "2820010200109440000",
     "houseType": "아파트",
@@ -2973,7 +3065,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019908&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 92
+    "thumbSeed": 92,
+    "deposit": 1416,
+    "rent": 14
   },
   {
     "id": "lh-rental-2015122300019898",
@@ -3060,7 +3154,7 @@
     "depositManwon": 3066,
     "monthlyRentManwon": 21,
     "salePriceManwon": null,
-    "supplyUnits": 17,
+    "supplyUnits": 1090,
     "complexName": "성남판교대장 A-9블록 국민임대주택",
     "pnu": "4113511600106250000",
     "houseType": "아파트",
@@ -3069,7 +3163,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019880&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 95
+    "thumbSeed": 95,
+    "deposit": 1440,
+    "rent": 16
   },
   {
     "id": "lh-rental-2015122300019900",
@@ -3092,7 +3188,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 40,
+    "supplyUnits": 290,
     "complexName": "경기도 고양시",
     "pnu": "4128110400104100009",
     "houseType": "다세대주택",
@@ -3101,7 +3197,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019900&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 96
+    "thumbSeed": 96,
+    "deposit": 2,
+    "rent": 17
   },
   {
     "id": "lh-rental-2015122300019879",
@@ -3124,7 +3222,7 @@
     "depositManwon": 2400,
     "monthlyRentManwon": 11,
     "salePriceManwon": null,
-    "supplyUnits": 4,
+    "supplyUnits": 350,
     "complexName": "화성향남2 21단지",
     "pnu": "4159125326114940000",
     "houseType": "아파트",
@@ -3133,7 +3231,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019879&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 97
+    "thumbSeed": 97,
+    "deposit": 1608,
+    "rent": 18
   },
   {
     "id": "lh-rental-2015122300019878",
@@ -3156,7 +3256,7 @@
     "depositManwon": 3066,
     "monthlyRentManwon": 21,
     "salePriceManwon": null,
-    "supplyUnits": 18,
+    "supplyUnits": 264,
     "complexName": "성남판교대장 A-9블록 국민임대주택",
     "pnu": "4113511600106250000",
     "houseType": "아파트",
@@ -3188,7 +3288,7 @@
     "depositManwon": 3066,
     "monthlyRentManwon": 21,
     "salePriceManwon": null,
-    "supplyUnits": 2,
+    "supplyUnits": 260,
     "complexName": "성남판교대장 A-9블록 국민임대주택",
     "pnu": "4113511600106250000",
     "houseType": "아파트",
@@ -3197,7 +3297,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019876&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 99
+    "thumbSeed": 99,
+    "deposit": 1424,
+    "rent": 17
   },
   {
     "id": "lh-rental-2015122300019871",
@@ -3220,7 +3322,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 22,
+    "supplyUnits": 640,
     "complexName": "경기도 오산시",
     "pnu": "4137011200102960000",
     "houseType": null,
@@ -3229,7 +3331,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019871&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 100
+    "thumbSeed": 100,
+    "deposit": 1624,
+    "rent": 23
   },
   {
     "id": "lh-rental-2015122300019866",
@@ -3252,7 +3356,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 6,
+    "supplyUnits": 310,
     "complexName": "백운주택1구역(인천시청역 힐스테이트)",
     "pnu": "2820010200109440000",
     "houseType": "아파트",
@@ -3261,7 +3365,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019866&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 101
+    "thumbSeed": 101,
+    "deposit": 1416,
+    "rent": 14
   },
   {
     "id": "lh-rental-2015122300019859",
@@ -3284,7 +3390,7 @@
     "depositManwon": 1925,
     "monthlyRentManwon": 17,
     "salePriceManwon": null,
-    "supplyUnits": 2,
+    "supplyUnits": 90,
     "complexName": "용인마평",
     "pnu": "4146110700109560000",
     "houseType": "아파트",
@@ -3293,7 +3399,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019859&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 102
+    "thumbSeed": 102,
+    "deposit": 1925,
+    "rent": 17
   },
   {
     "id": "lh-rental-2015122300019899",
@@ -3316,7 +3424,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 16,
+    "supplyUnits": 540,
     "complexName": "경기도 포천시",
     "pnu": "4165010100100900011",
     "houseType": "다세대주택",
@@ -3348,7 +3456,7 @@
     "depositManwon": 3066,
     "monthlyRentManwon": 21,
     "salePriceManwon": null,
-    "supplyUnits": 6,
+    "supplyUnits": 80,
     "complexName": "성남판교대장 A-9블록 국민임대주택",
     "pnu": "4113511600106250000",
     "houseType": "아파트",
@@ -3357,7 +3465,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019892&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 104
+    "thumbSeed": 104,
+    "deposit": 2217,
+    "rent": 15
   },
   {
     "id": "lh-rental-2015122300019889",
@@ -3380,7 +3490,7 @@
     "depositManwon": 1422,
     "monthlyRentManwon": 17,
     "salePriceManwon": null,
-    "supplyUnits": 1,
+    "supplyUnits": 150,
     "complexName": "인천검단36단지(AA34블록) 국민임대주택",
     "pnu": "2826011400113270001",
     "houseType": "아파트",
@@ -3389,7 +3499,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019889&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 105
+    "thumbSeed": 105,
+    "deposit": 2088,
+    "rent": 25
   },
   {
     "id": "lh-rental-2015122300019901",
@@ -3444,7 +3556,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 9,
+    "supplyUnits": 240,
     "complexName": "경기도 파주시",
     "pnu": "4148011200101050002",
     "houseType": "단독주택",
@@ -3508,7 +3620,7 @@
     "depositManwon": 0,
     "monthlyRentManwon": 0,
     "salePriceManwon": null,
-    "supplyUnits": 1,
+    "supplyUnits": 0,
     "complexName": null,
     "pnu": null,
     "houseType": null,
@@ -3540,7 +3652,7 @@
     "depositManwon": 5026,
     "monthlyRentManwon": 39,
     "salePriceManwon": null,
-    "supplyUnits": 3,
+    "supplyUnits": 25,
     "complexName": "양주옥정 A-20(3)(공임리츠)",
     "pnu": "4163011400110990000",
     "houseType": "아파트",
@@ -3837,7 +3949,9 @@
     "coverPhotoUrl": null,
     "coverPhotoLocal": null,
     "sourceUrl": "https://apply.lh.or.kr/lhapply/apply/wt/wrtanc/selectWrtancInfo.do?panId=2015122300019852&ccrCnntSysDsCd=03&uppAisTpCd=06&aisTpCd=07&mi=1026",
-    "thumbSeed": 119
+    "thumbSeed": 119,
+    "deposit": 1595,
+    "rent": 9
   },
   {
     "id": "lh-rental-2015122300019853",

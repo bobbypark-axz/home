@@ -1,0 +1,53 @@
+{
+  "id": "lh-rental-2015122300019978",
+  "supplyTotal": 1045,
+  "integrated": false,
+  "units": [
+    {
+      "type": "26",
+      "area": 26.83,
+      "deposit": 8623000,
+      "rent": 161140
+    },
+    {
+      "type": "36",
+      "area": 36.66
+    },
+    {
+      "type": "39",
+      "area": 39.86
+    },
+    {
+      "type": "46",
+      "area": 46.21
+    },
+    {
+      "type": "51",
+      "area": 51.3,
+      "deposit": 31321000,
+      "rent": 183830
+    },
+    {
+      "type": "59",
+      "area": 59.48
+    },
+    {
+      "type": "59E",
+      "area": 59.57,
+      "deposit": 40252000,
+      "rent": 240080
+    },
+    {
+      "type": "24A",
+      "area": 24.72,
+      "deposit": 7943000,
+      "rent": 153190
+    },
+    {
+      "type": "24B",
+      "area": 24.79,
+      "deposit": 7943000,
+      "rent": 153190
+    }
+  ]
+}

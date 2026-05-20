@@ -74,6 +74,11 @@ jobs:
           node scripts/enrich-notice-text.mjs --limit 9999 --active-only
           node scripts/enrich-notice-text.mjs --limit 9999 --active-only --from-api
 
+      - name: Phase 3.5 — markdown 표 → supply / 임대조건 정형 추출 (regex)
+        # PDF→md 의 모집세대수·보증금·월세 표를 결정론적으로 파싱 → listings-api 정정.
+        # LH API 부정확 값 (supplyUnits=1 등) / null 임대조건 보강. 데이터 정합성 최우선.
+        run: node scripts/extract-supply-from-md.mjs --force
+
       - name: Phase 4 — 임베딩 인덱스 (Solar embedding)
         env:
           SOLAR_API_KEY: ${{ secrets.SOLAR_API_KEY }}

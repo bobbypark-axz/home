@@ -1,0 +1,15 @@
+{
+  "id": "lh-rental-2015122300019895",
+  "supplyTotal": 170,
+  "integrated": true,
+  "units": [
+    {
+      "type": "26A",
+      "area": 26.5195
+    },
+    {
+      "type": "26B",
+      "area": 26.4673
+    }
+  ]
+}
