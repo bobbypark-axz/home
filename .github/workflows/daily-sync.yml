@@ -10,7 +10,7 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 180   # 첫 run / 큰 변동 대비
+    timeout-minutes: 350   # GitHub Actions max 360. 첫 캐시 부트스트랩 후엔 ~20분.
 
     permissions:
       contents: write       # 변경된 데이터 자동 commit + push
